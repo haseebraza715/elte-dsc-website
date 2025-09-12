@@ -1,0 +1,8 @@
+[
+  { "name": "Jane Doe", "role": "President", "meta": "ELTE, MSc", "link": "mailto:jane@example.com", "linkLabel": "jane@example.com" },
+  { "name": "Sam Smith", "role": "Events Coordinator", "meta": "ELTE, BSc", "link": "mailto:sam@example.com", "linkLabel": "sam@example.com" },
+  { "name": "Alex Lee", "role": "Outreach", "meta": "LinkedIn", "link": "https://www.linkedin.com/in/example", "linkLabel": "Profile" },
+  { "name": "Maria Nagy", "role": "Data Mentor", "meta": "ELTE, PhD", "link": "mailto:maria@example.com", "linkLabel": "maria@example.com" }
+]
+
+

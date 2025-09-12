@@ -1,0 +1,7 @@
+[
+  { "heading": "Learning", "items": [ ["Kaggle", "https://www.kaggle.com"], ["scikit-learn", "https://scikit-learn.org"], ["Pandas", "https://pandas.pydata.org"] ] },
+  { "heading": "Tools", "items": [ ["Jupyter", "https://jupyter.org"], ["Streamlit", "https://streamlit.io"], ["PostgreSQL", "https://www.postgresql.org"] ] },
+  { "heading": "Clubs & Careers", "items": [ ["r/datascience", "https://www.reddit.com/r/datascience/"], ["DataWars", "https://www.datawars.io"], ["LinkedIn", "https://www.linkedin.com"] ] }
+]
+
+

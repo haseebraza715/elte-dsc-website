@@ -1,0 +1,12 @@
+{
+  "name": "Data Science Club",
+  "nav": ["home", "about", "events", "projects", "resources", "members", "contact"],
+  "contactEmail": "datascienceclub@example.edu",
+  "social": {
+    "linkedin": "https://www.linkedin.com",
+    "discord": "#",
+    "email": "mailto:datascienceclub@example.edu"
+  }
+}
+
+

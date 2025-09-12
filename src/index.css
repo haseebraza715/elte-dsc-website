@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #0ea5e9;
+  --color-accent-contrast: #0c4a6e;
+  --color-bgsoft: #f0f9ff;
+  --color-border: #e2e8f0;
+  --color-textmain: #0f172a;
+  --color-textmuted: #334155;
+
+  --container-content: 960px;
+  --max-w-content: 960px;
+}
+
+html:focus-within { scroll-behavior: smooth; }
+::selection { background: #bae6fd; color: #0f172a; }

@@ -1,0 +1,8 @@
+{
+  "title": "Welcome to the Data Science Club",
+  "subtitle": "We explore data, build projects, and share knowledge through talks, hack nights, and mentorship.",
+  "primaryCta": { "label": "See Upcoming Events", "href": "#events" },
+  "secondaryCta": { "label": "Join Us", "href": "#contact" }
+}
+
+
