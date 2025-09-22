@@ -1,7 +1,10 @@
 [
-  { "heading": "Learning", "items": [ ["Kaggle", "https://www.kaggle.com"], ["scikit-learn", "https://scikit-learn.org"], ["Pandas", "https://pandas.pydata.org"] ] },
-  { "heading": "Tools", "items": [ ["Jupyter", "https://jupyter.org"], ["Streamlit", "https://streamlit.io"], ["PostgreSQL", "https://www.postgresql.org"] ] },
-  { "heading": "Clubs & Careers", "items": [ ["r/datascience", "https://www.reddit.com/r/datascience/"], ["DataWars", "https://www.datawars.io"], ["LinkedIn", "https://www.linkedin.com"] ] }
+  { "heading": "Learning Platforms", "items": [ ["Kaggle Learn", "https://www.kaggle.com/learn"], ["Coursera Data Science", "https://www.coursera.org/specializations/data-science"], ["edX Data Science", "https://www.edx.org/learn/data-science"], ["DataCamp", "https://www.datacamp.com"], ["Fast.ai", "https://www.fast.ai"], ["Andrew Ng's ML Course", "https://www.coursera.org/learn/machine-learning"] ] },
+  { "heading": "Python Libraries", "items": [ ["Pandas", "https://pandas.pydata.org"], ["NumPy", "https://numpy.org"], ["Scikit-learn", "https://scikit-learn.org"], ["Matplotlib", "https://matplotlib.org"], ["Seaborn", "https://seaborn.pydata.org"], ["Plotly", "https://plotly.com/python"], ["TensorFlow", "https://www.tensorflow.org"], ["PyTorch", "https://pytorch.org"] ] },
+  { "heading": "Tools & IDEs", "items": [ ["Jupyter Notebook", "https://jupyter.org"], ["Google Colab", "https://colab.research.google.com"], ["VS Code", "https://code.visualstudio.com"], ["RStudio", "https://www.rstudio.com"], ["Tableau", "https://www.tableau.com"], ["Power BI", "https://powerbi.microsoft.com"] ] },
+  { "heading": "Datasets", "items": [ ["Kaggle Datasets", "https://www.kaggle.com/datasets"], ["UCI ML Repository", "https://archive.ics.uci.edu"], ["Google Dataset Search", "https://datasetsearch.research.google.com"], ["FiveThirtyEight", "https://data.fivethirtyeight.com"], ["World Bank Open Data", "https://data.worldbank.org"] ] },
+  { "heading": "Communities & Forums", "items": [ ["r/datascience", "https://www.reddit.com/r/datascience/"], ["Stack Overflow", "https://stackoverflow.com/questions/tagged/data-science"], ["Towards Data Science", "https://towardsdatascience.com"], ["Data Science Central", "https://www.datasciencecentral.com"], ["Kaggle Forums", "https://www.kaggle.com/discussion"] ] },
+  { "heading": "Career & Networking", "items": [ ["LinkedIn Data Science", "https://www.linkedin.com/groups/25827"], ["Data Science Jobs", "https://www.kaggle.com/jobs"], ["AngelList", "https://angel.co"], ["GitHub", "https://github.com"], ["Portfolio Examples", "https://github.com/topics/data-science-portfolio"] ] }
 ]
 
 

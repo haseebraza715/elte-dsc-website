@@ -1,15 +1,15 @@
 {
   "heading": "About the Club",
   "paragraphs": [
-    "Founded in 2025, the Data Science Club at ELTE brings together students, researchers, and practitioners to explore, apply, and advance data-driven methods across diverse domains.",
-    "We organize talks, workshops, hackathons, and collaborative projects with a focus on hands-on learning, practical applications, and mentorship. Our community supports curious minds with resources, guidance, and opportunities to experiment, build, and grow."
+    "Founded in 2025, the Data Science Club at ELTE is a beginner-friendly community where students learn together through hands-on projects, guest talks, and collaborative exploration of data science, AI, and machine learning.",
+    "Our approach is community-first: we learn together rather than teaching from above. We focus on showcases, teamwork, and real projects that give members portfolio evidence through GitHub contributions. Everyone contributes at their own level while building a stronger community."
   ],
   "focus": [
-    "Data science and machine learning foundations",
-    "Real-world applications of AI and analytics",
-    "Big data processing and visualization",
-    "Generative AI and modern LLM tools",
-    "Ethics, fairness, and responsible AI",
-    "Career development and industry connections"
+    "Hands-on learning through collaborative projects",
+    "Real-world applications of data science and AI",
+    "Community building and peer learning",
+    "Portfolio development through GitHub contributions",
+    "Guest speaker sessions and industry insights",
+    "Beginner-friendly exploration of AI, ML, and DS concepts"
   ]
 }

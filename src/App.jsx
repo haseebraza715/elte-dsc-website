@@ -6,7 +6,6 @@ import { Suspense, lazy } from 'react'
 const Welcome = lazy(() => import('./components/Welcome.jsx'))
 const About = lazy(() => import('./components/About.jsx'))
 const Events = lazy(() => import('./components/Events.jsx'))
-const Projects = lazy(() => import('./components/Projects.jsx'))
 const Resources = lazy(() => import('./components/Resources.jsx'))
 const Members = lazy(() => import('./components/Members.jsx'))
 const Contact = lazy(() => import('./components/Contact.jsx'))
@@ -20,7 +19,6 @@ export default function App() {
           <Welcome />
           <About />
           <Events />
-          <Projects />
           <Resources />
           <Members />
           <Contact />

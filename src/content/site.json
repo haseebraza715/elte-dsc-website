@@ -1,11 +1,11 @@
 {
   "name": "Data Science Club",
-  "nav": ["home", "about", "events", "projects", "resources", "members", "contact"],
-  "contactEmail": "datascienceclub@example.edu",
+  "nav": ["home", "about", "events", "resources", "members", "contact"],
+  "contactEmail": "ot7dee@inf.elte.hu",
   "social": {
-    "linkedin": "https://www.linkedin.com",
+    "linkedin": "https://www.linkedin.com/company/dscelte",
     "discord": "#",
-    "email": "mailto:datascienceclub@example.edu"
+    "email": "mailto:ot7dee@inf.elte.hu"
   }
 }
 

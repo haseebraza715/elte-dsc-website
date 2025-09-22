@@ -1,7 +1,10 @@
 [
-  { "date": "Tue, Oct 1", "title": "Intro to Python for Data", "desc": "Hands-on basics for newcomers. Bring a laptop." },
-  { "date": "Fri, Oct 11", "title": "Lightning Talks Night", "desc": "Short talks by members on tools, tips, and projects." },
-  { "date": "Sat, Oct 26", "title": "Data for Good Hackday", "desc": "Collaborate on real problems with local nonprofits." }
+  { "date": "Week 1 - Friday", "title": "Kickoff & Expectations", "desc": "Icebreaker & introductions. Members share background, skills, and expectations. Align on club goals: learning, exploring, building projects, forming a community." },
+  { "date": "Week 2 - Friday", "title": "What is Data Science?", "desc": "Intro talk: What Data Science is & how it impacts the world. Showcase real-world applications (recommendation systems, fraud detection, chatbots, healthcare AI). Group discussion on where DS could help in daily life or studies." },
+  { "date": "Week 3 - Friday", "title": "Exploring AI, ML, and DS", "desc": "Fun overview: AI, ML, DL, DS – connections & differences. Showcase famous ML/AI projects (image recognition, generative AI, etc.). Group brainstorm: Cool projects we could build as a club." },
+  { "date": "Week 4 - Friday", "title": "Guest Speaker Session", "desc": "Invite Data Scientist / Industry Professional. Talk theme: How to break into the field + career experiences. Interactive Q&A with members for real-world perspective + networking." },
+  { "date": "Week 5 - Friday", "title": "Club Project Kickoff", "desc": "Select one project idea (from brainstorms). Form teams (data, modeling, visualization, documentation). Set up GitHub repo + contribution workflow. Project officially starts with active contributions." },
+  { "date": "Week 6 - Friday", "title": "Project Collaboration & Community Building", "desc": "Teams continue contributing (coding, documenting, visualizing). Share progress with group. Discuss next steps for the club (future projects, hackathons, collaborations). A working project foundation + stronger community." }
 ]
 
 
