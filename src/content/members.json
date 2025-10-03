@@ -1,9 +1,7 @@
 [
   { "name": "Kumar Ayush", "role": "Member", "meta": "ELTE", "link": "https://www.linkedin.com/in/ayushkumar5/", "linkLabel": "LinkedIn" },
-  { "name": "Haseeb Raza", "role": "Member", "meta": "ELTE", "link": "https://www.linkedin.com/in/haseebraza715/", "linkLabel": "LinkedIn" },
-  { "name": "Farizi Muhammad Al", "role": "Member", "meta": "ELTE", "link": "https://www.linkedin.com/in/alfaarizi/", "linkLabel": "LinkedIn" },
-  { "name": "Jogani Kalp Samir", "role": "Member", "meta": "ELTE", "link": "https://www.linkedin.com/in/kalp-jogani/", "linkLabel": "LinkedIn" },
-  { "name": "Podder Itilekha", "role": "Mentor", "meta": "ELTE", "link": "https://www.linkedin.com/in/itilekha-podder/", "linkLabel": "LinkedIn" }
+  { "name": "Haseeb Raza", "role": "Member", "meta": "ELTE", "link": "https://www.linkedin.com/in/haseebraza715/", "linkLabel": "LinkedIn" }
+  ,{ "name": "Podder Itilekha", "role": "Mentor", "meta": "ELTE", "link": "https://www.linkedin.com/in/itilekha-podder/", "linkLabel": "LinkedIn" }
 ]
 
 
