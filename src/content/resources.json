@@ -1,10 +1,117 @@
-[
-  { "heading": "Learning Platforms", "items": [ ["Kaggle Learn", "https://www.kaggle.com/learn"], ["Coursera Data Science", "https://www.coursera.org/specializations/data-science"], ["edX Data Science", "https://www.edx.org/learn/data-science"], ["DataCamp", "https://www.datacamp.com"], ["Fast.ai", "https://www.fast.ai"], ["Andrew Ng's ML Course", "https://www.coursera.org/learn/machine-learning"] ] },
-  { "heading": "Python Libraries", "items": [ ["Pandas", "https://pandas.pydata.org"], ["NumPy", "https://numpy.org"], ["Scikit-learn", "https://scikit-learn.org"], ["Matplotlib", "https://matplotlib.org"], ["Seaborn", "https://seaborn.pydata.org"], ["Plotly", "https://plotly.com/python"], ["TensorFlow", "https://www.tensorflow.org"], ["PyTorch", "https://pytorch.org"] ] },
-  { "heading": "Tools & IDEs", "items": [ ["Jupyter Notebook", "https://jupyter.org"], ["Google Colab", "https://colab.research.google.com"], ["VS Code", "https://code.visualstudio.com"], ["RStudio", "https://www.rstudio.com"], ["Tableau", "https://www.tableau.com"], ["Power BI", "https://powerbi.microsoft.com"] ] },
-  { "heading": "Datasets", "items": [ ["Kaggle Datasets", "https://www.kaggle.com/datasets"], ["UCI ML Repository", "https://archive.ics.uci.edu"], ["Google Dataset Search", "https://datasetsearch.research.google.com"], ["FiveThirtyEight", "https://data.fivethirtyeight.com"], ["World Bank Open Data", "https://data.worldbank.org"] ] },
-  { "heading": "Communities & Forums", "items": [ ["r/datascience", "https://www.reddit.com/r/datascience/"], ["Stack Overflow", "https://stackoverflow.com/questions/tagged/data-science"], ["Towards Data Science", "https://towardsdatascience.com"], ["Data Science Central", "https://www.datasciencecentral.com"], ["Kaggle Forums", "https://www.kaggle.com/discussion"] ] },
-  { "heading": "Career & Networking", "items": [ ["LinkedIn Data Science", "https://www.linkedin.com/groups/25827"], ["Data Science Jobs", "https://www.kaggle.com/jobs"], ["AngelList", "https://angel.co"], ["GitHub", "https://github.com"], ["Portfolio Examples", "https://github.com/topics/data-science-portfolio"] ] }
-]
+{
+  "levels": {
+    "beginner": {
+      "level": "Beginner",
+      "description": "Perfect for those starting their data science journey",
+      "color": "from-sky-400 to-sky-600",
+      "bgColor": "bg-sky-50",
+      "borderColor": "border-sky-200",
+      "textColor": "text-sky-800",
+      "sections": [
+        {
+          "heading": "Getting Started",
+          "items": [
+            ["Data Science Discovery - UIUC", "https://discovery.cs.illinois.edu/"],
+            ["Introduction to Data Science", "https://www.kaggle.com/learn/intro-to-programming"],
+            ["Python Basics for Data Science", "https://www.datacamp.com/courses/intro-to-python-for-data-science"],
+            ["What is Data Science?", "https://www.coursera.org/learn/what-is-datascience"]
+          ]
+        },
+        {
+          "heading": "Essential Tools",
+          "items": [
+            ["Jupyter Notebook Basics", "https://jupyter.org/try"],
+            ["Google Colab Tutorial", "https://colab.research.google.com"],
+            ["Pandas for Beginners", "https://pandas.pydata.org/docs/getting_started/intro_tutorials/"],
+            ["NumPy Fundamentals", "https://numpy.org/doc/stable/user/quickstart.html"]
+          ]
+        },
+        {
+          "heading": "Basic Concepts",
+          "items": [
+            ["Statistics Basics", "https://www.khanacademy.org/math/statistics-probability"],
+            ["Data Visualization with Matplotlib", "https://matplotlib.org/tutorials/introductory/pyplot.html"],
+            ["Understanding Data Types", "https://www.kaggle.com/learn/data-cleaning"],
+            ["Basic Data Analysis", "https://www.datacamp.com/courses/introduction-to-data-visualization-with-matplotlib"]
+          ]
+        }
+      ]
+    },
+    "intermediate": {
+      "level": "Intermediate",
+      "description": "For those ready to dive deeper into data science",
+      "color": "from-sky-400 to-sky-600",
+      "bgColor": "bg-sky-50",
+      "borderColor": "border-sky-200",
+      "textColor": "text-sky-800",
+      "sections": [
+        {
+          "heading": "Machine Learning",
+          "items": [
+            ["Data Science Exploration - UIUC", "https://exploration.stat.illinois.edu/"],
+            ["Scikit-learn Tutorial", "https://scikit-learn.org/stable/tutorial/index.html"],
+            ["Andrew Ng's ML Course", "https://www.coursera.org/learn/machine-learning"],
+            ["Hands-On Machine Learning", "https://www.kaggle.com/learn/intro-to-machine-learning"]
+          ]
+        },
+        {
+          "heading": "Advanced Visualization",
+          "items": [
+            ["Seaborn Tutorial", "https://seaborn.pydata.org/tutorial.html"],
+            ["Plotly Interactive Charts", "https://plotly.com/python/getting-started/"],
+            ["Data Storytelling", "https://www.datacamp.com/courses/visualizing-time-series-data-in-python"],
+            ["Dashboard Creation", "https://www.tableau.com/learn/training/20201"]
+          ]
+        },
+        {
+          "heading": "Data Processing",
+          "items": [
+            ["Advanced Pandas", "https://pandas.pydata.org/docs/user_guide/advanced.html"],
+            ["Data Cleaning Techniques", "https://www.kaggle.com/learn/data-cleaning"],
+            ["SQL for Data Science", "https://www.datacamp.com/courses/intro-to-sql-for-data-science"],
+            ["Data Wrangling", "https://www.kaggle.com/learn/data-preparation"]
+          ]
+        }
+      ]
+    },
+    "advanced": {
+      "level": "Expert",
+      "description": "For advanced practitioners and professionals",
+      "color": "from-sky-400 to-sky-600",
+      "bgColor": "bg-sky-50",
+      "borderColor": "border-sky-200",
+      "textColor": "text-sky-800",
+      "sections": [
+        {
+          "heading": "Deep Learning",
+          "items": [
+            ["TensorFlow Guide", "https://www.tensorflow.org/tutorials"],
+            ["PyTorch Tutorials", "https://pytorch.org/tutorials/"],
+            ["Deep Learning Specialization", "https://www.coursera.org/specializations/deep-learning"],
+            ["Fast.ai Practical Deep Learning", "https://course.fast.ai/"]
+          ]
+        },
+        {
+          "heading": "Advanced Analytics",
+          "items": [
+            ["Time Series Analysis", "https://www.coursera.org/learn/time-series-analysis"],
+            ["Big Data Processing", "https://spark.apache.org/docs/latest/quick-start.html"],
+            ["Cloud ML Platforms", "https://cloud.google.com/ai-platform"],
+            ["MLOps and Deployment", "https://www.coursera.org/learn/introduction-to-mlops"]
+          ]
+        },
+        {
+          "heading": "Research & Innovation",
+          "items": [
+            ["Research Papers", "https://paperswithcode.com/"],
+            ["Kaggle Competitions", "https://www.kaggle.com/competitions"],
+            ["Open Source Projects", "https://github.com/topics/machine-learning"],
+            ["Data Science Conferences", "https://www.kaggle.com/discussions/competitions/40494"]
+          ]
+        }
+      ]
+    }
+  }
+}
 
 
