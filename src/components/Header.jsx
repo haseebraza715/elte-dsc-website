@@ -6,33 +6,33 @@ export default function Header() {
   const items = site.nav
   
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/98 backdrop-blur-lg border-b border-slate-200/50 shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a 
               href="#home" 
-              className="flex items-center space-x-2 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg"
+              className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-xl p-1"
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-sky-500 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 shadow-sm">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <span className="text-xl md:text-2xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+              <span className="text-xl md:text-2xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors duration-300">
                 {site.name}
               </span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-2">
             {items.map((id) => (
               <a
                 key={id}
                 href={`#${id}`}
-                className="text-slate-700 hover:text-sky-600 px-3 py-2 text-sm font-medium rounded-md hover:bg-sky-50 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="text-slate-700 hover:text-sky-600 px-4 py-2 text-sm font-medium rounded-lg hover:bg-sky-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
               >
                 {id.charAt(0).toUpperCase() + id.slice(1)}
               </a>
@@ -41,7 +41,7 @@ export default function Header() {
               href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="bg-sky-600 hover:bg-sky-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm hover:shadow-md"
             >
               Join Now
             </a>
@@ -51,7 +51,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setOpen(!open)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-sky-600 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
+              className="inline-flex items-center justify-center p-2 rounded-lg text-slate-700 hover:text-sky-600 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300"
               aria-expanded={open}
               aria-label="Toggle menu"
             >
@@ -72,14 +72,14 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {open && (
-        <div className="md:hidden border-t border-slate-200 bg-white shadow-lg">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+        <div className="md:hidden border-t border-slate-200/50 bg-white/98 backdrop-blur-lg shadow-lg">
+          <div className="px-4 pt-4 pb-6 space-y-2">
             {items.map((id) => (
               <a
                 key={id}
                 href={`#${id}`}
                 onClick={() => setOpen(false)}
-                className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="block px-4 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
               >
                 {id.charAt(0).toUpperCase() + id.slice(1)}
               </a>
@@ -89,7 +89,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded-md text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 mt-4"
+              className="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 mt-4 shadow-sm"
             >
               Join Now
             </a>

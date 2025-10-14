@@ -1,0 +1,136 @@
+{
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Predict House Prices",
+      "description": "Build a machine learning model to predict house prices using features like size, location, and amenities. Perfect for beginners to understand regression and feature engineering.",
+      "difficulty": "beginner",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/house-prices-advanced-regression-techniques",
+      "tags": ["regression", "feature-engineering", "data-cleaning"],
+      "estimatedTime": "2-3 days",
+      "skills": ["Python", "Pandas", "Scikit-learn", "Data Visualization"]
+    },
+    {
+      "id": 2,
+      "title": "Titanic Survival Prediction",
+      "description": "Analyze passenger data from the Titanic and predict survival rates. Great introduction to classification problems and exploratory data analysis.",
+      "difficulty": "beginner",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/titanic",
+      "tags": ["classification", "eda", "feature-selection"],
+      "estimatedTime": "1-2 days",
+      "skills": ["Python", "Pandas", "Matplotlib", "Seaborn"]
+    },
+    {
+      "id": 3,
+      "title": "Customer Segmentation",
+      "description": "Use clustering algorithms to segment customers based on their purchasing behavior. Learn unsupervised learning techniques.",
+      "difficulty": "beginner",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python",
+      "tags": ["clustering", "unsupervised-learning", "customer-analytics"],
+      "estimatedTime": "2-3 days",
+      "skills": ["Python", "Scikit-learn", "K-means", "Data Visualization"]
+    },
+    {
+      "id": 4,
+      "title": "Sentiment Analysis on Reviews",
+      "description": "Build a model to classify movie reviews as positive or negative. Dive into natural language processing and text preprocessing.",
+      "difficulty": "intermediate",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews",
+      "tags": ["nlp", "text-processing", "classification"],
+      "estimatedTime": "3-4 days",
+      "skills": ["Python", "NLTK", "Scikit-learn", "Text Preprocessing"]
+    },
+    {
+      "id": 5,
+      "title": "Image Classification with CNN",
+      "description": "Classify images of cats and dogs using convolutional neural networks. Learn deep learning fundamentals with computer vision.",
+      "difficulty": "intermediate",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/dogs-vs-cats",
+      "tags": ["deep-learning", "cnn", "computer-vision"],
+      "estimatedTime": "4-5 days",
+      "skills": ["Python", "TensorFlow", "Keras", "Image Processing"]
+    },
+    {
+      "id": 6,
+      "title": "Time Series Forecasting",
+      "description": "Predict stock prices or sales data using time series analysis. Master ARIMA, LSTM, and other forecasting techniques.",
+      "difficulty": "intermediate",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/competitive-data-science-predict-future-sales",
+      "tags": ["time-series", "forecasting", "lstm"],
+      "estimatedTime": "5-6 days",
+      "skills": ["Python", "Pandas", "Statsmodels", "LSTM"]
+    },
+    {
+      "id": 7,
+      "title": "Recommendation System",
+      "description": "Build a collaborative filtering recommendation system for movies or products. Learn about recommendation algorithms and matrix factorization.",
+      "difficulty": "intermediate",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/amazon-product-recommendation",
+      "tags": ["recommendation-systems", "collaborative-filtering", "matrix-factorization"],
+      "estimatedTime": "4-5 days",
+      "skills": ["Python", "Surprise", "Scikit-learn", "Matrix Factorization"]
+    },
+    {
+      "id": 8,
+      "title": "Advanced NLP with Transformers",
+      "description": "Fine-tune BERT or GPT models for specific NLP tasks like question answering or text generation. Explore state-of-the-art transformer architectures.",
+      "difficulty": "advanced",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/quora-insincere-questions-classification",
+      "tags": ["transformers", "bert", "advanced-nlp"],
+      "estimatedTime": "7-10 days",
+      "skills": ["Python", "Transformers", "PyTorch", "Hugging Face"]
+    },
+    {
+      "id": 9,
+      "title": "Computer Vision Object Detection",
+      "description": "Implement YOLO or R-CNN for object detection in images. Learn about advanced computer vision techniques and model optimization.",
+      "difficulty": "advanced",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/global-wheat-detection",
+      "tags": ["object-detection", "yolo", "computer-vision"],
+      "estimatedTime": "8-12 days",
+      "skills": ["Python", "OpenCV", "YOLO", "TensorFlow"]
+    },
+    {
+      "id": 10,
+      "title": "Large-Scale Data Processing",
+      "description": "Process and analyze massive datasets using Apache Spark and distributed computing. Learn about big data technologies and optimization.",
+      "difficulty": "advanced",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/mercari-price-suggestion-challenge",
+      "tags": ["big-data", "spark", "distributed-computing"],
+      "estimatedTime": "10-14 days",
+      "skills": ["Python", "Apache Spark", "Distributed Computing", "Optimization"]
+    },
+    {
+      "id": 11,
+      "title": "A/B Testing Analysis",
+      "description": "Design and analyze A/B tests for website optimization. Learn statistical significance testing and experimental design.",
+      "difficulty": "intermediate",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/ab-testing",
+      "tags": ["ab-testing", "statistics", "experimental-design"],
+      "estimatedTime": "3-4 days",
+      "skills": ["Python", "Statistics", "Hypothesis Testing", "Pandas"]
+    },
+    {
+      "id": 12,
+      "title": "Fraud Detection System",
+      "description": "Build an anomaly detection system to identify fraudulent transactions. Learn about imbalanced datasets and advanced classification techniques.",
+      "difficulty": "advanced",
+      "platform": "Kaggle",
+      "link": "https://www.kaggle.com/c/ieee-fraud-detection",
+      "tags": ["fraud-detection", "anomaly-detection", "imbalanced-data"],
+      "estimatedTime": "6-8 days",
+      "skills": ["Python", "Scikit-learn", "XGBoost", "Imbalanced Learning"]
+    }
+  ]
+}
