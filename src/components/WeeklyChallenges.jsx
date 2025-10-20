@@ -12,25 +12,30 @@ export default function WeeklyChallenges() {
       difficulty: 'Easy',
       difficultyColor: 'bg-green-100 text-green-800',
       platform: 'StrataScratch',
-      description: 'Write a query that calculates the difference between the highest salaries found in the Marketing and Engineering departments.',
-      problem: `Given a table with employee information, you need to find the salary difference between the highest-paid employee in Marketing and the highest-paid employee in Engineering.
+      description: 'Calculate the difference between the highest salaries in Marketing and Engineering departments using Python.',
+      problem: `Given a DataFrame with employee information, you need to find the salary difference between the highest-paid employee in Marketing and the highest-paid employee in Engineering.
 
-Table Schema:
+DataFrame Schema:
 - id (int): Employee ID
-- first_name (varchar): Employee's first name
-- last_name (varchar): Employee's last name
+- first_name (str): Employee's first name
+- last_name (str): Employee's last name
 - salary (int): Employee's salary
-- department (varchar): Employee's department
+- department (str): Employee's department
 
 Expected Output:
-- salary_difference (int): The absolute difference between the highest salaries in Marketing and Engineering departments`,
+- salary_difference (int): The absolute difference between the highest salaries in Marketing and Engineering departments
+
+Example:
+Input: employees DataFrame with salary and department columns
+Output: Integer representing the salary difference`,
       hints: [
-        'Use MAX() function to find the highest salary in each department',
-        'Use WHERE clause to filter by department',
-        'Use ABS() function to get the absolute difference',
-        'Consider using a subquery or CTE for cleaner code'
+        'Use pandas groupby() to group by department',
+        'Apply max() function to find highest salary in each department',
+        'Use loc or query to filter specific departments',
+        'Use abs() function to get the absolute difference',
+        'Consider using numpy for mathematical operations'
       ],
-      tags: ['SQL', 'Aggregation', 'Subquery', 'Math Functions'],
+      tags: ['Python', 'Pandas', 'DataFrame', 'GroupBy', 'Math Operations'],
       estimatedTime: '15-30 minutes',
       link: 'https://platform.stratascratch.com/coding/10308-salaries-differences?code_type=2'
     },
@@ -40,36 +45,36 @@ Expected Output:
       difficulty: 'Medium',
       difficultyColor: 'bg-yellow-100 text-yellow-800',
       platform: 'StrataScratch',
-      description: 'Find the customer with the highest total order cost and provide details about their orders.',
+      description: 'Find the customer with the highest total order cost and provide details about their orders using Python.',
       problem: `You need to identify the customer who has spent the most money in total across all their orders, and then provide details about their highest-cost orders.
 
-Table Schemas:
+DataFrames:
 customers:
 - id (int): Customer ID
-- first_name (varchar): Customer's first name
-- last_name (varchar): Customer's last name
+- first_name (str): Customer's first name
+- last_name (str): Customer's last name
 
 orders:
 - id (int): Order ID
 - cust_id (int): Customer ID (foreign key)
 - order_date (datetime): Date of the order
-- order_details (varchar): Details about the order
+- order_details (str): Details about the order
 - total_order_cost (int): Total cost of the order
 
 Expected Output:
-- first_name (varchar): Customer's first name
-- last_name (varchar): Customer's last name
+- first_name (str): Customer's first name
+- last_name (str): Customer's last name
 - total_order_cost (int): Total cost of all orders
 - order_date (datetime): Date of the highest-cost order
-- order_details (varchar): Details of the highest-cost order`,
+- order_details (str): Details of the highest-cost order`,
       hints: [
-        'First find the customer with the highest total order cost using SUM() and GROUP BY',
-        'Use window functions or subqueries to identify the top customer',
-        'Then filter orders for that specific customer',
-        'Use ROW_NUMBER() or RANK() to find the highest-cost order per customer',
-        'Consider using CTEs for better readability'
+        'Use pandas merge() to join customers and orders DataFrames',
+        'Use groupby() and sum() to calculate total order cost per customer',
+        'Use idxmax() to find the customer with highest total cost',
+        'Filter orders for the top customer and find their highest-cost order',
+        'Consider using sort_values() and head() for alternative approaches'
       ],
-      tags: ['SQL', 'Window Functions', 'CTE', 'Joins', 'Aggregation'],
+      tags: ['Python', 'Pandas', 'DataFrame', 'Merge', 'GroupBy', 'Aggregation'],
       estimatedTime: '30-45 minutes',
       link: 'https://platform.stratascratch.com/coding/9915-highest-cost-orders?code_type=2'
     },
@@ -79,15 +84,15 @@ Expected Output:
       difficulty: 'Hard',
       difficultyColor: 'bg-red-100 text-red-800',
       platform: 'StrataScratch',
-      description: 'Find users who logged in for 3 or more consecutive days.',
-      problem: `You need to identify users who have logged in for at least 3 consecutive days. This is a classic problem that requires understanding of window functions and date manipulation.
+      description: 'Find users who logged in for 3 or more consecutive days using Python.',
+      problem: `You need to identify users who have logged in for at least 3 consecutive days. This requires understanding of date manipulation and grouping in pandas.
 
-Table Schema:
+DataFrame Schema:
 sf_events:
 - id (int): Event ID
 - user_id (int): User ID
 - date (datetime): Date of the event (login)
-- event_type (varchar): Type of event (e.g., 'login')
+- event_type (str): Type of event (e.g., 'login')
 
 Expected Output:
 - user_id (int): User ID
@@ -95,13 +100,14 @@ Expected Output:
 
 Note: A user is considered to have logged in on consecutive days if they have events on consecutive calendar days.`,
       hints: [
-        'Use ROW_NUMBER() window function to create a sequence',
-        'Calculate the difference between the login date and the row number to identify consecutive days',
-        'Group by user_id and the calculated difference to find consecutive day groups',
+        'Use pandas groupby() to group by user_id',
+        'Apply date sorting and calculate date differences',
+        'Use diff() function to find consecutive days',
+        'Use cumsum() to group consecutive day sequences',
         'Filter groups that have 3 or more consecutive days',
-        'Consider using LAG() or LEAD() functions for alternative approaches'
+        'Consider using shift() for alternative consecutive day detection'
       ],
-      tags: ['SQL', 'Window Functions', 'Date Functions', 'CTE', 'Advanced SQL'],
+      tags: ['Python', 'Pandas', 'Date Manipulation', 'GroupBy', 'Advanced Python'],
       estimatedTime: '45-60 minutes',
       link: 'https://platform.stratascratch.com/coding/2054-consecutive-days?code_type=2'
     }
@@ -120,7 +126,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
             Weekly Coding Challenges
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Sharpen your SQL skills with our curated challenges from StrataScratch. 
+            Sharpen your Python and pandas skills with our curated challenges from StrataScratch. 
             From beginner-friendly problems to advanced analytics, there's something for every level.
           </p>
         </div>
@@ -207,7 +213,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
                       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
-                      Solve on StrataScratch
+                      Solve on StrataScratch (New Tab)
                     </a>
                   </div>
 
@@ -309,7 +315,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
                       rel="noopener noreferrer"
                       className="inline-flex items-center px-3 py-1 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
                     >
-                      Start Challenge
+                      Start Challenge (New Tab)
                     </a>
                   </div>
                 </div>
