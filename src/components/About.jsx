@@ -1,11 +1,45 @@
+import { useNavigate, useLocation } from 'react-router-dom'
 import content from '../content/about.json'
 
 export default function About() {
   const focus = content.focus
+  const navigate = useNavigate()
+  const location = useLocation()
+  
+  const handleContactClick = () => {
+    if (location.pathname !== '/') {
+      navigate('/#contact')
+    } else {
+      navigate('/#contact', { replace: true })
+      setTimeout(() => {
+        const element = document.getElementById('contact')
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 50)
+    }
+  }
 
   return (
-    <section id="about" className="py-20 md:py-24 bg-gradient-to-b from-white via-sky-50/50 to-white">
-      <div className="mx-auto max-w-6xl px-4">
+    <section id="about" className="relative py-20 md:py-24 bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large gradient orbs - top corners */}
+        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/35 to-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/35 to-sky-300/30 rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Medium gradient orbs - middle section */}
+        <div className="absolute top-1/3 left-1/5 w-[600px] h-[600px] bg-gradient-to-r from-sky-200/40 to-blue-200/35 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute top-1/3 right-1/5 w-[600px] h-[600px] bg-gradient-to-l from-blue-200/40 to-sky-200/35 rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Bottom accent */}
+        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-t from-sky-200/30 to-transparent rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/35 via-transparent to-transparent" />
+      </div>
+      
+      <div className="relative mx-auto max-w-6xl px-4 z-10">
         <div className="grid gap-12 lg:grid-cols-2 items-start">
           {/* Left Content */}
           <div className="space-y-6">
@@ -23,15 +57,15 @@ export default function About() {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a 
+              <button 
+                onClick={handleContactClick}
                 className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-sky-200" 
-                href="#contact"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 Contact us
-              </a>
+              </button>
               <a 
                 className="inline-flex items-center gap-2 border-2 border-sky-600 text-sky-700 hover:bg-sky-600 hover:text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-sky-200" 
                 href="https://www.linkedin.com/company/dscelte" 

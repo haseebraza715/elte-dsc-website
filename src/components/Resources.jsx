@@ -4,16 +4,33 @@ export default function Resources() {
   const { levels } = resourcesData
   
   return (
-    <section id="resources" className="py-20 md:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="text-center mb-16">
+    <section id="resources" className="relative bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large gradient orbs - top corners */}
+        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/35 to-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/35 to-sky-300/30 rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Medium gradient orbs - middle section */}
+        <div className="absolute top-1/3 left-1/5 w-[600px] h-[600px] bg-gradient-to-r from-sky-200/40 to-blue-200/35 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute top-1/3 right-1/5 w-[600px] h-[600px] bg-gradient-to-l from-blue-200/40 to-sky-200/35 rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Bottom accent */}
+        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-t from-sky-200/30 to-transparent rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/35 via-transparent to-transparent" />
+      </div>
+      
+      <div className="relative mx-auto max-w-6xl px-4 py-20 md:py-24">
+        <div className="text-center mb-16 relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Learning Resources</h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Structured learning paths from beginner to expert level. Choose your level and start your data science journey.
           </p>
         </div>
         
-        <div className="space-y-16">
+        <div className="space-y-16 relative z-10">
           {Object.entries(levels).map(([key, level]) => (
             <div key={key} className="relative">
               {/* Level Header */}

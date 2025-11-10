@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import challenges from '../content/challenges.json'
 
 export default function WeeklyChallenges() {
   const [expandedChallenge, setExpandedChallenge] = useState(null)
+  const navigate = useNavigate()
 
   // StrataScratch challenges data
   const stratascratchChallenges = [
@@ -118,10 +120,27 @@ Note: A user is considered to have logged in on consecutive days if they have ev
   }
 
   return (
-    <section id="challenges" className="py-16 bg-gradient-to-br from-sky-50 to-blue-50">
-      <div className="mx-auto max-w-content px-4">
+    <section id="challenges" className="relative bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large gradient orbs - top corners */}
+        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/35 to-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/35 to-sky-300/30 rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Medium gradient orbs - middle section */}
+        <div className="absolute top-1/3 left-1/5 w-[600px] h-[600px] bg-gradient-to-r from-sky-200/40 to-blue-200/35 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute top-1/3 right-1/5 w-[600px] h-[600px] bg-gradient-to-l from-blue-200/40 to-sky-200/35 rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Bottom accent */}
+        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-t from-sky-200/30 to-transparent rounded-full mix-blend-multiply filter blur-3xl" />
+        
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/35 via-transparent to-transparent" />
+      </div>
+      
+      <div className="relative mx-auto max-w-content px-4 py-16">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Weekly Coding Challenges
           </h2>
@@ -132,7 +151,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
         </div>
 
         {/* StrataScratch Challenges */}
-        <div className="mb-16">
+        <div className="mb-16 relative z-10">
           <div className="flex items-center justify-center mb-8">
             <div className="flex items-center space-x-3 bg-white rounded-lg px-6 py-3 shadow-sm border border-slate-200">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
@@ -219,7 +238,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
 
                   {/* Expanded Content */}
                   {expandedChallenge === challenge.id && (
-                    <div className="border-t border-slate-200 pt-6">
+                    <div className="pt-6">
                       {/* Problem Statement */}
                       <div className="mb-6">
                         <h5 className="text-lg font-semibold text-slate-900 mb-3">Problem Statement</h5>
@@ -256,7 +275,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
         </div>
 
         {/* Additional Kaggle Challenges Section */}
-        <div>
+        <div className="relative z-10">
           <div className="flex items-center justify-center mb-8">
             <div className="flex items-center space-x-3 bg-white rounded-lg px-6 py-3 shadow-sm border border-slate-200">
               <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
@@ -324,15 +343,15 @@ Note: A user is considered to have logged in on consecutive days if they have ev
           </div>
 
           <div className="text-center mt-8">
-            <a
-              href="#resources"
-              className="inline-flex items-center px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500"
+            <button
+              onClick={() => navigate('/resources')}
+              className="inline-flex items-center px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
             >
               View All Resources
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>

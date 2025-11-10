@@ -1,22 +1,44 @@
+import { Link } from 'react-router-dom'
 import site from '../content/site.json'
 
 export default function Footer() {
+  const handleFooterLink = (item) => {
+    if (item === 'home') {
+      return '/'
+    } else if (item === 'challenges') {
+      return '/challenges'
+    } else if (item === 'resources') {
+      return '/resources'
+    } else if (item === 'members') {
+      return '/members'
+    }
+    return `/#${item}`
+  }
+
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="mx-auto max-w-6xl px-4 py-16">
+    <footer className="relative bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Subtle gradient orbs */}
+        <div className="absolute -bottom-32 -left-32 w-[600px] h-[600px] bg-gradient-to-tr from-sky-200/25 to-blue-200/20 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-gradient-to-tl from-blue-200/25 to-sky-200/20 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-t from-sky-50/30 via-transparent to-transparent" />
+      </div>
+      
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         {/* Main Footer Content */}
-        <div className="grid gap-12 md:grid-cols-3 mb-12">
+        <div className="grid gap-12 md:grid-cols-3 mb-16">
           {/* Club Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white">{site.name}</h3>
+              <h3 className="text-2xl font-bold text-slate-900">{site.name}</h3>
             </div>
-            <p className="text-slate-300 leading-relaxed">
+            <p className="text-slate-600 leading-relaxed text-base">
               Empowering students at ELTE with hands-on data science projects and collaborative learning.
             </p>
             <div className="flex space-x-4">
@@ -24,19 +46,19 @@ export default function Footer() {
                 href={site.social.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-slate-400 hover:text-sky-400 transition-colors duration-300"
+                className="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all duration-200"
                 aria-label="LinkedIn"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
               </a>
               <a 
                 href={site.social.email} 
-                className="text-slate-400 hover:text-sky-400 transition-colors duration-300"
+                className="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all duration-200"
                 aria-label="Email"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </a>
@@ -45,16 +67,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-slate-900">Quick Links</h4>
             <ul className="space-y-3">
               {site.nav.map((item) => (
                 <li key={item}>
-                  <a 
-                    href={`#${item}`} 
-                    className="text-slate-300 hover:text-white transition-colors duration-300"
+                  <Link 
+                    to={handleFooterLink(item)}
+                    className="text-slate-600 hover:text-sky-600 transition-colors duration-200 inline-block"
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -62,30 +84,31 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-white">Contact</h4>
-            <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-slate-900">Contact</h4>
+            <div className="space-y-5">
               <div className="flex items-start space-x-3">
-                <svg className="w-5 h-5 text-slate-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-sky-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <div>
-                  <div className="text-slate-300">Email</div>
+                  <div className="text-slate-600 text-sm mb-1">Email</div>
                   <a 
                     href={site.social.email} 
-                    className="text-sky-400 hover:text-sky-300 transition-colors duration-300"
+                    className="text-sky-600 hover:text-sky-700 transition-colors duration-200 text-sm"
                   >
                     {site.contactEmail}
                   </a>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <svg className="w-5 h-5 text-slate-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-sky-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <div>
-                  <div className="text-slate-300">Location</div>
-                  <div className="text-slate-300">ELTE University</div>
+                  <div className="text-slate-600 text-sm mb-1">Location</div>
+                  <div className="text-slate-700 text-sm">Eötvös Loránd University</div>
+                  <div className="text-slate-600 text-sm">Room 0.825, South Building</div>
                 </div>
               </div>
             </div>
@@ -93,13 +116,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 pt-8">
+        <div className="pt-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="text-slate-400">
+            <div className="text-slate-600 text-sm">
               © {new Date().getFullYear()} {site.name}. All rights reserved.
             </div>
-            <div className="text-slate-400">
-              Made with ❤️ for the ELTE Data Science Community
+            <div className="text-slate-600 text-sm">
+              Made with <span className="text-sky-600">❤️</span> for the ELTE Data Science Community
             </div>
           </div>
         </div>
