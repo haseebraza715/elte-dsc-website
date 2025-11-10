@@ -1,10 +1,10 @@
-import { Suspense, lazy, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-
-const Welcome = lazy(() => import('../components/Welcome.jsx'))
-const About = lazy(() => import('../components/About.jsx'))
-const Events = lazy(() => import('../components/Events.jsx'))
-const Contact = lazy(() => import('../components/Contact.jsx'))
+import SEO from '../components/SEO.jsx'
+import Welcome from '../components/Welcome.jsx'
+import About from '../components/About.jsx'
+import Events from '../components/Events.jsx'
+import Contact from '../components/Contact.jsx'
 
 export default function Home() {
   const location = useLocation()
@@ -26,12 +26,15 @@ export default function Home() {
   
   return (
     <main id="main">
-      <Suspense fallback={<div className="mx-auto max-w-content px-4 py-8 text-slate-700">Loading…</div>}>
-        <Welcome />
-        <About />
-        <Events />
-        <Contact />
-      </Suspense>
+      <SEO 
+        title="Home" 
+        description="Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning."
+        path="/"
+      />
+      <Welcome />
+      <About />
+      <Events />
+      <Contact />
     </main>
   )
 }
