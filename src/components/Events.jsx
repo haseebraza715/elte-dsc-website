@@ -21,21 +21,17 @@ export default function Events() {
   
   return (
     <section id="events" className="relative py-20 md:py-24 bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large gradient orbs - top corners */}
-        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/35 to-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl" />
-        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/35 to-sky-300/30 rounded-full mix-blend-multiply filter blur-3xl" />
+      {/* Decorative Background Elements - Optimized */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+        {/* Large gradient orbs - top corners (only 2, one animated) */}
+        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/30 via-blue-300/25 to-indigo-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ willChange: 'opacity', transform: 'translateZ(0)' }} />
+        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/30 via-sky-300/25 to-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
         
-        {/* Medium gradient orbs - middle section */}
-        <div className="absolute top-1/3 left-1/5 w-[600px] h-[600px] bg-gradient-to-r from-sky-200/40 to-blue-200/35 rounded-full mix-blend-multiply filter blur-3xl" />
-        <div className="absolute top-1/3 right-1/5 w-[600px] h-[600px] bg-gradient-to-l from-blue-200/40 to-sky-200/35 rounded-full mix-blend-multiply filter blur-3xl" />
-        
-        {/* Bottom accent */}
-        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-t from-sky-200/30 to-transparent rounded-full mix-blend-multiply filter blur-3xl" />
+        {/* Bottom accent (static) */}
+        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-t from-sky-300/20 via-blue-300/25 to-indigo-300/15 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
         
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/35 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/30 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
       </div>
       
       <div className="relative mx-auto max-w-6xl px-4 z-10">
@@ -50,17 +46,29 @@ export default function Events() {
 
         <div className="grid gap-8 md:grid-cols-2">
           {events.map((event, index) => (
-            <div key={event.title} className="bg-white border border-slate-200 rounded-xl p-8 hover:shadow-lg hover:border-sky-200 transition-all duration-300">
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex-1">
-                  <div className="text-base font-semibold text-sky-600 mb-3">{event.date}</div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 leading-tight">{event.title}</h3>
-                </div>
-                <div className="text-sm text-slate-600 bg-sky-50 px-4 py-2 rounded-full border border-sky-100 ml-4 flex-shrink-0">
-                  Week {index + 1}
-                </div>
+            <div key={event.title} className="relative bg-gradient-to-br from-slate-50/80 via-white/90 to-sky-50/50 border border-slate-200 rounded-xl p-8 hover:shadow-lg hover:border-sky-200 transition-all duration-300 overflow-hidden">
+              {/* Low gradient background matching website style - Optimized */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-xl" style={{ transform: 'translateZ(0)' }}>
+                {/* Large gradient orbs - top corners (only 2, one animated) */}
+                <div className="absolute -top-16 -left-16 w-[250px] h-[250px] bg-gradient-to-br from-sky-300/15 via-blue-300/12 to-indigo-300/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ willChange: 'opacity', transform: 'translateZ(0)' }} />
+                <div className="absolute -top-16 -right-16 w-[250px] h-[250px] bg-gradient-to-bl from-blue-300/15 via-sky-300/12 to-cyan-300/10 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
+                
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-sky-50/15 via-transparent to-transparent rounded-xl" style={{ transform: 'translateZ(0)' }} />
               </div>
-              <p className="text-slate-600 leading-relaxed text-base">{event.desc}</p>
+              
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex-1">
+                    <div className="text-base font-semibold text-sky-600 mb-3">{event.date}</div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-4 leading-tight">{event.title}</h3>
+                  </div>
+                  <div className="text-sm text-slate-600 bg-sky-50 px-4 py-2 rounded-full border border-sky-100 ml-4 flex-shrink-0">
+                    Week {index + 1}
+                  </div>
+                </div>
+                <p className="text-slate-600 leading-relaxed text-base">{event.desc}</p>
+              </div>
             </div>
           ))}
         </div>

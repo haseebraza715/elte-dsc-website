@@ -17,28 +17,33 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Subtle gradient orbs */}
-        <div className="absolute -bottom-32 -left-32 w-[600px] h-[600px] bg-gradient-to-tr from-sky-200/25 to-blue-200/20 rounded-full mix-blend-multiply filter blur-3xl" />
-        <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-gradient-to-tl from-blue-200/25 to-sky-200/20 rounded-full mix-blend-multiply filter blur-3xl" />
-        <div className="absolute inset-0 bg-gradient-to-t from-sky-50/30 via-transparent to-transparent" />
+      {/* Decorative Background Elements - Optimized */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+        {/* Large gradient orbs - top corners (only 2, one animated) */}
+        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/30 via-blue-300/25 to-indigo-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ willChange: 'opacity', transform: 'translateZ(0)' }} />
+        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/30 via-sky-300/25 to-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
+        
+        {/* Bottom accent (static) */}
+        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-t from-sky-300/20 via-blue-300/25 to-indigo-300/15 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
+        
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/30 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
       </div>
       
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12 lg:py-14">
         {/* Main Footer Content */}
-        <div className="grid gap-12 md:grid-cols-3 mb-16">
+        <div className="grid grid-cols-2 gap-6 md:gap-10 md:grid-cols-3 mb-8 md:mb-10">
           {/* Club Info */}
-          <div className="space-y-6">
+          <div className="col-span-2 md:col-span-1 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                <svg className="w-5 h-5 md:w-7 md:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">{site.name}</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900">{site.name}</h3>
             </div>
-            <p className="text-slate-600 leading-relaxed text-base">
+            <p className="text-slate-600 leading-relaxed text-sm md:text-base">
               Empowering students at ELTE with hands-on data science projects and collaborative learning.
             </p>
             <div className="flex space-x-4">
@@ -66,9 +71,9 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-slate-900">Quick Links</h4>
-            <ul className="space-y-3">
+          <div className="space-y-4">
+            <h4 className="text-base md:text-lg font-semibold text-slate-900">Quick Links</h4>
+            <ul className="space-y-2">
               {site.nav.map((item) => (
                 <li key={item}>
                   <Link 
@@ -83,9 +88,9 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-slate-900">Contact</h4>
-            <div className="space-y-5">
+          <div className="space-y-4">
+            <h4 className="text-base md:text-lg font-semibold text-slate-900">Contact</h4>
+            <div className="space-y-3 md:space-y-4">
               <div className="flex items-start space-x-3">
                 <svg className="w-5 h-5 text-sky-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -116,8 +121,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+        <div className="pt-6 md:pt-8 border-t border-slate-200/60">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0">
             <div className="text-slate-600 text-sm">
               © {new Date().getFullYear()} {site.name}. All rights reserved.
             </div>

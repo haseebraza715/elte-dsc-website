@@ -35,13 +35,15 @@ export default function Header() {
   }
   
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-br from-slate-50 via-white to-sky-50/60 backdrop-blur-md shadow-sm overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Subtle gradient orbs */}
-        <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-gradient-to-br from-sky-200/20 to-blue-200/15 rounded-full mix-blend-multiply filter blur-3xl" />
-        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-gradient-to-bl from-blue-200/20 to-sky-200/15 rounded-full mix-blend-multiply filter blur-3xl" />
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-transparent to-transparent" />
+    <header className="sticky top-0 z-50 bg-gradient-to-br from-slate-50/95 via-white/95 to-sky-50/60 backdrop-blur-xl border-b border-slate-200/50 shadow-sm shadow-slate-900/5 overflow-hidden">
+      {/* Decorative Background Elements - Optimized */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+        {/* Large gradient orbs - top corners (only 2, one animated) */}
+        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/20 via-blue-300/15 to-indigo-300/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ willChange: 'opacity', transform: 'translateZ(0)' }} />
+        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/20 via-sky-300/15 to-cyan-300/10 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
+        
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
       </div>
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -50,37 +52,44 @@ export default function Header() {
           <div className="flex-shrink-0">
             <Link 
               to="/" 
-              className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-xl p-1 -ml-1"
+              className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-xl p-1 -ml-1 transition-all duration-300"
             >
-              <div className="w-11 h-11 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 shadow-md">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="relative w-11 h-11 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg shadow-sky-500/30 group-hover:shadow-xl group-hover:shadow-sky-500/40">
+                <svg className="w-6 h-6 text-white transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <span className="text-2xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors duration-300">
+              <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent group-hover:from-sky-600 group-hover:to-blue-600 transition-all duration-300">
                 {site.name}
               </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-2">
             {items.map((id) => (
               <button
                 key={id}
                 onClick={() => handleNavClick(id)}
-                className="text-slate-700 hover:text-sky-600 px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-sky-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="relative text-slate-600 hover:text-sky-600 px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-sky-50/80 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 group"
               >
-                {id.charAt(0).toUpperCase() + id.slice(1)}
+                <span className="relative z-10">{id.charAt(0).toUpperCase() + id.slice(1)}</span>
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full group-hover:w-3/4 transition-all duration-300"></span>
               </button>
             ))}
             <a
               href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 bg-sky-600 hover:bg-sky-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 shadow-sm hover:shadow-md"
+              className="ml-2 relative px-6 py-2.5 bg-gradient-to-r from-sky-600 to-blue-600 text-white rounded-xl text-sm font-semibold transition-all duration-300 hover:from-sky-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 hover:-translate-y-0.5 active:translate-y-0 overflow-hidden group"
             >
-              Join Now
+              <span className="relative z-10 flex items-center gap-1.5">
+                Join Now
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             </a>
           </nav>
 
@@ -88,18 +97,18 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setOpen(!open)}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-slate-700 hover:text-sky-600 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300"
+              className="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-sky-600 hover:bg-sky-50/80 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300 active:scale-95"
               aria-expanded={open}
               aria-label="Toggle menu"
             >
               <span className="sr-only">Open main menu</span>
               {open ? (
-                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg className="block h-6 w-6 transition-all duration-300 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg className="block h-6 w-6 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </button>
@@ -108,30 +117,48 @@ export default function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      {open && (
-        <div className="md:hidden bg-gradient-to-br from-slate-50 via-white to-sky-50/60 shadow-lg relative">
-          <div className="px-4 pt-4 pb-6 space-y-1">
-            {items.map((id) => (
-              <button
-                key={id}
-                onClick={() => handleNavClick(id)}
-                className="block w-full text-left px-4 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500"
-              >
-                {id.charAt(0).toUpperCase() + id.slice(1)}
-              </button>
-            ))}
-            <a
-              href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white px-4 py-3 rounded-lg text-base font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-4 shadow-sm"
-            >
-              Join Now
-            </a>
+      <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="bg-gradient-to-br from-slate-50/98 via-white/98 to-sky-50/60 backdrop-blur-xl border-t border-slate-200/60 shadow-xl relative px-4 pt-5 pb-5 space-y-2 flex flex-col overflow-hidden">
+          {/* Mobile gradient orbs - Optimized */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+            {/* Large gradient orbs - top corners (only 2, one animated) */}
+            <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-sky-300/30 via-blue-300/25 to-indigo-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ willChange: 'opacity', transform: 'translateZ(0)' }} />
+            <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-gradient-to-bl from-blue-300/30 via-sky-300/25 to-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
+            
+            {/* Subtle gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-sky-50/30 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
           </div>
+          {items.map((id, index) => (
+            <button
+              key={id}
+              onClick={() => handleNavClick(id)}
+              className={`relative z-10 block w-full text-left px-4 py-3.5 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50/90 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] transform ${open ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
+              style={{ transitionDelay: `${index * 50}ms` }}
+            >
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </span>
+            </button>
+          ))}
+          <a
+            href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className={`relative z-10 inline-flex items-center w-fit text-left bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white px-2 py-1.5 rounded-md text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-3 shadow-sm shadow-sky-500/30 active:scale-[0.98] overflow-hidden group transform ${open ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
+            style={{ transitionDelay: `${items.length * 50}ms` }}
+          >
+            <span className="relative z-10 flex items-center gap-1">
+              Join Us
+              <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+          </a>
         </div>
-      )}
+      </div>
     </header>
   )
 }
