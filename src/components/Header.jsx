@@ -9,43 +9,48 @@ export default function Header() {
   const items = site.nav
   
   const handleNavClick = (id) => {
-    if (id === 'home') {
-      navigate('/')
-    } else if (id === 'challenges') {
-      navigate('/challenges')
-    } else if (id === 'resources') {
-      navigate('/resources')
-    } else if (id === 'members') {
-      navigate('/members')
-    } else if (id === 'events') {
-      navigate('/event')
-    } else {
-      // For other sections, navigate to home with hash
-      if (location.pathname !== '/') {
-        navigate(`/#${id}`)
-      } else {
-        navigate(`/#${id}`, { replace: true })
-        setTimeout(() => {
-          const element = document.getElementById(id)
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
-          }
-        }, 50)
-      }
-    }
+    // Close menu immediately for better UX
     setOpen(false)
+    
+    // Use requestAnimationFrame for smoother navigation
+    requestAnimationFrame(() => {
+      if (id === 'home') {
+        navigate('/')
+      } else if (id === 'challenges') {
+        navigate('/challenges')
+      } else if (id === 'resources') {
+        navigate('/resources')
+      } else if (id === 'members') {
+        navigate('/members')
+      } else if (id === 'events') {
+        navigate('/event')
+      } else {
+        // For other sections, navigate to home with hash
+        if (location.pathname !== '/') {
+          navigate(`/#${id}`)
+        } else {
+          navigate(`/#${id}`, { replace: true })
+          requestAnimationFrame(() => {
+            const element = document.getElementById(id)
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' })
+            }
+          })
+        }
+      }
+    })
   }
   
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-br from-slate-50/95 via-white/95 to-sky-50/60 backdrop-blur-xl border-b border-slate-200/50 shadow-sm shadow-slate-900/5 overflow-hidden">
+    <header className="sticky top-0 z-50 bg-gradient-to-br from-slate-50/95 via-white/95 to-sky-50/60 backdrop-blur-sm border-b border-slate-200/50 shadow-sm shadow-slate-900/5 overflow-hidden">
       {/* Decorative Background Elements - Optimized */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-        {/* Large gradient orbs - top corners (only 2, one animated) */}
-        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/20 via-blue-300/15 to-indigo-300/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ willChange: 'opacity', transform: 'translateZ(0)' }} />
-        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/20 via-sky-300/15 to-cyan-300/10 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translate3d(0, 0, 0)' }}>
+        {/* Large gradient orbs - reduced blur on mobile */}
+        <div className="absolute -top-36 -left-36 w-[500px] h-[500px] md:w-[750px] md:h-[750px] bg-gradient-to-br from-sky-300/15 via-blue-300/12 to-indigo-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute -top-36 -right-36 w-[500px] h-[500px] md:w-[750px] md:h-[750px] bg-gradient-to-bl from-blue-300/15 via-sky-300/12 to-cyan-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
         
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/15 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
       </div>
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -73,17 +78,17 @@ export default function Header() {
               <button
                 key={id}
                 onClick={() => handleNavClick(id)}
-                className="relative text-slate-600 hover:text-sky-600 px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-sky-50/80 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 group"
+                className="relative text-slate-600 hover:text-sky-600 px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-sky-50/80 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 group"
               >
                 <span className="relative z-10">{id.charAt(0).toUpperCase() + id.slice(1)}</span>
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full group-hover:w-3/4 transition-all duration-300"></span>
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full group-hover:w-3/4 transition-width duration-200"></span>
               </button>
             ))}
             <a
               href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 relative px-6 py-2.5 bg-gradient-to-r from-sky-600 to-blue-600 text-white rounded-xl text-sm font-semibold transition-all duration-300 hover:from-sky-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 hover:-translate-y-0.5 active:translate-y-0 overflow-hidden group"
+              className="ml-2 relative px-6 py-2.5 bg-gradient-to-r from-sky-600 to-blue-600 text-white rounded-xl text-sm font-semibold transition-colors duration-200 hover:from-sky-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 active:scale-[0.98] overflow-hidden group"
             >
               <span className="relative z-10 flex items-center gap-1.5">
                 Join Now
@@ -91,7 +96,7 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
             </a>
           </nav>
 
@@ -99,17 +104,17 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setOpen(!open)}
-              className="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-sky-600 hover:bg-sky-50/80 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300 active:scale-95"
+              className="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-sky-600 hover:bg-sky-50/80 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors duration-200 active:scale-95"
               aria-expanded={open}
               aria-label="Toggle menu"
             >
               <span className="sr-only">Open main menu</span>
               {open ? (
-                <svg className="block h-6 w-6 transition-all duration-300 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="block h-6 w-6 transition-transform duration-200 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="block h-6 w-6 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="block h-6 w-6 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
@@ -119,28 +124,22 @@ export default function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="bg-gradient-to-br from-slate-50/98 via-white/98 to-sky-50/60 backdrop-blur-xl border-t border-slate-200/60 shadow-xl relative px-4 pt-5 pb-5 space-y-2 flex flex-col overflow-hidden">
-          {/* Mobile gradient orbs - Optimized */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-            {/* Large gradient orbs - top corners (only 2, one animated) */}
-            <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-sky-300/30 via-blue-300/25 to-indigo-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ willChange: 'opacity', transform: 'translateZ(0)' }} />
-            <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-gradient-to-bl from-blue-300/30 via-sky-300/25 to-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
-            
-            {/* Subtle gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-sky-50/30 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="bg-gradient-to-br from-slate-50/98 via-white/98 to-sky-50/60 backdrop-blur-sm border-t border-slate-200/60 shadow-xl relative px-4 pt-4 pb-4 space-y-1.5 flex flex-col overflow-hidden">
+          {/* Mobile gradient orbs - Simplified for better performance */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translate3d(0, 0, 0)' }}>
+            <div className="absolute -top-20 -left-20 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-gradient-to-br from-sky-300/15 via-blue-300/12 to-indigo-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+            <div className="absolute -top-20 -right-20 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-gradient-to-bl from-blue-300/15 via-sky-300/12 to-cyan-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+            <div className="absolute inset-0 bg-gradient-to-b from-sky-50/15 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
           </div>
           {items.map((id, index) => (
             <button
               key={id}
               onClick={() => handleNavClick(id)}
-              className={`relative z-10 block w-full text-left px-4 py-3.5 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50/90 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] transform ${open ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
-              style={{ transitionDelay: `${index * 50}ms` }}
+              className={`relative z-10 block w-full text-left px-4 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50/90 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 active:bg-sky-100 ${open ? 'opacity-100' : 'opacity-0'}`}
+              style={{ transitionDelay: open ? `${index * 30}ms` : '0ms' }}
             >
-              <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                {id.charAt(0).toUpperCase() + id.slice(1)}
-              </span>
+              {id.charAt(0).toUpperCase() + id.slice(1)}
             </button>
           ))}
           <a
@@ -148,8 +147,8 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className={`relative z-10 inline-flex items-center w-fit text-left bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white px-2 py-1.5 rounded-md text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-3 shadow-sm shadow-sky-500/30 active:scale-[0.98] overflow-hidden group transform ${open ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
-            style={{ transitionDelay: `${items.length * 50}ms` }}
+            className={`relative z-10 inline-flex items-center w-fit text-left bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-2 shadow-sm shadow-sky-500/30 active:bg-sky-700 ${open ? 'opacity-100' : 'opacity-0'}`}
+            style={{ transitionDelay: open ? `${items.length * 30}ms` : '0ms' }}
           >
             <span className="relative z-10 flex items-center gap-1">
               Join Us

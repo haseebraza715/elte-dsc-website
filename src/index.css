@@ -21,14 +21,50 @@ html:focus-within { scroll-behavior: smooth; }
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Optimize rendering for gradient orbs */
+/* GPU acceleration for transforms */
+[class*="transform"], [class*="hover:scale"], [class*="hover:-translate"] {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Optimize rendering for gradient orbs - reduced blur on mobile */
+@media (max-width: 768px) {
+  [class*="blur-3xl"] {
+    filter: blur(40px) !important;
+  }
+}
+
 [class*="blur-3xl"] {
   will-change: transform;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
+  isolation: isolate;
 }
 
 /* Optimize rendering */
 img, video {
   content-visibility: auto;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  [class*="animate-"] {
+    animation: none !important;
+  }
+}
+
+/* Optimize backdrop blur */
+[class*="backdrop-blur"] {
+  will-change: transform;
+  transform: translateZ(0);
 }
