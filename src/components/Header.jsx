@@ -17,6 +17,8 @@ export default function Header() {
       navigate('/resources')
     } else if (id === 'members') {
       navigate('/members')
+    } else if (id === 'events') {
+      navigate('/event')
     } else {
       // For other sections, navigate to home with hash
       if (location.pathname !== '/') {

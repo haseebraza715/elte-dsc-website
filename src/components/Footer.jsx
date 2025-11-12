@@ -11,6 +11,8 @@ export default function Footer() {
       return '/resources'
     } else if (item === 'members') {
       return '/members'
+    } else if (item === 'events') {
+      return '/event'
     }
     return `/#${item}`
   }

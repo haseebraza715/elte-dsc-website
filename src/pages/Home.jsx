@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
 import Welcome from '../components/Welcome.jsx'
 import About from '../components/About.jsx'
-import Events from '../components/Events.jsx'
 import Contact from '../components/Contact.jsx'
 
 export default function Home() {
@@ -33,7 +32,6 @@ export default function Home() {
       />
       <Welcome />
       <About />
-      <Events />
       <Contact />
     </main>
   )

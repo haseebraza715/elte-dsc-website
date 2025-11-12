@@ -1,12 +1,24 @@
+import { useNavigate, useLocation } from 'react-router-dom'
 import content from '../content/welcome.json'
 
 export default function Welcome() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const handleCtaClick = (href) => {
     if (href.startsWith('#')) {
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+      // Handle hash links (like #contact)
+      if (location.pathname !== '/') {
+        navigate(`/${href}`)
+      } else {
+        const element = document.querySelector(href)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
       }
+    } else if (href.startsWith('/')) {
+      // Handle route navigation (like /event)
+      navigate(href)
     }
   }
 
