@@ -22,17 +22,14 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
-      {/* Decorative Background Elements - Optimized */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translate3d(0, 0, 0)' }}>
-        {/* Large gradient orbs - reduced blur on mobile */}
-        <div className="absolute -top-36 -left-36 w-[600px] h-[600px] md:w-[750px] md:h-[750px] bg-gradient-to-br from-sky-300/25 via-blue-300/20 to-indigo-300/15 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        <div className="absolute -top-36 -right-36 w-[600px] h-[600px] md:w-[750px] md:h-[750px] bg-gradient-to-bl from-blue-300/25 via-sky-300/20 to-cyan-300/15 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        
-        {/* Bottom accent (static) */}
-        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-gradient-to-t from-sky-300/20 via-blue-300/18 to-indigo-300/12 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+      {/* Decorative Background Elements - Optimized (reduced for performance) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translate3d(0, 0, 0)' }}>
+        {/* Reduced to 2 gradient orbs for better performance */}
+        <div className="absolute -top-36 -left-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-br from-sky-300/20 via-blue-300/15 to-indigo-300/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute -top-36 -right-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-bl from-blue-300/20 via-sky-300/15 to-cyan-300/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
         
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/25 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
       </div>
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">

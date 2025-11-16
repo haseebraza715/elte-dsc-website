@@ -31,20 +31,58 @@ html:focus-within { scroll-behavior: smooth; }
 /* Optimize rendering for gradient orbs - reduced blur on mobile */
 @media (max-width: 768px) {
   [class*="blur-3xl"] {
-    filter: blur(40px) !important;
+    filter: blur(30px) !important;
+  }
+  [class*="blur-2xl"] {
+    filter: blur(20px) !important;
+  }
+  /* Reduce gradient orbs on mobile for better performance */
+  [class*="bg-gradient-to"] {
+    opacity: 0.8;
   }
 }
 
 [class*="blur-3xl"] {
-  will-change: transform;
+  will-change: auto;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   isolation: isolate;
+  contain: layout style paint;
+}
+
+/* Mobile-specific performance optimizations */
+@media (max-width: 768px) {
+  /* Reduce animations on mobile */
+  * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Disable expensive effects on mobile */
+  [class*="backdrop-blur"] {
+    backdrop-filter: blur(4px) !important;
+  }
+  
+  /* Optimize transforms */
+  [class*="hover:scale"],
+  [class*="hover:-translate"] {
+    transform: none !important;
+  }
 }
 
 /* Optimize rendering */
 img, video {
   content-visibility: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Mobile image optimization */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 /* Reduce motion for users who prefer it */

@@ -1,14 +1,14 @@
-import { useState } from 'react'
+import { useState, memo, useCallback } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import site from '../content/site.json'
 
-export default function Header() {
+const Header = memo(function Header() {
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
   const items = site.nav
   
-  const handleNavClick = (id) => {
+  const handleNavClick = useCallback((id) => {
     // Close menu immediately for better UX
     setOpen(false)
     
@@ -39,22 +39,22 @@ export default function Header() {
         }
       }
     })
-  }
+  }, [navigate, location.pathname])
   
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-br from-slate-50/95 via-white/95 to-sky-50/60 backdrop-blur-sm border-b border-slate-200/50 shadow-sm shadow-slate-900/5 overflow-hidden">
-      {/* Decorative Background Elements - Optimized */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translate3d(0, 0, 0)' }}>
-        {/* Large gradient orbs - reduced blur on mobile */}
-        <div className="absolute -top-36 -left-36 w-[500px] h-[500px] md:w-[750px] md:h-[750px] bg-gradient-to-br from-sky-300/15 via-blue-300/12 to-indigo-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        <div className="absolute -top-36 -right-36 w-[500px] h-[500px] md:w-[750px] md:h-[750px] bg-gradient-to-bl from-blue-300/15 via-sky-300/12 to-cyan-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+      {/* Decorative Background Elements - Optimized (reduced for performance) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translate3d(0, 0, 0)' }}>
+        {/* Reduced gradient orbs for better performance */}
+        <div className="absolute -top-36 -left-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-sky-300/12 via-blue-300/10 to-indigo-300/6 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute -top-36 -right-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-blue-300/12 via-sky-300/10 to-cyan-300/6 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
         
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/15 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/12 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
       </div>
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link 
@@ -66,7 +66,7 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent group-hover:from-sky-600 group-hover:to-blue-600 transition-all duration-300">
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent group-hover:from-sky-600 group-hover:to-blue-600 transition-all duration-200">
                 {site.name}
               </span>
             </Link>
@@ -124,14 +124,9 @@ export default function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`md:hidden overflow-hidden transition-all duration-200 ease-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="bg-gradient-to-br from-slate-50/98 via-white/98 to-sky-50/60 backdrop-blur-sm border-t border-slate-200/60 shadow-xl relative px-4 pt-4 pb-4 space-y-1.5 flex flex-col overflow-hidden">
-          {/* Mobile gradient orbs - Simplified for better performance */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translate3d(0, 0, 0)' }}>
-            <div className="absolute -top-20 -left-20 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-gradient-to-br from-sky-300/15 via-blue-300/12 to-indigo-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-            <div className="absolute -top-20 -right-20 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-gradient-to-bl from-blue-300/15 via-sky-300/12 to-cyan-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-            <div className="absolute inset-0 bg-gradient-to-b from-sky-50/15 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
-          </div>
+          {/* Mobile gradient orbs - Removed for better mobile performance */}
           {items.map((id, index) => (
             <button
               key={id}
@@ -162,6 +157,8 @@ export default function Header() {
       </div>
     </header>
   )
-}
+})
+
+export default Header
 
 

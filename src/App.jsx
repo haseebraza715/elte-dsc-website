@@ -4,8 +4,9 @@ import Footer from './components/Footer.jsx'
 import SEO from './components/SEO.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
-import Home from './pages/Home.jsx'
 
+// Lazy load all pages including Home for better code splitting
+const Home = lazy(() => import('./pages/Home.jsx'))
 const Challenges = lazy(() => import('./pages/Challenges.jsx'))
 const Resources = lazy(() => import('./pages/Resources.jsx'))
 const Members = lazy(() => import('./pages/Members.jsx'))

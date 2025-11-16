@@ -121,26 +121,23 @@ Note: A user is considered to have logged in on consecutive days if they have ev
 
   return (
     <section id="challenges" className="relative bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
-      {/* Decorative Background Elements - Optimized */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-        {/* Large gradient orbs - top corners (only 2, one animated) */}
-        <div className="absolute -top-36 -left-36 w-[750px] h-[750px] bg-gradient-to-br from-sky-300/30 via-blue-300/25 to-indigo-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ willChange: 'opacity', transform: 'translateZ(0)' }} />
-        <div className="absolute -top-36 -right-36 w-[750px] h-[750px] bg-gradient-to-bl from-blue-300/30 via-sky-300/25 to-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
-        
-        {/* Bottom accent (static) */}
-        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-t from-sky-300/20 via-blue-300/25 to-indigo-300/15 rounded-full mix-blend-multiply filter blur-3xl" style={{ transform: 'translateZ(0)' }} />
+      {/* Decorative Background Elements - Optimized (reduced for performance) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translateZ(0)' }}>
+        {/* Reduced to 2 gradient orbs for better performance */}
+        <div className="absolute -top-36 -left-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-br from-sky-300/20 via-blue-300/15 to-indigo-300/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute -top-36 -right-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-bl from-blue-300/20 via-sky-300/15 to-cyan-300/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translateZ(0)' }} />
         
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/30 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
       </div>
       
-      <div className="relative mx-auto max-w-content px-4 py-16">
+      <div className="relative mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Section Header */}
-        <div className="text-center mb-12 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        <div className="text-center mb-10 sm:mb-12 relative z-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
             Weekly Coding Challenges
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto px-2">
             Sharpen your Python and pandas skills with our curated challenges from StrataScratch. 
             From beginner-friendly problems to advanced analytics, there's something for every level.
           </p>
@@ -165,19 +162,19 @@ Note: A user is considered to have logged in on consecutive days if they have ev
                 key={challenge.id}
                 className="bg-white rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow duration-300"
               >
-                <div className="p-6">
-                  {/* Challenge Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <h4 className="text-xl font-semibold text-slate-900">
-                          {challenge.title}
-                        </h4>
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${challenge.difficultyColor}`}>
-                          {challenge.difficulty}
-                        </span>
-                      </div>
-                      <p className="text-slate-600 mb-3">{challenge.description}</p>
+                  <div className="p-5 sm:p-6">
+                    {/* Challenge Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-3">
+                      <div className="flex-1">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                          <h4 className="text-lg sm:text-xl font-semibold text-slate-900">
+                            {challenge.title}
+                          </h4>
+                          <span className={`px-3 py-1 rounded-full text-xs sm:text-sm font-medium w-fit ${challenge.difficultyColor}`}>
+                            {challenge.difficulty}
+                          </span>
+                        </div>
+                        <p className="text-sm sm:text-base text-slate-600 mb-3">{challenge.description}</p>
                       <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
                         <span className="flex items-center space-x-1">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

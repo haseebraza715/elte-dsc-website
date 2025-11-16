@@ -1,8 +1,9 @@
+import { memo, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import site from '../content/site.json'
 
-export default function Footer() {
-  const handleFooterLink = (item) => {
+const Footer = memo(function Footer() {
+  const handleFooterLink = useCallback((item) => {
     if (item === 'home') {
       return '/'
     } else if (item === 'challenges') {
@@ -15,21 +16,18 @@ export default function Footer() {
       return '/event'
     }
     return `/#${item}`
-  }
+  }, [])
 
   return (
     <footer className="relative bg-gradient-to-br from-slate-50 via-white to-sky-50/60 overflow-hidden">
-      {/* Decorative Background Elements - Optimized */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translate3d(0, 0, 0)' }}>
-        {/* Large gradient orbs - reduced blur on mobile */}
-        <div className="absolute -top-36 -left-36 w-[600px] h-[600px] md:w-[750px] md:h-[750px] bg-gradient-to-br from-sky-300/25 via-blue-300/20 to-indigo-300/15 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        <div className="absolute -top-36 -right-36 w-[600px] h-[600px] md:w-[750px] md:h-[750px] bg-gradient-to-bl from-blue-300/25 via-sky-300/20 to-cyan-300/15 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        
-        {/* Bottom accent (static) */}
-        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-gradient-to-t from-sky-300/20 via-blue-300/18 to-indigo-300/12 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+      {/* Decorative Background Elements - Optimized (reduced for performance) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translate3d(0, 0, 0)' }}>
+        {/* Reduced to 2 gradient orbs for better performance */}
+        <div className="absolute -top-36 -left-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-sky-300/15 via-blue-300/12 to-indigo-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute -top-36 -right-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-blue-300/15 via-sky-300/12 to-cyan-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
         
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/25 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/15 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
       </div>
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12 lg:py-14">
@@ -136,6 +134,8 @@ export default function Footer() {
       </div>
     </footer>
   )
-}
+})
+
+export default Footer
 
 

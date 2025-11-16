@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, memo, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const siteData = {
@@ -9,13 +9,26 @@ const siteData = {
   twitter: '@dscelte',
 }
 
-const SEO = ({ title, description, path = '', type = 'website' }) => {
+const SEO = memo(function SEO({ title, description, path = '', type = 'website' }) {
   const location = useLocation()
+  const prevValues = useRef({ title: '', description: '', path: '' })
+  
   const fullUrl = `${siteData.url}${path || location.pathname}`
   const pageTitle = title ? `${title} | ${siteData.name}` : siteData.name
   const pageDescription = description || siteData.description
 
   useEffect(() => {
+    // Only update if values actually changed
+    if (
+      prevValues.current.title === pageTitle &&
+      prevValues.current.description === pageDescription &&
+      prevValues.current.path === (path || location.pathname)
+    ) {
+      return
+    }
+
+    prevValues.current = { title: pageTitle, description: pageDescription, path: path || location.pathname }
+
     // Update document title
     if (document.title !== pageTitle) {
       document.title = pageTitle
@@ -36,10 +49,10 @@ const SEO = ({ title, description, path = '', type = 'website' }) => {
     updateMeta('meta[property="og:url"]', 'content', fullUrl)
     updateMeta('meta[name="twitter:title"]', 'content', pageTitle)
     updateMeta('meta[name="twitter:description"]', 'content', pageDescription)
-  }, [pageTitle, pageDescription, fullUrl])
+  }, [pageTitle, pageDescription, fullUrl, path, location.pathname])
 
   return null
-}
+})
 
 export default SEO
 

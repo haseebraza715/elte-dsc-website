@@ -91,18 +91,14 @@ export default function EventsPage() {
       />
       
       <main className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-sky-50/50 overflow-hidden">
-        {/* Enhanced Decorative Background Elements - Optimized */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform', transform: 'translate3d(0, 0, 0)' }}>
-          {/* Primary gradient orbs - reduced blur on mobile */}
-          <div className="absolute -top-48 -left-48 w-[600px] h-[600px] md:w-[900px] md:h-[900px] bg-gradient-to-br from-sky-400/30 via-blue-400/25 to-indigo-400/20 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-          <div className="absolute -top-48 -right-48 w-[600px] h-[600px] md:w-[900px] md:h-[900px] bg-gradient-to-bl from-blue-400/30 via-cyan-400/25 to-sky-400/20 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        {/* Enhanced Decorative Background Elements - Optimized (reduced for performance) */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translate3d(0, 0, 0)' }}>
+          {/* Reduced to 2 gradient orbs for better performance */}
+          <div className="absolute -top-48 -left-48 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-br from-sky-400/20 via-blue-400/15 to-indigo-400/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+          <div className="absolute -top-48 -right-48 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-bl from-blue-400/20 via-cyan-400/15 to-sky-400/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
           
-          {/* Bottom accent gradients */}
-          <div className="absolute -bottom-48 left-1/4 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-gradient-to-t from-sky-400/25 via-blue-400/20 to-indigo-400/15 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-          <div className="absolute -bottom-48 right-1/4 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-gradient-to-t from-cyan-400/25 via-teal-400/20 to-emerald-400/15 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-          
-          {/* Subtle gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-sky-50/30 via-blue-50/15 to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-blue-50/10 to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
         </div>
 
         <div className="relative z-10">
@@ -230,17 +226,17 @@ export default function EventsPage() {
               </div>
 
               {/* Enhanced Image Gallery Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {eventImages.map((imagePath, index) => {
                   const isLoaded = loadedImages.has(imagePath)
                   return (
                     <div
                       key={imagePath}
-                      className="group relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 border border-slate-200/80 cursor-pointer transition-shadow duration-200 hover:shadow-2xl hover:shadow-sky-500/40 hover:border-sky-400/60"
+                      className="group relative aspect-square overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 border border-slate-200/80 cursor-pointer transition-shadow duration-200 hover:shadow-xl md:hover:shadow-2xl hover:shadow-sky-500/40 hover:border-sky-400/60"
                       onClick={() => handleImageClick(imagePath)}
                       style={{
-                        animationDelay: `${index * 150}ms`,
-                        animation: isLoaded ? 'fadeInScale 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards' : 'none',
+                        animationDelay: `${index * 100}ms`,
+                        animation: isLoaded ? 'fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards' : 'none',
                         opacity: isLoaded ? 1 : 0
                       }}
                     >
@@ -252,7 +248,7 @@ export default function EventsPage() {
                       {/* Enhanced gradient overlay on hover */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
                       
-                      {/* Image with smooth loading */}
+                      {/* Image with smooth loading and optimization */}
                       <img
                         src={`/${imagePath}`}
                         alt={`Event photo ${index + 1}`}
@@ -264,6 +260,8 @@ export default function EventsPage() {
                         onLoad={() => handleImageLoad(imagePath)}
                         loading="lazy"
                         decoding="async"
+                        fetchpriority={index < 4 ? "high" : "low"}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
                       
                       {/* Enhanced hover overlay content */}
@@ -311,6 +309,8 @@ export default function EventsPage() {
                 alt="Event photo"
                 className="max-w-full max-h-full object-contain rounded-xl shadow-2xl animate-scaleIn border border-white/10"
                 key={selectedImage}
+                loading="eager"
+                fetchpriority="high"
               />
             </div>
 
