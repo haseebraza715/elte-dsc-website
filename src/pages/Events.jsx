@@ -235,8 +235,8 @@ export default function EventsPage() {
                       className="group relative aspect-square overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 border border-slate-200/80 cursor-pointer transition-shadow duration-200 hover:shadow-xl md:hover:shadow-2xl hover:shadow-sky-500/40 hover:border-sky-400/60"
                       onClick={() => handleImageClick(imagePath)}
                       style={{
-                        animationDelay: `${index * 100}ms`,
-                        animation: isLoaded ? 'fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards' : 'none',
+                        animationDelay: `${index * 50}ms`,
+                        animation: isLoaded ? 'fadeInScale 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards' : 'none',
                         opacity: isLoaded ? 1 : 0
                       }}
                     >
@@ -245,8 +245,8 @@ export default function EventsPage() {
                         <div className="absolute inset-0 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200 animate-shimmer" />
                       )}
 
-                      {/* Enhanced gradient overlay on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
+                      {/* Enhanced gradient overlay on hover - disabled on mobile */}
+                      <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
                       
                       {/* Image with smooth loading and optimization */}
                       <img
@@ -264,8 +264,8 @@ export default function EventsPage() {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
                       
-                      {/* Enhanced hover overlay content */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
+                      {/* Enhanced hover overlay content - disabled on mobile */}
+                      <div className="hidden md:flex absolute inset-0 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
                         <div className="bg-white/95 backdrop-blur-md rounded-full p-5 shadow-2xl border-2 border-white/50">
                           <svg className="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
@@ -273,8 +273,8 @@ export default function EventsPage() {
                         </div>
                       </div>
 
-                      {/* Enhanced image number badge */}
-                      <div className="absolute top-4 right-4 bg-gradient-to-r from-black/70 to-black/60 backdrop-blur-md text-white text-xs font-bold px-3.5 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20 shadow-lg border border-white/20">
+                      {/* Enhanced image number badge - disabled on mobile */}
+                      <div className="hidden md:block absolute top-4 right-4 bg-gradient-to-r from-black/70 to-black/60 backdrop-blur-md text-white text-xs font-bold px-3.5 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20 shadow-lg border border-white/20">
                         #{index + 1}
                       </div>
                     </div>
@@ -288,13 +288,13 @@ export default function EventsPage() {
         {/* Enhanced Lightbox Modal */}
         {selectedImage && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-black/98 via-black/95 to-black/98 backdrop-blur-xl p-4 animate-fadeIn"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 animate-fadeIn"
             onClick={closeLightbox}
           >
             {/* Close button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-sky-400 transition-all duration-300 z-10 bg-black/70 backdrop-blur-md rounded-full p-3.5 hover:bg-black/90 hover:scale-110 active:scale-95 border border-white/10 shadow-xl"
+              className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-sky-400 transition-all duration-200 z-10 bg-black/70 rounded-full p-3.5 hover:bg-black/90 hover:scale-110 active:scale-95 border border-white/10 shadow-xl"
               aria-label="Close lightbox"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -320,7 +320,7 @@ export default function EventsPage() {
                 e.stopPropagation()
                 navigateImage(-1)
               }}
-              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white hover:text-sky-400 transition-all duration-300 z-10 bg-black/70 backdrop-blur-md rounded-full p-4 hover:bg-black/90 hover:scale-110 active:scale-95 border border-white/10 shadow-xl"
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white hover:text-sky-400 transition-all duration-200 z-10 bg-black/70 rounded-full p-4 hover:bg-black/90 hover:scale-110 active:scale-95 border border-white/10 shadow-xl"
               aria-label="Previous image"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -333,7 +333,7 @@ export default function EventsPage() {
                 e.stopPropagation()
                 navigateImage(1)
               }}
-              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white hover:text-sky-400 transition-all duration-300 z-10 bg-black/70 backdrop-blur-md rounded-full p-4 hover:bg-black/90 hover:scale-110 active:scale-95 border border-white/10 shadow-xl"
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white hover:text-sky-400 transition-all duration-200 z-10 bg-black/70 rounded-full p-4 hover:bg-black/90 hover:scale-110 active:scale-95 border border-white/10 shadow-xl"
               aria-label="Next image"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -342,12 +342,12 @@ export default function EventsPage() {
             </button>
 
             {/* Enhanced Image counter */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md text-white text-sm font-semibold px-6 py-3 rounded-full z-10 border border-white/10 shadow-xl">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/70 text-white text-sm font-semibold px-6 py-3 rounded-full z-10 border border-white/10 shadow-xl">
               {eventImages.indexOf(selectedImage) + 1} / {eventImages.length}
             </div>
 
             {/* Keyboard hint */}
-            <div className="absolute bottom-6 right-6 text-white/70 text-xs z-10 hidden md:block bg-black/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
+            <div className="absolute bottom-6 right-6 text-white/70 text-xs z-10 hidden md:block bg-black/50 px-4 py-2 rounded-lg border border-white/10">
               <div className="flex items-center gap-4">
                 <span className="flex items-center gap-1">
                   <kbd className="px-2 py-1 bg-black/50 rounded text-xs">←</kbd>
@@ -379,7 +379,7 @@ export default function EventsPage() {
           @keyframes fadeInScale {
             from {
               opacity: 0;
-              transform: scale(0.92) translateY(30px);
+              transform: scale(0.96) translateY(20px);
             }
             to {
               opacity: 1;
