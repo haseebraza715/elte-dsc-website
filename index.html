@@ -44,14 +44,27 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://www.linkedin.com" crossorigin />
     <link rel="dns-prefetch" href="https://forms.cloud.microsoft.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     
     <!-- Mobile Optimizations -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="DSC ELTE" />
     
     <!-- Preload Critical Resources -->
     <link rel="modulepreload" href="/src/main.jsx" />
+    
+    <!-- Additional SEO -->
+    <meta name="geo.region" content="HU-BU" />
+    <meta name="geo.placename" content="Budapest" />
+    <meta name="geo.position" content="47.4979;19.0402" />
+    <meta name="ICBM" content="47.4979, 19.0402" />
+    
+    <!-- Security -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -59,19 +72,45 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Data Science Club - ELTE",
+      "alternateName": "DSC ELTE",
       "url": "https://datasciencelte.netlify.app",
       "logo": "https://datasciencelte.netlify.app/logo.png",
       "description": "Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning.",
       "email": "ot7dee@inf.elte.hu",
+      "foundingDate": "2024",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Budapest",
+        "addressRegion": "Budapest",
         "addressCountry": "HU",
         "streetAddress": "Eötvös Loránd University, Room 0.825, South Building"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "47.4979",
+        "longitude": "19.0402"
+      },
       "sameAs": [
         "https://www.linkedin.com/company/dscelte"
-      ]
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "ot7dee@inf.elte.hu",
+        "contactType": "General Inquiries"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Data Science Club - ELTE",
+      "url": "https://datasciencelte.netlify.app",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://datasciencelte.netlify.app/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
   </head>

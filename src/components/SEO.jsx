@@ -9,13 +9,15 @@ const siteData = {
   twitter: '@dscelte',
 }
 
-const SEO = memo(function SEO({ title, description, path = '', type = 'website' }) {
+const SEO = memo(function SEO({ title, description, path = '', type = 'website', image, keywords }) {
   const location = useLocation()
   const prevValues = useRef({ title: '', description: '', path: '' })
   
   const fullUrl = `${siteData.url}${path || location.pathname}`
   const pageTitle = title ? `${title} | ${siteData.name}` : siteData.name
   const pageDescription = description || siteData.description
+  const pageImage = image || `${siteData.url}${siteData.image}`
+  const pageKeywords = keywords || 'data science, machine learning, AI, ELTE, Budapest, student club, data science community, python, pandas, data analysis'
 
   useEffect(() => {
     // Only update if values actually changed
@@ -34,22 +36,42 @@ const SEO = memo(function SEO({ title, description, path = '', type = 'website' 
       document.title = pageTitle
     }
 
-    // Update meta description
+    // Update meta tags efficiently
     const updateMeta = (selector, attr, value) => {
       let element = document.querySelector(selector)
+      if (!element) {
+        // Create element if it doesn't exist
+        element = document.createElement(selector.includes('meta') ? 'meta' : 'link')
+        if (selector.includes('meta[name=')) {
+          const name = selector.match(/name="([^"]+)"/)?.[1]
+          const property = selector.match(/property="([^"]+)"/)?.[1]
+          if (name) element.setAttribute('name', name)
+          if (property) element.setAttribute('property', property)
+        } else if (selector.includes('link[rel=')) {
+          const rel = selector.match(/rel="([^"]+)"/)?.[1]
+          if (rel) element.setAttribute('rel', rel)
+        }
+        document.head.appendChild(element)
+      }
       if (element && element.getAttribute(attr) !== value) {
         element.setAttribute(attr, value)
       }
     }
 
+    // Update all meta tags
     updateMeta('meta[name="description"]', 'content', pageDescription)
+    updateMeta('meta[name="keywords"]', 'content', pageKeywords)
     updateMeta('link[rel="canonical"]', 'href', fullUrl)
     updateMeta('meta[property="og:title"]', 'content', pageTitle)
     updateMeta('meta[property="og:description"]', 'content', pageDescription)
     updateMeta('meta[property="og:url"]', 'content', fullUrl)
+    updateMeta('meta[property="og:type"]', 'content', type)
+    updateMeta('meta[property="og:image"]', 'content', pageImage)
+    updateMeta('meta[name="twitter:card"]', 'content', 'summary_large_image')
     updateMeta('meta[name="twitter:title"]', 'content', pageTitle)
     updateMeta('meta[name="twitter:description"]', 'content', pageDescription)
-  }, [pageTitle, pageDescription, fullUrl, path, location.pathname])
+    updateMeta('meta[name="twitter:image"]', 'content', pageImage)
+  }, [pageTitle, pageDescription, fullUrl, path, location.pathname, pageImage, pageKeywords, type])
 
   return null
 })

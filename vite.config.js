@@ -42,15 +42,26 @@ export default defineConfig({
     target: 'es2015',
     // Optimize for mobile
     cssMinify: true,
+    // Enable compression
+    reportCompressedSize: true,
+    // Reduce chunk size warnings
+    assetsDir: 'assets',
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
     // Exclude large dependencies from pre-bundling if needed
     exclude: [],
+    // Force optimization
+    force: false,
   },
   server: {
     headers: {
       'Cache-Control': 'public, max-age=31536000',
     },
+  },
+  // Performance optimizations
+  esbuild: {
+    // Drop console and debugger in production
+    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
   },
 })

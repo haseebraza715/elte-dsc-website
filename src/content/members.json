@@ -1,7 +1,7 @@
 [
-  { "name": "Kumar Ayush", "role": "Founder", "meta": "ELTE", "link": "https://www.linkedin.com/in/ayushkumar5/", "linkLabel": "LinkedIn", "image": "/src/images/ayush.jpeg" },
-  { "name": "Haseeb Raza", "role": "Founder", "meta": "ELTE", "link": "https://www.linkedin.com/in/haseebraza715/", "linkLabel": "LinkedIn", "image": "/src/images/haseeb.jpg" },
-  { "name": "Podder Itilekha", "role": "Mentor", "meta": "ELTE", "link": "https://www.linkedin.com/in/itilekha-podder/", "linkLabel": "LinkedIn", "image": "/src/images/iti.jpg" }
+  { "name": "Kumar Ayush", "role": "Founder", "meta": "ELTE", "description": "Research Assistant at ELTE", "link": "https://www.linkedin.com/in/ayushkumar5/", "linkLabel": "LinkedIn", "email": "jzw44g@inf.elte.hu", "image": "/src/images/ayush.jpeg" },
+  { "name": "Haseeb Raza", "role": "Founder", "meta": "ELTE", "description": "Research Assistant at ELTE", "link": "https://www.linkedin.com/in/haseebraza715/", "linkLabel": "LinkedIn", "email": "haseeb.javed715@gmail.com", "image": "/src/images/haseeb.jpg" },
+  { "name": "Podder Itilekha", "role": "Mentor", "meta": "ELTE", "description": "Data Scientist at Bosch", "link": "https://www.linkedin.com/in/itilekha-podder/", "linkLabel": "LinkedIn", "email": "itilekha19@inf.elte.hu", "image": "/src/images/iti.jpg" }
 ]
 
 
