@@ -11,6 +11,7 @@ const Challenges = lazy(() => import('./pages/Challenges.jsx'))
 const Resources = lazy(() => import('./pages/Resources.jsx'))
 const Members = lazy(() => import('./pages/Members.jsx'))
 const Events = lazy(() => import('./pages/Events.jsx'))
+const Projects = lazy(() => import('./pages/Projects.jsx'))
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
               <Route path="/resources" element={<Resources />} />
               <Route path="/members" element={<Members />} />
               <Route path="/event" element={<Events />} />
+              <Route path="/project" element={<Projects />} />
             </Routes>
           </Suspense>
         </div>

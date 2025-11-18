@@ -14,6 +14,7 @@ const Header = memo(function Header() {
     
     // Use requestAnimationFrame for smoother navigation
     requestAnimationFrame(() => {
+      // Handle route-based navigation first
       if (id === 'home') {
         navigate('/')
       } else if (id === 'challenges') {
@@ -24,8 +25,10 @@ const Header = memo(function Header() {
         navigate('/members')
       } else if (id === 'events') {
         navigate('/event')
+      } else if (id === 'projects') {
+        navigate('/project')
       } else {
-        // For other sections, navigate to home with hash
+        // For other sections (about, contact), navigate to home with hash
         if (location.pathname !== '/') {
           navigate(`/#${id}`)
         } else {

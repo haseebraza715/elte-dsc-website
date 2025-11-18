@@ -1,6 +1,6 @@
 {
   "name": "Data Science Club",
-  "nav": ["home", "about", "events", "challenges", "resources", "members", "contact"],
+  "nav": ["home", "about", "events", "challenges", "resources", "projects", "members", "contact"],
   "contactEmail": "ot7dee@inf.elte.hu",
   "social": {
     "linkedin": "https://www.linkedin.com/company/dscelte",
