@@ -18,7 +18,10 @@ html {
   overscroll-behavior-y: contain;
 }
 
-::selection { background: #bae6fd; color: #0f172a; }
+::selection {
+  background: #bae6fd;
+  color: #0f172a;
+}
 
 /* Optimize body for smooth scrolling */
 body {
@@ -40,12 +43,23 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  
+
   /* Ensure text colors are visible */
-  body, p, h1, h2, h3, h4, h5, h6, span, div, a, button {
+  body,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  div,
+  a,
+  button {
     color: inherit !important;
   }
-  
+
   /* Remove transforms that cause blur */
   body {
     transform: none !important;
@@ -54,7 +68,9 @@ body {
 }
 
 /* GPU acceleration for transforms */
-[class*="transform"], [class*="hover:scale"], [class*="hover:-translate"] {
+[class*="transform"],
+[class*="hover:scale"],
+[class*="hover:-translate"] {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   will-change: transform;
@@ -69,12 +85,13 @@ section {
 
 /* Completely disable gradient orbs and blur on mobile for performance */
 @media (max-width: 768px) {
+
   /* Hide all gradient orbs on mobile */
   [class*="blur-3xl"],
   [class*="blur-2xl"] {
     display: none !important;
   }
-  
+
   /* Disable mix-blend-multiply on mobile (expensive) */
   [class*="mix-blend-multiply"] {
     mix-blend-mode: normal !important;
@@ -91,70 +108,71 @@ section {
 
 /* Mobile-specific performance optimizations */
 @media (max-width: 768px) {
+
   /* Reduce animations on mobile */
   * {
     animation-duration: 0.2s !important;
     transition-duration: 0.15s !important;
   }
-  
+
   /* Completely disable backdrop blur on mobile (very expensive) */
   [class*="backdrop-blur"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  
+
   /* Disable all transforms on mobile */
   [class*="hover:scale"],
   [class*="hover:-translate"],
   [class*="group-hover:scale"] {
     transform: none !important;
   }
-  
+
   /* Disable shadows on mobile for better performance */
   [class*="shadow-2xl"],
   [class*="shadow-xl"] {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
   }
-  
+
   /* Simplify only section background gradients, keep all other colors matching desktop */
   section[class*="bg-gradient-to"]:not([class*="from-sky"]):not([class*="from-blue"]):not([class*="to-sky"]):not([class*="to-blue"]) {
     background: linear-gradient(to bottom, rgba(241, 245, 249, 0.9), rgba(255, 255, 255, 0.95)) !important;
   }
-  
+
   /* Reduce button color intensity on mobile to match desktop */
   /* Target all gradient buttons and links */
   button[class*="bg-gradient-to"],
   a[class*="bg-gradient-to"] {
     opacity: 0.92 !important;
   }
-  
+
   /* Specifically target sky/blue gradient buttons - make them softer */
   button[class*="from-sky-600"][class*="to-blue-600"],
   a[class*="from-sky-600"][class*="to-blue-600"] {
     background: linear-gradient(to right, rgba(14, 165, 233, 0.88), rgba(37, 99, 235, 0.88)) !important;
     opacity: 1 !important;
   }
-  
+
   /* Reduce shadow intensity on mobile buttons to match desktop */
   button[class*="shadow-lg"],
   a[class*="shadow-lg"] {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
   }
-  
+
   button[class*="shadow-xl"],
   a[class*="shadow-xl"] {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
   }
-  
+
   /* Reduce colored shadow intensity */
   button[class*="shadow-sky"],
   a[class*="shadow-sky"] {
     box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.15), 0 2px 4px -1px rgba(14, 165, 233, 0.1) !important;
   }
-  
+
   /* Ensure colors match desktop - no forced opacity, let natural colors show */
   /* Remove any color overrides to match desktop appearance */
-  
+
   /* Force hardware acceleration for smoother scrolling */
   body {
     -webkit-overflow-scrolling: touch;
@@ -163,18 +181,18 @@ section {
     transform: none !important;
     -webkit-transform: none !important;
   }
-  
+
   /* Optimize scrolling containers */
   * {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
   }
-  
+
   /* Disable smooth scroll on mobile for better performance */
   html {
     scroll-behavior: auto;
   }
-  
+
   /* Optimize sticky elements */
   [class*="sticky"] {
     will-change: transform;
@@ -186,7 +204,8 @@ section {
 }
 
 /* Optimize rendering - fix blurry images */
-img, video {
+img,
+video {
   content-visibility: auto;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: auto;
@@ -216,6 +235,7 @@ img, video {
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -224,7 +244,7 @@ img, video {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   [class*="animate-"] {
     animation: none !important;
   }
@@ -251,28 +271,29 @@ header[class*="sticky"] {
 
 /* Prevent layout shifts during scroll */
 @media (max-width: 768px) {
+
   /* Optimize images during scroll */
   img {
     will-change: auto;
     contain: layout style paint;
   }
-  
+
   /* Optimize sections for scroll performance - removed paint containment to prevent blur */
   section {
     contain: layout style;
   }
-  
+
   /* Remove transforms that cause blur on mobile */
   [class*="absolute"] {
     will-change: auto;
   }
-  
+
   /* Remove transforms that cause blur, but keep images visible */
   *:not(img):not([class*="absolute"]):not([class*="sticky"]) {
     transform: none !important;
     -webkit-transform: none !important;
   }
-  
+
   /* Ensure images are always visible and properly positioned */
   img {
     transform: none !important;
@@ -280,7 +301,7 @@ header[class*="sticky"] {
     opacity: 1 !important;
     visibility: visible !important;
   }
-  
+
   /* Fix image coverage on mobile - ensure images fully cover container */
   [class*="aspect-"] img {
     width: 100% !important;
@@ -292,21 +313,21 @@ header[class*="sticky"] {
     object-fit: cover !important;
     /* Preserve custom object-position from inline styles */
   }
-  
+
   /* Ensure the image container doesn't show background */
   [class*="aspect-"] {
     position: relative;
     overflow: hidden;
   }
-  
-  [class*="aspect-"] > img {
+
+  [class*="aspect-"]>img {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
   }
-  
+
   /* Exception: only allow transforms on elements that need it */
   [class*="sticky"],
   [class*="hover:scale"]:hover,

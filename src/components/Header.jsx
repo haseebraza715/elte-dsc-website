@@ -7,11 +7,11 @@ const Header = memo(function Header() {
   const navigate = useNavigate()
   const location = useLocation()
   const items = site.nav
-  
+
   const handleNavClick = useCallback((id) => {
     // Close menu immediately for better UX
     setOpen(false)
-    
+
     // Use requestAnimationFrame for smoother navigation
     requestAnimationFrame(() => {
       // Handle route-based navigation first
@@ -43,7 +43,7 @@ const Header = memo(function Header() {
       }
     })
   }, [navigate, location.pathname])
-  
+
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-br from-slate-50/95 via-white/95 to-sky-50/60 backdrop-blur-sm border-b border-slate-200/50 shadow-sm shadow-slate-900/5 overflow-hidden">
       {/* Decorative Background Elements - Optimized (reduced for performance) */}
@@ -51,17 +51,17 @@ const Header = memo(function Header() {
         {/* Reduced gradient orbs for better performance */}
         <div className="absolute -top-36 -left-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-sky-300/12 via-blue-300/10 to-indigo-300/6 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
         <div className="absolute -top-36 -right-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-blue-300/12 via-sky-300/10 to-cyan-300/6 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        
+
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-sky-50/12 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
       </div>
-      
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-xl p-1 -ml-1 transition-all duration-300"
             >
               <div className="relative w-11 h-11 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg shadow-sky-500/30 group-hover:shadow-xl group-hover:shadow-sky-500/40">

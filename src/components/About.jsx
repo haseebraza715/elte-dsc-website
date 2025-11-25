@@ -5,7 +5,7 @@ export default function About() {
   const focus = content.focus
   const navigate = useNavigate()
   const location = useLocation()
-  
+
   const handleContactClick = () => {
     if (location.pathname !== '/') {
       navigate('/#contact')
@@ -27,11 +27,11 @@ export default function About() {
         {/* Reduced to 2 gradient orbs for better performance */}
         <div className="absolute -top-36 -left-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-br from-sky-300/20 via-blue-300/15 to-indigo-300/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
         <div className="absolute -top-36 -right-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-bl from-blue-300/20 via-sky-300/15 to-cyan-300/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        
+
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
       </div>
-      
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         <div className="grid gap-12 lg:gap-16 lg:grid-cols-2 items-center">
           {/* Left Content */}
@@ -53,9 +53,9 @@ export default function About() {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <button 
+              <button
                 onClick={handleContactClick}
-                className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white px-8 py-3.5 rounded-xl font-semibold transition-colors duration-200 hover:shadow-xl hover:shadow-sky-500/30 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 overflow-hidden" 
+                className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white px-8 py-3.5 rounded-xl font-semibold transition-colors duration-200 hover:shadow-xl hover:shadow-sky-500/30 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 overflow-hidden"
               >
                 <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -63,14 +63,14 @@ export default function About() {
                 <span className="relative z-10">Contact us</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
               </button>
-              <a 
-                className="group relative inline-flex items-center justify-center gap-2 bg-white/90 backdrop-blur-sm border border-sky-600/60 text-sky-600 hover:bg-sky-50 hover:border-sky-600 px-8 py-3.5 rounded-xl font-semibold transition-colors duration-200 hover:shadow-lg hover:shadow-sky-500/10 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2" 
-                href="https://www.linkedin.com/company/dscelte" 
-                target="_blank" 
+              <a
+                className="group relative inline-flex items-center justify-center gap-2 bg-white/90 backdrop-blur-sm border border-sky-600/60 text-sky-600 hover:bg-sky-50 hover:border-sky-600 px-8 py-3.5 rounded-xl font-semibold transition-colors duration-200 hover:shadow-lg hover:shadow-sky-500/10 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+                href="https://www.linkedin.com/company/dscelte"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
                 <span>LinkedIn</span>
               </a>
@@ -84,11 +84,11 @@ export default function About() {
               {/* Large gradient orbs - reduced blur */}
               <div className="absolute -top-20 -left-20 w-[250px] h-[250px] md:w-[300px] md:h-[300px] bg-gradient-to-br from-sky-300/12 via-blue-300/10 to-indigo-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
               <div className="absolute -top-20 -right-20 w-[250px] h-[250px] md:w-[300px] md:h-[300px] bg-gradient-to-bl from-blue-300/12 via-sky-300/10 to-cyan-300/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-              
+
               {/* Subtle gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-sky-50/12 via-transparent to-transparent rounded-2xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
             </div>
-            
+
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-8">
                 <div className="relative w-12 h-12 bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-sky-500/40 group-hover:shadow-xl group-hover:shadow-sky-500/50 transition-all duration-300">
@@ -104,14 +104,14 @@ export default function About() {
               </div>
               <ul className="space-y-2.5">
                 {focus.map((item, index) => (
-                  <li 
-                    key={index} 
+                  <li
+                    key={index}
                     className="group relative flex items-start gap-4 p-4 bg-white/60 backdrop-blur-sm hover:bg-white/80 rounded-xl border border-slate-200/60 hover:border-sky-300/80 transition-colors duration-200 hover:shadow-lg hover:shadow-sky-500/10 cursor-default"
                     style={{ transitionDelay: `${index * 30}ms` }}
                   >
                     {/* Gradient accent line */}
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-sky-500 via-blue-500 to-indigo-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
+
                     <div className="relative w-8 h-8 bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 shadow-md shadow-sky-500/30 transition-transform duration-200 group-hover:scale-105">
                       <svg className="w-4 h-4 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
@@ -119,7 +119,7 @@ export default function About() {
                       <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent rounded-lg"></div>
                     </div>
                     <span className="text-slate-700 text-sm md:text-base font-medium leading-relaxed pt-1 group-hover:text-slate-900 transition-colors duration-300">{item}</span>
-                    
+
                     {/* Hover glow effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/0 via-sky-500/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </li>

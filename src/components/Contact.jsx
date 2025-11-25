@@ -6,11 +6,11 @@ export default function Contact() {
         {/* Reduced to 2 gradient orbs for better performance */}
         <div className="absolute -top-36 -left-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-br from-sky-300/20 via-blue-300/15 to-indigo-300/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translateZ(0)' }} />
         <div className="absolute -top-36 -right-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-bl from-blue-300/20 via-sky-300/15 to-cyan-300/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translateZ(0)' }} />
-        
+
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-transparent to-transparent" style={{ transform: 'translateZ(0)' }} />
       </div>
-      
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -44,11 +44,11 @@ export default function Contact() {
                   <p className="text-slate-600 text-sm md:text-base">Become a member today</p>
                 </div>
               </div>
-              
+
               <p className="text-slate-600 mb-8 leading-relaxed text-base md:text-lg">
                 Ready to dive into data science? Join our community and start your journey with hands-on projects, workshops, and networking opportunities.
               </p>
-              
+
               <div className="space-y-3 mb-8">
                 <div className="flex items-center text-slate-700 group">
                   <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 shadow-md shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
@@ -83,8 +83,8 @@ export default function Contact() {
                   <span className="text-sm md:text-base">Mentorship and career guidance</span>
                 </div>
               </div>
-              
-              <a 
+
+              <a
                 href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -114,11 +114,11 @@ export default function Contact() {
                   <p className="text-slate-600 text-sm md:text-base">We'd love to hear from you</p>
                 </div>
               </div>
-              
+
               <p className="text-slate-600 mb-8 leading-relaxed text-base md:text-lg">
                 Have questions or want to learn more about our activities? We'd love to hear from you and help you get started with your data science journey.
               </p>
-              
+
               <div className="space-y-4">
                 <div className="group flex items-start p-5 bg-gradient-to-r from-sky-50/80 to-blue-50/50 hover:from-sky-100/80 hover:to-blue-100/60 rounded-xl border border-sky-100/60 hover:border-sky-200 transition-all duration-300 hover:shadow-md hover:-translate-x-1">
                   <div className="w-11 h-11 bg-gradient-to-br from-sky-500 to-blue-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 shadow-md shadow-sky-500/30 group-hover:scale-110 transition-transform duration-300">
@@ -128,7 +128,7 @@ export default function Contact() {
                   </div>
                   <div className="pt-1">
                     <div className="font-semibold text-slate-900 mb-1 text-sm md:text-base">Email Us</div>
-                    <a 
+                    <a
                       href="mailto:ot7dee@inf.elte.hu"
                       className="text-sky-600 hover:text-sky-700 font-medium text-sm md:text-base transition-colors duration-200"
                     >
@@ -136,7 +136,7 @@ export default function Contact() {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="group flex items-start p-5 bg-gradient-to-r from-blue-50/80 to-indigo-50/50 hover:from-blue-100/80 hover:to-indigo-100/60 rounded-xl border border-blue-100/60 hover:border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-x-1">
                   <div className="w-11 h-11 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 shadow-md shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@ export default function Contact() {
                     <div className="text-slate-600 text-sm md:text-base">Room 0.825, South Building</div>
                   </div>
                 </div>
-                
+
                 <div className="group flex items-start p-5 bg-gradient-to-r from-indigo-50/80 to-purple-50/50 hover:from-indigo-100/80 hover:to-purple-100/60 rounded-xl border border-indigo-100/60 hover:border-indigo-200 transition-all duration-300 hover:shadow-md hover:-translate-x-1">
                   <div className="w-11 h-11 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 shadow-md shadow-indigo-500/30 group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
