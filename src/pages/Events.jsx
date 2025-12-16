@@ -84,21 +84,19 @@ export default function EventsPage() {
 
   return (
     <>
-      <SEO 
-        title="Events" 
+      <SEO
+        title="Events"
         description="Join us for weekly sessions and collaborative learning experiences. Explore our past events, workshops, and community gatherings at the Data Science Club."
         path="/event"
       />
-      
-      <main className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-sky-50/50 overflow-hidden">
-        {/* Enhanced Decorative Background Elements - Optimized (reduced for performance) */}
+
+      <main className="relative min-h-screen bg-[#0B1120] overflow-hidden">
+        {/* Enhanced Decorative Background Elements - Midnight Aurora */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translate3d(0, 0, 0)' }}>
-          {/* Reduced to 2 gradient orbs for better performance */}
-          <div className="absolute -top-48 -left-48 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-br from-sky-400/20 via-blue-400/15 to-indigo-400/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-          <div className="absolute -top-48 -right-48 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-bl from-blue-400/20 via-cyan-400/15 to-sky-400/10 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-          
-          {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-sky-50/20 via-blue-50/10 to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
+          <div className="absolute -top-48 -left-48 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-br from-violet-600/20 via-purple-600/15 to-indigo-600/10 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl opacity-50" style={{ transform: 'translate3d(0, 0, 0)' }} />
+          <div className="absolute -top-48 -right-48 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-bl from-cyan-600/20 via-sky-600/15 to-blue-600/10 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl opacity-50" style={{ transform: 'translate3d(0, 0, 0)' }} />
+
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0B1120] opacity-80" style={{ transform: 'translate3d(0, 0, 0)' }} />
         </div>
 
         <div className="relative z-10">
@@ -107,26 +105,26 @@ export default function EventsPage() {
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-20">
                 <div className="inline-block mb-6">
-                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-sky-100 to-blue-100 text-sky-700 rounded-full text-sm font-semibold border border-sky-200/50">
+                  <span className="inline-flex items-center px-4 py-2 bg-slate-800/80 text-cyan-400 rounded-full text-sm font-semibold border border-slate-700 backdrop-blur-sm">
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     Weekly Sessions
                   </span>
                 </div>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-white leading-tight">
                   Events
                 </h1>
-                <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
+                <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-light">
                   Join us for weekly sessions and collaborative learning experiences.
                 </p>
-                <div className="mt-8 flex items-center justify-center gap-6 text-slate-500">
+                <div className="mt-8 flex items-center justify-center gap-6 text-slate-400">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-sky-500"></div>
+                    <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.5)]"></div>
                     <span className="text-sm font-medium">Active Community</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                    <div className="w-2 h-2 rounded-full bg-violet-400 shadow-[0_0_8px_rgba(167,139,250,0.5)]"></div>
                     <span className="text-sm font-medium">Weekly Sessions</span>
                   </div>
                 </div>
@@ -135,9 +133,9 @@ export default function EventsPage() {
               {/* Enhanced Events Grid */}
               <div className="grid gap-8 md:grid-cols-2 mb-12 md:mb-16">
                 {events.map((event, index) => (
-                  <div 
-                    key={event.title} 
-                    className="relative bg-gradient-to-br from-white/90 via-slate-50/80 to-sky-50/60 border border-slate-200/80 rounded-2xl p-8 hover:shadow-2xl hover:border-sky-300/60 transition-shadow duration-200 overflow-hidden group backdrop-blur-sm"
+                  <div
+                    key={event.title}
+                    className="relative bg-[#1E293B]/60 border border-slate-700/50 rounded-2xl p-8 hover:shadow-xl hover:shadow-violet-500/10 hover:border-violet-500/30 transition-all duration-300 overflow-hidden group backdrop-blur-md"
                     style={{
                       animationDelay: `${index * 100}ms`,
                       animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards'
@@ -145,31 +143,30 @@ export default function EventsPage() {
                   >
                     {/* Enhanced gradient background */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl" style={{ transform: 'translate3d(0, 0, 0)' }}>
-                      <div className="absolute -top-20 -left-20 w-[250px] h-[250px] md:w-[300px] md:h-[300px] bg-gradient-to-br from-sky-400/15 via-blue-400/12 to-indigo-400/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-                      <div className="absolute -top-20 -right-20 w-[250px] h-[250px] md:w-[300px] md:h-[300px] bg-gradient-to-bl from-blue-400/15 via-cyan-400/12 to-teal-400/8 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-                      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-sky-50/25 via-transparent to-transparent rounded-2xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+                      <div className="absolute -top-20 -left-20 w-[250px] h-[250px] md:w-[300px] md:h-[300px] bg-gradient-to-br from-violet-600/10 via-purple-600/5 to-transparent rounded-full mix-blend-screen filter blur-2xl md:blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ transform: 'translate3d(0, 0, 0)' }} />
+                      <div className="absolute -top-20 -right-20 w-[250px] h-[250px] md:w-[300px] md:h-[300px] bg-gradient-to-bl from-cyan-600/10 via-sky-600/5 to-transparent rounded-full mix-blend-screen filter blur-2xl md:blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ transform: 'translate3d(0, 0, 0)' }} />
                     </div>
-                    
+
                     <div className="relative z-10">
                       <div className="flex items-start justify-between mb-6">
                         <div className="flex-1">
-                          <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-sky-100 to-blue-100 text-sky-700 rounded-lg text-sm font-semibold mb-4 border border-sky-200/50">
+                          <div className="inline-flex items-center px-3 py-1 bg-slate-800 text-cyan-400 rounded-lg text-sm font-semibold mb-4 border border-slate-700">
                             {event.date}
                           </div>
-                          <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-sky-700 transition-colors duration-300">
+                          <h3 className="text-2xl font-display font-bold text-white mb-4 leading-tight group-hover:text-cyan-400 transition-colors duration-300">
                             {event.title}
                           </h3>
                         </div>
                         <div className="ml-4 flex-shrink-0">
                           <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                            <div className="relative text-sm text-white bg-gradient-to-r from-sky-500 to-blue-600 px-5 py-2.5 rounded-full font-bold shadow-lg group-hover:shadow-xl group-hover:shadow-sky-500/50 transition-shadow duration-200">
+                            <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                            <div className="relative text-sm text-white bg-slate-800 border border-slate-700 px-5 py-2.5 rounded-full font-bold shadow-lg group-hover:border-violet-500/50 transition-colors duration-200">
                               Week {index + 1}
                             </div>
                           </div>
                         </div>
                       </div>
-                      <p className="text-slate-600 leading-relaxed text-base">{event.desc}</p>
+                      <p className="text-slate-400 leading-relaxed text-base">{event.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -177,9 +174,9 @@ export default function EventsPage() {
 
               {/* Enhanced CTA Button */}
               <div className="text-center mb-12 md:mb-16">
-                <button 
+                <button
                   onClick={handleContactClick}
-                  className="group relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600 hover:from-sky-700 hover:via-blue-700 hover:to-indigo-700 text-white rounded-2xl font-bold text-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-sky-500/50 hover:shadow-2xl hover:shadow-sky-500/50 active:scale-[0.98] overflow-hidden"
+                  className="group relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-violet-600 via-purple-600 to-cyan-600 hover:from-violet-500 hover:via-purple-500 hover:to-cyan-500 text-white rounded-2xl font-bold text-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/25 active:scale-[0.98] overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     Join Our Events
@@ -187,41 +184,41 @@ export default function EventsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
                 </button>
               </div>
             </div>
           </section>
 
           {/* Enhanced Gallery Section */}
-          <section className="relative pt-12 md:pt-16 pb-16 md:pb-24 border-t border-slate-200/60 bg-gradient-to-b from-transparent via-white/20 to-transparent">
+          <section className="relative pt-12 md:pt-16 pb-16 md:pb-24 border-t border-slate-700/50 bg-[#0B1120]">
             {/* Section background gradient */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ transform: 'translate3d(0, 0, 0)' }}>
-              <div className="absolute top-0 left-1/4 w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-gradient-to-br from-sky-300/12 via-blue-300/8 to-indigo-300/6 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-              <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-gradient-to-tl from-cyan-300/12 via-teal-300/8 to-emerald-300/6 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+              <div className="absolute top-0 left-1/4 w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-gradient-to-br from-violet-600/10 via-purple-600/5 to-transparent rounded-full mix-blend-screen filter blur-3xl opacity-30" style={{ transform: 'translate3d(0, 0, 0)' }} />
+              <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-gradient-to-tl from-cyan-600/10 via-sky-600/5 to-transparent rounded-full mix-blend-screen filter blur-3xl opacity-30" style={{ transform: 'translate3d(0, 0, 0)' }} />
             </div>
 
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <div className="inline-block mb-4">
-                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 rounded-full text-sm font-semibold border border-blue-200/50">
+                  <span className="inline-flex items-center px-4 py-2 bg-slate-800/80 text-violet-400 rounded-full text-sm font-semibold border border-slate-700">
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     Photo Gallery
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-white text-transparent">
                   Event Gallery
                 </h2>
-                <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
                   Relive the moments from our past events, workshops, and community gatherings
                 </p>
                 <div className="mt-6 flex items-center justify-center gap-2 text-slate-500">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  <span className="text-sm font-semibold">{eventImages.length} Photos</span>
+                  <span className="text-sm font-semibold text-slate-400">{eventImages.length} Photos</span>
                 </div>
               </div>
 
@@ -232,7 +229,7 @@ export default function EventsPage() {
                   return (
                     <div
                       key={imagePath}
-                      className="group relative aspect-square overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 border border-slate-200/80 cursor-pointer transition-shadow duration-200 hover:shadow-xl md:hover:shadow-2xl hover:shadow-sky-500/40 hover:border-sky-400/60"
+                      className="group relative aspect-square overflow-hidden rounded-xl sm:rounded-2xl bg-[#1E293B] border border-slate-700/50 cursor-pointer transition-all duration-300 hover:shadow-xl md:hover:shadow-2xl hover:shadow-cyan-500/20 hover:border-cyan-500/40"
                       onClick={() => handleImageClick(imagePath)}
                       style={{
                         animationDelay: `${index * 50}ms`,
@@ -242,28 +239,27 @@ export default function EventsPage() {
                     >
                       {/* Enhanced shimmer loading effect */}
                       {!isLoaded && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200 animate-shimmer" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 animate-shimmer" />
                       )}
 
                       {/* Enhanced gradient overlay on hover - disabled on mobile */}
                       <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                      
+
                       {/* Image with smooth loading and optimization */}
                       <img
                         src={`/${imagePath}`}
                         alt={`Event photo ${index + 1}`}
-                        className={`w-full h-full object-cover transition-opacity duration-300 ${
-                          isLoaded 
-                            ? 'opacity-100' 
-                            : 'opacity-0'
-                        }`}
+                        className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded
+                          ? 'opacity-100'
+                          : 'opacity-0'
+                          }`}
                         onLoad={() => handleImageLoad(imagePath)}
                         loading="lazy"
                         decoding="async"
                         fetchpriority={index < 4 ? "high" : "low"}
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
-                      
+
                       {/* Enhanced hover overlay content - disabled on mobile */}
                       <div className="hidden md:flex absolute inset-0 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
                         <div className="bg-white/95 backdrop-blur-md rounded-full p-5 shadow-2xl border-2 border-white/50">

@@ -17,14 +17,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <SEO />
-      <div className="bg-gradient-to-br from-slate-50 via-white to-sky-50/60 min-h-screen flex flex-col">
+      <div className="bg-[#0B1120] text-slate-50 min-h-screen flex flex-col relative overflow-hidden">
+        {/* Optional: Add a subtle background glow effect */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-violet-900/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
+
         <Header />
-        <div className="flex-1">
+        <div className="flex-1 relative z-10">
           <Suspense fallback={
             <div className="flex items-center justify-center min-h-[60vh]">
               <div className="text-center">
-                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-sky-600 mb-4"></div>
-                <p className="text-slate-600">Loading...</p>
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-violet-500 mb-4"></div>
+                <p className="text-slate-400">Loading...</p>
               </div>
             </div>
           }>

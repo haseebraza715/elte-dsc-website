@@ -45,12 +45,12 @@ const Header = memo(function Header() {
   }, [navigate, location.pathname])
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-br from-slate-50/95 via-white/95 to-sky-50/60 backdrop-blur-sm border-b border-slate-200/50 shadow-sm shadow-slate-900/5 overflow-hidden">
+    <header className="sticky top-0 z-50 bg-[#0B1120]/80 backdrop-blur-md border-b border-slate-700/50 shadow-sm shadow-black/20 overflow-hidden">
       {/* Decorative Background Elements - Optimized (reduced for performance) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translate3d(0, 0, 0)' }}>
         {/* Reduced gradient orbs for better performance */}
-        <div className="absolute -top-36 -left-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-sky-300/12 via-blue-300/10 to-indigo-300/6 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        <div className="absolute -top-36 -right-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-blue-300/12 via-sky-300/10 to-cyan-300/6 rounded-full mix-blend-multiply filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute -top-36 -left-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-violet-500/10 via-purple-500/5 to-indigo-500/5 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="absolute -top-36 -right-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-cyan-500/10 via-sky-500/5 to-blue-500/5 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
 
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-sky-50/12 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
@@ -62,14 +62,14 @@ const Header = memo(function Header() {
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-xl p-1 -ml-1 transition-all duration-300"
+              className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-violet-500 rounded-xl p-1 -ml-1 transition-all duration-300"
             >
-              <div className="relative w-11 h-11 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg shadow-sky-500/30 group-hover:shadow-xl group-hover:shadow-sky-500/40">
+              <div className="relative w-11 h-11 bg-gradient-to-br from-violet-600 to-cyan-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg shadow-violet-500/20 group-hover:shadow-xl group-hover:shadow-violet-500/30">
                 <svg className="w-6 h-6 text-white transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent group-hover:from-sky-600 group-hover:to-blue-600 transition-all duration-200">
+              <span className="text-xl sm:text-2xl font-display font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-violet-400 group-hover:to-cyan-400 transition-all duration-200">
                 {site.name}
               </span>
             </Link>
@@ -81,17 +81,17 @@ const Header = memo(function Header() {
               <button
                 key={id}
                 onClick={() => handleNavClick(id)}
-                className="relative text-slate-600 hover:text-sky-600 px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-sky-50/80 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 group"
+                className="relative text-slate-300 hover:text-white px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-slate-800/50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-violet-500 group"
               >
                 <span className="relative z-10">{id.charAt(0).toUpperCase() + id.slice(1)}</span>
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full group-hover:w-3/4 transition-width duration-200"></span>
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full group-hover:w-3/4 transition-width duration-200"></span>
               </button>
             ))}
             <a
               href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 relative px-6 py-2.5 bg-gradient-to-r from-sky-600 to-blue-600 text-white rounded-xl text-sm font-semibold transition-colors duration-200 hover:from-sky-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 active:scale-[0.98] overflow-hidden group"
+              className="ml-2 relative px-6 py-2.5 bg-gradient-to-r from-violet-600 to-cyan-600 text-white rounded-xl text-sm font-semibold transition-colors duration-200 hover:from-violet-500 hover:to-cyan-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-[#0B1120] shadow-lg shadow-violet-500/20 hover:shadow-xl hover:shadow-violet-500/30 active:scale-[0.98] overflow-hidden group"
             >
               <span className="relative z-10 flex items-center gap-1.5">
                 Join Now
@@ -107,7 +107,7 @@ const Header = memo(function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setOpen(!open)}
-              className="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-sky-600 hover:bg-sky-50/80 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors duration-200 active:scale-95"
+              className="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-colors duration-200 active:scale-95"
               aria-expanded={open}
               aria-label="Toggle menu"
             >
@@ -128,13 +128,13 @@ const Header = memo(function Header() {
 
       {/* Mobile Navigation */}
       <div className={`md:hidden overflow-hidden transition-all duration-200 ease-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="bg-gradient-to-br from-slate-50/98 via-white/98 to-sky-50/60 backdrop-blur-sm border-t border-slate-200/60 shadow-xl relative px-4 pt-4 pb-4 space-y-1.5 flex flex-col overflow-hidden">
+        <div className="bg-[#0B1120]/95 backdrop-blur-md border-t border-slate-700/50 shadow-xl relative px-4 pt-4 pb-4 space-y-1.5 flex flex-col overflow-hidden">
           {/* Mobile gradient orbs - Removed for better mobile performance */}
           {items.map((id, index) => (
             <button
               key={id}
               onClick={() => handleNavClick(id)}
-              className={`relative z-10 block w-full text-left px-4 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50/90 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 active:bg-sky-100 ${open ? 'opacity-100' : 'opacity-0'}`}
+              className={`relative z-10 block w-full text-left px-4 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-violet-500 active:bg-slate-800 ${open ? 'opacity-100' : 'opacity-0'}`}
               style={{ transitionDelay: open ? `${index * 30}ms` : '0ms' }}
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
@@ -145,7 +145,7 @@ const Header = memo(function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className={`relative z-10 inline-flex items-center w-fit text-left bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-2 shadow-sm shadow-sky-500/30 active:bg-sky-700 ${open ? 'opacity-100' : 'opacity-0'}`}
+            className={`relative z-10 inline-flex items-center w-fit text-left bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-[#0B1120] mt-2 shadow-sm shadow-violet-500/30 active:bg-violet-700 ${open ? 'opacity-100' : 'opacity-0'}`}
             style={{ transitionDelay: open ? `${items.length * 30}ms` : '0ms' }}
           >
             <span className="relative z-10 flex items-center gap-1">
