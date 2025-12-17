@@ -4,7 +4,10 @@ import ProjectsComponent from '../components/Projects.jsx'
 
 export default function ProjectsPage() {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Use requestAnimationFrame for smoother scroll
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    })
   }, [])
   
   return (

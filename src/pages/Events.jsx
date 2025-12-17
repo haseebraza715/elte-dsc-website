@@ -21,7 +21,10 @@ export default function EventsPage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Use requestAnimationFrame for smoother scroll
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    })
   }, [])
 
   // Keyboard navigation for lightbox
@@ -72,14 +75,26 @@ export default function EventsPage() {
     setLoadedImages(prev => new Set([...prev, imagePath]))
   }
 
+  // Cache header height
+  const getHeaderHeight = () => {
+    if (typeof window === 'undefined') return 80
+    return window.innerWidth >= 640 ? 80 : 64
+  }
+
   const handleContactClick = () => {
     navigate('/#contact')
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       const element = document.getElementById('contact')
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        const headerHeight = getHeaderHeight()
+        const elementTop = element.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = Math.max(0, elementTop - headerHeight)
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
       }
-    }, 100)
+    })
   }
 
   return (
@@ -258,6 +273,8 @@ export default function EventsPage() {
                         decoding="async"
                         fetchpriority={index < 4 ? "high" : "low"}
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        width="800"
+                        height="800"
                       />
 
                       {/* Enhanced hover overlay content - disabled on mobile */}

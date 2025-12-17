@@ -46,13 +46,14 @@
   <meta name="twitter:image" content="https://datasciencelte.netlify.app/og-image.png" />
 
   <!-- Performance Hints -->
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="preconnect" href="https://www.linkedin.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.linkedin.com" />
   <link rel="dns-prefetch" href="https://forms.cloud.microsoft.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <!-- Load fonts with font-display: swap for better performance -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Mobile Optimizations -->
   <meta name="mobile-web-app-capable" content="yes" />
@@ -62,6 +63,8 @@
 
   <!-- Preload Critical Resources -->
   <link rel="modulepreload" href="/src/main.jsx" />
+  <!-- Preload hero image for faster LCP -->
+  <link rel="preload" as="image" href="/src/images/hero1.jpg" fetchpriority="high" />
 
   <!-- Additional SEO -->
   <meta name="geo.region" content="HU-BU" />

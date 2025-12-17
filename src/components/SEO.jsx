@@ -71,7 +71,44 @@ const SEO = memo(function SEO({ title, description, path = '', type = 'website',
     updateMeta('meta[name="twitter:title"]', 'content', pageTitle)
     updateMeta('meta[name="twitter:description"]', 'content', pageDescription)
     updateMeta('meta[name="twitter:image"]', 'content', pageImage)
-  }, [pageTitle, pageDescription, fullUrl, path, location.pathname, pageImage, pageKeywords, type])
+
+    // Add breadcrumb structured data
+    const breadcrumbData = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteData.url
+        }
+      ]
+    }
+
+    // Add page-specific breadcrumb
+    if (title && title !== 'Home') {
+      breadcrumbData.itemListElement.push({
+        '@type': 'ListItem',
+        position: 2,
+        name: title,
+        item: fullUrl
+      })
+    }
+
+    // Remove old breadcrumb script if exists
+    const oldBreadcrumb = document.querySelector('script[data-breadcrumb]')
+    if (oldBreadcrumb) {
+      oldBreadcrumb.remove()
+    }
+
+    // Add new breadcrumb script
+    const breadcrumbScript = document.createElement('script')
+    breadcrumbScript.type = 'application/ld+json'
+    breadcrumbScript.setAttribute('data-breadcrumb', 'true')
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbData)
+    document.head.appendChild(breadcrumbScript)
+  }, [pageTitle, pageDescription, fullUrl, path, location.pathname, pageImage, pageKeywords, type, title])
 
   return null
 })

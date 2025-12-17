@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from 'react'
+import { useEffect, Suspense, lazy, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
 
@@ -7,28 +7,107 @@ const Welcome = lazy(() => import('../components/Welcome.jsx'))
 const About = lazy(() => import('../components/About.jsx'))
 const Contact = lazy(() => import('../components/Contact.jsx'))
 
+// Cache header height to avoid repeated calculations
+const getHeaderHeight = () => {
+  if (typeof window === 'undefined') return 80
+  return window.innerWidth >= 640 ? 80 : 64
+}
+
 export default function Home() {
   const location = useLocation()
-  
+  const headerHeightRef = useRef(getHeaderHeight())
+
   useEffect(() => {
-    // If there's a hash in the URL, scroll to that element
-    if (location.hash) {
-      const element = document.querySelector(location.hash)
+    // Update header height on resize (throttled)
+    let timeoutId
+    const handleResize = () => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        headerHeightRef.current = getHeaderHeight()
+      }, 150)
+    }
+    window.addEventListener('resize', handleResize, { passive: true })
+
+    // Optimized scroll function with element check
+    const scrollToElement = (elementId, retries = 0) => {
+      // Max retries to prevent infinite loops (approx 2 seconds)
+      if (retries > 40) return
+
+      const element = document.getElementById(elementId)
+
       if (element) {
+        requestAnimationFrame(() => {
+          const headerHeight = headerHeightRef.current
+          const elementTop = element.getBoundingClientRect().top + window.pageYOffset
+          const offsetPosition = Math.max(0, elementTop - headerHeight)
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
+        })
+      } else {
+        // Retry if element not found (waiting for lazy load)
+        setTimeout(() => scrollToElement(elementId, retries + 1), 50)
+      }
+    }
+
+    // Handle hash navigation - always check window.location.hash for direct URL access
+    const handleHashNavigation = () => {
+      const hash = window.location.hash
+      if (hash && hash.length > 1) {
+        const hashId = hash.substring(1) // Remove #
+        // Delay to allow components to render (especially lazy loaded ones)
+        setTimeout(() => scrollToElement(hashId), 200)
+      } else {
+        // No hash - scroll to top (home section)
         setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' })
+          const homeElement = document.getElementById('home')
+          if (homeElement) {
+            requestAnimationFrame(() => {
+              const headerHeight = headerHeightRef.current
+              const elementTop = homeElement.getBoundingClientRect().top + window.pageYOffset
+              const offsetPosition = Math.max(0, elementTop - headerHeight)
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              })
+            })
+          } else {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            })
+          }
         }, 100)
       }
-    } else {
-      // Otherwise scroll to top
-      window.scrollTo(0, 0)
     }
-  }, [location])
-  
+
+    // Handle hash changes (browser back/forward, direct URL access)
+    const handleHashChange = () => {
+      handleHashNavigation()
+    }
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange)
+
+    // Always check window.location.hash (works for direct URL access and navigation)
+    // Use a small delay to ensure components are rendered
+    const navigationTimeout = setTimeout(() => {
+      handleHashNavigation()
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+      clearTimeout(navigationTimeout)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('hashchange', handleHashChange)
+    }
+  }, [location.pathname])
+
   return (
     <main id="main">
-      <SEO 
-        title="Home" 
+      <SEO
+        title="Home"
         description="Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning."
         path="/"
       />

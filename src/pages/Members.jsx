@@ -4,7 +4,10 @@ import Members from '../components/Members.jsx'
 
 export default function MembersPage() {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Use requestAnimationFrame for smoother scroll
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    })
   }, [])
   
   return (

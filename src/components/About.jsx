@@ -6,17 +6,43 @@ export default function About() {
   const navigate = useNavigate()
   const location = useLocation()
 
+  // Cache header height
+  const getHeaderHeight = () => {
+    if (typeof window === 'undefined') return 80
+    return window.innerWidth >= 640 ? 80 : 64
+  }
+
   const handleContactClick = () => {
     if (location.pathname !== '/') {
       navigate('/#contact')
-    } else {
-      navigate('/#contact', { replace: true })
+      // Wait for navigation, then scroll
       setTimeout(() => {
         const element = document.getElementById('contact')
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
+          const headerHeight = getHeaderHeight()
+          const elementTop = element.getBoundingClientRect().top + window.pageYOffset
+          const offsetPosition = Math.max(0, elementTop - headerHeight)
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
         }
-      }, 50)
+      }, 200)
+    } else {
+      // Already on home page, update hash and scroll
+      window.history.replaceState(null, '', '/#contact')
+      requestAnimationFrame(() => {
+        const element = document.getElementById('contact')
+        if (element) {
+          const headerHeight = getHeaderHeight()
+          const elementTop = element.getBoundingClientRect().top + window.pageYOffset
+          const offsetPosition = Math.max(0, elementTop - headerHeight)
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
+        }
+      })
     }
   }
 

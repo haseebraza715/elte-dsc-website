@@ -2,8 +2,8 @@ import './index.css'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import SEO from './components/SEO.jsx'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Suspense, lazy } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { Suspense, lazy, useEffect } from 'react'
 
 // Lazy load all pages including Home for better code splitting
 const Home = lazy(() => import('./pages/Home.jsx'))
@@ -13,17 +13,40 @@ const Members = lazy(() => import('./pages/Members.jsx'))
 const Events = lazy(() => import('./pages/Events.jsx'))
 const Projects = lazy(() => import('./pages/Projects.jsx'))
 
+// Component to handle hash navigation on route changes
+function HashHandler() {
+  const location = useLocation()
+
+  useEffect(() => {
+    // When navigating to home page, preserve hash if present
+    if (location.pathname === '/') {
+      // Hash navigation is handled by Home component
+      // This component just ensures we're on the right route
+      return
+    }
+    
+    // If navigating away from home and there's a hash, clear it
+    // (hash sections only exist on home page)
+    if (location.pathname !== '/' && window.location.hash) {
+      window.history.replaceState(null, '', location.pathname)
+    }
+  }, [location.pathname])
+
+  return null
+}
+
 export default function App() {
   return (
     <BrowserRouter>
+      <HashHandler />
       <SEO />
-      <div className="bg-[#0B1120] text-slate-50 min-h-screen flex flex-col relative overflow-hidden">
+      <div className="bg-[#0B1120] text-slate-50 min-h-screen flex flex-col relative w-full overflow-x-hidden">
         {/* Optional: Add a subtle background glow effect */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-violet-900/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-violet-900/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
 
         <Header />
-        <div className="flex-1 relative z-10">
+        <main className="flex-1 relative z-10 pt-16 sm:pt-20 w-full">
           <Suspense fallback={
             <div className="flex items-center justify-center min-h-[60vh]">
               <div className="text-center">
@@ -41,7 +64,7 @@ export default function App() {
               <Route path="/project" element={<Projects />} />
             </Routes>
           </Suspense>
-        </div>
+        </main>
         <Footer />
       </div>
     </BrowserRouter>

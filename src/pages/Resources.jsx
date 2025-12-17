@@ -4,7 +4,10 @@ import Resources from '../components/Resources.jsx'
 
 export default function ResourcesPage() {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Use requestAnimationFrame for smoother scroll
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    })
   }, [])
   
   return (

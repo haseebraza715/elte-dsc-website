@@ -4,7 +4,10 @@ import WeeklyChallenges from '../components/WeeklyChallenges.jsx'
 
 export default function Challenges() {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Use requestAnimationFrame for smoother scroll
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    })
   }, [])
   
   return (

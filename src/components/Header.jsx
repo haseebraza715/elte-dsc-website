@@ -1,59 +1,130 @@
-import { useState, memo, useCallback } from 'react'
+import { useState, memo, useCallback, useRef, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import site from '../content/site.json'
+
+// Cache header height to avoid repeated calculations
+const getHeaderHeight = () => {
+  if (typeof window === 'undefined') return 80
+  return window.innerWidth >= 640 ? 80 : 64
+}
 
 const Header = memo(function Header() {
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
   const items = site.nav
+  const headerHeightRef = useRef(getHeaderHeight())
+
+  // Update header height on resize (throttled)
+  useEffect(() => {
+    let timeoutId
+    const handleResize = () => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        headerHeightRef.current = getHeaderHeight()
+      }, 150)
+    }
+    window.addEventListener('resize', handleResize, { passive: true })
+    return () => {
+      clearTimeout(timeoutId)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  // Optimized scroll function using rAF and avoiding layout thrashing
+  const scrollToElement = useCallback((elementId, retries = 0) => {
+    // Max retries to prevent infinite loops
+    if (retries > 20) {
+      console.warn(`Element ${elementId} not found after ${retries} retries`)
+      return
+    }
+
+    requestAnimationFrame(() => {
+      const element = document.getElementById(elementId)
+      if (!element) {
+        // Retry if element not found (waiting for lazy load)
+        setTimeout(() => scrollToElement(elementId, retries + 1), 50)
+        return
+      }
+      
+      // Use scroll-margin-top CSS instead of manual calculation when possible
+      // Fallback to manual scroll for better control
+      const headerHeight = headerHeightRef.current
+      const elementTop = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = Math.max(0, elementTop - headerHeight)
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    })
+  }, [])
 
   const handleNavClick = useCallback((id) => {
     // Close menu immediately for better UX
     setOpen(false)
 
-    // Use requestAnimationFrame for smoother navigation
-    requestAnimationFrame(() => {
-      // Handle route-based navigation first
-      if (id === 'home') {
+    // Handle route-based navigation first
+    if (id === 'home') {
+      if (location.pathname !== '/') {
         navigate('/')
-      } else if (id === 'challenges') {
-        navigate('/challenges')
-      } else if (id === 'resources') {
-        navigate('/resources')
-      } else if (id === 'members') {
-        navigate('/members')
-      } else if (id === 'events') {
-        navigate('/event')
-      } else if (id === 'projects') {
-        navigate('/project')
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          scrollToElement('home')
+          // Update URL hash
+          window.history.replaceState(null, '', '/')
+        }, 100)
       } else {
-        // For other sections (about, contact), navigate to home with hash
-        if (location.pathname !== '/') {
-          navigate(`/#${id}`)
-        } else {
-          navigate(`/#${id}`, { replace: true })
-          requestAnimationFrame(() => {
-            const element = document.getElementById(id)
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth' })
-            }
-          })
-        }
+        // Already on home page, scroll to home section and clear hash
+        scrollToElement('home')
+        window.history.replaceState(null, '', '/')
       }
-    })
-  }, [navigate, location.pathname])
+    } else if (id === 'challenges') {
+      navigate('/challenges')
+    } else if (id === 'resources') {
+      navigate('/resources')
+    } else if (id === 'members') {
+      navigate('/members')
+    } else if (id === 'events') {
+      navigate('/event')
+    } else if (id === 'projects') {
+      navigate('/project')
+    } else {
+      // For other sections (about, contact), navigate to home first if needed
+      if (location.pathname !== '/') {
+        navigate(`/#${id}`)
+        // Wait for navigation, then scroll to the section
+        setTimeout(() => {
+          scrollToElement(id)
+        }, 300)
+      } else {
+        // Already on home page - update hash and scroll
+        const newHash = `#${id}`
+        
+        // Update the hash - this naturally triggers hashchange event
+        // Use requestAnimationFrame to ensure smooth scroll control
+        requestAnimationFrame(() => {
+          if (window.location.hash !== newHash) {
+            window.location.hash = newHash
+          }
+          // Scroll with retry logic - the hashchange will also trigger Home's handler
+          // But we scroll directly here too for immediate response
+          scrollToElement(id)
+        })
+      }
+    }
+  }, [navigate, location.pathname, scrollToElement])
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0B1120]/80 backdrop-blur-md border-b border-slate-700/50 shadow-sm shadow-black/20 overflow-hidden">
-      {/* Decorative Background Elements - Optimized (reduced for performance) */}
+    <header className="fixed w-full start-0 top-0 z-50 bg-[#0B1120]/95 md:bg-[#0B1120]/80 backdrop-blur-sm md:backdrop-blur-md border-b border-slate-700/50 shadow-sm shadow-black/20 overflow-hidden">
+      {/* Decorative Background Elements - Optimized for mobile performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translate3d(0, 0, 0)' }}>
-        {/* Reduced gradient orbs for better performance */}
-        <div className="absolute -top-36 -left-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-violet-500/10 via-purple-500/5 to-indigo-500/5 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        <div className="absolute -top-36 -right-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-cyan-500/10 via-sky-500/5 to-blue-500/5 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        {/* Reduced/removed gradient orbs on mobile for better performance */}
+        <div className="hidden md:block absolute -top-36 -left-36 w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-gradient-to-br from-violet-500/8 via-purple-500/4 to-indigo-500/3 rounded-full mix-blend-screen filter blur-xl md:blur-2xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        <div className="hidden md:block absolute -top-36 -right-36 w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-gradient-to-bl from-cyan-500/8 via-sky-500/4 to-blue-500/3 rounded-full mix-blend-screen filter blur-xl md:blur-2xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
 
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/12 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
+        {/* Subtle gradient overlay - lighter on mobile */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/8 md:from-sky-50/12 via-transparent to-transparent" style={{ transform: 'translate3d(0, 0, 0)' }} />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -128,7 +199,7 @@ const Header = memo(function Header() {
 
       {/* Mobile Navigation */}
       <div className={`md:hidden overflow-hidden transition-all duration-200 ease-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="bg-[#0B1120]/95 backdrop-blur-md border-t border-slate-700/50 shadow-xl relative px-4 pt-4 pb-4 space-y-1.5 flex flex-col overflow-hidden">
+        <div className="bg-[#0B1120]/98 md:bg-[#0B1120]/95 backdrop-blur-sm md:backdrop-blur-md border-t border-slate-700/50 shadow-xl relative px-4 pt-4 pb-4 space-y-1.5 flex flex-col overflow-hidden">
           {/* Mobile gradient orbs - Removed for better mobile performance */}
           {items.map((id, index) => (
             <button

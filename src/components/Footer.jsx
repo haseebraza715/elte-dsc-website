@@ -19,34 +19,24 @@ const Footer = memo(function Footer() {
   }, [])
 
   return (
-    <footer className="relative bg-[#0B1120] border-t border-slate-700/50 overflow-hidden">
-      {/* Decorative Background Elements - Optimized (reduced for performance) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translate3d(0, 0, 0)' }}>
-        {/* Reduced to 2 gradient orbs for better performance */}
-        <div className="absolute -top-36 -left-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-violet-500/10 via-purple-500/5 to-indigo-500/5 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-        <div className="absolute -top-36 -right-36 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-cyan-500/10 via-sky-500/5 to-blue-500/5 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translate3d(0, 0, 0)' }} />
-
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0B1120]/50" style={{ transform: 'translate3d(0, 0, 0)' }} />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12 lg:py-14">
+    <footer className="bg-[#0B1120] border-t border-slate-700/50 w-full overflow-x-hidden mt-auto">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-10">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 gap-6 md:gap-10 md:grid-cols-3 mb-8 md:mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-4 md:mb-6">
           {/* Club Info */}
-          <div className="col-span-2 md:col-span-1 space-y-4">
+          <div className="space-y-3 min-w-0">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-violet-600 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/20">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-violet-600 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/20 flex-shrink-0">
                 <svg className="w-5 h-5 md:w-7 md:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white">{site.name}</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white truncate">{site.name}</h3>
             </div>
-            <p className="text-slate-400 leading-relaxed text-sm md:text-base">
+            <p className="text-slate-400 leading-relaxed text-sm md:text-base break-words">
               Empowering students at ELTE with hands-on data science projects and collaborative learning.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 flex-wrap">
               <a
                 href={site.social.linkedin}
                 target="_blank"
@@ -71,14 +61,14 @@ const Footer = memo(function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-3 min-w-0">
             <h4 className="text-base md:text-lg font-semibold text-white">Quick Links</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {site.nav.map((item) => (
                 <li key={item}>
                   <Link
                     to={handleFooterLink(item)}
-                    className="text-slate-400 hover:text-violet-400 transition-colors duration-200 inline-block"
+                    className="text-slate-400 hover:text-violet-400 transition-colors duration-200 inline-block break-words"
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                   </Link>
@@ -88,18 +78,18 @@ const Footer = memo(function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-4">
+          <div className="space-y-3 min-w-0">
             <h4 className="text-base md:text-lg font-semibold text-white">Contact</h4>
-            <div className="space-y-3 md:space-y-4">
+            <div className="space-y-2.5 md:space-y-3">
               <div className="flex items-start space-x-3">
                 <svg className="w-5 h-5 text-violet-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <div>
+                <div className="min-w-0 flex-1">
                   <div className="text-slate-400 text-sm mb-1">Email</div>
                   <a
                     href={site.social.email}
-                    className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm"
+                    className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm break-all"
                   >
                     {site.contactEmail}
                   </a>
@@ -110,10 +100,10 @@ const Footer = memo(function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <div>
+                <div className="min-w-0 flex-1">
                   <div className="text-slate-400 text-sm mb-1">Location</div>
-                  <div className="text-slate-300 text-sm">Eötvös Loránd University</div>
-                  <div className="text-slate-400 text-sm">Room 0.825, South Building</div>
+                  <div className="text-slate-300 text-sm break-words">Eötvös Loránd University</div>
+                  <div className="text-slate-400 text-sm break-words">Room 0.825, South Building</div>
                 </div>
               </div>
             </div>
@@ -121,12 +111,12 @@ const Footer = memo(function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 md:pt-8 border-t border-slate-700/50">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0">
-            <div className="text-slate-500 text-sm">
+        <div className="pt-4 md:pt-5 border-t border-slate-700/50">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-2 md:space-y-0">
+            <div className="text-slate-500 text-sm break-words">
               © {new Date().getFullYear()} {site.name}. All rights reserved.
             </div>
-            <div className="text-slate-500 text-sm">
+            <div className="text-slate-500 text-sm break-words">
               Made with <span className="text-red-500">❤️</span> for the ELTE Data Science Community
             </div>
           </div>

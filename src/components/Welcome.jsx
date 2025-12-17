@@ -25,16 +25,46 @@ export default function Welcome() {
     return () => clearInterval(interval)
   }, [])
 
+  // Cache header height
+  const getHeaderHeight = () => {
+    if (typeof window === 'undefined') return 80
+    return window.innerWidth >= 640 ? 80 : 64
+  }
+
   const handleCtaClick = (href) => {
     if (href.startsWith('#')) {
       // Handle hash links (like #contact)
+      const hashId = href.substring(1) // Remove #
       if (location.pathname !== '/') {
         navigate(`/${href}`)
+        // Wait for navigation, then scroll
+        setTimeout(() => {
+          const element = document.getElementById(hashId)
+          if (element) {
+            const headerHeight = getHeaderHeight()
+            const elementTop = element.getBoundingClientRect().top + window.pageYOffset
+            const offsetPosition = Math.max(0, elementTop - headerHeight)
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+          }
+        }, 200)
       } else {
-        const element = document.querySelector(href)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-        }
+        // Already on home page, update hash and scroll
+        window.history.replaceState(null, '', `/${href}`)
+        requestAnimationFrame(() => {
+          const element = document.getElementById(hashId)
+          if (element) {
+            const headerHeight = getHeaderHeight()
+            const elementTop = element.getBoundingClientRect().top + window.pageYOffset
+            const offsetPosition = Math.max(0, elementTop - headerHeight)
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+          }
+        })
       }
     } else if (href.startsWith('/')) {
       // Handle route navigation (like /events)
@@ -175,15 +205,18 @@ export default function Welcome() {
                   className="flex h-full transition-transform duration-[1500ms] ease-smooth will-change-transform"
                   style={{ transform: `translateX(-${currentImage * 100}%)` }}
                 >
-                  {images.map((img) => (
+                  {images.map((img, index) => (
                     <div key={img} className="min-w-full h-full">
                       <img
                         src={img}
-                        alt="Data Science Club members"
+                        alt={`Data Science Club members - Image ${index + 1}`}
                         className="w-full h-full object-cover object-center"
-                        loading={images.indexOf(img) === 0 ? "eager" : "lazy"}
-                        fetchpriority={images.indexOf(img) === 0 ? "high" : "auto"}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchpriority={index === 0 ? "high" : "auto"}
                         decoding="async"
+                        width="1200"
+                        height="800"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 1200px"
                       />
                     </div>
                   ))}
