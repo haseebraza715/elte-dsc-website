@@ -85,8 +85,8 @@ export default function Welcome() {
       </div>
 
       <div className="relative mx-auto max-w-[1350px] px-4 sm:px-8 xl:px-20">
-        <div className="min-h-[70vh] flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-20 py-10 sm:py-16 md:py-20">
-          <div className="w-full xl:w-[55%] text-center xl:text-left space-y-6">
+        <div className="min-h-[70vh] flex flex-col 2xl:flex-row items-center justify-between gap-12 2xl:gap-20 py-10 sm:py-16 md:py-20">
+          <div className="w-full 2xl:w-[55%] text-center 2xl:text-left space-y-6">
             <div className="space-y-3">
               <div className="inline-flex items-center rounded-full border border-white/10 bg-slate-800/50 backdrop-blur-sm px-6 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-cyan-400 shadow-sm shadow-cyan-500/10">
                 Data Science Community · ELTE
@@ -96,8 +96,8 @@ export default function Welcome() {
               </p>
             </div>
 
-            <div className="space-y-6 max-w-2xl mx-auto lg:mx-0">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-white leading-tight tracking-tight">
+            <div className="space-y-6 max-w-2xl mx-auto 2xl:mx-0">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white leading-tight tracking-tight">
                 {content.title}
               </h1>
               <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-light">
@@ -105,7 +105,7 @@ export default function Welcome() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center sm:justify-start justify-center w-full">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center 2xl:justify-start w-full">
               <button
                 onClick={() => handleCtaClick(content.primaryCta.href)}
                 className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-violet-500/25 transition hover:-translate-y-1 hover:shadow-violet-500/40 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-[#0B1120]"
@@ -180,7 +180,7 @@ export default function Welcome() {
               </div>
             </div>
 
-            <div className="pt-6 text-center lg:text-left">
+            <div className="pt-6 text-center 2xl:text-left">
               <p className="text-sm text-slate-400 italic">
                 “Best student community for data at ELTE — you learn something new every meetup.”
                 <span className="font-semibold text-violet-400"> — Club organizers</span>
@@ -189,12 +189,12 @@ export default function Welcome() {
           </div>
 
           <div className="flex-[1.1] w-full max-w-3xl mx-auto flex flex-col gap-4 sm:gap-5">
-            <div className="self-center xl:self-end rounded-2xl bg-[#1E293B]/90 border border-slate-700/50 shadow-lg shadow-black/20 px-5 sm:px-6 py-4 text-left space-y-2 w-full sm:w-[75%] backdrop-blur-sm">
+            <div className="self-center 2xl:self-end rounded-2xl bg-[#1E293B]/90 border border-slate-700/50 shadow-lg shadow-black/20 px-5 sm:px-6 py-4 text-left space-y-2 w-full sm:w-[75%] backdrop-blur-sm">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-400">
                 Next meetup
               </p>
               <p className="text-sm font-semibold text-white">
-                Friday · 4:00 – 5:00 PM · ELTE Campus
+                Friday · 4:00 – 5:00 PM · ELTE Campus
               </p>
               <p className="text-xs text-slate-400">Hands-on session</p>
             </div>

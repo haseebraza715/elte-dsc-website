@@ -8,6 +8,9 @@
   --color-textmain: #F8FAFC;
   --color-textmuted: #94A3B8;
 
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
   --container-content: 960px;
   --max-w-content: 960px;
 }
@@ -21,7 +24,7 @@ html {
   /* Improve scrolling performance */
   overscroll-behavior-y: contain;
   overflow-x: hidden;
-  width: 100%;
+
   max-width: 100%;
   margin: 0;
   padding: 0;
@@ -37,6 +40,7 @@ section[id] {
   html {
     scroll-padding-top: 4rem;
   }
+
   section[id] {
     scroll-margin-top: 4rem;
   }
@@ -54,7 +58,7 @@ body {
   touch-action: pan-y;
   background-color: #0B1120;
   color: #F8FAFC;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body);
   overflow-x: hidden;
   /* Prevent scroll jank */
   overscroll-behavior-y: contain;
@@ -194,4 +198,36 @@ header {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
   }
+}
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 5px;
+  border: 2px solid #0B1120;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Noise Texture Utility */
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

@@ -24,7 +24,7 @@ function HashHandler() {
       // This component just ensures we're on the right route
       return
     }
-    
+
     // If navigating away from home and there's a hash, clear it
     // (hash sections only exist on home page)
     if (location.pathname !== '/' && window.location.hash) {
@@ -35,12 +35,16 @@ function HashHandler() {
   return null
 }
 
+import ScrollToTop from './components/ScrollToTop.jsx'
+
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <HashHandler />
       <SEO />
       <div className="bg-[#0B1120] text-slate-50 min-h-screen flex flex-col relative w-full overflow-x-hidden">
+        <div className="bg-noise"></div>
         {/* Optional: Add a subtle background glow effect */}
         <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-violet-900/20 rounded-full blur-[120px] pointer-events-none" />
         <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
