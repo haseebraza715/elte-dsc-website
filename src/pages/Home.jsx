@@ -1,5 +1,5 @@
 import { useEffect, Suspense, lazy, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
 
 // Lazy load components for better initial load performance
@@ -15,6 +15,7 @@ const getHeaderHeight = () => {
 
 export default function Home() {
   const location = useLocation()
+  const navigate = useNavigate()
   const headerHeightRef = useRef(getHeaderHeight())
 
   useEffect(() => {
@@ -90,6 +91,16 @@ export default function Home() {
     // Listen for hash changes
     window.addEventListener('hashchange', handleHashChange)
 
+    // If we navigated here with a targetId in state, scroll to that section
+    const targetId = location.state?.targetId
+    if (targetId) {
+      setTimeout(() => {
+        scrollToElement(targetId)
+      }, 200)
+      // Clear the state so subsequent navigations don't reuse it
+      navigate(location.pathname + window.location.search + window.location.hash, { replace: true, state: null })
+    }
+
     // Always check window.location.hash (works for direct URL access and navigation)
     // Use a small delay to ensure components are rendered
     const navigationTimeout = setTimeout(() => {
@@ -102,7 +113,7 @@ export default function Home() {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('hashchange', handleHashChange)
     }
-  }, [location.pathname])
+  }, [location.pathname, location.state, navigate])
 
   return (
     <main id="main">

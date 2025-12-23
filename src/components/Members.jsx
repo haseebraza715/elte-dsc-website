@@ -37,9 +37,9 @@ function MemberCard({ person }) {
   }
 
   return (
-    <div className="bg-[#1E293B] rounded-xl overflow-hidden border border-slate-700/50 shadow-lg hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-300 hover:-translate-y-1">
+    <div className="bg-[#1E293B] rounded-xl overflow-hidden border border-zinc-700/50 shadow-lg hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-300 hover:-translate-y-1">
       {/* Square Photo */}
-      <div className="w-full aspect-square overflow-hidden bg-slate-900 relative">
+      <div className="w-full aspect-square overflow-hidden bg-zinc-900 relative">
         {imageSrc && !imageError ? (
           <img
             src={imageSrc}
@@ -50,7 +50,7 @@ function MemberCard({ person }) {
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-700 to-slate-800 text-white text-4xl font-bold">
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-zinc-700 to-zinc-800 text-white text-4xl font-bold">
             {getInitials(person.name)}
           </div>
         )}
@@ -72,7 +72,7 @@ function MemberCard({ person }) {
 
         {/* Meta Info */}
         {person.meta && (
-          <div className="mb-3 text-slate-300 text-sm font-medium">
+          <div className="mb-3 text-zinc-300 text-sm font-medium">
             {person.meta}
           </div>
         )}
@@ -80,20 +80,20 @@ function MemberCard({ person }) {
         {/* Description */}
         {person.description && (
           <div className="mb-5">
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-zinc-400 leading-relaxed">
               {person.description}
             </p>
           </div>
         )}
 
         {/* Social Links */}
-        <div className="flex justify-center items-center gap-3 pt-4 border-t border-slate-700/50">
+        <div className="flex justify-center items-center gap-3 pt-4 border-t border-zinc-700/50">
           {person.link && (
             <a
               href={person.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-violet-600 transition-all duration-200 hover:scale-110"
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-800 text-zinc-400 hover:text-white hover:bg-violet-600 transition-all duration-200 hover:scale-110"
               aria-label="LinkedIn Profile"
             >
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ function MemberCard({ person }) {
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-cyan-600 transition-all duration-200 hover:scale-110"
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-800 text-zinc-400 hover:text-white hover:bg-emerald-600 transition-all duration-200 hover:scale-110"
               aria-label={`Email ${person.name}`}
             >
               <svg className="w-5 h-5 stroke-current" fill="none" strokeWidth="2" viewBox="0 0 24 24">
@@ -121,14 +121,14 @@ function MemberCard({ person }) {
 
 export default function Members() {
   return (
-    <section id="members" className="relative bg-[#0B1120] py-16 md:py-20">
+    <section id="members" className="relative bg-[#09090b] py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Meet Our Team
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
             Dedicated individuals driving innovation and excellence in data science
           </p>
         </div>

@@ -124,11 +124,11 @@ Note: A user is considered to have logged in on consecutive days if they have ev
       {/* Decorative Background Elements - Optimized (reduced for performance) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translateZ(0)' }}>
         {/* Reduced to 2 gradient orbs for better performance */}
-        <div className="absolute -top-36 -left-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-br from-violet-500/10 via-purple-500/5 to-cyan-500/10 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translateZ(0)' }} />
-        <div className="absolute -top-36 -right-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-bl from-cyan-500/10 via-sky-500/5 to-blue-500/10 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute -top-36 -left-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-br from-violet-500/10 via-purple-500/5 to-emerald-500/10 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute -top-36 -right-36 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-gradient-to-bl from-emerald-500/10 via-emerald-500/5 to-violet-500/10 rounded-full mix-blend-screen filter blur-2xl md:blur-3xl" style={{ transform: 'translateZ(0)' }} />
 
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0B1120]" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#09090b]" style={{ transform: 'translateZ(0)' }} />
       </div>
 
       <div className="relative mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -137,7 +137,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-3 sm:mb-4">
             Weekly Coding Challenges
           </h2>
-          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto px-2">
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto px-2">
             Sharpen your Python and pandas skills with our curated challenges from StrataScratch.
             From beginner-friendly problems to advanced analytics, there's something for every level.
           </p>
@@ -146,8 +146,8 @@ Note: A user is considered to have logged in on consecutive days if they have ev
         {/* StrataScratch Challenges */}
         <div className="mb-16 relative z-10">
           <div className="flex items-center justify-center mb-8">
-            <div className="flex items-center space-x-3 bg-[#1E293B] rounded-lg px-6 py-3 shadow-sm border border-slate-700/50">
-              <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-cyan-600 rounded-lg flex items-center justify-center">
+            <div className="flex items-center space-x-3 bg-[#1E293B] rounded-lg px-6 py-3 shadow-sm border border-zinc-700/50">
+              <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-emerald-600 rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
@@ -160,7 +160,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
             {stratascratchChallenges.map((challenge) => (
               <div
                 key={challenge.id}
-                className="bg-[#1E293B] rounded-xl shadow-lg shadow-black/20 border border-slate-700/50 hover:shadow-xl transition-all duration-300 hover:border-violet-500/30"
+                className="bg-[#1E293B] rounded-xl shadow-lg shadow-black/20 border border-zinc-700/50 hover:shadow-xl transition-all duration-300 hover:border-violet-500/30"
               >
                 <div className="p-5 sm:p-6">
                   {/* Challenge Header */}
@@ -174,8 +174,8 @@ Note: A user is considered to have logged in on consecutive days if they have ev
                           {challenge.difficulty}
                         </span>
                       </div>
-                      <p className="text-sm sm:text-base text-slate-300 mb-3">{challenge.description}</p>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+                      <p className="text-sm sm:text-base text-zinc-300 mb-3">{challenge.description}</p>
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
                         <span className="flex items-center space-x-1">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -184,7 +184,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
                         </span>
                         <div className="flex flex-wrap gap-2">
                           {challenge.tags.map((tag) => (
-                            <span key={tag} className="px-2 py-1 bg-slate-800 text-slate-300 rounded-md text-xs border border-slate-700">
+                            <span key={tag} className="px-2 py-1 bg-zinc-800 text-zinc-300 rounded-md text-xs border border-zinc-700">
                               {tag}
                             </span>
                           ))}
@@ -235,8 +235,8 @@ Note: A user is considered to have logged in on consecutive days if they have ev
                       {/* Problem Statement */}
                       <div className="mb-6">
                         <h5 className="text-lg font-display font-semibold text-white mb-3">Problem Statement</h5>
-                        <div className="bg-slate-900 rounded-lg p-4 border border-slate-700">
-                          <pre className="text-sm text-slate-300 whitespace-pre-wrap font-mono">
+                        <div className="bg-zinc-900 rounded-lg p-4 border border-zinc-700">
+                          <pre className="text-sm text-zinc-300 whitespace-pre-wrap font-mono">
                             {challenge.problem}
                           </pre>
                         </div>
@@ -270,7 +270,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
         {/* Additional Kaggle Challenges Section */}
         <div className="relative z-10">
           <div className="flex items-center justify-center mb-8">
-            <div className="flex items-center space-x-3 bg-[#1E293B] rounded-lg px-6 py-3 shadow-sm border border-slate-700/50">
+            <div className="flex items-center space-x-3 bg-[#1E293B] rounded-lg px-6 py-3 shadow-sm border border-zinc-700/50">
               <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-pink-600 rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -284,7 +284,7 @@ Note: A user is considered to have logged in on consecutive days if they have ev
             {challenges.challenges.slice(0, 6).map((challenge) => (
               <div
                 key={challenge.id}
-                className="bg-[#1E293B] rounded-xl shadow-lg shadow-black/20 border border-slate-700/50 hover:shadow-xl transition-all duration-300 hover:border-violet-500/30"
+                className="bg-[#1E293B] rounded-xl shadow-lg shadow-black/20 border border-zinc-700/50 hover:shadow-xl transition-all duration-300 hover:border-violet-500/30"
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
@@ -299,25 +299,25 @@ Note: A user is considered to have logged in on consecutive days if they have ev
                     </span>
                   </div>
 
-                  <p className="text-slate-400 text-sm mb-4 line-clamp-3">
+                  <p className="text-zinc-400 text-sm mb-4 line-clamp-3">
                     {challenge.description}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {challenge.tags.slice(0, 3).map((tag) => (
-                      <span key={tag} className="px-2 py-1 bg-slate-800 text-slate-300 rounded-md text-xs border border-slate-700">
+                      <span key={tag} className="px-2 py-1 bg-zinc-800 text-zinc-300 rounded-md text-xs border border-zinc-700">
                         {tag}
                       </span>
                     ))}
                     {challenge.tags.length > 3 && (
-                      <span className="px-2 py-1 bg-slate-800 text-slate-500 rounded-md text-xs border border-slate-700">
+                      <span className="px-2 py-1 bg-zinc-800 text-zinc-500 rounded-md text-xs border border-zinc-700">
                         +{challenge.tags.length - 3} more
                       </span>
                     )}
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">
+                    <span className="text-xs text-zinc-500">
                       {challenge.estimatedTime}
                     </span>
                     <a

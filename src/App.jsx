@@ -43,11 +43,11 @@ export default function App() {
       <ScrollToTop />
       <HashHandler />
       <SEO />
-      <div className="bg-[#0B1120] text-slate-50 min-h-screen flex flex-col relative w-full overflow-x-hidden">
+      <div className="bg-[#09090b] text-zinc-50 min-h-screen flex flex-col relative w-full overflow-x-hidden">
         <div className="bg-noise"></div>
         {/* Optional: Add a subtle background glow effect */}
-        <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-violet-900/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-violet-900/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-900/10 rounded-full blur-[120px] pointer-events-none" />
 
         <Header />
         <main className="flex-1 relative z-10 pt-16 sm:pt-20 w-full">
@@ -55,7 +55,7 @@ export default function App() {
             <div className="flex items-center justify-center min-h-[60vh]">
               <div className="text-center">
                 <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-violet-500 mb-4"></div>
-                <p className="text-slate-400">Loading...</p>
+                <p className="text-zinc-400">Loading...</p>
               </div>
             </div>
           }>

@@ -4,18 +4,18 @@ export default function Resources() {
   const { levels } = resourcesData
 
   return (
-    <section id="resources" className="relative bg-[#0B1120] overflow-hidden">
+    <section id="resources" className="relative bg-[#09090b] overflow-hidden">
       {/* Decorative Background Elements - Midnight Aurora */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto', transform: 'translateZ(0)' }}>
         <div className="absolute -top-36 -left-36 w-[600px] h-[600px] md:w-[700px] md:h-[700px] bg-gradient-to-br from-violet-600/20 via-purple-600/15 to-transparent rounded-full mix-blend-screen filter blur-3xl opacity-30" style={{ transform: 'translateZ(0)' }} />
-        <div className="absolute -top-36 -right-36 w-[600px] h-[600px] md:w-[700px] md:h-[700px] bg-gradient-to-bl from-cyan-600/20 via-sky-600/15 to-transparent rounded-full mix-blend-screen filter blur-3xl opacity-30" style={{ transform: 'translateZ(0)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0B1120] opacity-80" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute -top-36 -right-36 w-[600px] h-[600px] md:w-[700px] md:h-[700px] bg-gradient-to-bl from-emerald-600/20 via-emerald-600/15 to-transparent rounded-full mix-blend-screen filter blur-3xl opacity-30" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#09090b] opacity-80" style={{ transform: 'translateZ(0)' }} />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
         <div className="text-center mb-12 sm:mb-16 relative z-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4 sm:mb-6">Learning Resources</h2>
-          <p className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto px-2">
+          <p className="text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto px-2">
             Structured learning paths from beginner to expert level. Choose your level and start your data science journey.
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function Resources() {
                   </div>
                   <div className="text-center sm:text-left">
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white">{level.level}</h3>
-                    <p className="text-slate-400 text-base sm:text-lg">{level.description}</p>
+                    <p className="text-zinc-400 text-base sm:text-lg">{level.description}</p>
                   </div>
                 </div>
               </div>
@@ -53,10 +53,10 @@ export default function Resources() {
                 {level.sections.map((section, index) => (
                   <div
                     key={section.heading}
-                    className="group relative bg-[#1E293B]/60 backdrop-blur-md border border-slate-700/50 rounded-2xl p-6 sm:p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-500/10 hover:border-violet-500/30 overflow-hidden"
+                    className="group relative bg-[#1E293B]/60 backdrop-blur-md border border-zinc-700/50 rounded-2xl p-6 sm:p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-500/10 hover:border-violet-500/30 overflow-hidden"
                   >
                     {/* Gradient Hover Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-violet-600/5 via-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-violet-600/5 via-emerald-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                     <h4 className="text-xl font-display font-bold text-white mb-6 flex items-center relative z-10">
                       <span className={`flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br ${level.color} flex items-center justify-center mr-4 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-300`}>
@@ -81,14 +81,14 @@ export default function Resources() {
                       {section.items.map(([label, href]) => (
                         <li key={label}>
                           <a
-                            className="group/link flex items-center text-slate-400 hover:text-white transition-colors duration-200"
+                            className="group/link flex items-center text-zinc-400 hover:text-white transition-colors duration-200"
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover/link:bg-cyan-400 mr-3 transition-colors duration-200"></span>
-                            <span className="text-sm font-medium border-b border-transparent group-hover/link:border-cyan-400/50 pb-0.5 transition-all">{label}</span>
-                            <svg className="w-3.5 h-3.5 ml-2 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover/link:bg-emerald-400 mr-3 transition-colors duration-200"></span>
+                            <span className="text-sm font-medium border-b border-transparent group-hover/link:border-emerald-400/50 pb-0.5 transition-all">{label}</span>
+                            <svg className="w-3.5 h-3.5 ml-2 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                           </a>
@@ -102,8 +102,8 @@ export default function Resources() {
               {/* Progress indicator */}
               {key !== 'advanced' && (
                 <div className="flex justify-center mt-12">
-                  <div className="flex items-center text-slate-500">
-                    <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center">
+                  <div className="flex items-center text-zinc-500">
+                    <div className="w-12 h-12 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
