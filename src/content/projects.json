@@ -35,21 +35,6 @@
     },
     {
       "id": 3,
-      "title": "Climate Forecasting – Solar and Wind Power",
-      "proposedBy": "Ismailov Jaloliddin",
-      "description": "The project focuses on forecasting solar irradiance and wind power potential using large-scale meteorological datasets like NSRDB and ERA5. Participants analyze climate patterns and explore clean-energy forecasting methods.",
-      "useCase": "Renewable energy prediction, weather-driven power modeling, and supporting sustainability planning.",
-      "skillsGained": [
-        "Time-series forecasting basics",
-        "Geospatial and climate data analysis",
-        "Understanding environmental datasets",
-        "Applied energy analytics"
-      ],
-      "tools": ["Python", "Pandas", "xarray", "Matplotlib/Plotly", "NSRDB", "ERA5"],
-      "expectedOutputs": "Forecast plots, seasonal analysis, and insights on renewable power potential."
-    },
-    {
-      "id": 4,
       "title": "Predicting Stock Prices with Machine Learning",
       "proposedBy": "Galina Grigoriev",
       "description": "This project applies machine learning to predict stock prices using historical financial data. Students explore data preprocessing, feature engineering, and model building for time-series forecasting.",
