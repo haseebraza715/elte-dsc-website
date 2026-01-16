@@ -14,7 +14,13 @@
         "Applied data science workflow",
         "Optional: designing visualization tools"
       ],
-      "tools": ["Python", "NumPy", "Scikit-learn", "Matplotlib", "SOM libraries"],
+      "tools": [
+        "Python",
+        "NumPy",
+        "Scikit-learn",
+        "Matplotlib",
+        "SOM libraries"
+      ],
       "expectedOutputs": "Cluster visualizations, comparative analysis between K-means and SOM, and optional contributions to new visualization techniques."
     },
     {
@@ -30,11 +36,16 @@
         "Volatility measurement",
         "Data visualization"
       ],
-      "tools": ["Python", "Pandas", "Matplotlib/Plotly", "Yahoo Finance/Kaggle datasets"],
+      "tools": [
+        "Python",
+        "Pandas",
+        "Matplotlib/Plotly",
+        "Yahoo Finance/Kaggle datasets"
+      ],
       "expectedOutputs": "BTC vs ETH comparative line charts, monthly summary tables, volatility insights, and correlation results."
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "Predicting Stock Prices with Machine Learning",
       "proposedBy": "Galina Grigoriev",
       "description": "This project applies machine learning to predict stock prices using historical financial data. Students explore data preprocessing, feature engineering, and model building for time-series forecasting.",
@@ -45,7 +56,12 @@
         "Feature engineering",
         "Evaluation metrics for forecasting"
       ],
-      "tools": ["Python", "Pandas", "Scikit-learn", "Matplotlib"],
+      "tools": [
+        "Python",
+        "Pandas",
+        "Scikit-learn",
+        "Matplotlib"
+      ],
       "expectedOutputs": "Forecasted price curves, comparison of ML models, and analysis of prediction accuracy."
     }
   ]

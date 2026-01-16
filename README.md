@@ -1,4 +1,4 @@
-## Data Science Club Web App
+## Data Science Club Website
 
 Landing site for the ELTE Data Science Club, highlighting who we are, events, projects, members, and resources. Built with Vite + React and utility-first styling; home sections (Welcome, About, Contact) are lazy-loaded for faster initial paint.
 
