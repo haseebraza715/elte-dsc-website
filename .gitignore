@@ -11,6 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+plan.md
+
+# Cursor
+.cursor
+.cursor/
+.cursorrules
+.cursorignore
 
 # Editor directories and files
 .vscode/*

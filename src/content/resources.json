@@ -3,7 +3,7 @@
     "beginner": {
       "level": "Beginner",
       "description": "Perfect for those starting their data science journey",
-      "color": "from-sky-400 to-sky-600",
+      "color": "from-white to-white",
       "bgColor": "bg-sky-50",
       "borderColor": "border-sky-200",
       "textColor": "text-sky-800",
@@ -40,7 +40,7 @@
     "intermediate": {
       "level": "Intermediate",
       "description": "For those ready to dive deeper into data science",
-      "color": "from-sky-400 to-sky-600",
+      "color": "from-white to-white",
       "bgColor": "bg-sky-50",
       "borderColor": "border-sky-200",
       "textColor": "text-sky-800",
@@ -77,7 +77,7 @@
     "advanced": {
       "level": "Expert",
       "description": "For advanced practitioners and professionals",
-      "color": "from-sky-400 to-sky-600",
+      "color": "from-white to-white",
       "bgColor": "bg-sky-50",
       "borderColor": "border-sky-200",
       "textColor": "text-sky-800",

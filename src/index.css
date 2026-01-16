@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #8B5CF6;
-  --color-accent-contrast: #FFFFFF;
-  --color-bgsoft: #09090b;
-  /* Changed from #0B1120 (Slate) to Zinc/Neutral for less blue */
-  --color-border: #27272a;
-  /* Zinc-800 */
-  --color-textmain: #F8FAFC;
-  --color-textmuted: #A1A1AA;
-  /* Zinc-400 */
+  --color-accent: #FFFFFF;
+  --color-accent-contrast: #000000;
+  --color-bgsoft: #000000;
+  /* Pure black background */
+  --color-border: #FFFFFF;
+  /* White borders */
+  --color-textmain: #FFFFFF;
+  --color-textmuted: #CCCCCC;
+  /* Light gray for muted text */
 
-  --font-display: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Courier Prime', monospace;
+  --font-body: 'Space Mono', monospace;
 
   --container-content: 960px;
   --max-w-content: 960px;
@@ -23,7 +23,7 @@ html {
   scroll-padding-top: 5rem;
   /* Accounts for sticky header height to prevent overlap */
   -webkit-overflow-scrolling: touch;
-  background-color: #09090b;
+  background-color: #000000;
   /* Improve scrolling performance */
   overscroll-behavior-y: contain;
   overflow-x: hidden;
@@ -50,17 +50,22 @@ section[id] {
 }
 
 ::selection {
-  background: #8B5CF6;
-  /* Violet selection */
-  color: #ffffff;
+  background: #FFFFFF;
+  /* White selection */
+  color: #000000;
+}
+
+::-moz-selection {
+  background: #FFFFFF;
+  color: #000000;
 }
 
 /* Optimize body for smooth scrolling */
 body {
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
-  background-color: #09090b;
-  color: #F8FAFC;
+  background-color: #000000;
+  color: #FFFFFF;
   font-family: var(--font-body);
   overflow-x: hidden;
   /* Prevent scroll jank */
@@ -209,17 +214,17 @@ header {
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+  background: #FFFFFF;
   border-radius: 5px;
-  border: 2px solid #09090b;
+  border: 2px solid #000000;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #CCCCCC;
 }
 
 /* Noise Texture Utility */

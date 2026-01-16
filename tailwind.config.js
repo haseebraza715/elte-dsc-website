@@ -7,26 +7,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0B1120', // Obsidian
-        surface: '#1E293B',    // Slate 800 (Cards)
-        primary: '#8B5CF6',    // Violet 500
-        secondary: '#06B6D4',  // Cyan 500
+        background: '#000000', // Pure black
+        surface: '#000000',    // Pure black
+        primary: '#FFFFFF',    // Pure white
+        secondary: '#FFFFFF',  // Pure white
 
         // Mapping to existing variable names for compatibility
-        accent: '#8B5CF6',     // Violet
-        accentContrast: '#FFFFFF',
-        bgsoft: '#0B1120',     // Map existing bgsoft to main dark bg
-        bgcard: '#1E293B',     // New semantic token
-        border: '#334155',     // Slate 700
-        textmain: '#F8FAFC',   // Slate 50
-        textmuted: '#94A3B8',  // Slate 400
+        accent: '#FFFFFF',     // Pure white
+        accentContrast: '#000000',
+        bgsoft: '#000000',     // Pure black
+        bgcard: '#000000',     // Pure black
+        border: '#FFFFFF',     // Pure white
+        textmain: '#FFFFFF',   // Pure white
+        textmuted: '#CCCCCC',  // Light gray for muted text
       },
       maxWidth: {
         content: '960px',
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-        display: ['"Space Grotesk"', 'sans-serif'],
+        sans: ['"Space Mono"', 'monospace'],
+        display: ['"Courier Prime"', 'monospace'],
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
