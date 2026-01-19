@@ -119,7 +119,7 @@ export default function Home() {
     <main id="main">
       <SEO
         title="Home"
-        description="Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning."
+        description="Join the community at Eötvös Loránd University. Learn through hands-on projects, weekly talks, workshops, and collaborative learning."
         path="/"
       />
       <Suspense fallback={<div className="min-h-screen" />}>

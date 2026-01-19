@@ -47,7 +47,7 @@ export default function App() {
         <div className="bg-noise"></div>
 
         <Header />
-        <main className="flex-1 relative z-10 pt-16 sm:pt-20 w-full">
+        <main className="flex-1 relative z-10 pt-0 w-full">
           <Suspense fallback={
             <div className="flex items-center justify-center min-h-[60vh]">
               <div className="text-center">

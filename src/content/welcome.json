@@ -1,6 +1,6 @@
 {
-  "title": "ELTE Data Science Club",
-  "subtitle": "Talks, hack nights, and mentorship that turn curiosity into projects.",
+  "title": "Build. Learn. Connect.",
+  "subtitle": "Join a community of makers, learners, and innovators at ELTE. Weekly talks, hands-on workshops, and collaborative projects.",
   "primaryCta": { "label": "See Upcoming Events", "href": "/event" },
   "secondaryCta": { "label": "Join Us", "href": "#contact" }
 }

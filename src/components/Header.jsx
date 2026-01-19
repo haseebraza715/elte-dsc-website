@@ -137,7 +137,7 @@ const Header = memo(function Header() {
 
   return (
     <>
-      <header className="fixed w-full start-0 top-0 z-50 bg-black/95 xl:bg-black/80 backdrop-blur-md border-b border-white/20 shadow-sm shadow-black/20 overflow-hidden">
+      <header className="fixed w-full start-0 top-0 z-50 bg-black/95 xl:bg-black/85 backdrop-blur-lg border-b border-white/30 shadow-lg shadow-black/40 overflow-hidden">
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
@@ -148,29 +148,29 @@ const Header = memo(function Header() {
                 onClick={handleLogoClick}
                 className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-white rounded-xl p-1 -ml-1 transition-all duration-300"
               >
-                <span className="text-xl sm:text-2xl font-display font-bold text-white border-2 border-white px-3 py-1.5 group-hover:bg-white group-hover:text-black transition-all duration-200">
-                  DATA SCIENCE CLUB
+                <span className="text-xl sm:text-2xl font-display font-bold text-white border-2 border-white px-4 py-2 group-hover:bg-white group-hover:text-black transition-all duration-300 transform group-hover:scale-105 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+                  DSC ELTE
                 </span>
               </a>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center space-x-1 2xl:space-x-2">
+            <nav className="hidden xl:flex items-center space-x-2 2xl:space-x-3">
               {items.map((id) => (
                 <button
                   key={id}
                   onClick={() => handleNavClick(id)}
-                  className="relative text-gray-300 hover:text-white px-3 py-2 text-sm font-medium rounded-lg hover:bg-white/10 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white group"
+                  className="relative text-gray-300 hover:text-white px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white group"
                 >
                   <span className="relative z-10">{id.charAt(0).toUpperCase() + id.slice(1)}</span>
-                  <span className="pointer-events-none absolute inset-x-1 bottom-0 h-0.5 origin-left scale-x-0 bg-white rounded-full transition-transform duration-200 ease-out group-hover:scale-x-100"></span>
+                  <span className="pointer-events-none absolute inset-x-2 bottom-1 h-0.5 origin-left scale-x-0 bg-white rounded-full transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
                 </button>
               ))}
               <a
                 href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-2 relative px-6 py-3 bg-white text-black border-2 border-white text-sm font-bold transition-all duration-200 hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black active:scale-95"
+                className="ml-2 relative px-7 py-3 bg-white text-black border-2 border-white text-sm font-bold transition-all duration-300 hover:bg-black hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black active:scale-95 shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
               >
                 JOIN NOW
               </a>
