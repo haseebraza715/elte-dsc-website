@@ -64,14 +64,12 @@ export default function Welcome() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <div className="min-h-[85vh] flex items-center justify-center pt-16 sm:pt-20 pb-12 sm:pb-16 md:pb-20">
+        <div className="min-h-[85vh] flex items-center justify-center pt-4 sm:pt-6 pb-12 sm:pb-16 md:pb-20">
           <div className="w-full max-w-5xl flex flex-col items-center space-y-8 sm:space-y-10">
 
             {/* Badge with animation */}
-            <div className="inline-flex items-center border-2 border-white bg-black px-6 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all duration-500 cursor-default transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-              <span className="inline-block w-2 h-2 bg-white mr-3 animate-pulse"></span>
+            <div className="inline-flex items-center border-2 border-white bg-black px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:scale-105">
               ELTE UNIVERSITY
-              <span className="inline-block w-2 h-2 bg-white ml-3 animate-pulse" style={{ animationDelay: '0.5s' }}></span>
             </div>
 
             {/* Title Section with improved typography */}

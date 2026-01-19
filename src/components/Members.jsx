@@ -117,7 +117,7 @@ function MemberCard({ person }) {
 
 export default function Members() {
   return (
-    <section id="members" className="relative bg-[#09090b] py-12 sm:py-16 md:py-20">
+    <section id="members" className="relative bg-[#09090b] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12">

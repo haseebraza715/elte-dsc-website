@@ -12,7 +12,7 @@ export default function Resources() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#09090b] opacity-80" style={{ transform: 'translateZ(0)' }} />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
         <div className="text-center mb-10 sm:mb-12 md:mb-16 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4 md:mb-6">Learning Resources</h2>
           <p className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto px-4">

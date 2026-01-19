@@ -109,7 +109,7 @@ export default function EventsPage() {
 
         <div className="relative z-10">
           {/* Hero Events Section with Enhanced Design */}
-          <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
+          <section className="relative pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-32">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12 sm:mb-16 md:mb-20">
                 <div className="inline-block mb-4 sm:mb-6 md:mb-8">

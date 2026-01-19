@@ -126,7 +126,7 @@ export default function Projects() {
   return (
     <section id="projects" className="relative overflow-hidden min-h-screen bg-black">
       {/* Hero Section */}
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-28">
         <div className="text-center max-w-4xl mx-auto relative z-10">
           <div className="inline-block mb-4 sm:mb-6 md:mb-8">
             <span className="inline-flex items-center px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 text-xs sm:text-sm font-bold text-white uppercase tracking-wider bg-black border-4 border-white">
