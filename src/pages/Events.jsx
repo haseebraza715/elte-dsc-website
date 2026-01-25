@@ -53,12 +53,21 @@ export default function EventsPage() {
   const handleImageClick = (imagePath) => {
     setSelectedImage(imagePath)
     document.body.style.overflow = 'hidden'
+    document.body.classList.add('lightbox-open')
   }
 
   const closeLightbox = () => {
     setSelectedImage(null)
     document.body.style.overflow = 'unset'
+    document.body.classList.remove('lightbox-open')
   }
+
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove('lightbox-open')
+      document.body.style.overflow = 'unset'
+    }
+  }, [])
 
   const navigateImage = (direction) => {
     const currentIndex = eventImages.indexOf(selectedImage)

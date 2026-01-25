@@ -83,9 +83,7 @@ const Header = memo(function Header() {
     setOpen(false)
 
     const pageRoutes = {
-      challenges: '/challenges',
       resources: '/resources',
-      members: '/members',
       events: '/event',
       projects: '/project',
     }

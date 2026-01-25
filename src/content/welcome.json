@@ -1,6 +1,6 @@
 {
-  "title": "Build. Learn. Connect.",
-  "subtitle": "Join a community of makers, learners, and innovators at ELTE. Weekly talks, hands-on workshops, and collaborative projects.",
-  "primaryCta": { "label": "See Upcoming Events", "href": "/event" },
-  "secondaryCta": { "label": "Join Us", "href": "#contact" }
+  "title": "From Data to Insight",
+  "subtitle": "ELTE Data Science Club focuses on data analysis, machine learning, artificial intelligence, research projects, and Python-based workshops at ELTE University.",
+  "primaryCta": { "label": "Explore Projects", "href": "/project" },
+  "secondaryCta": { "label": "View Workshops", "href": "/event" }
 }

@@ -52,13 +52,26 @@ export default defineConfig({
     include: ['react', 'react-dom', 'react-router-dom'],
     // Exclude large dependencies from pre-bundling if needed
     exclude: [],
-    // Force optimization
+    // Let Vite rebuild naturally - force can cause race conditions
     force: false,
+    // Ensure dependencies are properly optimized
+    esbuildOptions: {
+      target: 'es2015',
+    },
   },
   server: {
     port: 5175,
+    strictPort: true,
     headers: {
       'Cache-Control': 'public, max-age=31536000',
+      'X-Frame-Options': 'SAMEORIGIN',
+    },
+    hmr: {
+      clientPort: 5175,
+      overlay: true,
+    },
+    watch: {
+      usePolling: false,
     },
   },
   // Performance optimizations

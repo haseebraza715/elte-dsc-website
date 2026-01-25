@@ -6,12 +6,10 @@ const Footer = memo(function Footer() {
   const handleFooterLink = useCallback((item) => {
     if (item === 'home') {
       return '/'
-    } else if (item === 'challenges') {
-      return '/challenges'
     } else if (item === 'resources') {
       return '/resources'
     } else if (item === 'members') {
-      return '/members'
+      return '/#members'
     } else if (item === 'events') {
       return '/event'
     }
@@ -111,5 +109,4 @@ const Footer = memo(function Footer() {
 })
 
 export default Footer
-
 
