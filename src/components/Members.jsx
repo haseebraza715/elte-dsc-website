@@ -37,9 +37,8 @@ function MemberCard({ person }) {
   }
 
   return (
-    <div className="bg-black border-2 border-white overflow-hidden transition-all duration-300 hover:bg-white hover:text-black group">
-      {/* Square Photo */}
-      <div className="w-full aspect-square overflow-hidden bg-black relative border-b-2 border-white">
+    <div className="group bg-black border border-white/40 overflow-hidden transition-all duration-300 hover:border-white/80">
+      <div className="w-full aspect-square overflow-hidden bg-black border-b border-white/20">
         {imageSrc && !imageError ? (
           <img
             src={imageSrc}
@@ -50,63 +49,44 @@ function MemberCard({ person }) {
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-black text-white group-hover:text-black text-4xl font-bold">
+          <div className="w-full h-full flex items-center justify-center bg-black text-white text-3xl font-bold">
             {getInitials(person.name)}
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="p-3 sm:p-4 md:p-5 text-center">
-        {/* Name */}
-        <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-black mb-1.5 sm:mb-2">
+      <div className="p-3 sm:p-4">
+        <div className="text-sm sm:text-base font-bold text-white">
           {person.name}
-        </h3>
-
-        {/* Role */}
-        <div className="mb-2 sm:mb-3 flex justify-center">
-          <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase bg-white text-black group-hover:bg-black group-hover:text-white border-2 border-white group-hover:border-black transition-all duration-300">
-            {person.role}
-          </span>
         </div>
-
-        {/* Meta Info */}
-        {person.meta && (
-          <div className="mb-2 text-gray-300 group-hover:text-black text-[11px] sm:text-xs font-medium px-2">
-            {person.meta}
+        {person.role && (
+          <div className="text-[11px] sm:text-xs text-white/70 mt-1">
+            {person.role}
           </div>
         )}
-
-        {/* Description */}
-        {person.description && (
-          <div className="mb-3 sm:mb-4">
-            <p className="text-[11px] sm:text-xs text-gray-400 group-hover:text-black leading-relaxed px-2">
-              {person.description}
-            </p>
-          </div>
-        )}
-
-        {/* Social Links */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-2 pt-3 sm:pt-4 border-t-2 border-white group-hover:border-black">
+        <div className="mt-3 flex items-center gap-2">
           {person.link && (
             <a
               href={person.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-3 py-2 border border-white text-white group-hover:border-black group-hover:text-black group-hover:bg-transparent bg-transparent hover:bg-black hover:text-white group-hover:hover:bg-white group-hover:hover:text-black transition-all duration-200 font-bold text-[11px] min-h-[36px] flex items-center justify-center"
+              className="w-8 h-8 flex items-center justify-center border border-white/50 text-white hover:border-white hover:bg-white hover:text-black transition-all"
               aria-label="LinkedIn Profile"
             >
-              LINKEDIN
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3.5 8.98h2.96V21H3.5V8.98ZM9.56 8.98h2.84v1.64h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.6V21h-2.96v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9.56V8.98Z" />
+              </svg>
             </a>
           )}
-
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="w-full sm:w-auto px-3 py-2 border border-white text-white group-hover:border-black group-hover:text-black group-hover:bg-transparent bg-transparent hover:bg-black hover:text-white group-hover:hover:bg-white group-hover:hover:text-black transition-all duration-200 font-bold text-[11px] min-h-[36px] flex items-center justify-center"
+              className="w-8 h-8 flex items-center justify-center border border-white/50 text-white hover:border-white hover:bg-white hover:text-black transition-all"
               aria-label={`Email ${person.name}`}
             >
-              EMAIL
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+                <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.2l8 5 8-5V7H4Zm0 2.6V17h16V9.6l-8 5-8-5Z" />
+              </svg>
             </a>
           )}
         </div>
@@ -117,7 +97,7 @@ function MemberCard({ person }) {
 
 export default function Members() {
   return (
-    <section id="members" className="relative bg-[#09090b] pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-14 md:pb-18">
+    <section id="members" className="relative bg-black pt-16 sm:pt-20 md:pt-24 pb-10 sm:pb-12 md:pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8 md:mb-10">
@@ -130,7 +110,7 @@ export default function Members() {
         </div>
 
         {/* Members Grid */}
-        <div className="grid gap-3 sm:gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
           {members.map((person) => (
             <MemberCard key={person.name} person={person} />
           ))}

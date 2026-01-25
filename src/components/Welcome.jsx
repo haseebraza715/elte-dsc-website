@@ -63,27 +63,27 @@ export default function Welcome() {
         <div className="data-flow absolute inset-0 opacity-15"></div>
 
         <svg
-          className="absolute left-6 top-10 w-[240px] h-[240px] sm:left-8 sm:top-8 sm:w-[280px] sm:h-[280px] lg:left-12 lg:top-10 lg:w-[320px] lg:h-[320px] opacity-45 sphere-float"
+          className="absolute left-8 top-24 w-[220px] h-[220px] sm:left-12 sm:top-20 sm:w-[260px] sm:h-[260px] lg:left-16 lg:top-20 lg:w-[300px] lg:h-[300px] opacity-40 sphere-float"
           viewBox="0 0 360 360"
           aria-hidden="true"
         >
           <defs>
             <radialGradient id="sphereGlow" cx="35%" cy="30%" r="60%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.35)" />
-              <stop offset="55%" stopColor="rgba(255,255,255,0.08)" />
+              <stop offset="0%" stopColor="rgba(255,255,255,0.8)" />
+              <stop offset="55%" stopColor="rgba(255,255,255,0.3)" />
               <stop offset="100%" stopColor="rgba(255,255,255,0)" />
             </radialGradient>
           </defs>
           <circle cx="180" cy="180" r="140" fill="url(#sphereGlow)" />
-          <circle cx="180" cy="180" r="140" fill="none" stroke="rgba(255,255,255,0.25)" />
-          <g className="sphere-rotate" stroke="rgba(255,255,255,0.18)" fill="none">
+          <circle cx="180" cy="180" r="140" fill="none" stroke="rgba(255,255,255,0.6)" />
+          <g className="sphere-rotate" stroke="rgba(255,255,255,0.5)" fill="none">
             <ellipse cx="180" cy="180" rx="120" ry="40" />
             <ellipse cx="180" cy="180" rx="120" ry="70" />
             <ellipse cx="180" cy="180" rx="120" ry="100" />
             <ellipse cx="180" cy="180" rx="60" ry="120" transform="rotate(90 180 180)" />
             <ellipse cx="180" cy="180" rx="80" ry="120" transform="rotate(90 180 180)" />
           </g>
-          <g fill="rgba(255,255,255,0.5)">
+          <g fill="rgba(255,255,255,0.9)">
             <circle cx="110" cy="120" r="2.5" />
             <circle cx="230" cy="90" r="2.5" />
             <circle cx="250" cy="200" r="2.5" />
@@ -138,20 +138,20 @@ export default function Welcome() {
         </svg>
 
         <svg
-          className="absolute left-[62%] top-[6%] w-[180px] h-[180px] sm:left-[58%] sm:top-[6%] sm:w-[210px] sm:h-[210px] lg:left-[55%] lg:top-[8%] lg:w-[240px] lg:h-[240px] opacity-35 sphere-float-slow"
+          className="absolute right-[18%] top-[18%] w-[170px] h-[170px] sm:right-[16%] sm:top-[14%] sm:w-[200px] sm:h-[200px] lg:right-[14%] lg:top-[16%] lg:w-[230px] lg:h-[230px] opacity-32 sphere-float-slow"
           viewBox="0 0 360 360"
           aria-hidden="true"
         >
           <defs>
             <radialGradient id="sphereGlowSmall" cx="40%" cy="35%" r="60%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
-              <stop offset="55%" stopColor="rgba(255,255,255,0.07)" />
+              <stop offset="0%" stopColor="rgba(255,255,255,0.7)" />
+              <stop offset="55%" stopColor="rgba(255,255,255,0.28)" />
               <stop offset="100%" stopColor="rgba(255,255,255,0)" />
             </radialGradient>
           </defs>
           <circle cx="180" cy="180" r="120" fill="url(#sphereGlowSmall)" />
-          <circle cx="180" cy="180" r="120" fill="none" stroke="rgba(255,255,255,0.22)" />
-          <g className="sphere-rotate" stroke="rgba(255,255,255,0.16)" fill="none">
+          <circle cx="180" cy="180" r="120" fill="none" stroke="rgba(255,255,255,0.5)" />
+          <g className="sphere-rotate" stroke="rgba(255,255,255,0.4)" fill="none">
             <ellipse cx="180" cy="180" rx="100" ry="40" />
             <ellipse cx="180" cy="180" rx="100" ry="70" />
             <ellipse cx="180" cy="180" rx="60" ry="110" transform="rotate(90 180 180)" />
@@ -159,12 +159,12 @@ export default function Welcome() {
         </svg>
 
         <svg
-          className="absolute right-6 bottom-[18%] w-[200px] h-[200px] sm:right-10 sm:bottom-[18%] sm:w-[220px] sm:h-[220px] lg:right-12 lg:bottom-[20%] lg:w-[260px] lg:h-[260px] opacity-30 sphere-float"
+          className="absolute right-[10%] bottom-[10%] w-[190px] h-[190px] sm:right-[12%] sm:bottom-[12%] sm:w-[210px] sm:h-[210px] lg:right-[14%] lg:bottom-[14%] lg:w-[240px] lg:h-[240px] opacity-28 sphere-float"
           viewBox="0 0 360 360"
           aria-hidden="true"
         >
-          <circle cx="180" cy="180" r="100" fill="none" stroke="rgba(255,255,255,0.18)" />
-          <g className="sphere-rotate" stroke="rgba(255,255,255,0.14)" fill="none">
+          <circle cx="180" cy="180" r="100" fill="none" stroke="rgba(255,255,255,0.5)" />
+          <g className="sphere-rotate" stroke="rgba(255,255,255,0.4)" fill="none">
             <ellipse cx="180" cy="180" rx="90" ry="30" />
             <ellipse cx="180" cy="180" rx="90" ry="60" />
             <ellipse cx="180" cy="180" rx="50" ry="90" transform="rotate(90 180 180)" />
@@ -180,7 +180,7 @@ export default function Welcome() {
           <div className="w-full max-w-5xl flex flex-col items-center space-y-6 sm:space-y-8 md:space-y-10">
 
             {/* Badge with animation */}
-            <div className="inline-flex items-center border-2 border-white bg-black px-4 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] text-white hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:scale-105">
+            <div className="inline-flex items-center border-2 border-white bg-black px-4 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-white hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:scale-105 text-center">
               ELTE UNIVERSITY
             </div>
 

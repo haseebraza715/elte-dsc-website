@@ -200,13 +200,16 @@ const Header = memo(function Header() {
 
       {/* Mobile Navigation Overlay - Moves outside header to prevent clipping */}
       <div
-        className={`xl:hidden fixed inset-0 z-[60] bg-black/98 backdrop-blur-xl transition-all duration-500 ease-in-out ${open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}
+        className={`xl:hidden fixed inset-0 z-[70] bg-black/98 backdrop-blur-xl transition-all duration-500 ease-in-out ${open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}
+        onClick={() => setOpen(false)}
+        role="presentation"
       >
         {/* Close Button Inside Overlay */}
         <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
           <button
             onClick={() => setOpen(false)}
-            className="inline-flex items-center justify-center p-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white transition-colors duration-200 active:scale-95"
+            type="button"
+            className="inline-flex items-center justify-center p-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white transition-colors duration-200 active:scale-95 pointer-events-auto"
             aria-label="Close menu"
           >
             <svg className="block h-8 w-8 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -215,7 +218,7 @@ const Header = memo(function Header() {
           </button>
         </div>
 
-        <div className="flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8 p-4 overflow-y-auto">
+        <div className="flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8 p-4 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
           {items.map((id, index) => (
             <button
               key={id}

@@ -33,82 +33,82 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
         transition: `opacity 0.5s ease-out ${index * 0.1}s, transform 0.5s ease-out ${index * 0.1}s`
       }}
     >
-      <article className="bg-black border-4 border-white p-4 sm:p-5 md:p-6 h-full flex flex-col hover:bg-white hover:text-black transition-all duration-300">
+      <article className="bg-black border-2 border-white/60 p-4 sm:p-5 md:p-6 h-full flex flex-col hover:border-white transition-all duration-300">
         <div className="flex flex-col h-full">
           {/* Header Section */}
           <div className="mb-3 sm:mb-4 flex items-start justify-between">
             <div className="flex-1 min-w-0 pr-3 sm:pr-4">
               <div className="mb-2 sm:mb-3">
-                <span className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-bold uppercase tracking-wider bg-white text-black border-2 border-white">
+                <span className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-white text-black border border-white">
                   PROJECT {index + 1}
                 </span>
               </div>
-              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white group-hover:text-black mb-2 sm:mb-3 leading-tight">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-2 sm:mb-3 leading-tight">
                 {project.title}
               </h3>
             </div>
-            <div className="ml-2 sm:ml-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 border-4 border-white bg-white text-black group-hover:bg-black group-hover:text-white group-hover:border-white flex items-center justify-center flex-shrink-0 font-bold text-xl sm:text-2xl transition-all">
-              ▲
+            <div className="ml-2 sm:ml-4 w-10 h-10 sm:w-12 sm:h-12 border-2 border-white/70 text-white flex items-center justify-center flex-shrink-0 font-bold text-sm sm:text-base transition-all">
+              DS
             </div>
           </div>
 
           {/* Proposed By */}
-          <div className="mb-3 sm:mb-4 p-3 border-2 border-white bg-black group-hover:bg-white transition-all">
+          <div className="mb-3 sm:mb-4 p-3 border border-white/50 bg-black transition-all">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
-              <div className="border-2 border-white bg-white text-black px-2 sm:px-3 py-1 sm:mr-3">
-                <p className="text-sm sm:text-base font-bold uppercase tracking-wide">PROPOSED BY</p>
+              <div className="border border-white bg-white text-black px-2 sm:px-3 py-1 sm:mr-3">
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-wide">PROPOSED BY</p>
               </div>
-              <p className="text-sm sm:text-base font-semibold text-gray-200 group-hover:text-black">{project.proposedBy}</p>
+              <p className="text-sm sm:text-base font-semibold text-gray-200">{project.proposedBy}</p>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-gray-200 group-hover:text-black mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base flex-grow font-medium border-l-4 border-white pl-3 sm:pl-4">
+          <p className="text-gray-200 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base flex-grow font-medium border-l-2 border-white pl-3 sm:pl-4">
             {project.description}
           </p>
 
           {/* Two Column Layout for Details */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
             {/* Use Case */}
-            <div className="p-3 border-2 border-white bg-black group-hover:bg-white transition-all">
+            <div className="p-3 border border-white/50 bg-black transition-all">
               <div className="flex items-center mb-2">
-                <span className="text-sm sm:text-base font-bold text-white group-hover:text-black uppercase tracking-wide border-2 border-white px-3 py-1.5 bg-white text-black">USE CASE</span>
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-wide border border-white px-3 py-1 bg-white text-black">USE CASE</span>
               </div>
-              <p className="text-sm text-gray-200 group-hover:text-black leading-relaxed font-medium">{project.useCase}</p>
+              <p className="text-sm text-gray-200 leading-relaxed font-medium">{project.useCase}</p>
             </div>
 
             {/* Expected Outputs */}
-            <div className="p-3 border-2 border-white bg-black group-hover:bg-white transition-all">
+            <div className="p-3 border border-white/50 bg-black transition-all">
               <div className="flex items-center mb-2">
-                <span className="text-sm sm:text-base font-bold uppercase tracking-wide border-2 border-white px-3 py-1.5 bg-white text-black">OUTPUTS</span>
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-wide border border-white px-3 py-1 bg-white text-black">OUTPUTS</span>
               </div>
-              <p className="text-sm text-gray-200 group-hover:text-black leading-relaxed font-medium">{project.expectedOutputs}</p>
+              <p className="text-sm text-gray-200 leading-relaxed font-medium">{project.expectedOutputs}</p>
             </div>
           </div>
 
           {/* Skills Gained */}
           <div className="mb-3 sm:mb-4">
             <div className="flex items-center mb-2">
-              <span className="text-sm sm:text-base font-bold text-white group-hover:text-black uppercase tracking-wide border-2 border-white px-3 py-1.5 bg-white text-black">SKILLS GAINED</span>
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wide border border-white px-3 py-1 bg-white text-black">SKILLS GAINED</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {project.skillsGained.map((skill, idx) => (
-                <div key={idx} className="flex items-start p-3 border-2 border-white bg-black group-hover:bg-white transition-all">
-                  <span className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-black mr-2 sm:mr-3 flex-shrink-0 mt-0.5 font-bold text-base sm:text-lg">✓</span>
-                  <span className="text-sm text-gray-200 group-hover:text-black font-medium break-words">{skill}</span>
+                <div key={idx} className="flex items-start p-3 border border-white/50 bg-black transition-all">
+                  <span className="w-4 h-4 sm:w-5 sm:h-5 text-white mr-2 sm:mr-3 flex-shrink-0 mt-0.5 font-bold text-base sm:text-lg">✓</span>
+                  <span className="text-sm text-gray-200 font-medium break-words">{skill}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Tools */}
-          <div className="mt-auto pt-4 border-t-4 border-white">
+          <div className="mt-auto pt-4 border-t-2 border-white/60">
             <div className="flex items-center mb-2">
-              <span className="text-sm sm:text-base font-bold text-white group-hover:text-black uppercase tracking-wide border-2 border-white px-3 py-1.5 bg-white text-black">TOOLS & TECHNOLOGIES</span>
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wide border border-white px-3 py-1 bg-white text-black">TOOLS & TECHNOLOGIES</span>
             </div>
             <div className="flex flex-wrap gap-2 sm:gap-2.5">
               {project.tools.map((tool, idx) => (
-                <span key={idx} className="inline-flex items-center px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold bg-white text-black border-2 border-white group-hover:bg-black group-hover:text-white uppercase">
+                <span key={idx} className="inline-flex items-center px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold bg-white text-black border border-white uppercase">
                   {tool}
                 </span>
               ))}
