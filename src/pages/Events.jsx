@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
-import events from '../content/events.json'
 
 // List of image files from dsc-post folder (only JPG/JPEG for browser compatibility)
 const eventImages = [
