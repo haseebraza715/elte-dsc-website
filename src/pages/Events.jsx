@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
+import Events from '../components/Events.jsx'
 
 // List of image files from dsc-post folder (only JPG/JPEG for browser compatibility)
 const eventImages = [
@@ -116,27 +117,8 @@ export default function EventsPage() {
       <main className="relative min-h-screen bg-black overflow-hidden">
 
         <div className="relative z-10">
-          {/* Hero Events Section with Enhanced Design */}
-          <section className="relative pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12 sm:mb-16 md:mb-20">
-                <div className="inline-block mb-4 sm:mb-6 md:mb-8">
-                  <span className="inline-flex items-center px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 bg-black text-white border-4 border-white text-xs sm:text-sm font-bold uppercase tracking-wider">
-                    WEEKLY SESSIONS
-                  </span>
-                </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 text-white leading-tight uppercase border-4 border-white p-4 sm:p-5 md:p-6 bg-black inline-block">
-                  EVENTS
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto leading-relaxed font-bold mb-6 sm:mb-8">
-                  Agenda for next semester will be announced shortly
-                </p>
-                <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl mx-auto font-bold">
-                  Check out the images from last semester below
-                </p>
-              </div>
-            </div>
-          </section>
+          {/* Events Schedule Section */}
+          <Events />
 
           {/* Enhanced Gallery Section */}
           <section className="relative pt-8 sm:pt-10 md:pt-12 lg:pt-16 pb-12 sm:pb-16 md:pb-20 lg:pb-24 border-t-4 border-white bg-black">
@@ -165,7 +147,7 @@ export default function EventsPage() {
                   return (
                     <div
                       key={imagePath}
-                      className="group relative aspect-square overflow-hidden bg-black border-4 border-white cursor-pointer transition-all duration-300 hover:border-white"
+                      className="group relative aspect-square overflow-hidden bg-black border-2 sm:border-4 border-white cursor-pointer transition-all duration-300 hover:border-white"
                       onClick={() => handleImageClick(imagePath)}
                       style={{
                         animationDelay: `${index * 50}ms`,

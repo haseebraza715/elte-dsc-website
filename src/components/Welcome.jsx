@@ -55,7 +55,7 @@ export default function Welcome() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-black min-h-screen flex items-center"
+      className="relative overflow-hidden bg-black min-h-screen flex items-start sm:items-center"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -176,74 +176,58 @@ export default function Welcome() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <div className="min-h-[85vh] flex items-center justify-center pt-6 sm:pt-8 md:pt-10 pb-10 sm:pb-14 md:pb-18">
-          <div className="w-full max-w-5xl flex flex-col items-center space-y-6 sm:space-y-8 md:space-y-10">
+        <div className="min-h-[90vh] flex items-center justify-center pt-14 sm:pt-6 md:pt-8 pb-6 sm:pb-10 md:pb-12 w-full">
+          <div className="w-full max-w-5xl flex flex-col items-center space-y-8 sm:space-y-8 md:space-y-10">
 
             {/* Badge with animation */}
-            <div className="inline-flex items-center border-2 border-white bg-black px-4 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-white hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:scale-105 text-center">
-              ELTE UNIVERSITY
+            <div className="inline-flex items-center border-2 border-white bg-black px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all duration-300 cursor-default">
+              ELTE DATA SCIENCE CLUB
             </div>
 
             {/* Title Section with improved typography */}
-            <div className="w-full text-center space-y-5 sm:space-y-6">
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-tight tracking-tight uppercase">
-                <span className="block border-4 border-white p-4 sm:p-6 md:p-8 bg-black hover:bg-white hover:text-black transition-all duration-500 inline-block transform hover:scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] hero-title">
+            <div className="w-full text-center space-y-4 sm:space-y-3">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-display font-bold text-white leading-[1.1] tracking-tight uppercase">
+                <span className="block border-4 border-white p-2.5 sm:p-3 md:p-4 lg:p-4 bg-black hover:bg-white hover:text-black transition-all duration-500 inline-block transform hover:scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] hero-title">
                   {content.title}
                 </span>
               </h1>
-              <p className="text-sm sm:text-lg lg:text-xl text-white/90 leading-relaxed font-medium max-w-3xl mx-auto px-2 sm:px-4">
+              <p className="text-xs sm:text-sm md:text-base text-white/80 leading-relaxed font-medium max-w-xl mx-auto px-2 sm:px-4">
                 {content.subtitle}
               </p>
             </div>
 
             {/* CTA Buttons with enhanced design */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-2xl justify-center px-2 sm:px-4">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 w-full max-w-lg justify-center px-2 sm:px-4">
               <button
                 onClick={() => handleCtaClick(content.primaryCta.href)}
-                className="group relative w-full sm:w-auto bg-white border-4 border-white text-black px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:bg-black hover:text-white hover:scale-105 active:scale-95 overflow-hidden"
+                className="group relative w-full sm:w-auto bg-white border-4 border-white text-black px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-black hover:text-white hover:scale-105 active:scale-95"
               >
-                <span className="relative z-10">{content.primaryCta.label}</span>
-                <span className="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">{content.primaryCta.label}</span>
+                {content.primaryCta.label}
               </button>
 
               <button
                 onClick={() => handleCtaClick(content.secondaryCta.href)}
-                className="group relative w-full sm:w-auto bg-black border-4 border-white text-white px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 active:scale-95 overflow-hidden"
+                className="group relative w-full sm:w-auto bg-black border-4 border-white text-white px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 active:scale-95"
               >
-                <span className="relative z-10">{content.secondaryCta.label}</span>
-                <span className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                <span className="absolute inset-0 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">{content.secondaryCta.label}</span>
+                {content.secondaryCta.label}
               </button>
             </div>
 
-            {/* Enhanced Stats Grid */}
-            <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 pt-4 px-2 sm:px-4">
-              <div className="group relative bg-black/70 border border-white/50 p-3 sm:p-5 text-left hover:bg-white hover:text-black transition-all duration-400 cursor-default transform hover:-translate-y-1 shadow-[0_0_14px_rgba(255,255,255,0.08)] hover:shadow-[0_0_28px_rgba(255,255,255,0.2)] overflow-hidden stats-card">
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-8 transition-opacity duration-500"></div>
-                <div className="relative z-10 space-y-1.5 sm:space-y-2">
-                  <div className="text-[9px] sm:text-xs text-white/70 group-hover:text-black uppercase tracking-[0.18em]">Projects Completed</div>
-                  <div className="text-xl sm:text-3xl font-bold text-white group-hover:text-black">4+</div>
-                  <div className="text-[9px] sm:text-xs text-white/60 group-hover:text-black uppercase tracking-widest">Research + Applied</div>
-                </div>
+            {/* Enhanced Stats Grid - Simplified */}
+            <div className="w-full grid grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 pt-6 sm:pt-4 px-2 sm:px-4 max-w-lg md:max-w-xl mx-auto">
+              <div className="group relative bg-black/70 border-2 border-white/50 p-2.5 sm:p-3 md:p-3.5 text-center hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:-translate-y-1 hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white group-hover:text-black mb-0.5">4+</div>
+                <div className="text-[8px] sm:text-[9px] md:text-[10px] text-white/70 group-hover:text-black uppercase tracking-wider">Projects</div>
               </div>
 
-              <div className="group relative bg-black/70 border border-white/50 p-3 sm:p-5 text-left hover:bg-white hover:text-black transition-all duration-400 cursor-default transform hover:-translate-y-1 shadow-[0_0_14px_rgba(255,255,255,0.08)] hover:shadow-[0_0_28px_rgba(255,255,255,0.2)] overflow-hidden stats-card">
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-8 transition-opacity duration-500"></div>
-                <div className="relative z-10 space-y-1.5 sm:space-y-2">
-                  <div className="text-[9px] sm:text-xs text-white/70 group-hover:text-black uppercase tracking-[0.18em]">Workshops Held</div>
-                  <div className="text-xl sm:text-3xl font-bold text-white group-hover:text-black">10+</div>
-                  <div className="text-[9px] sm:text-xs text-white/60 group-hover:text-black uppercase tracking-widest">Python + AI</div>
-                </div>
+              <div className="group relative bg-black/70 border-2 border-white/50 p-2.5 sm:p-3 md:p-3.5 text-center hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:-translate-y-1 hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white group-hover:text-black mb-0.5">10+</div>
+                <div className="text-[8px] sm:text-[9px] md:text-[10px] text-white/70 group-hover:text-black uppercase tracking-wider">Workshops</div>
               </div>
 
-              <div className="group relative bg-black/70 border border-white/50 p-3 sm:p-5 text-left hover:bg-white hover:text-black transition-all duration-400 cursor-default transform hover:-translate-y-1 shadow-[0_0_14px_rgba(255,255,255,0.08)] hover:shadow-[0_0_28px_rgba(255,255,255,0.2)] overflow-hidden stats-card">
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-8 transition-opacity duration-500"></div>
-                <div className="relative z-10 space-y-1.5 sm:space-y-2">
-                  <div className="text-[9px] sm:text-xs text-white/70 group-hover:text-black uppercase tracking-[0.18em]">Active Members</div>
-                  <div className="text-xl sm:text-3xl font-bold text-white group-hover:text-black">60+</div>
-                  <div className="text-[9px] sm:text-xs text-white/60 group-hover:text-black uppercase tracking-widest">Student Researchers</div>
-                </div>
+              <div className="group relative bg-black/70 border-2 border-white/50 p-2.5 sm:p-3 md:p-3.5 text-center hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:-translate-y-1 hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white group-hover:text-black mb-0.5">60+</div>
+                <div className="text-[8px] sm:text-[9px] md:text-[10px] text-white/70 group-hover:text-black uppercase tracking-wider">Members</div>
               </div>
             </div>
 

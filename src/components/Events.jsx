@@ -15,16 +15,16 @@ export default function Events() {
     return weekA - weekB
   })
 
-  const renderList = (items, fallback = 'Details coming soon.') => {
+  const renderList = (items, fallback = 'TBA') => {
     if (!Array.isArray(items) || items.length === 0) {
       return (
-        <p className="mt-2 text-white group-hover:text-black text-sm font-semibold uppercase">
+        <p className="mt-1 text-white group-hover:text-black text-xs font-semibold uppercase">
           {fallback}
         </p>
       )
     }
     return (
-      <ul className="mt-3 space-y-2 text-sm sm:text-base font-semibold uppercase list-disc list-inside">
+      <ul className="mt-1 space-y-1 text-xs font-semibold uppercase list-disc list-inside">
         {items.map((item, idx) => (
           <li key={`${item}-${idx}`} className="text-white group-hover:text-black">
             {item}
@@ -35,16 +35,16 @@ export default function Events() {
   }
 
   const renderSection = (label, items, fallback) => (
-    <div className="mt-4">
-      <p className="text-white group-hover:text-black leading-relaxed text-base font-bold uppercase">
-        {label}
+    <div className="mt-2">
+      <p className="text-white group-hover:text-black text-xs font-bold uppercase">
+        {label}:
       </p>
       {renderList(items, fallback)}
     </div>
   )
 
   const renderBadge = (label, className) => (
-    <span className={`inline-flex items-center border-2 border-white px-3 py-1 text-xs font-bold uppercase ${className}`}>
+    <span className={`inline-flex items-center border border-white px-2 py-0.5 text-xs font-bold uppercase ${className}`}>
       {label}
     </span>
   )
@@ -64,26 +64,23 @@ export default function Events() {
   }
 
   return (
-    <section id="events" className="relative py-20 md:py-24 bg-black overflow-hidden">
-      <div className="relative mx-auto max-w-6xl px-4 z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 border-4 border-white bg-black px-6 py-3 text-sm font-bold text-white uppercase tracking-wider mb-8">
+    <section id="events" className="relative pt-20 pb-8 sm:pt-24 sm:pb-12 md:pt-16 md:pb-16 lg:pt-24 lg:pb-16 bg-black overflow-hidden">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 z-10">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2 border-2 border-white bg-black px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-bold text-white uppercase tracking-wider mb-3 sm:mb-4">
             EVENTS
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 uppercase border-4 border-white p-6 bg-black inline-block">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4 uppercase border-2 border-white p-2 sm:p-3 bg-black inline-block">
             {eventsData?.program ?? 'Events'}
           </h2>
           {eventsData?.season && (
-            <p className="text-base sm:text-lg text-white max-w-3xl mx-auto font-bold uppercase tracking-widest">
+            <p className="text-xs sm:text-sm text-white max-w-3xl mx-auto font-bold uppercase tracking-wide px-2">
               {eventsData.season}
             </p>
           )}
-          <p className="text-xl text-white max-w-3xl mx-auto font-bold border-l-4 border-white pl-6 py-4">
-            JOIN US FOR WEEKLY SESSIONS AND COLLABORATIVE LEARNING EXPERIENCES.
-          </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
           {sortedEvents.map((event, index) => {
             const weekNumber = event?.week ?? index + 1
             const isMandatory = event?.mandatory === true
@@ -92,58 +89,55 @@ export default function Events() {
             const isTba = format === 'TBA' || status === 'tba'
             const isGuestSpeaker = format === 'Guest Speaker'
             return (
-              <div key={event?.id ?? event?.title ?? `week-${weekNumber}`} className="relative bg-black border-4 border-white p-8 hover:bg-white hover:text-black transition-all duration-300 group">
+              <div key={event?.id ?? event?.title ?? `week-${weekNumber}`} className="relative bg-black border-2 border-white p-3 sm:p-4 hover:bg-white hover:text-black transition-all duration-300 group">
               <div className="relative z-10">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-4">
-                      <div className="border-2 border-white bg-white text-black px-4 py-2 inline-block font-bold uppercase text-sm">
+                <div className="flex items-start justify-between mb-2 sm:mb-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 mb-1.5 sm:mb-2">
+                      <div className="border border-white bg-white text-black px-1.5 sm:px-2 py-0.5 sm:py-1 inline-block font-bold uppercase text-xs">
                         Week {weekNumber}
                       </div>
                       {isMandatory && renderBadge('Mandatory', 'bg-white text-black')}
-                      {isTba && renderBadge('TBA (will be updated)', 'bg-white text-black')}
-                      {isGuestSpeaker && renderBadge('Guest Speaker', 'bg-white text-black')}
+                      {isTba && renderBadge('TBA', 'bg-white text-black')}
+                      {isGuestSpeaker && renderBadge('Guest', 'bg-white text-black')}
                     </div>
-                    <h3 className="text-2xl font-bold text-white group-hover:text-black mb-2 leading-tight uppercase">{event?.title ?? 'Event'}</h3>
-                    {event?.theme && (
-                      <p className="text-sm text-white group-hover:text-black font-bold uppercase tracking-wide">
-                        Theme: {event.theme}
+                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-black mb-1 leading-tight uppercase break-words">{event?.title ?? 'Event'}</h3>
+                    {format && format !== 'TBA' && (
+                      <p className="text-xs text-white group-hover:text-black font-semibold uppercase">
+                        {format}
                       </p>
                     )}
                   </div>
-                  {format && (
-                    <div className="border-2 border-white bg-black text-white group-hover:bg-white group-hover:text-black px-5 py-2 font-bold ml-4 flex-shrink-0 uppercase">
-                      {format}
-                    </div>
-                  )}
                 </div>
-                {renderSection('What happens', event?.whatHappens)}
-                {renderSection('Deliverables', event?.deliverables)}
+                {event?.whatHappens && event.whatHappens.length > 0 && renderSection('What', event.whatHappens)}
+                {event?.deliverables && event.deliverables.length > 0 && renderSection('Deliverables', event.deliverables)}
                 {event?.requirement && (
-                  <p className="mt-3 text-white group-hover:text-black text-sm font-bold uppercase">
-                    Requirement: {event.requirement}
+                  <p className="mt-2 text-white group-hover:text-black text-xs font-bold uppercase">
+                    {event.requirement}
                   </p>
                 )}
-                {renderSection('Action items', event?.actionItems)}
-                {event?.agenda && renderSection('Agenda', event?.agenda)}
-                <div className="mt-4">
-                  <p className="text-white group-hover:text-black leading-relaxed text-base font-bold uppercase">
-                    Goal
-                  </p>
-                  <p className="mt-2 text-white group-hover:text-black text-sm font-semibold uppercase">
-                    {event?.goal ?? 'Details coming soon.'}
-                  </p>
-                </div>
+                {event?.actionItems && event.actionItems.length > 0 && renderSection('Actions', event.actionItems)}
+                {event?.agenda && event.agenda.length > 0 && renderSection('Agenda', event.agenda)}
+                {event?.goal && (
+                  <div className="mt-2">
+                    <p className="text-white group-hover:text-black text-xs font-bold uppercase">
+                      Goal:
+                    </p>
+                    <p className="mt-1 text-white group-hover:text-black text-xs font-semibold uppercase">
+                      {event.goal}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
             )
           })}
         </div>
 
-        <div className="text-center mt-16">
+        <div className="text-center mt-6 sm:mt-8">
           <button
             onClick={handleContactClick}
-            className="inline-flex items-center px-10 py-5 bg-white border-4 border-white text-black font-bold text-lg uppercase tracking-wider transition-all hover:bg-black hover:text-white focus:outline-none"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-white border-2 border-white text-black font-bold text-xs sm:text-sm uppercase tracking-wider transition-all hover:bg-black hover:text-white focus:outline-none"
           >
             JOIN OUR EVENTS
           </button>

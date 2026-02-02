@@ -47,7 +47,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative py-12 sm:py-16 md:py-20 bg-black overflow-hidden">
+    <section id="about" className="relative pt-4 pb-10 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 bg-black overflow-hidden">
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         <div className="grid gap-12 lg:gap-16 lg:grid-cols-2 items-start">
