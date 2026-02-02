@@ -1,10 +1,165 @@
-[
-  { "date": "Week 1 - Friday", "title": "Kickoff & Expectations", "desc": "Icebreaker & introductions. Members share background, skills, and expectations. Align on club goals: learning, exploring, building projects, forming a community." },
-  { "date": "Week 2 - Friday", "title": "What is Data Science?", "desc": "Intro talk: What Data Science is & how it impacts the world. Showcase real-world applications (recommendation systems, fraud detection, chatbots, healthcare AI). Group discussion on where DS could help in daily life or studies." },
-  { "date": "Week 3 - Friday", "title": "Exploring AI, ML, and DS", "desc": "Fun overview: AI, ML, DL, DS – connections & differences. Showcase famous ML/AI projects (image recognition, generative AI, etc.). Group brainstorm: Cool projects we could build as a club." },
-  { "date": "Week 4 - Friday", "title": "Guest Speaker Session", "desc": "Invite Data Scientist / Industry Professional. Talk theme: How to break into the field + career experiences. Interactive Q&A with members for real-world perspective + networking." },
-  { "date": "Week 5 - Friday", "title": "Club Project Kickoff", "desc": "Select one project idea (from brainstorms). Form teams (data, modeling, visualization, documentation). Set up GitHub repo + contribution workflow. Project officially starts with active contributions." },
-  { "date": "Week 6 - Friday", "title": "Project Collaboration & Community Building", "desc": "Teams continue contributing (coding, documenting, visualizing). Share progress with group. Discuss next steps for the club (future projects, hackathons, collaborations). A working project foundation + stronger community." }
-]
-
-
+{
+  "program": "9-Week Activity Plan",
+  "season": "Spring 2026",
+  "events": [
+    {
+      "id": "week-1",
+      "week": 1,
+      "title": "Kickoff & Retrospective",
+      "theme": "Past Wins & Future Plans",
+      "format": "Session",
+      "mandatory": true,
+      "status": "confirmed",
+      "actionItems": [
+        "Project sign-up form opens immediately after the session."
+      ],
+      "whatHappens": [
+        "Showcase highlights from last semester (projects and activities).",
+        "Present new project options for this semester."
+      ],
+      "goal": "Get everyone excited and aware of the options."
+    },
+    {
+      "id": "week-2",
+      "week": 2,
+      "title": "Deadline & Team Formation",
+      "theme": "Teams, Roles, and Commitments",
+      "format": "Guest Speaker",
+      "mandatory": false,
+      "status": "confirmed",
+      "actionItems": [
+        "Project sign-ups close exactly 7 days after Week 1.",
+        "Finalize team rosters and confirm roles."
+      ],
+      "whatHappens": [
+        "Guest speaker shares insights on team collaboration.",
+        "Review sign-ups and align on project expectations."
+      ],
+      "goal": "Form teams and lock in project commitments."
+    },
+    {
+      "id": "week-3",
+      "week": 3,
+      "title": "Milestone 1",
+      "theme": "The Plan",
+      "format": "Session",
+      "mandatory": true,
+      "status": "confirmed",
+      "requirement": "One representative per team presents.",
+      "deliverables": [
+        "The Plan",
+        "Team communication setup confirmed",
+        "Initial scope presented"
+      ],
+      "whatHappens": [
+        "Teams present their plan and outline initial scope.",
+        "Feedback round with mentors and peers."
+      ],
+      "goal": "Align on scope, roles, and execution plan."
+    },
+    {
+      "id": "week-4",
+      "week": 4,
+      "title": "Buffer Week",
+      "theme": "Momentum & Support",
+      "format": "TBA",
+      "mandatory": false,
+      "status": "tba",
+      "actionItems": [
+        "Continue project work and reach out for support as needed."
+      ],
+      "goal": "Keep teams moving forward while removing blockers."
+    },
+    {
+      "id": "week-5",
+      "week": 5,
+      "title": "Milestone 2",
+      "theme": "The Progress",
+      "format": "Session",
+      "mandatory": true,
+      "status": "confirmed",
+      "requirement": "One representative per team presents.",
+      "deliverables": [
+        "The Progress",
+        "Show current work (code/design/prototype)",
+        "One challenge/blocker shared"
+      ],
+      "whatHappens": [
+        "Teams demo current progress and share blockers.",
+        "Group feedback and troubleshooting."
+      ],
+      "goal": "Validate progress and unblock teams."
+    },
+    {
+      "id": "week-6",
+      "week": 6,
+      "title": "Buffer Week",
+      "theme": "Deep Work & Support",
+      "format": "Guest Speaker",
+      "mandatory": false,
+      "status": "confirmed",
+      "actionItems": [
+        "Incorporate feedback from Milestone 2."
+      ],
+      "whatHappens": [
+        "Guest speaker session focused on iteration and delivery."
+      ],
+      "goal": "Maintain momentum and learn from industry insights."
+    },
+    {
+      "id": "week-7",
+      "week": 7,
+      "title": "Milestone 3",
+      "theme": "The Near-Final",
+      "format": "Session",
+      "mandatory": true,
+      "status": "confirmed",
+      "requirement": "One representative per team presents.",
+      "deliverables": [
+        "The Near-Final",
+        "Working prototype demo",
+        "List remaining tasks before Demo Day"
+      ],
+      "whatHappens": [
+        "Teams present near-final demo and remaining tasks.",
+        "Alignment on final sprint priorities."
+      ],
+      "goal": "Confirm readiness for Demo Day."
+    },
+    {
+      "id": "week-8",
+      "week": 8,
+      "title": "Final Sprint",
+      "theme": "Polish & Slides",
+      "format": "TBA",
+      "mandatory": false,
+      "status": "tba",
+      "actionItems": [
+        "Finalize slides and polish the final demo."
+      ],
+      "whatHappens": [
+        "Teams focus on polish, QA, and presentation readiness."
+      ],
+      "goal": "Get demos and presentations fully polished."
+    },
+    {
+      "id": "week-9",
+      "week": 9,
+      "title": "Demo Day",
+      "theme": "Showcase & Celebrate",
+      "format": "Session",
+      "mandatory": true,
+      "status": "confirmed",
+      "agenda": [
+        "Team demos",
+        "Q&A",
+        "Pizza"
+      ],
+      "whatHappens": [
+        "Teams present their final projects.",
+        "Celebrate with Q&A and pizza."
+      ],
+      "goal": "Showcase outcomes and celebrate the semester."
+    }
+  ]
+}
