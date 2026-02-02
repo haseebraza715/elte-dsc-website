@@ -198,42 +198,12 @@ const Header = memo(function Header() {
         </div>
       </header>
 
-      {/* Mobile Navigation Overlay - Moves outside header to prevent clipping */}
+      {/* Mobile Navigation Overlay - starts below header so header toggle (X) is always clickable */}
       <div
-        className={`xl:hidden fixed inset-0 z-[70] bg-black/98 backdrop-blur-xl transition-all duration-500 ease-in-out ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-full pointer-events-none'}`}
+        className={`xl:hidden fixed top-16 sm:top-20 left-0 right-0 bottom-0 z-[70] bg-black/98 backdrop-blur-xl transition-all duration-500 ease-in-out ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-full pointer-events-none'}`}
         onClick={() => setOpen(false)}
         role="presentation"
       >
-        {/* Close Button - separate layer so it always receives clicks when overlay is open */}
-        <div
-          className="absolute top-0 right-0 z-[71] p-4 sm:p-6"
-          onClick={(e) => {
-            e.stopPropagation()
-            setOpen(false)
-          }}
-          onPointerDown={(e) => {
-            e.stopPropagation()
-            setOpen(false)
-          }}
-          role="button"
-          tabIndex={-1}
-          aria-label="Close menu"
-        >
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation()
-              setOpen(false)
-            }}
-            className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 min-w-[48px] min-h-[48px] rounded-xl text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white transition-colors duration-200 active:scale-95 touch-manipulation"
-            aria-label="Close menu"
-          >
-            <svg className="block h-8 w-8 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
         <div className="flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8 p-4 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
           {items.map((id, index) => (
             <button
