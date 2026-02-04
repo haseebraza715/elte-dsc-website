@@ -69,7 +69,7 @@ export default function Contact() {
                 </div>
                 <div className="pt-1 min-w-0 flex-1">
                   <div className="font-bold text-white group-hover:text-black text-[10px] sm:text-xs mb-1 uppercase tracking-wide">MEETING TIME</div>
-                  <div className="text-white group-hover:text-black text-sm sm:text-base font-bold">Next semester TBA</div>
+                  <div className="text-white group-hover:text-black text-sm sm:text-base font-bold">4 - 5:30 pm, 0.817 South Building</div>
                 </div>
               </div>
             </div>
