@@ -99,12 +99,12 @@
       "mandatory": false,
       "status": "confirmed",
       "actionItems": [
-        "Get Insig"
+        "Understand what hiring managers look for in data science candidates."
       ],
       "whatHappens": [
         "Discussion on internships, full‑time roles, impactful projects, and real‑world expectations."
       ],
-      "goal": "Understand what hiring managers look for in data science candidates."
+      "goal": "Provide clarity on internships, job expectations, and industry‑ready skills."
     },
     {
       "id": "week-7",
