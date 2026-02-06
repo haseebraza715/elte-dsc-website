@@ -93,18 +93,18 @@
     {
       "id": "week-6",
       "week": 6,
-      "title": "Guest Speaker Session",
-      "theme": "Deep Work & Support",
+      "title": "Breaking Into Data Science: Internship & Job Insights",
+      "theme": "Career Oriented Session",
       "format": "Guest Speaker",
       "mandatory": false,
       "status": "confirmed",
       "actionItems": [
-        "Incorporate feedback from Milestone 2."
+        "Get Insig"
       ],
       "whatHappens": [
-        "Guest speaker session focused on iteration and delivery."
+        "Discussion on internships, full‑time roles, impactful projects, and real‑world expectations."
       ],
-      "goal": "Maintain momentum and learn from industry insights."
+      "goal": "Understand what hiring managers look for in data science candidates."
     },
     {
       "id": "week-7",
