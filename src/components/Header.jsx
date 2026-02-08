@@ -136,8 +136,8 @@ const Header = memo(function Header() {
   return (
     <>
       <header className="fixed w-full start-0 top-0 z-50 glass-nav transition-all duration-300 border-[#231F1A]/5 shadow-glow">
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="flex items-center justify-between h-20 sm:h-24">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
             {/* Logo */}
             <div className="flex-shrink-0">
               <a
@@ -145,7 +145,7 @@ const Header = memo(function Header() {
                 onClick={handleLogoClick}
                 className="flex items-center space-x-3 group focus:outline-none"
               >
-                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient tracking-tighter transition-all duration-500 group-hover:tracking-normal group-hover:scale-105">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-gradient tracking-tighter transition-all duration-500 group-hover:tracking-normal group-hover:scale-105">
                   DSC ELTE
                 </div>
               </a>
@@ -178,11 +178,11 @@ const Header = memo(function Header() {
             <div className="lg:hidden">
               <button
                 onClick={() => setOpen(!open)}
-                className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/70 hover:text-[#231F1A] transition-all duration-300 z-[60]"
+                className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/70 hover:text-[#231F1A] transition-all duration-300 z-[60]"
                 aria-expanded={open}
                 aria-label="Toggle menu"
               >
-                <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1.5">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-col justify-center items-center space-y-1.5">
                   <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? 'rotate-45 translate-y-2 w-6' : ''}`}></span>
                   <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? 'opacity-0' : 'w-6'}`}></span>
                   <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? '-rotate-45 -translate-y-2 w-6' : ''}`}></span>
@@ -203,13 +203,13 @@ const Header = memo(function Header() {
         {/* Animated Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-lg max-h-lg bg-[#1F1C18]/10 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" />
 
-        <div className="relative flex flex-col items-center justify-center h-full space-y-12 p-8 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="relative flex flex-col items-center justify-center h-full space-y-8 sm:space-y-12 p-6 sm:p-8 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
           <button
             onClick={() => setOpen(false)}
-            className="absolute top-6 right-6 w-11 h-11 flex items-center justify-center rounded-2xl bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/70 hover:text-[#231F1A] transition-all duration-300"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-2xl bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/70 hover:text-[#231F1A] transition-all duration-300"
             aria-label="Close menu"
           >
-            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6l-12 12" />
             </svg>
           </button>
@@ -221,7 +221,7 @@ const Header = memo(function Header() {
               style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${150 + index * 80}ms` : '0ms' }}
             >
               <span className="text-[10px] font-bold text-[#1F1C18] uppercase tracking-[0.4em] mb-2 opacity-0 group-hover:opacity-100 transition-opacity">Discover</span>
-              <span className={`text-4xl sm:text-5xl font-display font-bold text-[#231F1A]/70 hover:text-[#231F1A] hover:scale-110 transition-all duration-300 uppercase italic`}>
+              <span className={`text-3xl sm:text-4xl md:text-5xl font-display font-bold text-[#231F1A]/70 hover:text-[#231F1A] hover:scale-105 transition-all duration-300 uppercase italic`}>
                 {id}
               </span>
             </button>
@@ -232,7 +232,7 @@ const Header = memo(function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className={`btn-premium py-5 px-12 text-xl shadow-glow ${open ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+            className={`btn-premium w-full sm:w-auto py-4 sm:py-5 px-10 sm:px-12 text-base sm:text-xl shadow-glow ${open ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
             style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${150 + items.length * 80}ms` : '0ms' }}
           >
             Apply to Join

@@ -51,7 +51,7 @@ const Footer = memo(function Footer() {
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </div>
           <div className="text-[#231F1A]/60 text-xs font-medium">
-            Made with <span className="text-[#1F1C18]">✦</span> for the ELTE Community.
+            Made with ❤️ for the ELTE Community.
           </div>
         </div>
       </div>

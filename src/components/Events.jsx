@@ -163,13 +163,13 @@ export default function Events() {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:gap-6 md:grid-cols-6 md:auto-rows-[180px] lg:auto-rows-[220px]">
+          <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 md:grid-cols-6 md:auto-rows-[180px] lg:auto-rows-[220px]">
             {galleryImages.map((image, index) => (
               <div
                 key={image.src}
                 className={`group relative overflow-hidden rounded-3xl border border-[#231F1A]/10 bg-[#E3D7C9] shadow-[0_20px_40px_rgba(43,38,33,0.15)] ${image.span || ''}`}
               >
-                <div className="relative h-full w-full">
+                <div className="relative w-full aspect-[4/3] sm:aspect-[5/4] md:aspect-auto md:h-full">
                   <img
                     src={image.src}
                     alt={image.alt}
