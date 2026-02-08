@@ -5,7 +5,9 @@ import site from '../content/site.json'
 // Cache header height to avoid repeated calculations
 const getHeaderHeight = () => {
   if (typeof window === 'undefined') return 80
-  return window.innerWidth >= 640 ? 80 : 64
+  if (window.innerWidth >= 1024) return 96
+  if (window.innerWidth >= 640) return 80
+  return 56
 }
 
 const Header = memo(function Header() {
@@ -136,16 +138,16 @@ const Header = memo(function Header() {
   return (
     <>
       <header className="fixed w-full start-0 top-0 z-50 glass-nav transition-all duration-300 border-[#231F1A]/5 shadow-glow">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
+        <div className="relative mx-auto max-w-7xl px-3 sm:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-20 lg:h-24">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="min-w-0">
               <a
                 href="/"
                 onClick={handleLogoClick}
-                className="flex items-center space-x-3 group focus:outline-none"
+                className="flex min-w-0 items-center space-x-2 sm:space-x-3 group focus:outline-none"
               >
-                <div className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-gradient tracking-tighter transition-all duration-500 group-hover:tracking-normal group-hover:scale-105">
+                <div className="max-w-[60vw] sm:max-w-none truncate text-lg sm:text-2xl lg:text-3xl font-display font-bold text-gradient tracking-tighter transition-all duration-500 group-hover:tracking-normal group-hover:scale-105">
                   DSC ELTE
                 </div>
               </a>
@@ -178,14 +180,14 @@ const Header = memo(function Header() {
             <div className="lg:hidden">
               <button
                 onClick={() => setOpen(!open)}
-                className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/70 hover:text-[#231F1A] transition-all duration-300 z-[60]"
+                className="relative w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/70 hover:text-[#231F1A] transition-all duration-300 z-[60]"
                 aria-expanded={open}
                 aria-label="Toggle menu"
               >
-                <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-col justify-center items-center space-y-1.5">
-                  <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? 'rotate-45 translate-y-2 w-6' : ''}`}></span>
-                  <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? 'opacity-0' : 'w-6'}`}></span>
-                  <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? '-rotate-45 -translate-y-2 w-6' : ''}`}></span>
+                <div className="w-4 h-4 sm:w-6 sm:h-6 flex flex-col justify-center items-center space-y-1.5">
+                  <span className={`block w-4 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? 'rotate-45 translate-y-2 w-6' : ''}`}></span>
+                  <span className={`block w-4 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? 'opacity-0' : 'w-6'}`}></span>
+                  <span className={`block w-4 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? '-rotate-45 -translate-y-2 w-6' : ''}`}></span>
                 </div>
               </button>
             </div>

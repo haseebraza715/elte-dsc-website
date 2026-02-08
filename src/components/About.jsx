@@ -9,7 +9,9 @@ export default function About() {
   // Cache header height
   const getHeaderHeight = () => {
     if (typeof window === 'undefined') return 80
-    return window.innerWidth >= 640 ? 80 : 64
+    if (window.innerWidth >= 1024) return 96
+    if (window.innerWidth >= 640) return 80
+    return 56
   }
 
   const handleContactClick = () => {
@@ -122,5 +124,4 @@ export default function About() {
     </section>
   )
 }
-
 
