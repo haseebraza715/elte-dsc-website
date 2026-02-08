@@ -36,12 +36,12 @@ function MemberCard({ person, index }) {
 
   return (
     <div className={`glass-card overflow-hidden group reveal ${delayClass}`}>
-      <div className="w-full aspect-[4/5] overflow-hidden bg-[#F3EDE2]">
+      <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#F3EDE2]">
         {imageSrc && !imageError ? (
           <img
             src={imageSrc}
             alt={person.name}
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+            className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
             style={{ objectPosition: getObjectPosition() }}
             onError={() => setImageError(true)}
             loading="lazy"
@@ -51,43 +51,49 @@ function MemberCard({ person, index }) {
             {getInitials(person.name)}
           </div>
         )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1F1C18]/35 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+        {person.role && (
+          <div className="absolute left-5 bottom-5 rounded-full bg-[#F3EDE2]/80 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#231F1A]">
+            {person.role}
+          </div>
+        )}
       </div>
 
-      <div className="p-6 space-y-4">
+      <div className="p-6 space-y-5">
         <div>
           <h4 className="text-lg font-display font-bold text-[#231F1A] group-hover:text-[#1F1C18] transition-colors duration-300">
             {person.name}
           </h4>
-          {person.role && (
-            <p className="text-xs font-semibold text-[#231F1A]/60 uppercase tracking-widest mt-1">
-              {person.role}
-            </p>
-          )}
+          <p className="text-sm font-semibold text-[#231F1A]/60 mt-2">
+            {person.role || 'DSC Member'}
+          </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           {person.link && (
             <a
               href={person.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#231F1A]/10 text-[#231F1A]/60 hover:bg-[#1F1C18] hover:text-[#231F1A] transition-all duration-300"
-              aria-label="LinkedIn Profile"
+              className="inline-flex items-center gap-2 rounded-full border border-[#231F1A]/15 bg-[#F3EDE2]/80 px-3 py-2 text-xs font-bold uppercase tracking-widest text-[#231F1A]/70 hover:border-[#1F1C18]/40 hover:text-[#1F1C18] transition-all duration-300"
+              aria-label={`LinkedIn profile of ${person.name}`}
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
                 <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3.5 8.98h2.96V21H3.5V8.98ZM9.56 8.98h2.84v1.64h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.6V21h-2.96v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9.56V8.98Z" />
               </svg>
+              LinkedIn
             </a>
           )}
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#231F1A]/10 text-[#231F1A]/60 hover:bg-[#F3EDE2] hover:text-[#231F1A] transition-all duration-300"
+              className="inline-flex items-center gap-2 rounded-full border border-[#231F1A]/15 bg-[#F3EDE2]/80 px-3 py-2 text-xs font-bold uppercase tracking-widest text-[#231F1A]/70 hover:border-[#1F1C18]/40 hover:text-[#1F1C18] transition-all duration-300"
               aria-label={`Email ${person.name}`}
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
                 <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.2l8 5 8-5V7H4Zm0 2.6V17h16V9.6l-8 5-8-5Z" />
               </svg>
+              Email
             </a>
           )}
         </div>
