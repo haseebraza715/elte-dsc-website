@@ -135,86 +135,95 @@ const Header = memo(function Header() {
 
   return (
     <>
-      <header className="fixed w-full start-0 top-0 z-50 bg-black/95 xl:bg-black/85 backdrop-blur-lg border-b border-white/30 shadow-lg shadow-black/40 overflow-hidden">
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+      <header className="fixed w-full start-0 top-0 z-50 glass-nav transition-all duration-300 border-[#231F1A]/5 shadow-glow">
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Logo */}
             <div className="flex-shrink-0">
               <a
                 href="/"
                 onClick={handleLogoClick}
-                className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-white rounded-xl p-1 -ml-1 transition-all duration-300"
+                className="flex items-center space-x-3 group focus:outline-none"
               >
-                <span className="text-xl sm:text-2xl font-display font-bold text-white border-2 border-white px-4 py-2 group-hover:bg-white group-hover:text-black transition-all duration-300 transform group-hover:scale-105 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient tracking-tighter transition-all duration-500 group-hover:tracking-normal group-hover:scale-105">
                   DSC ELTE
-                </span>
+                </div>
               </a>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center space-x-2 2xl:space-x-3">
+            <nav className="hidden lg:flex items-center space-x-1">
               {items.map((id) => (
                 <button
                   key={id}
                   onClick={() => handleNavClick(id)}
-                  className="relative text-gray-300 hover:text-white px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white group"
+                  className="relative text-[#231F1A]/70 hover:text-[#231F1A] px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all duration-300 focus:outline-none group overflow-hidden"
                 >
-                  <span className="relative z-10">{id.charAt(0).toUpperCase() + id.slice(1)}</span>
-                  <span className="pointer-events-none absolute inset-x-2 bottom-1 h-0.5 origin-left scale-x-0 bg-white rounded-full transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+                  <span className="relative z-10">{id}</span>
+                  <span className="absolute inset-0 bg-[#231F1A]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-lg"></span>
                 </button>
               ))}
+              <div className="ml-4 h-8 w-px bg-[#231F1A]/10 mr-4"></div>
               <a
                 href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-2 relative px-7 py-3 bg-white text-black border-2 border-white text-sm font-bold transition-all duration-300 hover:bg-black hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black active:scale-95 shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
+                className="btn-premium py-2.5 px-8 text-sm uppercase tracking-widest shadow-glow"
               >
-                JOIN NOW
+                Apply
               </a>
             </nav>
 
             {/* Mobile menu button */}
-            <div className="xl:hidden">
+            <div className="lg:hidden">
               <button
                 onClick={() => setOpen(!open)}
-                className="inline-flex items-center justify-center p-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white transition-colors duration-200 active:scale-95"
+                className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/70 hover:text-[#231F1A] transition-all duration-300 z-[60]"
                 aria-expanded={open}
                 aria-label="Toggle menu"
               >
-                <span className="sr-only">Open main menu</span>
-                {open ? (
-                  <svg className="block h-6 w-6 transition-transform duration-200 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg className="block h-6 w-6 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
+                <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1.5">
+                  <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? 'rotate-45 translate-y-2 w-6' : ''}`}></span>
+                  <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? 'opacity-0' : 'w-6'}`}></span>
+                  <span className={`block w-5 h-0.5 bg-current transition-all duration-500 rounded-full ${open ? '-rotate-45 -translate-y-2 w-6' : ''}`}></span>
+                </div>
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Navigation Overlay - starts below header so header toggle (X) is always clickable */}
+      {/* Mobile Navigation Overlay */}
       <div
-        className={`xl:hidden fixed top-16 sm:top-20 left-0 right-0 bottom-0 z-[70] bg-black/98 backdrop-blur-xl transition-all duration-500 ease-in-out ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-full pointer-events-none'}`}
-        onClick={() => setOpen(false)}
-        role="presentation"
+        className={`lg:hidden fixed inset-0 z-[55] transition-all duration-700 ease-in-out ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
-        <div className="flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8 p-4 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        {/* Elite Glass Overlay */}
+        <div className="absolute inset-0 bg-[#F3EDE2]/95 backdrop-blur-2xl" onClick={() => setOpen(false)} />
+
+        {/* Animated Glows */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-lg max-h-lg bg-[#1F1C18]/10 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" />
+
+        <div className="relative flex flex-col items-center justify-center h-full space-y-12 p-8 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <button
+            onClick={() => setOpen(false)}
+            className="absolute top-6 right-6 w-11 h-11 flex items-center justify-center rounded-2xl bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/70 hover:text-[#231F1A] transition-all duration-300"
+            aria-label="Close menu"
+          >
+            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6l-12 12" />
+            </svg>
+          </button>
           {items.map((id, index) => (
             <button
               key={id}
               onClick={() => handleNavClick(id)}
-              className={`relative text-3xl sm:text-4xl font-display font-bold text-gray-300 hover:text-white transition-all duration-300 transform hover:scale-105 ${open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-              style={{ transitionDelay: open ? `${100 + index * 50}ms` : '0ms' }}
+              className={`group flex flex-col items-center ${open ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${150 + index * 80}ms` : '0ms' }}
             >
-              <span className="relative z-10">{id.charAt(0).toUpperCase() + id.slice(1)}</span>
-              {/* Active/Hover Indicator */}
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-1 bg-white rounded-full group-hover:w-full transition-all duration-300 opacity-0 group-hover:opacity-100"></span>
+              <span className="text-[10px] font-bold text-[#1F1C18] uppercase tracking-[0.4em] mb-2 opacity-0 group-hover:opacity-100 transition-opacity">Discover</span>
+              <span className={`text-4xl sm:text-5xl font-display font-bold text-[#231F1A]/70 hover:text-[#231F1A] hover:scale-110 transition-all duration-300 uppercase italic`}>
+                {id}
+              </span>
             </button>
           ))}
 
@@ -223,16 +232,15 @@ const Header = memo(function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className={`mt-4 relative px-8 py-4 bg-white text-black border-4 border-white text-lg font-bold active:scale-95 transition-all duration-300 ${open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-            style={{ transitionDelay: open ? `${100 + items.length * 50}ms` : '0ms' }}
+            className={`btn-premium py-5 px-12 text-xl shadow-glow ${open ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+            style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${150 + items.length * 80}ms` : '0ms' }}
           >
-            JOIN NOW
+            Apply to Join
           </a>
         </div>
       </div>
     </>
   )
 })
-
 
 export default Header

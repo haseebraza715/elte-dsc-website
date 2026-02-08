@@ -7,26 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#000000', // Pure black
-        surface: '#000000',    // Pure black
-        primary: '#FFFFFF',    // Pure white
-        secondary: '#FFFFFF',  // Pure white
-
-        // Mapping to existing variable names for compatibility
-        accent: '#FFFFFF',     // Pure white
-        accentContrast: '#000000',
-        bgsoft: '#000000',     // Pure black
-        bgcard: '#000000',     // Pure black
-        border: '#FFFFFF',     // Pure white
-        textmain: '#FFFFFF',   // Pure white
-        textmuted: '#CCCCCC',  // Light gray for muted text
-      },
-      maxWidth: {
-        content: '960px',
+        background: 'var(--color-bg-base)',
+        surface: 'var(--color-bg-surface)',
+        primary: 'var(--color-text-primary)',
+        secondary: 'var(--color-text-secondary)',
+        accent: 'var(--color-accent)',
+        accentHover: 'var(--color-accent-hover)',
       },
       fontFamily: {
-        sans: ['"Space Mono"', 'monospace'],
-        display: ['"Courier Prime"', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Playfair Display"', 'serif'],
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',

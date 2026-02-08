@@ -47,65 +47,71 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative pt-4 pb-10 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 bg-black overflow-hidden">
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
-        <div className="grid gap-12 lg:gap-16 lg:grid-cols-2 items-start">
+    <section id="about" className="relative overflow-hidden pt-24 reveal">
+      <div className="section-container relative z-10">
+        <div className="grid gap-16 lg:grid-cols-2 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 border-4 border-white bg-black px-6 py-3 text-sm font-bold text-white uppercase tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-              ABOUT
+          <div className="space-y-10">
+            <div className="inline-flex items-center space-x-2 text-[#1F1C18] font-bold tracking-[0.2em] text-xs uppercase">
+              <span className="w-8 h-px bg-[#1F1C18]"></span>
+              <span>About Us</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-none tracking-tight uppercase border-4 border-white p-6 bg-black hover:bg-white hover:text-black transition-all duration-500 transform hover:scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)]">
-              {content.heading}
-            </h2>
-            <div className="space-y-6 border-l-4 border-white pl-6">
-              {content.paragraphs.map((p, index) => (
-                <p key={index} className="text-white leading-relaxed text-lg sm:text-xl font-bold">
-                  {p}
-                </p>
-              ))}
+
+            <div className="space-y-6">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight">
+                Empowering the <span className="text-gradient">Next Generation</span> of Data Scientists.
+              </h2>
+              <div className="space-y-6">
+                {content.paragraphs.map((p, index) => (
+                  <p key={index} className="text-lg text-[#231F1A]/70 font-medium leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+
+            <div className="flex flex-wrap gap-4 pt-4">
               <button
                 onClick={handleContactClick}
-                className="group relative inline-flex items-center justify-center gap-3 bg-white border-4 border-white text-black px-10 py-5 font-bold uppercase tracking-wider transition-all duration-300 hover:bg-black hover:text-white hover:scale-105 active:scale-95 focus:outline-none overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+                className="btn-premium px-8 py-3"
               >
-                <span className="relative z-10">CONTACT US</span>
-                <span className="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">CONTACT US</span>
+                Get in Touch
               </button>
               <a
-                className="group relative inline-flex items-center justify-center gap-3 bg-black border-4 border-white text-white px-10 py-5 font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 active:scale-95 focus:outline-none overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-[#231F1A]/20 text-[#231F1A]/70 font-semibold hover:bg-[#231F1A]/10 hover:text-[#231F1A] transition-all duration-300"
                 href="https://www.linkedin.com/company/dscelte"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="relative z-10">LINKEDIN</span>
-                <span className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                <span className="absolute inset-0 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">LINKEDIN</span>
+                LinkedIn
               </a>
             </div>
           </div>
 
           {/* Right Content - Focus Areas */}
-          <div className="relative bg-black border-4 border-white p-8 lg:p-10 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] transition-shadow duration-500">
+          <div className="glass-card p-8 lg:p-12 relative overflow-hidden group">
+            {/* Subtle card glow */}
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#1F1C18]/10 rounded-full blur-3xl group-hover:bg-[#1F1C18]/20 transition-all duration-500"></div>
+
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="relative border-4 border-white bg-white text-black px-5 py-2.5 shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                  <h3 className="text-2xl lg:text-3xl font-bold uppercase">FOCUS AREAS</h3>
-                </div>
-              </div>
-              <ul className="space-y-4">
+              <h3 className="text-2xl font-display font-bold text-[#231F1A] mb-8 flex items-center">
+                <span className="w-2 h-2 bg-[#1F1C18] rounded-full mr-3"></span>
+                Focus Areas
+              </h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
                 {focus.map((item, index) => (
                   <li
                     key={index}
-                    className="group relative flex items-start gap-4 p-4 bg-black border-2 border-white hover:bg-white hover:text-black transition-all duration-500 cursor-default transform hover:scale-[1.02] hover:-translate-x-1 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-[#231F1A]/5 border border-[#231F1A]/5 hover:border-[#1F1C18]/30 hover:bg-[#231F1A]/10 transition-all duration-300 group/item"
                   >
-                    <div className="relative border-2 border-white bg-white text-black w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5 font-bold group-hover:scale-110 transition-transform duration-300">
-                      ✓
+                    <div className="w-6 h-6 rounded-full bg-[#1F1C18]/10 border border-[#1F1C18]/30 flex items-center justify-center flex-shrink-0 group-hover/item:bg-[#1F1C18] group-hover/item:border-[#1F1C18] transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#1F1C18] group-hover/item:text-[#231F1A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
-                    <span className="text-white text-sm md:text-base font-bold leading-relaxed pt-1 group-hover:text-black transition-colors duration-300 uppercase">{item}</span>
+                    <span className="text-[#231F1A]/80 font-semibold text-sm group-hover/item:text-[#231F1A] transition-colors duration-300">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>

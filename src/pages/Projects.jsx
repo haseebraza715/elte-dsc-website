@@ -4,16 +4,13 @@ import ProjectsComponent from '../components/Projects.jsx'
 
 export default function ProjectsPage() {
   useEffect(() => {
-    // Use requestAnimationFrame for smoother scroll
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' })
-    })
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [])
-  
+
   return (
     <>
-      <SEO 
-        title="Our Projects" 
+      <SEO
+        title="Our Projects"
         description="Explore hands-on data science projects designed to enhance your skills and deepen your understanding of real-world applications. From clustering and visualization to cryptocurrency analysis and climate forecasting."
         path="/project"
       />

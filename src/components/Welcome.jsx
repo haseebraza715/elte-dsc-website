@@ -55,183 +55,88 @@ export default function Welcome() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-black min-h-screen flex items-start sm:items-center"
+      className="relative min-h-[88vh] sm:min-h-[96vh] overflow-hidden pt-28 sm:pt-32 reveal"
     >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="hero-grid absolute inset-0 opacity-15"></div>
-        <div className="data-flow absolute inset-0 opacity-15"></div>
-
-        <svg
-          className="absolute left-8 top-24 w-[220px] h-[220px] sm:left-12 sm:top-20 sm:w-[260px] sm:h-[260px] lg:left-16 lg:top-20 lg:w-[300px] lg:h-[300px] opacity-40 sphere-float"
-          viewBox="0 0 360 360"
-          aria-hidden="true"
-        >
-          <defs>
-            <radialGradient id="sphereGlow" cx="35%" cy="30%" r="60%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.8)" />
-              <stop offset="55%" stopColor="rgba(255,255,255,0.3)" />
-              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-            </radialGradient>
-          </defs>
-          <circle cx="180" cy="180" r="140" fill="url(#sphereGlow)" />
-          <circle cx="180" cy="180" r="140" fill="none" stroke="rgba(255,255,255,0.6)" />
-          <g className="sphere-rotate" stroke="rgba(255,255,255,0.5)" fill="none">
-            <ellipse cx="180" cy="180" rx="120" ry="40" />
-            <ellipse cx="180" cy="180" rx="120" ry="70" />
-            <ellipse cx="180" cy="180" rx="120" ry="100" />
-            <ellipse cx="180" cy="180" rx="60" ry="120" transform="rotate(90 180 180)" />
-            <ellipse cx="180" cy="180" rx="80" ry="120" transform="rotate(90 180 180)" />
-          </g>
-          <g fill="rgba(255,255,255,0.9)">
-            <circle cx="110" cy="120" r="2.5" />
-            <circle cx="230" cy="90" r="2.5" />
-            <circle cx="250" cy="200" r="2.5" />
-            <circle cx="140" cy="230" r="2.5" />
-          </g>
-        </svg>
-
-        <svg
-          className="absolute right-12 top-12 w-[420px] h-[240px] opacity-28 mesh-sway"
-          viewBox="0 0 420 240"
-          aria-hidden="true"
-        >
-          <g stroke="rgba(255,255,255,0.22)" strokeWidth="1" fill="none">
-            <path d="M20 170 L140 60 L260 110 L380 30" />
-            <path d="M30 120 L160 30 L300 80 L400 20" />
-            <path d="M50 210 L180 120 L280 180 L390 90" />
-            <path d="M80 50 L210 150 L320 60" />
-          </g>
-          <g fill="rgba(255,255,255,0.55)">
-            <circle cx="140" cy="60" r="2.5" />
-            <circle cx="260" cy="110" r="2.5" />
-            <circle cx="380" cy="30" r="2.5" />
-            <circle cx="160" cy="30" r="2" />
-            <circle cx="300" cy="80" r="2" />
-            <circle cx="180" cy="120" r="2" />
-            <circle cx="280" cy="180" r="2" />
-            <circle cx="320" cy="60" r="2" />
-          </g>
-        </svg>
-
-        <svg
-          className="absolute bottom-10 right-10 w-[420px] h-[240px] opacity-32 node-drift"
-          viewBox="0 0 420 240"
-          aria-hidden="true"
-        >
-          <g stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none">
-            <line x1="30" y1="180" x2="150" y2="70" />
-            <line x1="150" y1="70" x2="280" y2="120" />
-            <line x1="280" y1="120" x2="390" y2="40" />
-            <line x1="110" y1="30" x2="220" y2="110" />
-            <line x1="220" y1="110" x2="360" y2="200" />
-          </g>
-          <g fill="rgba(255,255,255,0.55)">
-            <circle cx="30" cy="180" r="2.5" />
-            <circle cx="150" cy="70" r="2.5" />
-            <circle cx="280" cy="120" r="2.5" />
-            <circle cx="390" cy="40" r="2.5" />
-            <circle cx="110" cy="30" r="2.5" />
-            <circle cx="220" cy="110" r="2.5" />
-            <circle cx="360" cy="200" r="2.5" />
-          </g>
-        </svg>
-
-        <svg
-          className="absolute right-[18%] top-[18%] w-[170px] h-[170px] sm:right-[16%] sm:top-[14%] sm:w-[200px] sm:h-[200px] lg:right-[14%] lg:top-[16%] lg:w-[230px] lg:h-[230px] opacity-32 sphere-float-slow"
-          viewBox="0 0 360 360"
-          aria-hidden="true"
-        >
-          <defs>
-            <radialGradient id="sphereGlowSmall" cx="40%" cy="35%" r="60%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.7)" />
-              <stop offset="55%" stopColor="rgba(255,255,255,0.28)" />
-              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-            </radialGradient>
-          </defs>
-          <circle cx="180" cy="180" r="120" fill="url(#sphereGlowSmall)" />
-          <circle cx="180" cy="180" r="120" fill="none" stroke="rgba(255,255,255,0.5)" />
-          <g className="sphere-rotate" stroke="rgba(255,255,255,0.4)" fill="none">
-            <ellipse cx="180" cy="180" rx="100" ry="40" />
-            <ellipse cx="180" cy="180" rx="100" ry="70" />
-            <ellipse cx="180" cy="180" rx="60" ry="110" transform="rotate(90 180 180)" />
-          </g>
-        </svg>
-
-        <svg
-          className="absolute right-[10%] bottom-[10%] w-[190px] h-[190px] sm:right-[12%] sm:bottom-[12%] sm:w-[210px] sm:h-[210px] lg:right-[14%] lg:bottom-[14%] lg:w-[240px] lg:h-[240px] opacity-28 sphere-float"
-          viewBox="0 0 360 360"
-          aria-hidden="true"
-        >
-          <circle cx="180" cy="180" r="100" fill="none" stroke="rgba(255,255,255,0.5)" />
-          <g className="sphere-rotate" stroke="rgba(255,255,255,0.4)" fill="none">
-            <ellipse cx="180" cy="180" rx="90" ry="30" />
-            <ellipse cx="180" cy="180" rx="90" ry="60" />
-            <ellipse cx="180" cy="180" rx="50" ry="90" transform="rotate(90 180 180)" />
-          </g>
-        </svg>
-
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Background Layers */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute -top-32 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[#1F1C18]/18 blur-[140px]" />
+        <div className="absolute bottom-[-20%] left-[-10%] h-[520px] w-[520px] rounded-full bg-[#0D0C0A]/14 blur-[160px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(122,107,92,0.08)_0%,transparent_45%,rgba(90,79,68,0.08)_100%)]" />
+        {/* Abstract side stack */}
+        <div className="hidden lg:block absolute right-12 top-28 w-64 space-y-4 opacity-70">
+          <div className="glass-card p-5 rotate-[-2deg] shadow-[0_20px_40px_rgba(43,30,30,0.18)]">
+            <div className="h-2 w-10 rounded-full bg-[#1F1C18]/40" />
+            <div className="mt-4 h-2 w-40 rounded-full bg-[#231F1A]/15" />
+            <div className="mt-2 h-2 w-28 rounded-full bg-[#231F1A]/15" />
+          </div>
+          <div className="glass-card p-5 rotate-[1.5deg] shadow-[0_20px_40px_rgba(43,30,30,0.18)]">
+            <div className="h-2 w-16 rounded-full bg-[#1F1C18]/40" />
+            <div className="mt-4 h-2 w-36 rounded-full bg-[#231F1A]/15" />
+            <div className="mt-2 h-2 w-24 rounded-full bg-[#231F1A]/15" />
+          </div>
+          <div className="glass-card p-5 rotate-[-1deg] shadow-[0_20px_40px_rgba(43,30,30,0.18)]">
+            <div className="h-2 w-12 rounded-full bg-[#1F1C18]/40" />
+            <div className="mt-4 h-2 w-44 rounded-full bg-[#231F1A]/15" />
+            <div className="mt-2 h-2 w-20 rounded-full bg-[#231F1A]/15" />
+          </div>
+        </div>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <div className="min-h-[90vh] flex items-center justify-center pt-14 sm:pt-6 md:pt-8 pb-6 sm:pb-10 md:pb-12 w-full">
-          <div className="w-full max-w-5xl flex flex-col items-center space-y-8 sm:space-y-8 md:space-y-10">
+      <div className="relative section-container z-10">
+        <div className="mx-auto max-w-5xl text-center space-y-10">
+          <div className="inline-flex items-center gap-3 rounded-full border border-[#1F1C18]/25 bg-[#1F1C18]/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.35em] text-[#1F1C18]">
+            <span className="h-2 w-2 rounded-full bg-[#1F1C18] shadow-[0_0_12px_rgba(43,38,33,0.45)]" />
+            ELTE Data Science Club
+          </div>
 
-            {/* Badge with animation */}
-            <div className="inline-flex items-center border-2 border-white bg-black px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all duration-300 cursor-default">
-              ELTE DATA SCIENCE CLUB
-            </div>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black leading-[1.02] sm:leading-[1.01] tracking-[-0.02em] sm:tracking-[-0.03em] text-[#231F1A]">
+            Build <span className="text-gradient">models</span>, ship <span className="text-gradient">insight</span>,
+            lead with <span className="text-gradient">curiosity</span>.
+          </h1>
 
-            {/* Title Section with improved typography */}
-            <div className="w-full text-center space-y-4 sm:space-y-3">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-display font-bold text-white leading-[1.1] tracking-tight uppercase">
-                <span className="block border-4 border-white p-2.5 sm:p-3 md:p-4 lg:p-4 bg-black hover:bg-white hover:text-black transition-all duration-500 inline-block transform hover:scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] hero-title">
-                  {content.title}
-                </span>
-              </h1>
-              <p className="text-xs sm:text-sm md:text-base text-white/80 leading-relaxed font-medium max-w-xl mx-auto px-2 sm:px-4">
-                {content.subtitle}
+          <p className="mx-auto max-w-xl sm:max-w-2xl text-base sm:text-lg text-[#231F1A]/75 font-semibold leading-relaxed">
+            {content.subtitle}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={() => handleCtaClick(content.primaryCta.href)}
+              className="btn-premium w-full sm:w-auto px-8 sm:px-12 py-4 text-base sm:text-lg uppercase tracking-widest font-black group bg-[#1F1C18] hover:bg-[#0D0C0A] text-[#F3EDE2] border border-[#231F1A]/20"
+            >
+              <span className="flex items-center gap-3">
+                {content.primaryCta.label}
+                <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </button>
+            <button
+              onClick={() => handleCtaClick(content.secondaryCta.href)}
+              className="w-full sm:w-auto px-6 sm:px-10 py-4 text-base sm:text-lg font-black text-[#231F1A]/80 border border-transparent hover:text-[#231F1A] transition-all duration-500 uppercase tracking-widest underline underline-offset-8 decoration-[#1F1C18]/60 hover:decoration-[#1F1C18]"
+            >
+              {content.secondaryCta.label}
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-10 sm:mt-16 lg:mt-20 grid gap-4 sm:gap-6 md:grid-cols-3">
+          {[
+            { title: 'Research Sprints', text: 'Two-week builds with demos and peer critique.' },
+            { title: 'Applied Workshops', text: 'Hands-on labs from data prep to deployment.' },
+            { title: 'Mentor Pairing', text: 'Match with seniors for guidance and review.' }
+          ].map((card, index) => (
+            <div
+              key={card.title}
+              className={`glass-card p-6 sm:p-7 text-left reveal delay-${index + 1} transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(43,30,30,0.2)] ${index === 1 ? 'md:translate-y-4' : ''}`}
+            >
+              <div className="text-xs font-black uppercase tracking-[0.35em] text-[#231F1A]/50">
+                {card.title}
+              </div>
+              <p className="mt-3 text-sm sm:text-base font-semibold text-[#231F1A]/75 leading-relaxed">
+                {card.text}
               </p>
             </div>
-
-            {/* CTA Buttons with enhanced design */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 w-full max-w-lg justify-center px-2 sm:px-4">
-              <button
-                onClick={() => handleCtaClick(content.primaryCta.href)}
-                className="group relative w-full sm:w-auto bg-white border-4 border-white text-black px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-black hover:text-white hover:scale-105 active:scale-95"
-              >
-                {content.primaryCta.label}
-              </button>
-
-              <button
-                onClick={() => handleCtaClick(content.secondaryCta.href)}
-                className="group relative w-full sm:w-auto bg-black border-4 border-white text-white px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 active:scale-95"
-              >
-                {content.secondaryCta.label}
-              </button>
-            </div>
-
-            {/* Enhanced Stats Grid - Simplified */}
-            <div className="w-full grid grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 pt-6 sm:pt-4 px-2 sm:px-4 max-w-lg md:max-w-xl mx-auto">
-              <div className="group relative bg-black/70 border-2 border-white/50 p-2.5 sm:p-3 md:p-3.5 text-center hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:-translate-y-1 hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white group-hover:text-black mb-0.5">4+</div>
-                <div className="text-[8px] sm:text-[9px] md:text-[10px] text-white/70 group-hover:text-black uppercase tracking-wider">Projects</div>
-              </div>
-
-              <div className="group relative bg-black/70 border-2 border-white/50 p-2.5 sm:p-3 md:p-3.5 text-center hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:-translate-y-1 hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white group-hover:text-black mb-0.5">10+</div>
-                <div className="text-[8px] sm:text-[9px] md:text-[10px] text-white/70 group-hover:text-black uppercase tracking-wider">Workshops</div>
-              </div>
-
-              <div className="group relative bg-black/70 border-2 border-white/50 p-2.5 sm:p-3 md:p-3.5 text-center hover:bg-white hover:text-black transition-all duration-300 cursor-default transform hover:-translate-y-1 hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white group-hover:text-black mb-0.5">60+</div>
-                <div className="text-[8px] sm:text-[9px] md:text-[10px] text-white/70 group-hover:text-black uppercase tracking-wider">Members</div>
-              </div>
-            </div>
-
-          </div>
+          ))}
         </div>
       </div>
     </section>

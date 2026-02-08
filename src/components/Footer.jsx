@@ -3,41 +3,56 @@ import site from '../content/site.json'
 
 const Footer = memo(function Footer() {
   return (
-    <footer className="bg-black border-t border-white/20 w-full overflow-x-hidden mt-auto">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 md:py-8">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6">
-          <div className="space-y-2">
-            <div className="inline-block border-2 border-white px-3 py-1.5 text-white font-bold text-sm sm:text-base">
+    <footer className="relative bg-[#E3D7C9] border-t border-[#231F1A]/12 w-full mt-auto py-12">
+      <div className="section-container">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+          <div className="space-y-6 max-w-sm">
+            <div className="text-2xl font-display font-bold text-gradient">
               DATA SCIENCE CLUB
             </div>
-            <p className="text-gray-400 text-sm max-w-md">
-              ELTE community for data science, AI, and analytics.
+            <p className="text-[#231F1A]/70 text-sm font-medium leading-relaxed">
+              Empowering the ELTE community through data science, artificial intelligence, and advanced analytics.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 text-sm">
-            <a
-              href={site.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 border border-white text-white hover:bg-white hover:text-black transition-all duration-200 font-bold text-xs"
-              aria-label="LinkedIn"
-            >
-              LINKEDIN
-            </a>
-            <a
-              href={site.social.email}
-              className="px-3 py-1.5 border border-white text-white hover:bg-white hover:text-black transition-all duration-200 font-bold text-xs"
-              aria-label="Email"
-            >
-              EMAIL
-            </a>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-24">
+            <div className="space-y-4">
+              <h5 className="text-[#231F1A] font-bold text-xs uppercase tracking-[0.2em]">Connect</h5>
+              <div className="flex flex-col space-y-3">
+                <a
+                  href={site.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#231F1A]/70 hover:text-[#1F1C18] font-semibold text-sm transition-all duration-300"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href={site.social.email}
+                  className="text-[#231F1A]/70 hover:text-[#1F1C18] font-semibold text-sm transition-all duration-300"
+                >
+                  Email Us
+                </a>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h5 className="text-[#231F1A] font-bold text-xs uppercase tracking-[0.2em]">Resources</h5>
+              <div className="flex flex-col space-y-3">
+                <a href="#projects" className="text-[#231F1A]/70 hover:text-[#1F1C18] font-semibold text-sm transition-all duration-300">Projects</a>
+                <a href="#events" className="text-[#231F1A]/70 hover:text-[#1F1C18] font-semibold text-sm transition-all duration-300">Events</a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="pt-4 mt-4 border-t border-white/20 text-gray-500 text-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <div>© {new Date().getFullYear()} {site.name}. All rights reserved.</div>
-          <div>Made with <span className="text-white">♥</span> for the ELTE Data Science Community.</div>
+        <div className="pt-12 mt-12 border-t border-[#231F1A]/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div className="text-[#231F1A]/60 text-xs font-medium tracking-wide">
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
+          </div>
+          <div className="text-[#231F1A]/60 text-xs font-medium">
+            Made with <span className="text-[#1F1C18]">✦</span> for the ELTE Community.
+          </div>
         </div>
       </div>
     </footer>

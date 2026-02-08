@@ -1,6 +1,12 @@
 {
-  "title": "From Data to Insight",
+  "title": "Data to Insight",
   "subtitle": "Building the future of data science through hands-on projects and collaborative learning.",
-  "primaryCta": { "label": "Explore Projects", "href": "/project" },
-  "secondaryCta": { "label": "View Events", "href": "/event" }
+  "primaryCta": {
+    "label": "Explore Projects",
+    "href": "/project"
+  },
+  "secondaryCta": {
+    "label": "View Events",
+    "href": "/event"
+  }
 }
