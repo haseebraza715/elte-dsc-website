@@ -11,7 +11,9 @@ const Contact = lazy(() => import('../components/Contact.jsx'))
 // Cache header height to avoid repeated calculations
 const getHeaderHeight = () => {
   if (typeof window === 'undefined') return 80
-  return window.innerWidth >= 640 ? 80 : 64
+  if (window.innerWidth >= 1024) return 96
+  if (window.innerWidth >= 640) return 80
+  return 56
 }
 
 export default function Home() {
