@@ -33,39 +33,46 @@ const Header = memo(function Header() {
   const headerHeightRef = useRef(getHeaderHeight())
   const { theme, toggleTheme } = useTheme()
 
-  // Track active section on home page via IntersectionObserver
+  // Track active section on home page via scroll position
   useEffect(() => {
     if (location.pathname !== '/') {
-      // On sub-pages, set active based on route
       const navId = routeToNavId[location.pathname]
       setActiveId(navId || '')
       return
     }
 
-    const sections = ['contact', 'members', 'about', 'home']
-    const observers = []
+    const sectionIds = ['home', 'about', 'members', 'contact']
+    let ticking = false
 
-    const handleIntersect = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveId(entry.target.id)
+    const updateActive = () => {
+      const viewportMid = window.scrollY + window.innerHeight * 0.35
+
+      let current = 'home'
+      for (const id of sectionIds) {
+        const el = document.getElementById(id)
+        if (el && el.offsetTop <= viewportMid) {
+          current = id
         }
-      })
+      }
+      setActiveId(current)
+      ticking = false
     }
 
-    // Observe each section with a top-biased rootMargin
-    sections.forEach(id => {
-      const el = document.getElementById(id)
-      if (!el) return
-      const observer = new IntersectionObserver(handleIntersect, {
-        threshold: 0.15,
-        rootMargin: '-20% 0px -60% 0px'
-      })
-      observer.observe(el)
-      observers.push(observer)
-    })
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(updateActive)
+      }
+    }
 
-    return () => observers.forEach(o => o.disconnect())
+    window.addEventListener('scroll', onScroll, { passive: true })
+    // Run once on mount after lazy sections load
+    const timer = setTimeout(updateActive, 300)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      clearTimeout(timer)
+    }
   }, [location.pathname])
 
   // Update header height on resize (throttled)
