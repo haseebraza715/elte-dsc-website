@@ -11,13 +11,62 @@ const getHeaderHeight = () => {
   return 56
 }
 
+// Map nav ids to their route paths for sub-pages
+const pageRouteMap = {
+  events: '/event',
+  resources: '/resources',
+  projects: '/project',
+  members: '/members',
+}
+
+// Reverse map: route path -> nav id
+const routeToNavId = Object.fromEntries(
+  Object.entries(pageRouteMap).map(([id, path]) => [path, id])
+)
+
 const Header = memo(function Header() {
   const [open, setOpen] = useState(false)
+  const [activeId, setActiveId] = useState('home')
   const navigate = useNavigate()
   const location = useLocation()
   const items = site.nav
   const headerHeightRef = useRef(getHeaderHeight())
   const { theme, toggleTheme } = useTheme()
+
+  // Track active section on home page via IntersectionObserver
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      // On sub-pages, set active based on route
+      const navId = routeToNavId[location.pathname]
+      setActiveId(navId || '')
+      return
+    }
+
+    const sections = ['contact', 'members', 'about', 'home']
+    const observers = []
+
+    const handleIntersect = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id)
+        }
+      })
+    }
+
+    // Observe each section with a top-biased rootMargin
+    sections.forEach(id => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const observer = new IntersectionObserver(handleIntersect, {
+        threshold: 0.15,
+        rootMargin: '-20% 0px -60% 0px'
+      })
+      observer.observe(el)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach(o => o.disconnect())
+  }, [location.pathname])
 
   // Update header height on resize (throttled)
   useEffect(() => {
@@ -86,12 +135,6 @@ const Header = memo(function Header() {
     // Close menu immediately for better UX
     setOpen(false)
 
-    const pageRoutes = {
-      resources: '/resources',
-      events: '/event',
-      projects: '/project',
-    }
-
     // Handle route-based navigation first
     if (id === 'home') {
       if (location.pathname !== '/') {
@@ -108,13 +151,13 @@ const Header = memo(function Header() {
     }
 
     // If this is a full page route, just navigate and let ScrollToTop handle scroll reset
-    if (pageRoutes[id]) {
+    if (pageRouteMap[id]) {
       // Clear any hash so ScrollToTop isn't blocked by hash logic
       if (window.location.hash) {
         window.history.replaceState(null, '', location.pathname + location.search)
         window.location.hash = ''
       }
-      navigate(pageRoutes[id])
+      navigate(pageRouteMap[id])
       // Fallback scroll reset in case hash was blocking default behavior
       setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 0)
       return
@@ -160,16 +203,23 @@ const Header = memo(function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
-              {items.map((id) => (
-                <button
-                  key={id}
-                  onClick={() => handleNavClick(id)}
-                  className="relative text-text-secondary hover:text-text-primary px-4 py-2 text-sm font-medium capitalize tracking-wide transition-all duration-300 focus:outline-none group"
-                >
-                  <span className="relative z-10">{id}</span>
-                  <span className="absolute bottom-1.5 left-4 right-4 h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </button>
-              ))}
+              {items.map((id) => {
+                const isActive = activeId === id
+                return (
+                  <button
+                    key={id}
+                    onClick={() => handleNavClick(id)}
+                    className={`relative px-4 py-2 text-sm font-medium capitalize tracking-wide transition-all duration-300 focus:outline-none group ${
+                      isActive ? 'text-accent' : 'text-text-secondary hover:text-text-primary'
+                    }`}
+                  >
+                    <span className="relative z-10">{id}</span>
+                    <span className={`absolute bottom-1.5 left-4 right-4 h-px bg-accent transition-transform duration-300 origin-left ${
+                      isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                    }`}></span>
+                  </button>
+                )
+              })}
               <div className="ml-3 h-5 w-px bg-border-glass mr-1"></div>
               <button
                 onClick={toggleTheme}
@@ -236,18 +286,23 @@ const Header = memo(function Header() {
           </button>
 
           {/* Nav items */}
-          {items.map((id, index) => (
-            <button
-              key={id}
-              onClick={() => handleNavClick(id)}
-              className={`group ${open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-              style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${100 + index * 60}ms` : '0ms' }}
-            >
-              <span className="text-2xl sm:text-3xl font-display font-semibold text-text-secondary hover:text-text-primary transition-all duration-300 capitalize">
-                {id}
-              </span>
-            </button>
-          ))}
+          {items.map((id, index) => {
+            const isActive = activeId === id
+            return (
+              <button
+                key={id}
+                onClick={() => handleNavClick(id)}
+                className={`group ${open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${100 + index * 60}ms` : '0ms' }}
+              >
+                <span className={`text-2xl sm:text-3xl font-display font-semibold transition-all duration-300 capitalize ${
+                  isActive ? 'text-accent' : 'text-text-secondary hover:text-text-primary'
+                }`}>
+                  {id}
+                </span>
+              </button>
+            )
+          })}
 
           {/* Theme toggle */}
           <button

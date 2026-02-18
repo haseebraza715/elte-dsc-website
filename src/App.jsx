@@ -4,6 +4,7 @@ import Footer from './components/Footer.jsx'
 import SEO from './components/SEO.jsx'
 import ScrollProgress from './components/ScrollProgress.jsx'
 import PageTransition from './components/PageTransition.jsx'
+import BackToTop from './components/BackToTop.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { Suspense, lazy, useEffect } from 'react'
@@ -91,6 +92,7 @@ export default function App() {
           </Suspense>
         </main>
         <Footer />
+        <BackToTop />
       </div>
       </ThemeProvider>
     </BrowserRouter>
