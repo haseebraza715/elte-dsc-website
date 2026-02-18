@@ -2,6 +2,8 @@ import './index.css'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import SEO from './components/SEO.jsx'
+import ScrollProgress from './components/ScrollProgress.jsx'
+import PageTransition from './components/PageTransition.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { Suspense, lazy, useEffect } from 'react'
@@ -62,27 +64,30 @@ export default function App() {
         <div className="bg-noise" />
         <div className="nebula-glow" />
 
+        <ScrollProgress />
         <Header />
         <main className="flex-1 relative z-10 pt-0 w-full">
           <Suspense fallback={
             <div className="flex items-center justify-center min-h-[60vh]">
               <div className="text-center space-y-4">
                 <div className="relative w-10 h-10 mx-auto">
-                  <div className="absolute inset-0 border-2 border-white/10 rounded-full"></div>
+                  <div className="absolute inset-0 border-2 border-border-glass rounded-full"></div>
                   <div className="absolute inset-0 border-2 border-t-accent rounded-full animate-spin"></div>
                 </div>
                 <p className="text-text-muted text-sm font-medium">Loading...</p>
               </div>
             </div>
           }>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/event" element={<Events />} />
-              <Route path="/project" element={<Projects />} />
-              <Route path="/members" element={<Members />} />
-              <Route path="/challenges" element={<Challenges />} />
-            </Routes>
+            <PageTransition>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/event" element={<Events />} />
+                <Route path="/project" element={<Projects />} />
+                <Route path="/members" element={<Members />} />
+                <Route path="/challenges" element={<Challenges />} />
+              </Routes>
+            </PageTransition>
           </Suspense>
         </main>
         <Footer />

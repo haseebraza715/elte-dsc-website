@@ -404,6 +404,29 @@ h6 {
   }
 }
 
+/* --- Page Transitions --- */
+
+.page-transition {
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* --- Scroll Progress --- */
+
+[data-theme="light"] .scroll-progress-glow {
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.3), 0 0 20px rgba(99, 102, 241, 0.1);
+}
+
 /* --- Scrollbar --- */
 
 ::-webkit-scrollbar {
