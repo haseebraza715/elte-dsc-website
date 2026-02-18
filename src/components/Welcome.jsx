@@ -57,20 +57,20 @@ export default function Welcome() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-20"
+      className="relative overflow-hidden pt-24 sm:pt-28 pb-20 sm:pb-28"
     >
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] left-[20%] h-[600px] w-[600px] rounded-full bg-[#6366F1]/[0.07] blur-[150px] animate-pulse-glow" />
-        <div className="absolute bottom-[-15%] right-[10%] h-[500px] w-[500px] rounded-full bg-[#818CF8]/[0.05] blur-[140px] animate-pulse-glow" />
-        <div className="absolute top-[40%] left-[-5%] h-[400px] w-[400px] rounded-full bg-[#6366F1]/[0.04] blur-[120px] animate-pulse-glow" />
+        <div className="absolute top-[-10%] left-[20%] h-[600px] w-[600px] rounded-full bg-accent/[0.07] blur-[150px] animate-pulse-glow" />
+        <div className="absolute bottom-[-15%] right-[10%] h-[500px] w-[500px] rounded-full bg-accent-hover/[0.05] blur-[140px] animate-pulse-glow" />
+        <div className="absolute top-[40%] left-[-5%] h-[400px] w-[400px] rounded-full bg-accent/[0.04] blur-[120px] animate-pulse-glow" />
       </div>
 
       {/* Dot grid overlay */}
       <div className="dot-grid absolute inset-0 z-[1]" />
 
       <div className="relative section-container z-10">
-        <div className="mx-auto max-w-5xl text-center space-y-10">
+        <div className="mx-auto max-w-5xl text-center space-y-8 sm:space-y-10">
           {/* Top badge */}
           <div className="inline-flex items-center gap-3 rounded-full border border-accent/20 bg-accent/[0.06] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-accent" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_rgba(99,102,241,0.6)]" />
@@ -86,7 +86,7 @@ export default function Welcome() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mx-auto max-w-2xl text-lg text-text-secondary leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-text-secondary leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             {content.subtitle}
           </p>
 
@@ -112,8 +112,8 @@ export default function Welcome() {
           </div>
         </div>
 
-        {/* Feature cards */}
-        <div className="mt-16 sm:mt-20 lg:mt-24 mx-auto max-w-5xl grid gap-4 sm:gap-6 md:grid-cols-3">
+        {/* Feature cards — below the fold, revealed on scroll */}
+        <div className="mt-24 sm:mt-32 mx-auto max-w-5xl grid gap-5 sm:gap-6 md:grid-cols-3">
           {[
             { num: '01', title: 'Research Sprints', text: 'Two-week builds with demos and peer critique.' },
             { num: '02', title: 'Applied Workshops', text: 'Hands-on labs from data prep to deployment.' },
@@ -121,7 +121,7 @@ export default function Welcome() {
           ].map((card, index) => (
             <div
               key={card.title}
-              className={`glass-card p-6 sm:p-8 text-left transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/15`}
+              className={`glass-card p-6 sm:p-8 text-left transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/15 reveal delay-${index + 1}`}
             >
               <span className="inline-block text-xs font-semibold text-accent tracking-widest mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 {card.num}
