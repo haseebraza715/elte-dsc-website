@@ -1,6 +1,7 @@
 import { useState, memo, useCallback, useRef, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import site from '../content/site.json'
+import { useTheme } from '../context/ThemeContext.jsx'
 
 // Cache header height to avoid repeated calculations
 const getHeaderHeight = () => {
@@ -16,6 +17,7 @@ const Header = memo(function Header() {
   const location = useLocation()
   const items = site.nav
   const headerHeightRef = useRef(getHeaderHeight())
+  const { theme, toggleTheme } = useTheme()
 
   // Update header height on resize (throttled)
   useEffect(() => {
@@ -147,7 +149,7 @@ const Header = memo(function Header() {
                 onClick={handleLogoClick}
                 className="flex min-w-0 items-center group focus:outline-none"
               >
-                <span className="text-lg sm:text-xl lg:text-2xl font-display font-bold text-white tracking-tight transition-all duration-300 group-hover:text-gradient">
+                <span className="text-lg sm:text-xl lg:text-2xl font-display font-bold text-text-primary tracking-tight transition-all duration-300 group-hover:text-gradient">
                   DSC
                 </span>
                 <span className="text-lg sm:text-xl lg:text-2xl font-display font-bold text-accent transition-all duration-300">
@@ -162,13 +164,29 @@ const Header = memo(function Header() {
                 <button
                   key={id}
                   onClick={() => handleNavClick(id)}
-                  className="relative text-white/60 hover:text-white px-4 py-2 text-sm font-medium capitalize tracking-wide transition-all duration-300 focus:outline-none group"
+                  className="relative text-text-secondary hover:text-text-primary px-4 py-2 text-sm font-medium capitalize tracking-wide transition-all duration-300 focus:outline-none group"
                 >
                   <span className="relative z-10">{id}</span>
                   <span className="absolute bottom-1.5 left-4 right-4 h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </button>
               ))}
-              <div className="ml-3 h-5 w-px bg-white/[0.06] mr-3"></div>
+              <div className="ml-3 h-5 w-px bg-border-glass mr-1"></div>
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-surface/50 transition-all duration-300"
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                {theme === 'dark' ? (
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                )}
+              </button>
+              <div className="ml-1 h-5 w-px bg-border-glass mr-3"></div>
               <a
                 href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl"
                 target="_blank"
@@ -183,7 +201,7 @@ const Header = memo(function Header() {
             <div className="lg:hidden">
               <button
                 onClick={() => setOpen(!open)}
-                className="relative w-10 h-10 flex items-center justify-center rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70 hover:text-white transition-all duration-300 z-[60]"
+                className="relative w-10 h-10 flex items-center justify-center rounded-lg bg-bg-surface/50 border border-border-glass text-text-secondary hover:text-text-primary transition-all duration-300 z-[60]"
                 aria-expanded={open}
                 aria-label="Toggle menu"
               >
@@ -209,7 +227,7 @@ const Header = memo(function Header() {
           {/* Close button */}
           <button
             onClick={() => setOpen(false)}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 flex items-center justify-center rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/50 hover:text-white transition-all duration-300"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 flex items-center justify-center rounded-lg bg-bg-surface/50 border border-border-glass text-text-muted hover:text-text-primary transition-all duration-300"
             aria-label="Close menu"
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -225,11 +243,31 @@ const Header = memo(function Header() {
               className={`group ${open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
               style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${100 + index * 60}ms` : '0ms' }}
             >
-              <span className="text-2xl sm:text-3xl font-display font-semibold text-white/70 hover:text-white transition-all duration-300 capitalize">
+              <span className="text-2xl sm:text-3xl font-display font-semibold text-text-secondary hover:text-text-primary transition-all duration-300 capitalize">
                 {id}
               </span>
             </button>
           ))}
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className={`flex items-center gap-3 ${open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${100 + items.length * 60}ms` : '0ms' }}
+          >
+            {theme === 'dark' ? (
+              <svg className="w-6 h-6 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
+            <span className="text-lg font-display font-semibold text-text-secondary">
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </span>
+          </button>
 
           {/* Apply button */}
           <a
@@ -238,7 +276,7 @@ const Header = memo(function Header() {
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className={`btn-premium py-3 px-10 text-sm tracking-wide ${open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-            style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${100 + items.length * 60}ms` : '0ms' }}
+            style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)', transitionDelay: open ? `${100 + (items.length + 1) * 60}ms` : '0ms' }}
           >
             Apply
           </a>

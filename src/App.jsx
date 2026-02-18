@@ -2,6 +2,7 @@ import './index.css'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import SEO from './components/SEO.jsx'
+import { ThemeProvider } from './context/ThemeContext.jsx'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { Suspense, lazy, useEffect } from 'react'
 
@@ -54,6 +55,7 @@ export default function App() {
       <ScrollToTop />
       <HashHandler />
       <SEO />
+      <ThemeProvider>
       <div className="bg-bg-base text-text-primary min-h-screen flex flex-col relative w-full overflow-x-hidden">
         <div className="bg-noise" />
         <div className="nebula-glow" />
@@ -83,6 +85,7 @@ export default function App() {
         </main>
         <Footer />
       </div>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }

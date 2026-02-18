@@ -48,7 +48,7 @@ function MemberCard({ person, index }) {
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-bg-surface text-white/20 text-4xl font-display font-bold">
+          <div className="w-full h-full flex items-center justify-center bg-bg-surface text-text-muted text-4xl font-display font-bold">
             {getInitials(person.name)}
           </div>
         )}
@@ -65,10 +65,10 @@ function MemberCard({ person, index }) {
       {/* Info Area */}
       <div className="p-5 space-y-4">
         <div>
-          <h4 className="text-base font-display font-bold text-white">
+          <h4 className="text-base font-display font-bold text-text-primary">
             {person.name}
           </h4>
-          <p className="text-sm text-white/50 mt-1">
+          <p className="text-sm text-text-secondary mt-1">
             {person.role || 'DSC Member'}
           </p>
         </div>
@@ -80,7 +80,7 @@ function MemberCard({ person, index }) {
               href={person.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-[11px] font-medium text-white/50 hover:text-accent hover:border-accent/30 transition-all duration-300"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border-glass px-3 py-1.5 text-[11px] font-medium text-text-secondary hover:text-accent hover:border-accent/30 transition-all duration-300"
               aria-label={`LinkedIn profile of ${person.name}`}
             >
               <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
@@ -92,7 +92,7 @@ function MemberCard({ person, index }) {
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-[11px] font-medium text-white/50 hover:text-accent hover:border-accent/30 transition-all duration-300"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border-glass px-3 py-1.5 text-[11px] font-medium text-text-secondary hover:text-accent hover:border-accent/30 transition-all duration-300"
               aria-label={`Email ${person.name}`}
             >
               <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
@@ -117,7 +117,7 @@ export default function Members() {
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-text-primary mb-6">
             Meet the <span className="text-gradient">Innovators</span> behind DSC.
           </h2>
-          <p className="text-lg text-white/50">
+          <p className="text-lg text-text-secondary">
             Dedicated individuals driving innovation and excellence in data science at ELTE.
           </p>
         </div>

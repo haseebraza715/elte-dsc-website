@@ -64,7 +64,7 @@ export default function About() {
           <div className="space-y-8">
             <div className="space-y-6">
               {content.paragraphs.map((p, index) => (
-                <p key={index} className="text-lg text-white/50 leading-relaxed">
+                <p key={index} className="text-lg text-text-secondary leading-relaxed">
                   {p}
                 </p>
               ))}
@@ -98,14 +98,14 @@ export default function About() {
               {focus.map((item, index) => (
                 <li
                   key={index}
-                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/[0.02] transition-all duration-300"
+                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-bg-surface/30 transition-all duration-300"
                 >
                   <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0">
                     <svg className="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-white/70 text-sm font-medium">
+                  <span className="text-text-secondary text-sm font-medium">
                     {item}
                   </span>
                 </li>
