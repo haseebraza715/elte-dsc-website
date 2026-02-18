@@ -36,7 +36,8 @@ function MemberCard({ person, index }) {
 
   return (
     <div className={`glass-card overflow-hidden group reveal ${delayClass}`}>
-      <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#F3EDE2]">
+      {/* Image Area */}
+      <div className="relative w-full aspect-[4/5] overflow-hidden bg-bg-surface">
         {imageSrc && !imageError ? (
           <img
             src={imageSrc}
@@ -47,38 +48,42 @@ function MemberCard({ person, index }) {
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-[#F3EDE2] text-[#231F1A]/40 text-4xl font-display font-bold">
+          <div className="w-full h-full flex items-center justify-center bg-bg-surface text-white/20 text-4xl font-display font-bold">
             {getInitials(person.name)}
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1F1C18]/35 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        {/* Role badge */}
         {person.role && (
-          <div className="absolute left-5 bottom-5 rounded-full bg-[#F3EDE2]/80 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#231F1A]">
+          <div className="absolute left-4 bottom-4 rounded-full bg-accent/20 backdrop-blur-sm px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
             {person.role}
           </div>
         )}
       </div>
 
-      <div className="p-6 space-y-5">
+      {/* Info Area */}
+      <div className="p-5 space-y-4">
         <div>
-          <h4 className="text-lg font-display font-bold text-[#231F1A] group-hover:text-[#1F1C18] transition-colors duration-300">
+          <h4 className="text-base font-display font-bold text-white">
             {person.name}
           </h4>
-          <p className="text-sm font-semibold text-[#231F1A]/60 mt-2">
+          <p className="text-sm text-white/50 mt-1">
             {person.role || 'DSC Member'}
           </p>
         </div>
 
+        {/* Social Links */}
         <div className="flex items-center gap-2">
           {person.link && (
             <a
               href={person.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-[#231F1A]/15 bg-[#F3EDE2]/80 px-3 py-2 text-xs font-bold uppercase tracking-widest text-[#231F1A]/70 hover:border-[#1F1C18]/40 hover:text-[#1F1C18] transition-all duration-300"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-[11px] font-medium text-white/50 hover:text-accent hover:border-accent/30 transition-all duration-300"
               aria-label={`LinkedIn profile of ${person.name}`}
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
                 <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3.5 8.98h2.96V21H3.5V8.98ZM9.56 8.98h2.84v1.64h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.6V21h-2.96v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9.56V8.98Z" />
               </svg>
               LinkedIn
@@ -87,10 +92,10 @@ function MemberCard({ person, index }) {
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-[#231F1A]/15 bg-[#F3EDE2]/80 px-3 py-2 text-xs font-bold uppercase tracking-widest text-[#231F1A]/70 hover:border-[#1F1C18]/40 hover:text-[#1F1C18] transition-all duration-300"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-[11px] font-medium text-white/50 hover:text-accent hover:border-accent/30 transition-all duration-300"
               aria-label={`Email ${person.name}`}
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
                 <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.2l8 5 8-5V7H4Zm0 2.6V17h16V9.6l-8 5-8-5Z" />
               </svg>
               Email
@@ -104,23 +109,21 @@ function MemberCard({ person, index }) {
 
 export default function Members() {
   return (
-    <section id="members" className="relative py-20 reveal">
+    <section id="members" className="relative bg-bg-base reveal">
       <div className="section-container">
         {/* Header */}
         <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center space-x-2 text-[#1F1C18] font-bold tracking-[0.2em] text-xs uppercase mb-4">
-            <span className="w-8 h-px bg-[#1F1C18]"></span>
-            <span>The Team</span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-display font-bold text-[#231F1A] mb-6">
+          <div className="section-label mb-4">The Team</div>
+          <h2 className="text-4xl sm:text-5xl font-display font-bold text-text-primary mb-6">
             Meet the <span className="text-gradient">Innovators</span> behind DSC.
           </h2>
-          <p className="text-lg text-[#231F1A]/70 font-medium">
+          <p className="text-lg text-white/50">
             Dedicated individuals driving innovation and excellence in data science at ELTE.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Members Grid */}
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {members.map((person, index) => (
             <MemberCard key={person.name} person={person} index={index} />
           ))}
