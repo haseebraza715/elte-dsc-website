@@ -167,7 +167,7 @@ export default function Events() {
             {galleryImages.map((image, index) => (
               <div
                 key={image.src}
-                className={`group relative overflow-hidden rounded-xl border border-white/[0.06] bg-[#131316] ${image.span || ''}`}
+                className={`group relative overflow-hidden rounded-xl border border-white/[0.06] bg-bg-surface ${image.span || ''}`}
               >
                 <div className="relative w-full aspect-[4/3] sm:aspect-[5/4] md:aspect-auto md:h-full">
                   <img

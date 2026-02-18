@@ -203,7 +203,7 @@ const Header = memo(function Header() {
         className={`lg:hidden fixed inset-0 z-[55] transition-all duration-700 ease-in-out ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
         {/* Dark overlay background */}
-        <div className="absolute inset-0 bg-[#09090B]/98 backdrop-blur-2xl" onClick={() => setOpen(false)} />
+        <div className="absolute inset-0 bg-bg-base/98 backdrop-blur-2xl" onClick={() => setOpen(false)} />
 
         <div className="relative flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8 p-6 sm:p-8 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
           {/* Close button */}

@@ -109,7 +109,7 @@ function MemberCard({ person, index }) {
 
 export default function Members() {
   return (
-    <section id="members" className="relative py-24 sm:py-32 bg-bg-base reveal">
+    <section id="members" className="relative pt-32 pb-24 sm:pb-32 bg-bg-base reveal">
       <div className="section-container">
         {/* Header */}
         <div className="max-w-3xl mb-16">
