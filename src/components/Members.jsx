@@ -4,12 +4,20 @@ import members from '../content/members.json'
 import ayushImage from '../images/ayush.jpeg'
 import haseebImage from '../images/haseeb.png'
 import itiImage from '../images/iti.jpg'
+import aminaImage from '../images/amina.jpeg'
+import nazrinImage from '../images/nazrin.jpeg'
+import abaidullahImage from '../images/abaidullah.jpeg'
+import emanImage from '../images/eman.jpeg'
 
 // Map image paths from JSON to imported images
 const imageMap = {
   '/src/images/ayush.jpeg': ayushImage,
   '/src/images/haseeb.png': haseebImage,
   '/src/images/iti.jpg': itiImage,
+  '/src/images/amina.jpeg': aminaImage,
+  '/src/images/nazrin.jpeg': nazrinImage,
+  '/src/images/abaidullah.jpeg': abaidullahImage,
+  '/src/images/eman.jpeg': emanImage,
 }
 
 function getInitials(name) {
