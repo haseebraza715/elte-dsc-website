@@ -49,19 +49,19 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 overflow-hidden bg-bg-base reveal">
+    <section id="about" className="relative py-24 sm:py-32 overflow-hidden bg-bg-base">
       <div className="section-container relative z-10">
         {/* Section Label */}
-        <div className="section-label mb-6">About Us</div>
+        <div className="section-label mb-6 reveal">About Us</div>
 
         {/* Heading */}
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight text-text-primary mb-10">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight text-text-primary mb-10 reveal delay-1">
           Empowering the <span className="text-gradient">Next Generation</span> of Data Scientists.
         </h2>
 
         <div className="grid gap-16 lg:grid-cols-2 items-start">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 reveal delay-2">
             <div className="space-y-6">
               {content.paragraphs.map((p, index) => (
                 <p key={index} className="text-lg text-text-secondary leading-relaxed">
@@ -89,7 +89,7 @@ export default function About() {
           </div>
 
           {/* Right Content - Focus Areas */}
-          <div className="glass-card p-8 relative overflow-hidden">
+          <div className="glass-card p-8 relative overflow-hidden reveal delay-3">
             <h3 className="text-xl font-display font-bold text-text-primary mb-6 flex items-center gap-3">
               <span className="w-2 h-2 bg-accent rounded-full"></span>
               Focus Areas

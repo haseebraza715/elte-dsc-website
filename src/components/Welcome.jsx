@@ -72,13 +72,13 @@ export default function Welcome() {
       <div className="relative section-container z-10">
         <div className="mx-auto max-w-5xl text-center space-y-8 sm:space-y-10">
           {/* Top badge */}
-          <div className="inline-flex items-center gap-3 rounded-full border border-accent/20 bg-accent/[0.06] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-accent" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <div className="hero-badge inline-flex items-center gap-3 rounded-full border border-accent/20 bg-accent/[0.06] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-accent" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_rgba(99,102,241,0.6)]" />
             ELTE Data Science Club
           </div>
 
           {/* Heading */}
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-bold leading-[1.05] tracking-[-0.03em] text-text-primary">
+          <h1 className="hero-heading text-5xl sm:text-7xl lg:text-8xl font-display font-bold leading-[1.05] tracking-[-0.03em] text-text-primary">
             Build <span className="text-gradient">models</span>, ship{' '}
             <span className="text-gradient">insight</span>,
             <br className="hidden sm:block" />
@@ -86,15 +86,15 @@ export default function Welcome() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-text-secondary leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <p className="hero-subtitle mx-auto max-w-2xl text-lg sm:text-xl text-text-secondary leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             {content.subtitle}
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
               onClick={() => handleCtaClick(content.primaryCta.href)}
-              className="btn-premium w-full sm:w-auto group"
+              className="btn-premium btn-premium-pulse w-full sm:w-auto group"
             >
               <span className="flex items-center gap-3">
                 {content.primaryCta.label}
@@ -121,7 +121,7 @@ export default function Welcome() {
           ].map((card, index) => (
             <div
               key={card.title}
-              className={`glass-card p-6 sm:p-8 text-left transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/15 reveal delay-${index + 1}`}
+              className={`glass-card p-6 sm:p-8 text-left hover:-translate-y-1.5 hover:border-accent/15 reveal delay-${(index + 1) * 2}`}
             >
               <span className="inline-block text-xs font-semibold text-accent tracking-widest mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 {card.num}

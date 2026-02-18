@@ -17,15 +17,13 @@ function HashHandler() {
   const location = useLocation()
 
   useEffect(() => {
-    if (location.pathname === '/') return
-
     if (location.pathname !== '/' && window.location.hash) {
       window.history.replaceState(null, '', location.pathname)
     }
 
     const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -60px 0px'
     }
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -36,10 +34,14 @@ function HashHandler() {
       })
     }, observerOptions)
 
-    const revealElements = document.querySelectorAll('.reveal')
-    revealElements.forEach(el => revealObserver.observe(el))
+    // Small delay to let DOM render after lazy load
+    const timer = setTimeout(() => {
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale')
+      revealElements.forEach(el => revealObserver.observe(el))
+    }, 100)
 
     return () => {
+      clearTimeout(timer)
       revealObserver.disconnect()
     }
   }, [location.pathname])

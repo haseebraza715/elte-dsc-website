@@ -109,15 +109,15 @@ function MemberCard({ person, index }) {
 
 export default function Members() {
   return (
-    <section id="members" className="relative pt-32 pb-24 sm:pb-32 bg-bg-base reveal">
+    <section id="members" className="relative pt-32 pb-24 sm:pb-32 bg-bg-base">
       <div className="section-container">
         {/* Header */}
         <div className="max-w-3xl mb-16">
-          <div className="section-label mb-4">The Team</div>
-          <h2 className="text-4xl sm:text-5xl font-display font-bold text-text-primary mb-6">
+          <div className="section-label mb-4 reveal">The Team</div>
+          <h2 className="text-4xl sm:text-5xl font-display font-bold text-text-primary mb-6 reveal delay-1">
             Meet the <span className="text-gradient">Innovators</span> behind DSC.
           </h2>
-          <p className="text-lg text-text-secondary">
+          <p className="text-lg text-text-secondary reveal delay-2">
             Dedicated individuals driving innovation and excellence in data science at ELTE.
           </p>
         </div>
