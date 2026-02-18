@@ -57,7 +57,7 @@ export default function Welcome() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden pt-32 sm:pt-40"
+      className="relative min-h-screen overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-20"
     >
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 z-0">

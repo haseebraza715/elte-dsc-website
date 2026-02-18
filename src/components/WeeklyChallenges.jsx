@@ -1,6 +1,6 @@
 export default function WeeklyChallenges() {
   return (
-    <section id="challenges" className="relative py-32 overflow-hidden bg-bg-base reveal">
+    <section id="challenges" className="relative pt-32 pb-24 sm:pb-32 overflow-hidden bg-bg-base reveal">
       <div className="section-container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center space-x-2 text-[#6366F1] font-bold tracking-[0.2em] text-[10px] uppercase mb-4 bg-[#6366F1]/10 px-3 py-1 rounded-full border border-[#6366F1]/20">

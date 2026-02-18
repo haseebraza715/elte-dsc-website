@@ -49,7 +49,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative overflow-hidden bg-bg-base reveal">
+    <section id="about" className="relative py-24 sm:py-32 overflow-hidden bg-bg-base reveal">
       <div className="section-container relative z-10">
         {/* Section Label */}
         <div className="section-label mb-6">About Us</div>

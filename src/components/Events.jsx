@@ -52,7 +52,7 @@ export default function Events() {
   }
 
   return (
-    <section id="events" className="relative py-20 overflow-hidden bg-bg-base reveal">
+    <section id="events" className="relative pt-32 pb-24 sm:pb-32 overflow-hidden bg-bg-base reveal">
       <div className="section-container relative z-10">
 
         {/* Header */}
