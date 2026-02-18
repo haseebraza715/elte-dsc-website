@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-24 sm:py-32 overflow-hidden bg-[#09090B]">
+    <section id="contact" className="relative py-24 sm:py-32 overflow-hidden bg-bg-base">
       <div className="section-container relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
