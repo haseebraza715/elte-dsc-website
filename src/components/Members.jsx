@@ -12,25 +12,12 @@ import emanImage from '../images/members/eman.jpeg'
 // Map image paths from JSON to imported images
 const imageMap = {
   '/src/images/members/ayush.jpeg': ayushImage,
-  '/src/images/members/AYUSH.JPEG': ayushImage,
   '/src/images/members/haseeb.png': haseebImage,
-  '/src/images/members/HASEEB.PNG': haseebImage,
   '/src/images/members/iti.jpg': itiImage,
   '/src/images/members/amina.jpeg': aminaImage,
   '/src/images/members/nazrin.jpeg': nazrinImage,
   '/src/images/members/abaidullah.jpeg': abaidullahImage,
   '/src/images/members/eman.jpeg': emanImage,
-}
-
-function resolveImageSrc(imagePath) {
-  if (!imagePath) return null
-  const normalized = imagePath.trim()
-  const lowerPath = normalized.toLowerCase()
-  const fileName = lowerPath.split('/').pop()
-  if (imageMap[normalized]) return imageMap[normalized]
-  if (imageMap[lowerPath]) return imageMap[lowerPath]
-  if (fileName && imageMap[`/src/images/members/${fileName}`]) return imageMap[`/src/images/members/${fileName}`]
-  return normalized
 }
 
 function getInitials(name) {
@@ -44,27 +31,32 @@ function getInitials(name) {
 
 function MemberCard({ person, index }) {
   const [imageError, setImageError] = useState(false)
-  const imageSrc = resolveImageSrc(person.image)
+  const imageSrc = person.image ? imageMap[person.image] || null : null
 
-  const getObjectPosition = () => {
-    if (person.name === 'Kumar Ayush') return '50% 22%'
-    if (person.name === 'Haseeb Raza') return '50% 20%'
-    return 'center center'
+  const getImageStyle = () => {
+    if (person.name === 'Kumar Ayush') return { objectPosition: 'center 40%', transform: 'scale(1.08)' }
+    if (person.name === 'Haseeb Raza') return { objectPosition: 'center 20%', transform: 'scale(1.24)' }
+    if (person.name === 'Podder Itilekha') return { objectPosition: 'center 24%', transform: 'scale(1.08)' }
+    if (person.name === 'Eman Aftab') return { objectPosition: 'center 30%', transform: 'scale(1.04)' }
+    if (person.name === 'Abaidullah Asif') return { objectPosition: 'center 24%', transform: 'scale(1.08)' }
+    if (person.name === 'Amina Tynybekova') return { objectPosition: 'center 40%', transform: 'scale(1.04)' }
+    if (person.name === 'Nazrin Majidova') return { objectPosition: 'center 42%', transform: 'scale(1.04)' }
+    return { objectPosition: 'center center', transform: 'scale(1.05)' }
   }
 
   // Calculate delay based on index for staggered effect
   const delayClass = `delay-${(index % 4) + 1}`
 
   return (
-    <div className={`glass-card overflow-hidden group reveal ${delayClass}`}>
+    <div className={`overflow-hidden rounded-2xl border border-[#2f4f7f] bg-[#081a34] shadow-[0_8px_30px_rgba(3,12,28,0.35)] group reveal ${delayClass}`}>
       {/* Image Area */}
-      <div className="relative w-full aspect-[4/5] overflow-hidden bg-bg-surface">
+      <div className="relative w-full h-52 sm:h-56 overflow-hidden bg-bg-surface">
         {imageSrc && !imageError ? (
           <img
             src={imageSrc}
             alt={person.name}
-            className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-            style={{ objectPosition: getObjectPosition() }}
+            className="w-full h-full object-cover brightness-[1.02] contrast-105 saturate-110 group-hover:scale-[1.27] transition-all duration-700"
+            style={getImageStyle()}
             onError={() => setImageError(true)}
             loading="lazy"
           />
@@ -73,53 +65,49 @@ function MemberCard({ person, index }) {
             {getInitials(person.name)}
           </div>
         )}
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-        {/* Role badge */}
-        {person.role && (
-          <div className="absolute left-4 bottom-4 rounded-full bg-accent/20 backdrop-blur-sm px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
-            {person.role}
-          </div>
-        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
       </div>
 
       {/* Info Area */}
-      <div className="p-5 space-y-4">
+      <div
+        className="p-3 space-y-2 border-t border-[#31558a]"
+        style={{ background: 'linear-gradient(135deg, #06162f 0%, #0a2a57 100%)' }}
+      >
         <div>
-          <h4 className="text-base font-display font-bold text-text-primary">
+          <h4 className="text-[16px] leading-tight font-display font-bold" style={{ color: '#F3F8FF' }}>
             {person.name}
           </h4>
-          <p className="text-sm text-text-secondary mt-1">
+          <p className="text-sm mt-0.5" style={{ color: '#C6D8F5' }}>
             {person.role || 'DSC Member'}
           </p>
         </div>
 
         {/* Social Links */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pt-0.5">
           {person.link && (
             <a
               href={person.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-border-glass px-3 py-1.5 text-[11px] font-medium text-text-secondary hover:text-accent hover:border-accent/30 transition-all duration-300"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-[#5A84BE] hover:text-white hover:bg-[#2563EB]/25 hover:border-[#8CB8F8] transition-all duration-300"
+              style={{ color: '#D6E5FA' }}
               aria-label={`LinkedIn profile of ${person.name}`}
             >
-              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
                 <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3.5 8.98h2.96V21H3.5V8.98ZM9.56 8.98h2.84v1.64h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.6V21h-2.96v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9.56V8.98Z" />
               </svg>
-              LinkedIn
             </a>
           )}
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border-glass px-3 py-1.5 text-[11px] font-medium text-text-secondary hover:text-accent hover:border-accent/30 transition-all duration-300"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-[#5A84BE] hover:text-white hover:bg-[#2563EB]/25 hover:border-[#8CB8F8] transition-all duration-300"
+              style={{ color: '#D6E5FA' }}
               aria-label={`Email ${person.name}`}
             >
-              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
                 <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.2l8 5 8-5V7H4Zm0 2.6V17h16V9.6l-8 5-8-5Z" />
               </svg>
-              Email
             </a>
           )}
         </div>
@@ -144,7 +132,7 @@ export default function Members() {
         </div>
 
         {/* Members Grid */}
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-start gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {members.map((person, index) => (
             <MemberCard key={person.name} person={person} index={index} />
           ))}

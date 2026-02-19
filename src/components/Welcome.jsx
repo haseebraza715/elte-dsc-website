@@ -1,9 +1,35 @@
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useState } from 'react'
 import content from '../content/welcome.json'
 
 export default function Welcome() {
   const navigate = useNavigate()
   const location = useLocation()
+  const [activeTrack, setActiveTrack] = useState(0)
+
+  const tracks = [
+    {
+      id: 'community',
+      label: 'Community',
+      title: 'Community Learning',
+      description: 'We grow together through peer learning, accountability, and shared progress.',
+      points: ['Peer-to-peer support', 'Small group collaboration', 'Inclusive for beginners']
+    },
+    {
+      id: 'projects',
+      label: 'Projects',
+      title: 'Project-Driven Practice',
+      description: 'Members learn by building real data science projects from idea to demo.',
+      points: ['Hands-on execution', 'Portfolio outcomes', 'Team-based delivery']
+    },
+    {
+      id: 'speakers',
+      label: 'Speakers',
+      title: 'Speaker Sessions',
+      description: 'Guest speakers share practical insights from industry and research.',
+      points: ['Career stories', 'Applied insights', 'Live Q&A sessions']
+    }
+  ]
 
   // Cache header height
   const getHeaderHeight = () => {
@@ -57,7 +83,7 @@ export default function Welcome() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-24 sm:pt-28 pb-20 sm:pb-28"
+      className="relative overflow-hidden pt-24 sm:pt-28 pb-14 sm:pb-18"
     >
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 z-0">
@@ -70,25 +96,53 @@ export default function Welcome() {
       <div className="dot-grid absolute inset-0 z-[1]" />
 
       <div className="relative section-container z-10">
-        <div className="mx-auto max-w-5xl text-center space-y-8 sm:space-y-10">
+        <div className="mx-auto max-w-5xl text-center space-y-7 sm:space-y-9">
           {/* Top badge */}
-          <div className="hero-badge inline-flex items-center gap-3 rounded-full border border-accent/20 bg-accent/[0.06] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-accent" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_rgba(99,102,241,0.6)]" />
+          <div className="hero-badge inline-flex items-center rounded-full border border-accent/25 bg-accent/[0.08] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-accent" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             ELTE Data Science Club
           </div>
 
           {/* Heading */}
-          <h1 className="hero-heading text-5xl sm:text-7xl lg:text-8xl font-display font-bold leading-[1.05] tracking-[-0.03em] text-text-primary">
-            Build <span className="text-gradient">models</span>, ship{' '}
-            <span className="text-gradient">insight</span>,
-            <br className="hidden sm:block" />
-            lead with <span className="text-gradient">curiosity</span>.
+          <h1 className="hero-heading mx-auto max-w-4xl text-4xl sm:text-6xl lg:text-7xl font-display font-bold leading-[1.08] tracking-[-0.025em] text-text-primary [text-wrap:balance]">
+            Building ELTE&apos;s <span className="text-gradient">Data Science Community</span> Together.
           </h1>
 
           {/* Subtitle */}
-          <p className="hero-subtitle mx-auto max-w-2xl text-lg sm:text-xl text-text-secondary leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <p className="hero-subtitle mx-auto max-w-3xl text-lg sm:text-xl text-text-secondary leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             {content.subtitle}
           </p>
+
+          <div className="hero-cta mx-auto grid max-w-4xl gap-3 sm:grid-cols-3">
+            {tracks.map((track, index) => (
+              <button
+                key={track.id}
+                type="button"
+                onClick={() => setActiveTrack(index)}
+                className={`rounded-xl border px-4 py-3 text-left transition-all duration-300 ${
+                  activeTrack === index
+                    ? 'border-accent/60 bg-accent/15 shadow-[0_0_24px_rgba(37,99,235,0.25)]'
+                    : 'border-border-glass bg-bg-surface/60 hover:border-accent/35 hover:bg-accent/[0.08]'
+                }`}
+              >
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">{track.label}</p>
+                <p className="mt-1 text-sm font-semibold text-text-primary">{track.title}</p>
+              </button>
+            ))}
+          </div>
+
+          <div className="mx-auto max-w-4xl glass-card p-6 sm:p-7 text-left">
+            <h3 className="text-xl sm:text-2xl font-display font-bold text-text-primary">
+              {tracks[activeTrack].title}
+            </h3>
+            <p className="mt-2 text-text-secondary">{tracks[activeTrack].description}</p>
+            <div className="mt-4 grid gap-2 sm:grid-cols-3">
+              {tracks[activeTrack].points.map((point) => (
+                <div key={point} className="rounded-lg border border-border-glass bg-bg-glass px-3 py-2 text-sm text-text-secondary">
+                  {point}
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* CTA buttons */}
           <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -112,29 +166,6 @@ export default function Welcome() {
           </div>
         </div>
 
-        {/* Feature cards — below the fold, revealed on scroll */}
-        <div className="mt-24 sm:mt-32 mx-auto max-w-5xl grid gap-5 sm:gap-6 md:grid-cols-3">
-          {[
-            { num: '01', title: 'Research Sprints', text: 'Two-week builds with demos and peer critique.' },
-            { num: '02', title: 'Applied Workshops', text: 'Hands-on labs from data prep to deployment.' },
-            { num: '03', title: 'Mentor Pairing', text: 'Match with seniors for guidance and review.' }
-          ].map((card, index) => (
-            <div
-              key={card.title}
-              className={`glass-card p-6 sm:p-8 text-left hover:-translate-y-1.5 hover:border-accent/15 reveal delay-${(index + 1) * 2}`}
-            >
-              <span className="inline-block text-xs font-semibold text-accent tracking-widest mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                {card.num}
-              </span>
-              <div className="text-sm font-semibold uppercase tracking-wide text-text-primary mb-2" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                {card.title}
-              </div>
-              <p className="text-sm text-text-secondary leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                {card.text}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   )

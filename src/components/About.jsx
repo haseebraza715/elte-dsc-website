@@ -50,24 +50,35 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-24 sm:py-32 overflow-hidden bg-bg-base">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-8 right-0 h-64 w-64 rounded-full bg-accent/[0.08] blur-3xl" />
+        <div className="absolute bottom-0 left-10 h-52 w-52 rounded-full bg-accent-hover/[0.06] blur-3xl" />
+      </div>
       <div className="section-container relative z-10">
         {/* Section Label */}
-        <div className="section-label mb-6 reveal">About Us</div>
+        <div className="mb-6 reveal text-xs font-semibold uppercase tracking-[0.18em] text-accent">About Us</div>
 
         {/* Heading */}
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight text-text-primary mb-10 reveal delay-1">
-          Empowering the <span className="text-gradient">Next Generation</span> of Data Scientists.
+          Building ELTE&apos;s <span className="text-gradient">Data Science Community</span> Together.
         </h2>
 
-        <div className="grid gap-16 lg:grid-cols-2 items-start">
+        <div className="grid gap-10 lg:gap-12 lg:grid-cols-2 items-start">
           {/* Left Content */}
-          <div className="space-y-8 reveal delay-2">
-            <div className="space-y-6">
+          <div className="space-y-7 reveal delay-2">
+            <div className="space-y-5">
               {content.paragraphs.map((p, index) => (
                 <p key={index} className="text-lg text-text-secondary leading-relaxed">
                   {p}
                 </p>
               ))}
+            </div>
+
+            <div className="glass-card p-5 sm:p-6">
+              <p className="text-sm uppercase tracking-[0.14em] text-accent font-semibold mb-2">Our Method</p>
+              <p className="text-text-secondary leading-relaxed">
+                Community learning + project execution + speaker insights. We keep it practical, collaborative, and beginner-friendly.
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-4 pt-2">
@@ -89,23 +100,17 @@ export default function About() {
           </div>
 
           {/* Right Content - Focus Areas */}
-          <div className="glass-card p-8 relative overflow-hidden reveal delay-3">
-            <h3 className="text-xl font-display font-bold text-text-primary mb-6 flex items-center gap-3">
-              <span className="w-2 h-2 bg-accent rounded-full"></span>
+          <div className="glass-card p-6 sm:p-8 relative overflow-hidden reveal delay-3">
+            <h3 className="text-xl font-display font-bold text-text-primary mb-6">
               Focus Areas
             </h3>
-            <ul className="space-y-2">
+            <ul className="grid gap-3 sm:grid-cols-2">
               {focus.map((item, index) => (
                 <li
                   key={index}
-                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-bg-surface/30 transition-all duration-300"
+                  className="p-3 rounded-lg border border-border-glass bg-bg-glass hover:border-accent/35 transition-all duration-300"
                 >
-                  <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-text-secondary text-sm font-medium">
+                  <span className="text-text-secondary text-sm font-medium leading-relaxed">
                     {item}
                   </span>
                 </li>
