@@ -1,15 +1,35 @@
 import { useState } from 'react'
 import members from '../content/members.json'
-// Import all member images
-import ayushImage from '../images/ayush.jpeg'
-import haseebImage from '../images/haseeb.png'
-import itiImage from '../images/iti.jpg'
 
-// Map image paths from JSON to imported images
-const imageMap = {
-  '/src/images/ayush.jpeg': ayushImage,
-  '/src/images/haseeb.png': haseebImage,
-  '/src/images/iti.jpg': itiImage,
+const imageModules = import.meta.glob('../images/*.{png,jpg,jpeg,webp,avif}', {
+  eager: true,
+  import: 'default',
+})
+
+const imageMap = Object.entries(imageModules).reduce((acc, [path, image]) => {
+  const fileName = path.split('/').pop()
+  if (!fileName) return acc
+
+  const lowerFileName = fileName.toLowerCase()
+  acc[`/src/images/${fileName}`] = image
+  acc[`/src/images/${lowerFileName}`] = image
+  acc[fileName] = image
+  acc[lowerFileName] = image
+  return acc
+}, {})
+
+function resolveImageSrc(imagePath) {
+  if (!imagePath) return null
+
+  const normalized = imagePath.trim()
+  const fileName = normalized.split('/').pop()?.toLowerCase()
+
+  if (imageMap[normalized]) return imageMap[normalized]
+  if (imageMap[normalized.toLowerCase()]) return imageMap[normalized.toLowerCase()]
+  if (fileName && imageMap[fileName]) return imageMap[fileName]
+
+  // Allow direct URLs/public paths to render if provided in content JSON.
+  return normalized
 }
 
 function getInitials(name) {
@@ -23,11 +43,11 @@ function getInitials(name) {
 
 function MemberCard({ person, index }) {
   const [imageError, setImageError] = useState(false)
-  const imageSrc = person.image ? imageMap[person.image] || null : null
+  const imageSrc = resolveImageSrc(person.image)
 
   const getObjectPosition = () => {
-    if (person.name === 'Kumar Ayush') return 'center top'
-    if (person.name === 'Haseeb Raza') return 'center top'
+    if (person.name === 'Kumar Ayush') return '50% 22%'
+    if (person.name === 'Haseeb Raza') return '50% 20%'
     return 'center center'
   }
 
