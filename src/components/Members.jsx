@@ -12,12 +12,25 @@ import emanImage from '../images/members/eman.jpeg'
 // Map image paths from JSON to imported images
 const imageMap = {
   '/src/images/members/ayush.jpeg': ayushImage,
+  '/src/images/members/AYUSH.JPEG': ayushImage,
   '/src/images/members/haseeb.png': haseebImage,
+  '/src/images/members/HASEEB.PNG': haseebImage,
   '/src/images/members/iti.jpg': itiImage,
   '/src/images/members/amina.jpeg': aminaImage,
   '/src/images/members/nazrin.jpeg': nazrinImage,
   '/src/images/members/abaidullah.jpeg': abaidullahImage,
   '/src/images/members/eman.jpeg': emanImage,
+}
+
+function resolveImageSrc(imagePath) {
+  if (!imagePath) return null
+  const normalized = imagePath.trim()
+  const lowerPath = normalized.toLowerCase()
+  const fileName = lowerPath.split('/').pop()
+  if (imageMap[normalized]) return imageMap[normalized]
+  if (imageMap[lowerPath]) return imageMap[lowerPath]
+  if (fileName && imageMap[`/src/images/members/${fileName}`]) return imageMap[`/src/images/members/${fileName}`]
+  return normalized
 }
 
 function getInitials(name) {
@@ -31,11 +44,11 @@ function getInitials(name) {
 
 function MemberCard({ person, index }) {
   const [imageError, setImageError] = useState(false)
-  const imageSrc = person.image ? imageMap[person.image] || null : null
+  const imageSrc = resolveImageSrc(person.image)
 
   const getObjectPosition = () => {
-    if (person.name === 'Kumar Ayush') return 'center top'
-    if (person.name === 'Haseeb Raza') return 'center top'
+    if (person.name === 'Kumar Ayush') return '50% 22%'
+    if (person.name === 'Haseeb Raza') return '50% 20%'
     return 'center center'
   }
 
