@@ -1,9 +1,35 @@
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useState } from 'react'
 import content from '../content/welcome.json'
 
 export default function Welcome() {
   const navigate = useNavigate()
   const location = useLocation()
+  const [activeTrack, setActiveTrack] = useState(0)
+
+  const tracks = [
+    {
+      id: 'community',
+      label: 'Community',
+      title: 'Community Learning',
+      description: 'We grow together through peer learning, accountability, and shared progress.',
+      points: ['Peer-to-peer support', 'Small group collaboration', 'Inclusive for beginners']
+    },
+    {
+      id: 'projects',
+      label: 'Projects',
+      title: 'Project-Driven Practice',
+      description: 'Members learn by building real data science projects from idea to demo.',
+      points: ['Hands-on execution', 'Portfolio outcomes', 'Team-based delivery']
+    },
+    {
+      id: 'speakers',
+      label: 'Speakers',
+      title: 'Speaker Sessions',
+      description: 'Guest speakers share practical insights from industry and research.',
+      points: ['Career stories', 'Applied insights', 'Live Q&A sessions']
+    }
+  ]
 
   // Cache header height
   const getHeaderHeight = () => {
@@ -57,89 +83,89 @@ export default function Welcome() {
   return (
     <section
       id="home"
-      className="relative min-h-[88vh] sm:min-h-[96vh] overflow-hidden pt-28 sm:pt-32 reveal"
+      className="relative overflow-hidden pt-24 sm:pt-28 pb-14 sm:pb-18"
     >
-      {/* Background Layers */}
+      {/* Animated gradient orbs */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute -top-32 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[#1F1C18]/18 blur-[140px]" />
-        <div className="absolute bottom-[-20%] left-[-10%] h-[520px] w-[520px] rounded-full bg-[#0D0C0A]/14 blur-[160px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(122,107,92,0.08)_0%,transparent_45%,rgba(90,79,68,0.08)_100%)]" />
-        {/* Abstract side stack */}
-        <div className="hidden lg:block absolute right-12 top-28 w-64 space-y-4 opacity-70">
-          <div className="glass-card p-5 rotate-[-2deg] shadow-[0_20px_40px_rgba(43,30,30,0.18)]">
-            <div className="h-2 w-10 rounded-full bg-[#1F1C18]/40" />
-            <div className="mt-4 h-2 w-40 rounded-full bg-[#231F1A]/15" />
-            <div className="mt-2 h-2 w-28 rounded-full bg-[#231F1A]/15" />
-          </div>
-          <div className="glass-card p-5 rotate-[1.5deg] shadow-[0_20px_40px_rgba(43,30,30,0.18)]">
-            <div className="h-2 w-16 rounded-full bg-[#1F1C18]/40" />
-            <div className="mt-4 h-2 w-36 rounded-full bg-[#231F1A]/15" />
-            <div className="mt-2 h-2 w-24 rounded-full bg-[#231F1A]/15" />
-          </div>
-          <div className="glass-card p-5 rotate-[-1deg] shadow-[0_20px_40px_rgba(43,30,30,0.18)]">
-            <div className="h-2 w-12 rounded-full bg-[#1F1C18]/40" />
-            <div className="mt-4 h-2 w-44 rounded-full bg-[#231F1A]/15" />
-            <div className="mt-2 h-2 w-20 rounded-full bg-[#231F1A]/15" />
-          </div>
-        </div>
+        <div className="absolute top-[-10%] left-[20%] h-[600px] w-[600px] rounded-full bg-accent/[0.07] blur-[150px] animate-pulse-glow" />
+        <div className="absolute bottom-[-15%] right-[10%] h-[500px] w-[500px] rounded-full bg-accent-hover/[0.05] blur-[140px] animate-pulse-glow" />
+        <div className="absolute top-[40%] left-[-5%] h-[400px] w-[400px] rounded-full bg-accent/[0.04] blur-[120px] animate-pulse-glow" />
       </div>
 
+      {/* Dot grid overlay */}
+      <div className="dot-grid absolute inset-0 z-[1]" />
+
       <div className="relative section-container z-10">
-        <div className="mx-auto max-w-5xl text-center space-y-10">
-          <div className="inline-flex items-center gap-3 rounded-full border border-[#1F1C18]/25 bg-[#1F1C18]/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.35em] text-[#1F1C18]">
-            <span className="h-2 w-2 rounded-full bg-[#1F1C18] shadow-[0_0_12px_rgba(43,38,33,0.45)]" />
+        <div className="mx-auto max-w-5xl text-center space-y-7 sm:space-y-9">
+          {/* Top badge */}
+          <div className="hero-badge inline-flex items-center rounded-full border border-accent/25 bg-accent/[0.08] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-accent" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             ELTE Data Science Club
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black leading-[1.02] sm:leading-[1.01] tracking-[-0.02em] sm:tracking-[-0.03em] text-[#231F1A]">
-            Build <span className="text-gradient">models</span>, ship <span className="text-gradient">insight</span>,
-            lead with <span className="text-gradient">curiosity</span>.
+          {/* Heading */}
+          <h1 className="hero-heading mx-auto max-w-4xl text-4xl sm:text-6xl lg:text-7xl font-display font-bold leading-[1.08] tracking-[-0.025em] text-text-primary [text-wrap:balance]">
+            Building ELTE&apos;s <span className="text-gradient">Data Science Community</span> Together.
           </h1>
 
-          <p className="mx-auto max-w-xl sm:max-w-2xl text-base sm:text-lg text-[#231F1A]/75 font-semibold leading-relaxed">
+          {/* Subtitle */}
+          <p className="hero-subtitle mx-auto max-w-3xl text-lg sm:text-xl text-text-secondary leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             {content.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="hero-cta mx-auto grid max-w-4xl gap-3 sm:grid-cols-3">
+            {tracks.map((track, index) => (
+              <button
+                key={track.id}
+                type="button"
+                onClick={() => setActiveTrack(index)}
+                className={`rounded-xl border px-4 py-3 text-left transition-all duration-300 ${
+                  activeTrack === index
+                    ? 'border-accent/60 bg-accent/15 shadow-[0_0_24px_rgba(37,99,235,0.25)]'
+                    : 'border-border-glass bg-bg-surface/60 hover:border-accent/35 hover:bg-accent/[0.08]'
+                }`}
+              >
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">{track.label}</p>
+                <p className="mt-1 text-sm font-semibold text-text-primary">{track.title}</p>
+              </button>
+            ))}
+          </div>
+
+          <div className="mx-auto max-w-4xl glass-card p-6 sm:p-7 text-left">
+            <h3 className="text-xl sm:text-2xl font-display font-bold text-text-primary">
+              {tracks[activeTrack].title}
+            </h3>
+            <p className="mt-2 text-text-secondary">{tracks[activeTrack].description}</p>
+            <div className="mt-4 grid gap-2 sm:grid-cols-3">
+              {tracks[activeTrack].points.map((point) => (
+                <div key={point} className="rounded-lg border border-border-glass bg-bg-glass px-3 py-2 text-sm text-text-secondary">
+                  {point}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA buttons */}
+          <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
               onClick={() => handleCtaClick(content.primaryCta.href)}
-              className="btn-premium w-full sm:w-auto px-8 sm:px-12 py-4 text-base sm:text-lg uppercase tracking-widest font-black group bg-[#1F1C18] hover:bg-[#0D0C0A] text-[#F3EDE2] border border-[#231F1A]/20"
+              className="btn-premium btn-premium-pulse w-full sm:w-auto group"
             >
               <span className="flex items-center gap-3">
                 {content.primaryCta.label}
-                <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <svg className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
             </button>
             <button
               onClick={() => handleCtaClick(content.secondaryCta.href)}
-              className="w-full sm:w-auto px-6 sm:px-10 py-4 text-base sm:text-lg font-black text-[#231F1A]/80 border border-transparent hover:text-[#231F1A] transition-all duration-500 uppercase tracking-widest underline underline-offset-8 decoration-[#1F1C18]/60 hover:decoration-[#1F1C18]"
+              className="btn-secondary w-full sm:w-auto"
             >
               {content.secondaryCta.label}
             </button>
           </div>
         </div>
 
-        <div className="mt-10 sm:mt-16 lg:mt-20 grid gap-4 sm:gap-6 md:grid-cols-3">
-          {[
-            { title: 'Research Sprints', text: 'Two-week builds with demos and peer critique.' },
-            { title: 'Applied Workshops', text: 'Hands-on labs from data prep to deployment.' },
-            { title: 'Mentor Pairing', text: 'Match with seniors for guidance and review.' }
-          ].map((card, index) => (
-            <div
-              key={card.title}
-              className={`glass-card p-6 sm:p-7 text-left reveal delay-${index + 1} transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(43,30,30,0.2)] ${index === 1 ? 'md:translate-y-4' : ''}`}
-            >
-              <div className="text-xs font-black uppercase tracking-[0.35em] text-[#231F1A]/50">
-                {card.title}
-              </div>
-              <p className="mt-3 text-sm sm:text-base font-semibold text-[#231F1A]/75 leading-relaxed">
-                {card.text}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   )

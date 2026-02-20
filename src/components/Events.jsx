@@ -31,8 +31,8 @@ export default function Events() {
     return (
       <ul className="space-y-2 mt-3">
         {items.map((item, idx) => (
-          <li key={idx} className="flex items-start text-xs sm:text-sm text-[#231F1A]/70 leading-relaxed group/item">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1F1C18]/40 mt-1.5 mr-2.5 flex-shrink-0 group-hover/item:bg-[#1F1C18] transition-colors"></span>
+          <li key={idx} className="flex items-start text-xs sm:text-sm text-text-secondary leading-relaxed group/item">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 mr-2.5 flex-shrink-0 group-hover/item:bg-accent transition-colors"></span>
             {item}
           </li>
         ))}
@@ -52,19 +52,19 @@ export default function Events() {
   }
 
   return (
-    <section id="events" className="relative py-20 overflow-hidden reveal">
+    <section id="events" className="relative pt-32 pb-24 sm:pb-32 overflow-hidden bg-bg-base reveal">
       <div className="section-container relative z-10">
 
         {/* Header */}
         <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center space-x-2 text-[#1F1C18] font-bold tracking-[0.2em] text-[10px] uppercase mb-4 bg-[#1F1C18]/10 px-3 py-1 rounded-full border border-[#1F1C18]/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1F1C18] animate-pulse"></span>
+          <div className="inline-flex items-center space-x-2 text-accent font-bold tracking-[0.2em] text-[10px] uppercase mb-4 bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
             <span>Spring 2026 Program</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-[#231F1A] mb-6">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-text-primary mb-6">
             9-Week <span className="text-gradient">Masterplan</span>
           </h2>
-          <p className="text-lg text-[#231F1A]/70 font-medium max-w-xl leading-relaxed">
+          <p className="text-lg text-text-secondary font-medium max-w-xl leading-relaxed">
             A structured journey from team formation to final product delivery. Every week counts.
           </p>
         </div>
@@ -74,15 +74,15 @@ export default function Events() {
           {sortedEvents.map((event, index) => (
             <div
               key={event.id}
-              className={`glass-card p-8 flex flex-col h-full group hover:border-[#1F1C18]/30 transition-all duration-500 reveal delay-${(index % 3) + 1}`}
+              className={`glass-card p-8 flex flex-col h-full group hover:border-border-glass transition-all duration-500 reveal delay-${(index % 3) + 1}`}
             >
               {/* Event Header */}
               <div className="flex justify-between items-start mb-6">
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#1F1C18] mb-1">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-1">
                     Week {event.week}
                   </span>
-                  <span className="text-2xl font-display font-bold text-[#231F1A]">
+                  <span className="text-lg font-display font-bold text-text-primary">
                     {event.date}
                   </span>
                 </div>
@@ -95,10 +95,10 @@ export default function Events() {
 
               {/* Title & Theme */}
               <div className="mb-6">
-                <h3 className="text-xl font-bold text-[#231F1A] mb-2 group-hover:text-[#1F1C18] transition-colors">
+                <h3 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-hover transition-colors">
                   {event.title}
                 </h3>
-                <p className="text-sm font-medium text-[#231F1A]/60 italic">
+                <p className="text-sm italic text-text-muted">
                   "{event.theme}"
                 </p>
               </div>
@@ -107,7 +107,7 @@ export default function Events() {
               <div className="space-y-6 flex-1">
                 {event.whatHappens && (
                   <div>
-                    <h4 className="text-[10px] font-bold text-[#231F1A]/50 uppercase tracking-widest border-b border-[#231F1A]/10 pb-2 mb-1">
+                    <h4 className="text-[10px] font-bold text-text-secondary uppercase tracking-widest border-b border-border-glass pb-2 mb-1">
                       Agenda
                     </h4>
                     {renderList(event.whatHappens)}
@@ -116,7 +116,7 @@ export default function Events() {
 
                 {event.deliverables && (
                   <div>
-                    <h4 className="text-[10px] font-bold text-[#1F1C18] uppercase tracking-widest border-b border-[#1F1C18]/20 pb-2 mb-1">
+                    <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest border-b border-accent/20 pb-2 mb-1">
                       Deliverables
                     </h4>
                     {renderList(event.deliverables)}
@@ -125,7 +125,7 @@ export default function Events() {
 
                 {event.actionItems && !event.deliverables && (
                   <div>
-                    <h4 className="text-[10px] font-bold text-[#231F1A]/50 uppercase tracking-widest border-b border-[#231F1A]/10 pb-2 mb-1">
+                    <h4 className="text-[10px] font-bold text-text-secondary uppercase tracking-widest border-b border-border-glass pb-2 mb-1">
                       Action Items
                     </h4>
                     {renderList(event.actionItems)}
@@ -134,14 +134,14 @@ export default function Events() {
               </div>
 
               {/* Footer / Format */}
-              <div className="mt-8 pt-4 border-t border-[#231F1A]/10 flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#231F1A]/5 border border-[#231F1A]/10 text-[#231F1A]/60 text-[10px] font-bold uppercase tracking-wider">
+              <div className="mt-8 pt-4 border-t border-border-glass flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-text-secondary text-[10px] font-bold uppercase tracking-wider">
                   {event.format}
                 </span>
                 {event.status === 'confirmed' ? (
-                  <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.4)]"></span>
+                  <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.4)]"></span>
                 ) : (
-                  <span className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.4)]"></span>
+                  <span className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.4)]"></span>
                 )}
               </div>
             </div>
@@ -151,14 +151,14 @@ export default function Events() {
         {/* Previous Sessions Gallery */}
         <div className="mt-20">
           <div className="max-w-3xl mb-10">
-            <div className="inline-flex items-center space-x-2 text-[#1F1C18] font-bold tracking-[0.2em] text-[10px] uppercase mb-4 bg-[#1F1C18]/10 px-3 py-1 rounded-full border border-[#1F1C18]/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1F1C18]"></span>
+            <div className="inline-flex items-center space-x-2 text-accent font-bold tracking-[0.2em] text-[10px] uppercase mb-4 bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
               <span>Previous Sessions</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl font-display font-bold text-[#231F1A] mb-4">
+            <h3 className="text-3xl sm:text-4xl font-display font-bold text-text-primary mb-4">
               A glimpse of our workshops
             </h3>
-            <p className="text-[#231F1A]/70 font-medium max-w-2xl">
+            <p className="text-text-secondary font-medium max-w-2xl">
               Real sessions, real collaboration, and hands-on learning across the DSC community.
             </p>
           </div>
@@ -167,17 +167,17 @@ export default function Events() {
             {galleryImages.map((image, index) => (
               <div
                 key={image.src}
-                className={`group relative overflow-hidden rounded-3xl border border-[#231F1A]/10 bg-[#E3D7C9] shadow-[0_20px_40px_rgba(43,38,33,0.15)] ${image.span || ''}`}
+                className={`group relative overflow-hidden rounded-xl border border-border-glass bg-bg-surface ${image.span || ''}`}
               >
                 <div className="relative w-full aspect-[4/3] sm:aspect-[5/4] md:aspect-auto md:h-full">
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1F1C18]/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
             ))}
           </div>

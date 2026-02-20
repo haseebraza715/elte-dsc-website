@@ -1,17 +1,17 @@
-## Data Science Club Website
+# ELTE Data Science Club Website
 
-Landing site for the ELTE Data Science Club, highlighting who we are, events, projects, members, and resources. Built with Vite + React and utility-first styling; home sections (Welcome, About, Contact) are lazy-loaded for faster initial paint.
+Landing site for the ELTE Data Science Club — built with React, Vite, and Tailwind CSS v4.
 
-### Quick Start
-- Install: `npm install`
-- Dev: `npm run dev` (default 5173; adjust `server.port` in `vite.config.js`)
-- Build: `npm run build`
+## Quick Start
 
-### Navigation
-- Hash links (`/#about`, `/#contact`) smooth-scroll to sections on the home page.
-- Route changes reset scroll to top to avoid landing mid-page when switching screens.
+```bash
+npm install
+npm run dev
+npm run build
+```
 
-### Tech Stack
-- React + Vite
-- React Router for routing + hash handling
-- Tailwind-style utility classes for styling
+## Tech Stack
+
+- React 18 + Vite 7
+- Tailwind CSS v4
+- React Router v6

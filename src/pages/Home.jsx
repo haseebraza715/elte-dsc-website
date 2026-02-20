@@ -5,7 +5,6 @@ import SEO from '../components/SEO.jsx'
 // Lazy load components for better initial load performance
 const Welcome = lazy(() => import('../components/Welcome.jsx'))
 const About = lazy(() => import('../components/About.jsx'))
-const Members = lazy(() => import('../components/Members.jsx'))
 const Contact = lazy(() => import('../components/Contact.jsx'))
 
 // Cache header height to avoid repeated calculations
@@ -130,7 +129,6 @@ export default function Home() {
         <Suspense fallback={<div className="min-h-[60vh]" />}>
           <About />
           <Suspense fallback={<div className="min-h-[40vh]" />}>
-            <Members />
             <Contact />
           </Suspense>
         </Suspense>
