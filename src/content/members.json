@@ -1,9 +1,92 @@
 [
-  { "name": "Kumar Ayush", "role": "Founder", "meta": "ELTE", "description": "Research Assistant at ELTE", "link": "https://www.linkedin.com/in/ayushkumar5/", "linkLabel": "LinkedIn", "email": "jzw44g@inf.elte.hu", "image": "/src/images/members/ayush.jpeg" },
-  { "name": "Haseeb Raza", "role": "Founder", "meta": "ELTE", "description": "Research Assistant at ELTE", "link": "https://www.linkedin.com/in/haseebraza715/", "linkLabel": "LinkedIn", "email": "haseeb.javed715@gmail.com", "image": "/src/images/members/haseeb.png" },
-  { "name": "Podder Itilekha", "role": "Mentor", "meta": "ELTE", "description": "Data Scientist at Bosch", "link": "https://www.linkedin.com/in/itilekha-podder/", "linkLabel": "LinkedIn", "email": "itilekha19@inf.elte.hu", "image": "/src/images/members/iti.jpg" },
-  { "name": "Eman Aftab", "role": "Product Development Lead", "meta": "ELTE", "description": "", "link": "https://www.linkedin.com/in/muhammademanaftab/", "linkLabel": "LinkedIn", "email": "", "image": "/src/images/members/eman.jpeg" },
-  { "name": "Abaidullah Asif", "role": "Product Development Lead", "meta": "ELTE", "description": "", "link": "https://www.linkedin.com/in/abaidullah-asif-576ab520a/", "linkLabel": "LinkedIn", "email": "", "image": "/src/images/members/abaidullah.jpeg" },
-  { "name": "Amina Tynybekova", "role": "Marketing Lead", "meta": "ELTE", "description": "", "link": "https://www.linkedin.com/in/amina-tynybekova-22074a337/", "linkLabel": "LinkedIn", "email": "", "image": "/src/images/members/amina.jpeg" },
-  { "name": "Nazrin Majidova", "role": "Marketing Lead", "meta": "ELTE", "description": "", "link": "https://www.linkedin.com/in/nazrin-majidova-a47640321/", "linkLabel": "LinkedIn", "email": "", "image": "/src/images/members/nazrin.jpeg" }
+  {
+    "name": "Kumar Ayush",
+    "role": "Founder",
+    "meta": "ELTE",
+    "description": "Research Assistant at ELTE",
+    "link": "https://www.linkedin.com/in/ayushkumar5/",
+    "linkLabel": "LinkedIn",
+    "email": "jzw44g@inf.elte.hu",
+    "image": "/src/images/members/ayush.jpeg"
+  },
+  {
+    "name": "Haseeb Raza",
+    "role": "Founder",
+    "meta": "ELTE",
+    "description": "Research Assistant at ELTE",
+    "link": "https://www.linkedin.com/in/haseebraza715/",
+    "linkLabel": "LinkedIn",
+    "email": "haseeb.javed715@gmail.com",
+    "image": "/src/images/members/haseeb.png"
+  },
+  {
+    "name": "Podder Itilekha",
+    "role": "Mentor",
+    "meta": "ELTE",
+    "description": "Data Scientist at Bosch",
+    "link": "https://www.linkedin.com/in/itilekha-podder/",
+    "linkLabel": "LinkedIn",
+    "email": "itilekha19@inf.elte.hu",
+    "image": "/src/images/members/iti.jpg"
+  },
+  {
+    "name": "Eman Aftab",
+    "role": "Product Development Lead",
+    "meta": "ELTE",
+    "description": "",
+    "link": "https://www.linkedin.com/in/muhammademanaftab/",
+    "linkLabel": "LinkedIn",
+    "email": "",
+    "image": "/src/images/members/eman.jpeg"
+  },
+  {
+    "name": "Abaidullah Asif",
+    "role": "Product Development Lead",
+    "meta": "ELTE",
+    "description": "",
+    "link": "https://www.linkedin.com/in/abaidullah-asif-576ab520a/",
+    "linkLabel": "LinkedIn",
+    "email": "",
+    "image": "/src/images/members/abaidullah.jpeg"
+  },
+  {
+    "name": "Amina Tynybekova",
+    "role": "Marketing Lead",
+    "meta": "ELTE",
+    "description": "",
+    "link": "https://www.linkedin.com/in/amina-tynybekova-22074a337/",
+    "linkLabel": "LinkedIn",
+    "email": "",
+    "image": "/src/images/members/amina.jpeg"
+  },
+  {
+    "name": "Nazrin Majidova",
+    "role": "Marketing Lead",
+    "meta": "ELTE",
+    "description": "",
+    "link": "https://www.linkedin.com/in/nazrin-majidova-a47640321/",
+    "linkLabel": "LinkedIn",
+    "email": "",
+    "image": "/src/images/members/nazrin.jpeg"
+  },
+  {
+    "name": "Balogh Máté",
+    "role": "Product Lead",
+    "meta": "ELTE",
+    "description": "",
+    "link": "https://www.linkedin.com/in/mate-balogh-a137771b7/",
+    "linkLabel": "LinkedIn",
+    "email": "",
+    "image": "/src/images/members/mate.jpeg"
+  },
+  {
+    "name": "Aqdas Mujahid",
+    "role": "Content Lead",
+    "meta": "ELTE",
+    "description": "",
+    "link": "https://www.linkedin.com/in/aqdas-mujahid/",
+    "linkLabel": "LinkedIn",
+    "email": "",
+    "image": "/src/images/members/aqdas.jpeg"
+  }
 ]
