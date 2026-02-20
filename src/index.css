@@ -723,4 +723,13 @@ h6 {
   .section-container {
     padding: 0 1.25rem;
   }
+
+  /* Mobile reliability: do not keep sections hidden behind reveal gates. */
+  .reveal,
+  .reveal-left,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

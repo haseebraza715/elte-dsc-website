@@ -26,8 +26,10 @@ function HashHandler() {
 
     const revealSelector = '.reveal, .reveal-left, .reveal-scale'
     const activate = (el) => el.classList.add('active')
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
 
-    if (typeof window.IntersectionObserver === 'undefined') {
+    // On touch devices, render sections immediately for reliability/performance.
+    if (isTouchDevice || typeof window.IntersectionObserver === 'undefined') {
       document.querySelectorAll(revealSelector).forEach(activate)
       return
     }
