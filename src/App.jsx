@@ -24,27 +24,50 @@ function HashHandler() {
       window.history.replaceState(null, '', location.pathname)
     }
 
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -60px 0px'
+    const revealSelector = '.reveal, .reveal-left, .reveal-scale'
+    const activate = (el) => el.classList.add('active')
+
+    if (typeof window.IntersectionObserver === 'undefined') {
+      document.querySelectorAll(revealSelector).forEach(activate)
+      return
     }
 
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -60px 0px',
+    }
+
+    const observed = new WeakSet()
     const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active')
+          activate(entry.target)
+          revealObserver.unobserve(entry.target)
         }
       })
     }, observerOptions)
 
-    // Small delay to let DOM render after lazy load
-    const timer = setTimeout(() => {
-      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale')
-      revealElements.forEach(el => revealObserver.observe(el))
-    }, 100)
+    const observeRevealElements = () => {
+      const revealElements = document.querySelectorAll(revealSelector)
+      revealElements.forEach((el) => {
+        if (!observed.has(el)) {
+          observed.add(el)
+          revealObserver.observe(el)
+        }
+      })
+    }
+
+    // Observe current DOM and any lazy-loaded elements that mount later.
+    observeRevealElements()
+    const timer = setTimeout(observeRevealElements, 200)
+    const domObserver = new MutationObserver(() => {
+      observeRevealElements()
+    })
+    domObserver.observe(document.body, { childList: true, subtree: true })
 
     return () => {
       clearTimeout(timer)
+      domObserver.disconnect()
       revealObserver.disconnect()
     }
   }, [location.pathname])
