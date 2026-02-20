@@ -118,7 +118,7 @@ export default function Home() {
   }, [location.pathname, location.state, navigate])
 
   return (
-    <main id="main">
+    <div>
       <SEO
         title="Home"
         description="Join the community at Eötvös Loránd University. Learn through hands-on projects, weekly talks, workshops, and collaborative learning."
@@ -133,6 +133,6 @@ export default function Home() {
           </Suspense>
         </Suspense>
       </Suspense>
-    </main>
+    </div>
   )
 }

@@ -74,6 +74,8 @@ function MemberCard({ person, index }) {
             alt={person.name}
             className="w-full h-full object-cover saturate-[0.8] contrast-[1.05] grayscale group-hover:grayscale-0 group-hover:saturate-100 group-hover:scale-110 transition-all duration-1000"
             style={getImageStyle()}
+            loading="lazy"
+            decoding="async"
             onError={() => setImageError(true)}
           />
         ) : (

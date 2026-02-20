@@ -6,7 +6,7 @@ export default function Challenges() {
   useEffect(() => {
     // Use requestAnimationFrame for smoother scroll
     requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' })
+      window.scrollTo({ top: 0, behavior: 'auto' })
     })
   }, [])
   
@@ -21,4 +21,3 @@ export default function Challenges() {
     </>
   )
 }
-

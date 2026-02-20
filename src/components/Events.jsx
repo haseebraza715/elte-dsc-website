@@ -164,7 +164,7 @@ export default function Events() {
           </div>
 
           <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 md:grid-cols-6 md:auto-rows-[180px] lg:auto-rows-[220px]">
-            {galleryImages.map((image, index) => (
+            {galleryImages.map((image) => (
               <div
                 key={image.src}
                 className={`group relative overflow-hidden rounded-xl border border-border-glass bg-bg-surface ${image.span || ''}`}

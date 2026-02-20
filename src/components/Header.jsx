@@ -30,14 +30,15 @@ const Header = memo(function Header() {
   const [activeId, setActiveId] = useState('home')
   const navigate = useNavigate()
   const location = useLocation()
+  const { pathname, search } = location
   const items = site.nav
   const headerHeightRef = useRef(getHeaderHeight())
   const { theme, toggleTheme } = useTheme()
 
   // Track active section on home page via scroll position
   useEffect(() => {
-    if (location.pathname !== '/') {
-      const navId = routeToNavId[location.pathname]
+    if (pathname !== '/') {
+      const navId = routeToNavId[pathname]
       setActiveId(navId || '')
       return
     }
@@ -74,7 +75,7 @@ const Header = memo(function Header() {
       window.removeEventListener('scroll', onScroll)
       clearTimeout(timer)
     }
-  }, [location.pathname])
+  }, [pathname])
 
   // Update header height on resize (throttled)
   useEffect(() => {
@@ -124,7 +125,7 @@ const Header = memo(function Header() {
   // Handle logo click specifically
   const handleLogoClick = useCallback((e) => {
     e.preventDefault()
-    if (location.pathname === '/') {
+    if (pathname === '/') {
       // Already on home, just scroll to top and clear any hash
       window.history.replaceState(null, '', '/')
       requestAnimationFrame(() => {
@@ -137,15 +138,15 @@ const Header = memo(function Header() {
       // Navigate home; ScrollToTop handles resetting scroll
       navigate('/')
     }
-  }, [location.pathname, navigate])
+  }, [pathname, navigate])
 
   const handleNavClick = useCallback((id) => {
     // Close menu immediately for better UX
     setOpen(false)
 
-    // Handle route-based navigation first
-    if (id === 'home') {
-      if (location.pathname !== '/') {
+      // Handle route-based navigation first
+      if (id === 'home') {
+      if (pathname !== '/') {
         navigate('/')
       } else {
         window.history.replaceState(null, '', '/')
@@ -162,7 +163,7 @@ const Header = memo(function Header() {
     if (pageRouteMap[id]) {
       // Clear any hash so ScrollToTop isn't blocked by hash logic
       if (window.location.hash) {
-        window.history.replaceState(null, '', location.pathname + location.search)
+        window.history.replaceState(null, '', pathname + search)
         window.location.hash = ''
       }
       navigate(pageRouteMap[id])
@@ -172,7 +173,7 @@ const Header = memo(function Header() {
     }
 
     // Section navigation (about, contact, etc.)
-    if (location.pathname !== '/') {
+    if (pathname !== '/') {
       // Navigate home with target section in state; Home will scroll there
       navigate('/', { state: { targetId: id } })
       return
@@ -186,7 +187,7 @@ const Header = memo(function Header() {
       }
       scrollToElement(id)
     })
-  }, [navigate, location.pathname, scrollToElement])
+  }, [navigate, pathname, search, scrollToElement])
 
   return (
     <>

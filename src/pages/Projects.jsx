@@ -5,7 +5,7 @@ import ProjectsComponent from '../components/Projects.jsx'
 export default function ProjectsPage() {
   useEffect(() => {
     requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' })
+      window.scrollTo({ top: 0, behavior: 'auto' })
     })
   }, [])
 
@@ -20,4 +20,3 @@ export default function ProjectsPage() {
     </>
   )
 }
-

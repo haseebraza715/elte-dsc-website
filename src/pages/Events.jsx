@@ -5,7 +5,7 @@ import Events from '../components/Events.jsx'
 export default function EventsPage() {
   useEffect(() => {
     requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' })
+      window.scrollTo({ top: 0, behavior: 'auto' })
     })
   }, [])
 

@@ -6,7 +6,7 @@ import ScrollProgress from './components/ScrollProgress.jsx'
 import PageTransition from './components/PageTransition.jsx'
 import BackToTop from './components/BackToTop.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { Suspense, lazy, useEffect } from 'react'
 
 const Home = lazy(() => import('./pages/Home.jsx'))
@@ -67,7 +67,7 @@ export default function App() {
 
         <ScrollProgress />
         <Header />
-        <main className="flex-1 relative z-10 pt-0 w-full">
+        <main id="main" className="flex-1 relative z-10 pt-0 w-full">
           <Suspense fallback={
             <div className="flex items-center justify-center min-h-[60vh]">
               <div className="text-center space-y-4">
@@ -84,9 +84,12 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/event" element={<Events />} />
+                <Route path="/events" element={<Events />} />
                 <Route path="/project" element={<Projects />} />
+                <Route path="/projects" element={<Projects />} />
                 <Route path="/members" element={<Members />} />
                 <Route path="/challenges" element={<Challenges />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </PageTransition>
           </Suspense>
