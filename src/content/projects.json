@@ -1,4 +1,55 @@
 {
-  "projects": [],
+  "projects": [
+    {
+      "title": "Spotify Song Recommendation System",
+      "description": "Build a music recommendation system that suggests songs similar to a user's input based on audio characteristics such as tempo, energy, and danceability. The system uses machine learning techniques to identify similarity between songs and provides recommendations through an interactive web interface.",
+      "github": "https://github.com/Data-Science-Club-ELTE/spotify-song-recommendation-system",
+      "tags": [
+        "Machine Learning",
+        "Recommendation Systems",
+        "Web Interface"
+      ]
+    },
+    {
+      "title": "Offline & Online Anomaly Detection in Credit Card Data",
+      "description": "Detect fraudulent transactions in credit card data in both offline and online settings. Gain hands-on experience in the anomaly detection pipeline when data is given as a large batch (offline) and when it arrives incrementally (online).",
+      "github": "https://github.com/Data-Science-Club-ELTE/offline-online-anomaly-detection",
+      "tags": [
+        "Anomaly Detection",
+        "Fraud Detection",
+        "Streaming Data"
+      ]
+    },
+    {
+      "title": "Prompt Model Alignment Evaluation System",
+      "description": "Study how language models work, analyze how prompts are interpreted, define mathematical scoring metrics, and build a pipeline that outputs alignment scores to evaluate model behaviour.",
+      "github": "https://github.com/Data-Science-Club-ELTE/prompt-model-alignment-evaluation-system",
+      "tags": [
+        "LLMs",
+        "Prompt Engineering",
+        "Evaluation Metrics"
+      ]
+    },
+    {
+      "title": "Football Analytics",
+      "description": "Build a data platform to analyze football matches and players. Extract insights from match videos, analyze team and player behavior, create advanced statistics such as xG models and simulations, and help clubs make better data-driven decisions.",
+      "github": "https://github.com/Data-Science-Club-ELTE/football-analytics",
+      "tags": [
+        "Sports Analytics",
+        "Computer Vision",
+        "Statistics"
+      ]
+    },
+    {
+      "title": "CineMatch",
+      "description": "Transform content discovery from a frustrating task into an intelligent, personalized experience. CineMatch is a recommendation system that understands user preferences across multiple dimensions, delivering genuinely relevant suggestions using advanced ML techniques with explainability — supporting both users and content creators through fair, diverse recommendations.",
+      "github": "https://github.com/Data-Science-Club-ELTE/cinematch-recommendation-engine",
+      "tags": [
+        "Recommendation Systems",
+        "Personalization",
+        "Explainable AI"
+      ]
+    }
+  ],
   "message": "The projects for this semester will be announced soon."
 }
