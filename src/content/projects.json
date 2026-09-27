@@ -2,7 +2,8 @@
   "projects": [
     {
       "title": "Spotify Song Recommendation System",
-      "description": "Build a music recommendation system that suggests songs similar to a user's input based on audio characteristics such as tempo, energy, and danceability. The system uses machine learning techniques to identify similarity between songs and provides recommendations through an interactive web interface.",
+      "question": "What makes two songs sound alike?",
+      "description": "Build a music recommendation system that suggests songs similar to a user's input based on audio traits such as tempo, energy, and danceability.",
       "github": "https://github.com/Data-Science-Club-ELTE/spotify-song-recommendation-system",
       "tags": [
         "Machine Learning",
@@ -12,7 +13,8 @@
     },
     {
       "title": "Offline & Online Anomaly Detection in Credit Card Data",
-      "description": "Detect fraudulent transactions in credit card data in both offline and online settings. Gain hands-on experience in the anomaly detection pipeline when data is given as a large batch (offline) and when it arrives incrementally (online).",
+      "question": "When does a transaction look unusual?",
+      "description": "Detect fraudulent transactions in credit card data in offline and online settings, working through the anomaly-detection pipeline from batch data to incremental streams.",
       "github": "https://github.com/Data-Science-Club-ELTE/offline-online-anomaly-detection",
       "tags": [
         "Anomaly Detection",
@@ -22,7 +24,8 @@
     },
     {
       "title": "Prompt Model Alignment Evaluation System",
-      "description": "Study how language models work, analyze how prompts are interpreted, define mathematical scoring metrics, and build a pipeline that outputs alignment scores to evaluate model behaviour.",
+      "question": "How can we evaluate a model's response to a prompt?",
+      "description": "Study how language models interpret prompts, define scoring metrics, and build a pipeline that outputs alignment scores to evaluate model behaviour.",
       "github": "https://github.com/Data-Science-Club-ELTE/prompt-model-alignment-evaluation-system",
       "tags": [
         "LLMs",
@@ -32,7 +35,8 @@
     },
     {
       "title": "Football Analytics",
-      "description": "Build a data platform to analyze football matches and players. Extract insights from match videos, analyze team and player behavior, create advanced statistics such as xG models and simulations, and help clubs make better data-driven decisions.",
+      "question": "What can we learn from a match?",
+      "description": "Build a data platform to analyze football matches and players, extracting insights from match videos into statistics such as xG models.",
       "github": "https://github.com/Data-Science-Club-ELTE/football-analytics",
       "tags": [
         "Sports Analytics",
@@ -42,7 +46,8 @@
     },
     {
       "title": "CineMatch",
-      "description": "Transform content discovery from a frustrating task into an intelligent, personalized experience. CineMatch is a recommendation system that understands user preferences across multiple dimensions, delivering genuinely relevant suggestions using advanced ML techniques with explainability — supporting both users and content creators through fair, diverse recommendations.",
+      "question": "What makes a recommendation relevant?",
+      "description": "Build a recommendation system that understands user preferences across multiple dimensions and explains its suggestions.",
       "github": "https://github.com/Data-Science-Club-ELTE/cinematch-recommendation-engine",
       "tags": [
         "Recommendation Systems",

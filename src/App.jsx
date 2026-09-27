@@ -23,87 +23,32 @@ function HashHandler() {
     if (location.pathname !== '/' && window.location.hash) {
       window.history.replaceState(null, '', location.pathname)
     }
-
-    const revealSelector = '.reveal, .reveal-left, .reveal-scale'
-    const activate = (el) => el.classList.add('active')
-    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
-
-    // On touch devices, render sections immediately for reliability/performance.
-    if (isTouchDevice || typeof window.IntersectionObserver === 'undefined') {
-      document.querySelectorAll(revealSelector).forEach(activate)
-      return
-    }
-
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -60px 0px',
-    }
-
-    const observed = new WeakSet()
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          activate(entry.target)
-          revealObserver.unobserve(entry.target)
-        }
-      })
-    }, observerOptions)
-
-    const observeRevealElements = () => {
-      const revealElements = document.querySelectorAll(revealSelector)
-      revealElements.forEach((el) => {
-        if (!observed.has(el)) {
-          observed.add(el)
-          revealObserver.observe(el)
-        }
-      })
-    }
-
-    // Observe current DOM and any lazy-loaded elements that mount later.
-    observeRevealElements()
-    const timer = setTimeout(observeRevealElements, 200)
-    const domObserver = new MutationObserver(() => {
-      observeRevealElements()
-    })
-    domObserver.observe(document.body, { childList: true, subtree: true })
-
-    return () => {
-      clearTimeout(timer)
-      domObserver.disconnect()
-      revealObserver.disconnect()
-    }
   }, [location.pathname])
 
   return null
 }
 
 import ScrollToTop from './components/ScrollToTop.jsx'
+import { useReveal } from './lib/useReveal.js'
+
+function RevealWatcher() {
+  useReveal()
+  return null
+}
 
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <HashHandler />
+      <RevealWatcher />
       <SEO />
       <ThemeProvider>
-      <div className="bg-bg-base text-text-primary min-h-screen flex flex-col relative w-full overflow-x-hidden">
-        <div className="bg-noise" />
-        <div className="nebula-glow" />
-
+      <div className="app-shell">
         <ScrollProgress />
         <Header />
         <main id="main" className="flex-1 relative z-10 pt-0 w-full">
-          <Suspense fallback={
-            <div className="flex items-center justify-center min-h-[60vh]">
-              <div className="text-center space-y-4">
-                <div className="relative w-10 h-10 mx-auto">
-                  <div className="absolute inset-0 border-2 border-border-glass rounded-full"></div>
-                  <div className="absolute inset-0 border-2 border-t-accent rounded-full animate-spin"></div>
-                </div>
-                <p className="text-text-muted text-sm font-medium">Loading...</p>
-              </div>
-            </div>
-          }>
+          <Suspense fallback={<div className="page" role="status">Loading</div>}>
             <PageTransition>
               <Routes>
                 <Route path="/" element={<Home />} />

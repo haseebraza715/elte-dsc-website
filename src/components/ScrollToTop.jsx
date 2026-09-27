@@ -20,7 +20,8 @@ export default function ScrollToTop() {
         }
 
         const scrollToTop = () => {
-            // Most reliable combo to force top
+            const hash = window.location.hash
+            if (hash.length > 1 && document.getElementById(hash.slice(1))) return
             window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
             document.documentElement.scrollTop = 0
             document.body.scrollTop = 0

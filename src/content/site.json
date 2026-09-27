@@ -1,11 +1,22 @@
 {
   "name": "Data Science Club",
-  "nav": ["home", "about", "events", "resources", "projects", "members", "contact"],
+  "nav": [
+    "home",
+    "about",
+    "events",
+    "resources",
+    "projects",
+    "members",
+    "contact"
+  ],
+  "applyUrl": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=SLszAZD3YEWmTaxGpHL7vNola4DBnfhEngNH8PvdmOBUNzBUU1BaVDZYQzcwWkpHNVpWMkpVTzhGSy4u&route=shorturl",
   "contactEmail": "ot7dee@inf.elte.hu",
+  "room": "ELTE South Building Room 0-819",
+  "meetingTime": "4:00-5:30 PM",
   "social": {
     "linkedin": "https://www.linkedin.com/company/dscelte",
     "discord": "#",
-    "email": "mailto:ot7dee@inf.elte.hu"
+    "email": "mailto:ot7dee@inf.elte.hu",
+    "instagram": "https://www.instagram.com/dscelte/"
   }
 }
-

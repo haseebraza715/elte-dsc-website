@@ -1,122 +1,155 @@
-import { useNavigate, useLocation } from 'react-router-dom'
-import content from '../content/about.json'
+import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, Check } from 'lucide-react'
+import about from '../content/about.json'
+import eventsData from '../content/events.json'
+import projectsData from '../content/projects.json'
+import members from '../content/members.json'
+import { eventDetails, eventKind, kindLabels } from '../lib/programme.js'
+import CountUp from './CountUp.jsx'
 
 export default function About() {
-  const focus = content.focus
-  const navigate = useNavigate()
-  const location = useLocation()
+  const events = Array.isArray(eventsData.events) ? eventsData.events : []
+  const [selected, setSelected] = useState(0)
+  const tabRefs = useRef([])
+  const event = events[selected]
+  const kinds = Array.from(new Set(events.map(eventKind)))
 
-  // Cache header height
-  const getHeaderHeight = () => {
-    if (typeof window === 'undefined') return 80
-    if (window.innerWidth >= 1024) return 96
-    if (window.innerWidth >= 640) return 80
-    return 56
-  }
+  const stats = [
+    { value: events.length, label: 'weeks in the Spring 2026 programme' },
+    { value: (projectsData.projects || []).length, label: 'student projects on GitHub' },
+    { value: members.length, label: 'people on the core team' },
+    { value: 2025, label: 'the year the club started' },
+  ]
 
-  const handleContactClick = () => {
-    if (location.pathname !== '/') {
-      navigate('/#contact')
-      // Wait for navigation, then scroll
-      setTimeout(() => {
-        const element = document.getElementById('contact')
-        if (element) {
-          const headerHeight = getHeaderHeight()
-          const elementTop = element.getBoundingClientRect().top + window.pageYOffset
-          const offsetPosition = Math.max(0, elementTop - headerHeight)
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          })
-        }
-      }, 200)
-    } else {
-      // Already on home page, update hash and scroll
-      window.history.replaceState(null, '', '/#contact')
-      requestAnimationFrame(() => {
-        const element = document.getElementById('contact')
-        if (element) {
-          const headerHeight = getHeaderHeight()
-          const elementTop = element.getBoundingClientRect().top + window.pageYOffset
-          const offsetPosition = Math.max(0, elementTop - headerHeight)
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          })
-        }
-      })
-    }
+  const railRef = useRef(null)
+
+  // Keep the selected week in view when the rail scrolls sideways on small screens.
+  useEffect(() => {
+    const rail = railRef.current
+    const tab = tabRefs.current[selected]
+    if (!rail || !tab || rail.scrollWidth <= rail.clientWidth) return
+    rail.scrollTo({
+      left: tab.offsetLeft - rail.clientWidth / 2 + tab.offsetWidth / 2,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    })
+  }, [selected])
+
+  const onKeyDown = (e) => {
+    let next = null
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (selected + 1) % events.length
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (selected - 1 + events.length) % events.length
+    if (e.key === 'Home') next = 0
+    if (e.key === 'End') next = events.length - 1
+    if (next === null) return
+    e.preventDefault()
+    setSelected(next)
+    tabRefs.current[next]?.focus()
   }
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 overflow-hidden bg-bg-base">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-8 right-0 h-64 w-64 rounded-full bg-accent/[0.08] blur-3xl" />
-        <div className="absolute bottom-0 left-10 h-52 w-52 rounded-full bg-accent-hover/[0.06] blur-3xl" />
-      </div>
-      <div className="section-container relative z-10">
-        {/* Section Label */}
-        <div className="mb-6 reveal text-xs font-semibold uppercase tracking-[0.18em] text-accent">About Us</div>
-
-        {/* Heading */}
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight text-text-primary mb-10 reveal delay-1">
-          Building ELTE&apos;s <span className="text-gradient">Data Science Community</span> Together.
-        </h2>
-
-        <div className="grid gap-10 lg:gap-12 lg:grid-cols-2 items-start">
-          {/* Left Content */}
-          <div className="space-y-7 reveal delay-2">
-            <div className="space-y-5">
-              {content.paragraphs.map((p, index) => (
-                <p key={index} className="text-lg text-text-secondary leading-relaxed">
-                  {p}
-                </p>
-              ))}
-            </div>
-
-            <div className="glass-card p-5 sm:p-6">
-              <p className="text-sm uppercase tracking-[0.14em] text-accent font-semibold mb-2">Our Method</p>
-              <p className="text-text-secondary leading-relaxed">
-                Community learning + project execution + speaker insights. We keep it practical, collaborative, and beginner-friendly.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-4 pt-2">
-              <button
-                onClick={handleContactClick}
-                className="btn-premium"
-              >
-                Get in Touch
-              </button>
-              <a
-                className="btn-secondary"
-                href="https://www.linkedin.com/company/dscelte"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-            </div>
+    <section id="about" className="band">
+      <div className="wrap">
+        <div className="about-grid">
+          <div data-reveal>
+            <p className="eyebrow">About the club</p>
+            <h2 className="section-title">{about.heading}</h2>
+            {about.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="lede">{paragraph}</p>
+            ))}
           </div>
+          <dl className="stats" data-reveal>
+            {stats.map((stat, i) => (
+              <div key={stat.label} className={`stat stat-${i}`}>
+                <dt>{stat.label}</dt>
+                <dd><CountUp value={stat.value} /></dd>
+              </div>
+            ))}
+          </dl>
+        </div>
 
-          {/* Right Content - Focus Areas */}
-          <div className="glass-card p-6 sm:p-8 relative overflow-hidden reveal delay-3">
-            <h3 className="text-xl font-display font-bold text-text-primary mb-6">
-              Focus Areas
-            </h3>
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {focus.map((item, index) => (
-                <li
-                  key={index}
-                  className="p-3 rounded-lg border border-border-glass bg-bg-glass hover:border-accent/35 transition-all duration-300"
-                >
-                  <span className="text-text-secondary text-sm font-medium leading-relaxed">
-                    {item}
-                  </span>
-                </li>
+        <div id="programme" className="programme">
+          <div className="programme-top">
+            <div>
+              <p className="eyebrow">{eventsData.season} programme</p>
+              <h3 className="programme-heading">Nine weeks, one project</h3>
+            </div>
+            <ul className="legend" aria-label="Legend">
+              {kinds.map((kind) => (
+                <li key={kind}><span className={`swatch kind-${kind}`} aria-hidden="true" />{kindLabels[kind]}</li>
               ))}
             </ul>
           </div>
+
+          <div ref={railRef} className="rail" role="tablist" aria-label="Programme weeks" onKeyDown={onKeyDown}>
+            <div className="rail-line" aria-hidden="true">
+              <span style={{ width: `${(selected / Math.max(1, events.length - 1)) * 100}%` }} />
+            </div>
+            {events.map((item, i) => (
+              <button
+                key={item.id}
+                ref={(el) => { tabRefs.current[i] = el }}
+                type="button"
+                role="tab"
+                id={`week-tab-${item.id}`}
+                aria-selected={i === selected}
+                aria-controls="week-panel"
+                tabIndex={i === selected ? 0 : -1}
+                className={`rail-stop kind-${eventKind(item)}${i < selected ? ' is-past' : ''}`}
+                onClick={() => setSelected(i)}
+              >
+                <span className="rail-dot" aria-hidden="true">{item.week}</span>
+                <span className="rail-date mono">{item.date}</span>
+                <span className="sr-only">{item.title}</span>
+              </button>
+            ))}
+          </div>
+
+          {event && (
+            <div
+              key={event.id}
+              id="week-panel"
+              role="tabpanel"
+              aria-labelledby={`week-tab-${event.id}`}
+              className={`week-card kind-${eventKind(event)}`}
+            >
+              <div className="week-card-head">
+                <span className="week-badge mono">Week {event.week} · {event.date}</span>
+                <span className="chip chip-static">{event.format}</span>
+                {event.mandatory && <span className="chip chip-static">Required</span>}
+              </div>
+              <h4 className="week-title">{event.title}</h4>
+              {event.theme && <p className="week-theme">{event.theme}</p>}
+              <ul className="week-list">
+                {eventDetails(event).map((line) => (
+                  <li key={line}><Check className="w-4 h-4" aria-hidden="true" />{line}</li>
+                ))}
+              </ul>
+              {event.goal && <p className="week-goal"><strong>Goal</strong> {event.goal}</p>}
+              <div className="week-nav">
+                <button
+                  type="button"
+                  className="btn btn-small btn-ghost"
+                  onClick={() => setSelected((s) => Math.max(0, s - 1))}
+                  disabled={selected === 0}
+                >
+                  Previous week
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-small btn-ghost"
+                  onClick={() => setSelected((s) => Math.min(events.length - 1, s + 1))}
+                  disabled={selected === events.length - 1}
+                >
+                  Next week
+                </button>
+              </div>
+            </div>
+          )}
+
+          <Link className="arrow-link" to="/event">
+            Full agendas and photographs <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </section>

@@ -1,49 +1,69 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
+  <script>
+    try {
+      var savedTheme = localStorage.getItem('dsc-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/favicon-dsc.svg" />
+  <link rel="alternate icon" type="image/jpeg" href="/favicon.jpg" />
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover, shrink-to-fit=no" />
   <meta name="format-detection" content="telephone=no" />
 
   <!-- Primary Meta Tags -->
-  <title>Private Blogging Intelligence | Five Agents. One Signal.</title>
-  <meta name="title" content="Private Blogging Intelligence | Five Agents. One Signal." />
+  <title>Data Science Club - ELTE | Learn Data Science Together</title>
+  <meta name="title" content="Data Science Club - ELTE | Learn Data Science Together" />
   <meta name="description"
-    content="Private Blogging Intelligence turns private writing into a decision you can trust with five focused agents." />
+    content="Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning." />
   <meta name="keywords"
-    content="private blogging, reflection, decision making, writing, AI agents, clarity, focus" />
-  <meta name="author" content="Private Blogging Intelligence" />
+    content="data science, machine learning, AI, ELTE, Budapest, student club, data science community, python, pandas, data analysis" />
+  <meta name="author" content="Data Science Club - ELTE" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="language" content="English" />
   <meta name="revisit-after" content="7 days" />
-  <link rel="canonical" href="https://pbi.app/" />
+  <link rel="canonical" href="https://datasciencelte.netlify.app/" />
 
-  <!-- Theme -->
-  <meta name="theme-color" content="#09090B" />
-  <meta name="msapplication-TileColor" content="#09090B" />
+  <!-- Theme (content follows the active site theme; see ThemeContext) -->
+  <meta name="theme-color" content="#FAF7F0" />
+  <script>
+    try {
+      var initialTheme = localStorage.getItem('dsc-theme') || 'light';
+      var themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) {
+        themeMeta.setAttribute('content', initialTheme === 'dark' ? '#0E0D12' : '#FAF7F0');
+      }
+    } catch (e) { /* keep default theme-color */ }
+  </script>
+  <meta name="msapplication-TileColor" content="#FAF7F0" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pbi.app/" />
-  <meta property="og:title" content="Private Blogging Intelligence | Five Agents. One Signal." />
+  <meta property="og:url" content="https://datasciencelte.netlify.app/" />
+  <meta property="og:title" content="Data Science Club - ELTE | Learn Data Science Together" />
   <meta property="og:description"
-    content="Private Blogging Intelligence turns private writing into a decision you can trust with five focused agents." />
-  <meta property="og:image" content="https://pbi.app/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="Private Blogging Intelligence" />
+    content="Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning." />
+  <meta property="og:image" content="https://datasciencelte.netlify.app/events/IMG_1717.jpeg" />
+  <meta property="og:image:width" content="4032" />
+  <meta property="og:image:height" content="3024" />
+  <meta property="og:image:alt" content="Data Science Club members at a workshop" />
+  <meta property="og:site_name" content="Data Science Club - ELTE" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://pbi.app/" />
-  <meta name="twitter:title" content="Private Blogging Intelligence | Five Agents. One Signal." />
+  <meta name="twitter:url" content="https://datasciencelte.netlify.app/" />
+  <meta name="twitter:title" content="Data Science Club - ELTE | Learn Data Science Together" />
   <meta name="twitter:description"
-    content="Private Blogging Intelligence turns private writing into a decision you can trust with five focused agents." />
-  <meta name="twitter:image" content="https://pbi.app/og-image.png" />
+    content="Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning." />
+  <meta name="twitter:image" content="https://datasciencelte.netlify.app/events/IMG_1717.jpeg" />
+  <meta name="twitter:image:alt" content="Data Science Club members at a workshop" />
 
   <!-- Performance Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -52,14 +72,14 @@
   <link rel="dns-prefetch" href="https://forms.cloud.microsoft.com" />
   <!-- Load fonts with font-display: swap for better performance -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@500&display=swap"
     rel="stylesheet">
 
   <!-- Mobile Optimizations -->
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="PBI" />
+  <meta name="apple-mobile-web-app-title" content="DSC ELTE" />
 
   <!-- Additional SEO -->
   <meta name="geo.region" content="HU-BU" />
@@ -76,33 +96,22 @@
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Private Blogging Intelligence",
-      "alternateName": "PBI",
-      "url": "https://pbi.app",
-      "logo": "https://pbi.app/logo.png",
-      "description": "Private Blogging Intelligence turns private writing into a decision you can trust with five focused agents.",
-      "foundingDate": "2025"
-    }
-    </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Private Blogging Intelligence",
-      "url": "https://pbi.app",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://pbi.app/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "name": "Data Science Club - ELTE",
+      "alternateName": "DSC ELTE",
+      "url": "https://datasciencelte.netlify.app",
+      "logo": "https://datasciencelte.netlify.app/favicon.jpg",
+      "description": "Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning.",
+      "foundingDate": "2025",
+      "sameAs": [
+        "https://www.linkedin.com/company/dscelte",
+        "https://www.instagram.com/dscelte/"
+      ]
     }
     </script>
 </head>
 
 <body>
-  <a href="#main"
-    class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:text-black focus:ring-2 focus:ring-sky-500 focus:px-3 focus:py-2">Skip
-    to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

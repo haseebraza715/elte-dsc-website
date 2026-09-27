@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs><clipPath id="a"><circle cx="24" cy="16.5" r="13"/></clipPath><clipPath id="b"><circle cx="16.64" cy="29.25" r="13"/></clipPath></defs>
+  
+  <circle cx="24" cy="16.5" r="13" fill="#FF5B3A"/><circle cx="16.64" cy="29.25" r="13" fill="#8B73FF"/><circle cx="31.36" cy="29.25" r="13" fill="#C6F03C"/>
+  <g fill="#FAF7F0"><g clip-path="url(#a)"><circle cx="16.64" cy="29.25" r="13"/><circle cx="31.36" cy="29.25" r="13"/></g><g clip-path="url(#b)"><circle cx="31.36" cy="29.25" r="13"/></g></g>
+  <g clip-path="url(#a)"><g clip-path="url(#b)"><circle cx="31.36" cy="29.25" r="13" fill="#16151A"/></g></g>
+  <g fill="none" stroke="#16151A" stroke-width="2.2"><circle cx="24" cy="16.5" r="13"/><circle cx="16.64" cy="29.25" r="13"/><circle cx="31.36" cy="29.25" r="13"/></g>
+</svg>

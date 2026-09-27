@@ -1,67 +1,141 @@
+import { useMemo, useState } from 'react'
+import { ArrowUpRight, Search, X } from 'lucide-react'
 import resourcesData from '../content/resources.json'
+import PageHero from './PageHero.jsx'
+
+function host(href) {
+  try {
+    return new URL(href).hostname.replace(/^www\./, '')
+  } catch {
+    return ''
+  }
+}
 
 export default function Resources() {
-  const { levels } = resourcesData
+  const levels = Object.entries(resourcesData.levels)
+  const [active, setActive] = useState(levels[0]?.[0])
+  const [query, setQuery] = useState('')
+  const q = query.trim().toLowerCase()
+
+  const searchResults = useMemo(() => {
+    if (!q) return null
+    return levels.flatMap(([, level]) =>
+      level.sections.flatMap((section) =>
+        section.items
+          .filter(([label, href]) => `${label} ${section.heading} ${host(href)}`.toLowerCase().includes(q))
+          .map(([label, href]) => ({ label, href, level: level.level, section: section.heading })),
+      ),
+    )
+  }, [q, levels])
+
+  const current = resourcesData.levels[active]
+
+  const onTabKey = (event) => {
+    const keys = levels.map(([key]) => key)
+    const i = keys.indexOf(active)
+    let next = null
+    if (event.key === 'ArrowRight') next = keys[(i + 1) % keys.length]
+    if (event.key === 'ArrowLeft') next = keys[(i - 1 + keys.length) % keys.length]
+    if (next) {
+      event.preventDefault()
+      setActive(next)
+      document.getElementById(`level-tab-${next}`)?.focus()
+    }
+  }
 
   return (
-    <section id="resources" className="relative pt-32 pb-24 sm:pb-32 overflow-hidden bg-bg-base reveal">
-      <div className="section-container relative z-10">
-        <div className="max-w-4xl mb-20">
-          <div className="inline-flex items-center space-x-2 text-accent font-bold tracking-[0.2em] text-[10px] uppercase mb-4 bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-            <span>Knowledge Base</span>
-          </div>
-          <h1 className="text-4xl sm:text-6xl font-display font-bold text-text-primary mb-8">
-            Learning <span className="text-gradient">Resources</span>
-          </h1>
-          <p className="text-xl text-text-secondary font-medium max-w-2xl leading-relaxed">
-            Structured learning paths from beginner to expert level. Curated by the community for the community.
-          </p>
-        </div>
+    <section id="resources" className="page">
+      <div className="wrap">
+        <PageHero
+          eyebrow="Learn"
+          title="Learning resources"
+          lede="Paths from beginner to expert, grouped by topic. Every link leaves this site."
+          tone={2}
+        />
 
-        <div className="space-y-32 relative z-10">
-          {Object.entries(levels).map(([key, level]) => (
-            <div key={key} className="relative">
-              {/* Level Header */}
-              <div className="mb-12">
-                <h3 className="text-2xl sm:text-3xl font-display font-bold text-text-primary flex items-center gap-4">
-                  <span className="text-accent">#</span> {level.level}
-                  <div className="h-px flex-1 bg-border-glass"></div>
-                </h3>
-                <p className="text-text-secondary text-lg font-medium mt-2">{level.description}</p>
-              </div>
+        <div className="resource-tools">
+          <label className="search">
+            <Search className="w-4 h-4" aria-hidden="true" />
+            <span className="sr-only">Search resources</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search, e.g. pandas, PyTorch, SQL"
+            />
+            {query && (
+              <button type="button" onClick={() => setQuery('')} aria-label="Clear search">
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </label>
 
-              {/* Level Sections */}
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {level.sections.map((section, index) => (
-                  <div
-                    key={section.heading}
-                    className={`glass-card p-8 group hover:border-border-glass transition-all duration-500 reveal delay-${(index % 3) + 1}`}
-                  >
-                    <h4 className="text-lg font-display font-bold text-text-primary group-hover:text-accent-hover transition-colors duration-300 mb-6 uppercase">
-                      {section.heading}
-                    </h4>
-                    <ul className="space-y-4">
-                      {section.items.map(([label, href]) => (
-                        <li key={label}>
-                          <a
-                            className="flex items-start text-text-secondary hover:text-accent transition-all duration-300 group/link"
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent/40 mt-1.5 mr-3 flex-shrink-0 group-hover/link:bg-accent"></span>
-                            <span className="text-sm font-semibold tracking-wide">{label}</span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
+          {!searchResults && (
+            <div className="level-tabs" role="tablist" aria-label="Level" onKeyDown={onTabKey}>
+              {levels.map(([key, level], i) => (
+                <button
+                  key={key}
+                  id={`level-tab-${key}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={active === key}
+                  aria-controls="level-panel"
+                  tabIndex={active === key ? 0 : -1}
+                  className={`level-tab tone-${[3, 1, 0][i] ?? i}`}
+                  onClick={() => setActive(key)}
+                >
+                  <span className="level-step mono">0{i + 1}</span>
+                  {level.level}
+                </button>
+              ))}
             </div>
-          ))}
+          )}
         </div>
+
+        {searchResults ? (
+          <div className="search-results" aria-live="polite">
+            <p className="result-count">
+              {searchResults.length} {searchResults.length === 1 ? 'resource' : 'resources'} for “{query.trim()}”
+            </p>
+            <ul className="link-list">
+              {searchResults.map((item) => (
+                <li key={`${item.level}-${item.label}`}>
+                  <a href={item.href} target="_blank" rel="noopener noreferrer">
+                    <span>
+                      {item.label}
+                      <small>{item.level} · {item.section} · {host(item.href)}</small>
+                    </span>
+                    <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : current && (
+          <div id="level-panel" role="tabpanel" aria-labelledby={`level-tab-${active}`} className="level-panel">
+            <p className="level-description">{current.description}</p>
+            <div className="resource-sections">
+              {current.sections.map((section) => (
+                <div key={section.heading} className="resource-group">
+                  <h2>{section.heading}</h2>
+                  <ul className="link-list">
+                    {section.items.map(([label, href]) => (
+                      <li key={label}>
+                        <a href={href} target="_blank" rel="noopener noreferrer">
+                          <span>
+                            {label}
+                            <small>{host(href)}</small>
+                          </span>
+                          <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

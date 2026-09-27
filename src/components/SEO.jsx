@@ -5,7 +5,7 @@ const siteData = {
   name: 'Data Science Club - ELTE',
   description: 'Join the Data Science Club at Eötvös Loránd University. Learn data science, AI, and machine learning through hands-on projects, weekly events, and collaborative learning.',
   url: 'https://datasciencelte.netlify.app',
-  image: '/og-image.png',
+  image: '/events/IMG_1717.jpeg',
   twitter: '@dscelte',
 }
 

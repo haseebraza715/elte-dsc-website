@@ -18,14 +18,8 @@ export default function ScrollProgress() {
   }, [])
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[2px] z-[60]">
-      <div
-        className="h-full bg-accent transition-[width] duration-75 ease-out"
-        style={{
-          width: `${progress}%`,
-          boxShadow: progress > 0 ? '0 0 10px rgba(99, 102, 241, 0.5), 0 0 30px rgba(99, 102, 241, 0.2)' : 'none'
-        }}
-      />
+    <div className="scroll-progress" aria-hidden="true">
+      <span style={{ width: `${progress}%` }} />
     </div>
   )
 }

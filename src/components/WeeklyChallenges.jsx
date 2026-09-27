@@ -1,21 +1,19 @@
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
+import PageHero from './PageHero.jsx'
+
 export default function WeeklyChallenges() {
   return (
-    <section id="challenges" className="relative pt-32 pb-24 sm:pb-32 overflow-hidden bg-bg-base reveal">
-      <div className="section-container relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center space-x-2 text-accent font-bold tracking-[0.2em] text-[10px] uppercase mb-4 bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-            <span>Upcoming Season</span>
-          </div>
-          <h1 className="text-4xl sm:text-6xl font-display font-bold text-text-primary mb-8">
-            Weekly <span className="text-gradient">Challenges</span>
-          </h1>
-          <div className="glass-card p-12 mt-12">
-            <p className="text-xl text-text-secondary font-medium leading-relaxed">
-              The agenda for the upcoming semester is being curated.
-              <br className="hidden sm:block" />
-              Stay tuned for a series of high-impact data science challenges.
-            </p>
+    <section id="challenges" className="page">
+      <div className="wrap">
+        <PageHero eyebrow="Coming soon" title="Weekly challenges" tone={4} />
+        <div className="empty-card">
+          <p className="empty-note">
+            The agenda for the upcoming semester is being curated. Check back soon for the challenge schedule.
+          </p>
+          <div className="empty-actions">
+            <Link className="btn btn-primary" to="/resources">Browse resources <ArrowRight className="w-4 h-4" aria-hidden="true" /></Link>
+            <Link className="btn btn-ghost" to="/project">See student projects</Link>
           </div>
         </div>
       </div>

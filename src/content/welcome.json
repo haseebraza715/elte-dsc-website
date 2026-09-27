@@ -1,12 +1,13 @@
 {
-  "title": "Data to Insight",
-  "subtitle": "Building the future of data science through hands-on projects and collaborative learning.",
+  "titleLead": "Pick a question.",
+  "titleRest": "Build it with a team.",
+  "subtitle": "Explore data science with other ELTE students through projects, guest talks, and peer learning. Beginners welcome.",
   "primaryCta": {
-    "label": "Explore Projects",
-    "href": "/project"
+    "label": "Apply to join"
   },
   "secondaryCta": {
-    "label": "View Events",
-    "href": "/event"
-  }
+    "label": "See the programme",
+    "href": "#programme"
+  },
+  "heroCaption": "ELTE Data Science Club members"
 }

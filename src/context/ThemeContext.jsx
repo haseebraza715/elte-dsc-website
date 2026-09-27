@@ -5,14 +5,18 @@ const ThemeContext = createContext()
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('dsc-theme') || 'dark'
+      return localStorage.getItem('dsc-theme') || 'light'
     }
-    return 'dark'
+    return 'light'
   })
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem('dsc-theme', theme)
+    const themeMeta = document.querySelector('meta[name="theme-color"]')
+    if (themeMeta) {
+      themeMeta.setAttribute('content', theme === 'dark' ? '#0E0D12' : '#FAF7F0')
+    }
   }, [theme])
 
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark')
