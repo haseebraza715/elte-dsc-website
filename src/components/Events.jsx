@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { ChevronDown, Expand } from 'lucide-react'
 import eventsData from '../content/events.json'
 import { gallery } from '../lib/gallery.js'
-import { eventKind, kindLabels } from '../lib/programme.js'
+import { eventKind, kindLabels, nextEventIndex } from '../lib/programme.js'
 import FilterChips from './FilterChips.jsx'
 import Lightbox from './Lightbox.jsx'
 import PageHero from './PageHero.jsx'
@@ -21,7 +21,7 @@ function DetailList({ heading, items }) {
   )
 }
 
-function EventCard({ event, open, onToggle }) {
+function EventCard({ event, open, onToggle, isNext }) {
   const kind = eventKind(event)
   const panelId = `${event.id}-details`
   return (
@@ -34,6 +34,7 @@ function EventCard({ event, open, onToggle }) {
         <span className="event-main">
           <span className="event-title">{event.title}</span>
           <span className="event-meta">
+            {isNext && <span className="chip chip-static chip-next">Next up</span>}
             <span className={`chip chip-static kind-chip kind-${kind}`}>{kindLabels[kind]}</span>
             {event.theme && <span className="event-theme">{event.theme}</span>}
           </span>
@@ -68,7 +69,10 @@ function EventCard({ event, open, onToggle }) {
 export default function Events() {
   const events = Array.isArray(eventsData.events) ? eventsData.events : []
   const [filter, setFilter] = useState('all')
-  const [openIds, setOpenIds] = useState(() => new Set(events[0] ? [events[0].id] : []))
+  const nextIndex = nextEventIndex(events, eventsData.season)
+  const nextId = events[nextIndex]?.id
+  const breaks = Array.isArray(eventsData.breaks) ? eventsData.breaks : []
+  const [openIds, setOpenIds] = useState(() => new Set([nextId || events[0]?.id].filter(Boolean)))
   const [photo, setPhoto] = useState(null)
 
   const kinds = Array.from(new Set(events.map(eventKind)))
@@ -115,7 +119,20 @@ export default function Events() {
 
         <ol className="event-list">
           {shown.map((event) => (
-            <EventCard key={event.id} event={event} open={openIds.has(event.id)} onToggle={() => toggle(event.id)} />
+            <Fragment key={event.id}>
+              <EventCard
+                event={event}
+                open={openIds.has(event.id)}
+                onToggle={() => toggle(event.id)}
+                isNext={event.id === nextId}
+              />
+              {filter === 'all' && breaks.filter((b) => b.after === event.id).map((b) => (
+                <li key={b.title} className="event-break">
+                  <strong>{b.title}</strong>
+                  <span>{b.detail}</span>
+                </li>
+              ))}
+            </Fragment>
           ))}
         </ol>
 

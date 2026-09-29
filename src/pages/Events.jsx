@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import SEO from '../components/SEO.jsx'
 import Events from '../components/Events.jsx'
+import eventsData from '../content/events.json'
 
 export default function EventsPage() {
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function EventsPage() {
     <>
       <SEO
         title="Events"
-        description="Explore the 9-week Spring 2026 program. From kickoff to demo day, every week counts."
+        description={`Explore the ${eventsData.events.length}-week ${eventsData.season} programme, from kickoff to Demo Day.`}
         path="/event"
       />
       <Events />

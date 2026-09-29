@@ -1,7 +1,10 @@
 {
+  "title": "ELTE Data Science Club",
+  "eyebrow": "Student-run · since 2025",
+  "subtitle": "Learn data science, AI and machine learning by building real projects in small teams, with guest talks and peer support along the way. Beginners welcome.",
+  "tagline": "Pick a question. Build it with a team.",
   "titleLead": "Pick a question.",
   "titleRest": "Build it with a team.",
-  "subtitle": "Explore data science with other ELTE students through projects, guest talks, and peer learning. Beginners welcome.",
   "primaryCta": {
     "label": "Apply to join"
   },

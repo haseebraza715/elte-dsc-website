@@ -1,11 +1,11 @@
 {
   "program": "9-Week Activity Plan",
-  "season": "Spring 2026",
+  "season": "Autumn 2026",
   "events": [
     {
       "id": "week-1",
       "week": 1,
-      "date": "Feb 13",
+      "date": "Sep 18",
       "title": "Kickoff & Retrospective",
       "theme": "Past Wins & Future Plans",
       "format": "Session",
@@ -23,7 +23,7 @@
     {
       "id": "week-2",
       "week": 2,
-      "date": "Feb 20",
+      "date": "Sep 25",
       "title": "Deadline & Team Formation",
       "theme": "Teams, Roles, and Commitments",
       "format": "Guest Speaker",
@@ -42,12 +42,12 @@
     {
       "id": "week-3",
       "week": 3,
-      "date": "Feb 27",
+      "date": "Oct 02",
       "title": "Milestone 1: The Plan",
       "theme": "Scope & Execution",
       "format": "Session",
       "mandatory": true,
-      "status": "confirmed",
+      "status": "planned",
       "requirement": "Team Representative",
       "deliverables": [
         "Team communication setup",
@@ -62,12 +62,12 @@
     {
       "id": "week-4",
       "week": 4,
-      "date": "Mar 06",
+      "date": "Oct 09",
       "title": "Buffer Week",
       "theme": "Momentum & Support",
       "format": "Work Session",
       "mandatory": false,
-      "status": "confirmed",
+      "status": "planned",
       "actionItems": [
         "Continue project work",
         "Reach out for mentor support"
@@ -77,12 +77,12 @@
     {
       "id": "week-5",
       "week": 5,
-      "date": "Mar 13",
+      "date": "Oct 16",
       "title": "Milestone 2: The Progress",
       "theme": "Demos & Blockers",
       "format": "Session",
       "mandatory": true,
-      "status": "confirmed",
+      "status": "planned",
       "requirement": "Team Representative",
       "deliverables": [
         "Current prototype/code demo",
@@ -97,12 +97,12 @@
     {
       "id": "week-6",
       "week": 6,
-      "date": "Mar 20",
+      "date": "Nov 06",
       "title": "Career Insights",
       "theme": "Breaking Into Data Science",
       "format": "Guest Speaker",
       "mandatory": false,
-      "status": "confirmed",
+      "status": "planned",
       "actionItems": [
         "Prepare questions for speaker"
       ],
@@ -115,12 +115,12 @@
     {
       "id": "week-7",
       "week": 7,
-      "date": "Mar 27",
+      "date": "Nov 13",
       "title": "Milestone 3: Near-Final",
       "theme": "Pre-Demo Polish",
       "format": "Session",
       "mandatory": true,
-      "status": "confirmed",
+      "status": "planned",
       "requirement": "Team Representative",
       "deliverables": [
         "Working prototype demo",
@@ -135,12 +135,12 @@
     {
       "id": "week-8",
       "week": 8,
-      "date": "Apr 03",
+      "date": "Nov 20",
       "title": "Final Sprint",
       "theme": "Polish & Practice",
       "format": "Work Session",
       "mandatory": false,
-      "status": "confirmed",
+      "status": "planned",
       "actionItems": [
         "Finalize slides",
         "Polish final demo"
@@ -150,12 +150,12 @@
     {
       "id": "week-9",
       "week": 9,
-      "date": "Apr 10",
+      "date": "Nov 27",
       "title": "Demo Day",
       "theme": "Showcase & Celebrate",
       "format": "Main Event",
       "mandatory": true,
-      "status": "confirmed",
+      "status": "planned",
       "agenda": [
         "Team Presentations",
         "Q&A Session",
@@ -166,6 +166,13 @@
         "Semester closing celebration"
       ],
       "goal": "Showcase outcomes and celebrate"
+    }
+  ],
+  "breaks": [
+    {
+      "after": "week-5",
+      "title": "No sessions Oct 23 – 31",
+      "detail": "National holiday on Oct 23, then the ELTE autumn break (Oct 26 – 31)."
     }
   ]
 }

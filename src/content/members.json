@@ -30,34 +30,32 @@
     "image": "/src/images/members/iti.jpg"
   },
   {
-    "name": "Eman Aftab",
-    "role": "Product Development Lead",
-    "meta": "ELTE",
-    "description": "",
-    "link": "https://www.linkedin.com/in/muhammademanaftab/",
-    "linkLabel": "LinkedIn",
-    "email": "",
-    "image": "/src/images/members/eman.jpeg"
-  },
-  {
-    "name": "Abaidullah Asif",
-    "role": "Product Development Lead",
-    "meta": "ELTE",
-    "description": "",
-    "link": "https://www.linkedin.com/in/abaidullah-asif-576ab520a/",
-    "linkLabel": "LinkedIn",
-    "email": "",
-    "image": "/src/images/members/abaidullah.jpeg"
-  },
-  {
     "name": "Amina Tynybekova",
-    "role": "Marketing Lead",
+    "role": "Co-Lead",
     "meta": "ELTE",
     "description": "",
     "link": "https://www.linkedin.com/in/amina-tynybekova-22074a337/",
     "linkLabel": "LinkedIn",
     "email": "",
     "image": "/src/images/members/amina.jpeg"
+  },
+  {
+    "name": "Aibike",
+    "role": "Co-Lead",
+    "meta": "ELTE",
+    "image": "/src/images/members/aibike.jpeg"
+  },
+  {
+    "name": "Aliza",
+    "role": "Co-Lead",
+    "meta": "ELTE",
+    "image": "/src/images/members/aliza.jpeg"
+  },
+  {
+    "name": "Nursultan",
+    "role": "Tech Lead",
+    "meta": "ELTE",
+    "image": "/src/images/members/nursultan.jpeg"
   },
   {
     "name": "Nazrin Majidova",
@@ -68,25 +66,5 @@
     "linkLabel": "LinkedIn",
     "email": "",
     "image": "/src/images/members/nazrin.jpeg"
-  },
-  {
-    "name": "Balogh Máté",
-    "role": "Product Lead",
-    "meta": "ELTE",
-    "description": "",
-    "link": "https://www.linkedin.com/in/mate-balogh-a137771b7/",
-    "linkLabel": "LinkedIn",
-    "email": "",
-    "image": "/src/images/members/mate.jpeg"
-  },
-  {
-    "name": "Aqdas Mujahid",
-    "role": "Content Lead",
-    "meta": "ELTE",
-    "description": "",
-    "link": "https://www.linkedin.com/in/aqdas-mujahid/",
-    "linkLabel": "LinkedIn",
-    "email": "",
-    "image": "/src/images/members/aqdas.jpeg"
   }
 ]

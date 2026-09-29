@@ -5,18 +5,19 @@ import about from '../content/about.json'
 import eventsData from '../content/events.json'
 import projectsData from '../content/projects.json'
 import members from '../content/members.json'
-import { eventDetails, eventKind, kindLabels } from '../lib/programme.js'
+import { eventDetails, eventKind, kindLabels, nextEventIndex } from '../lib/programme.js'
 import CountUp from './CountUp.jsx'
 
 export default function About() {
   const events = Array.isArray(eventsData.events) ? eventsData.events : []
-  const [selected, setSelected] = useState(0)
+  const nextIndex = nextEventIndex(events, eventsData.season)
+  const [selected, setSelected] = useState(() => Math.max(0, nextIndex))
   const tabRefs = useRef([])
   const event = events[selected]
   const kinds = Array.from(new Set(events.map(eventKind)))
 
   const stats = [
-    { value: events.length, label: 'weeks in the Spring 2026 programme' },
+    { value: events.length, label: `weeks in the ${eventsData.season} programme` },
     { value: (projectsData.projects || []).length, label: 'student projects on GitHub' },
     { value: members.length, label: 'people on the core team' },
     { value: 2025, label: 'the year the club started' },
@@ -36,9 +37,12 @@ export default function About() {
   }, [selected])
 
   const onKeyDown = (e) => {
+    // Move from the focused tab; fall back to the selected one.
+    const focused = tabRefs.current.indexOf(document.activeElement)
+    const from = focused >= 0 ? focused : selected
     let next = null
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (selected + 1) % events.length
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (selected - 1 + events.length) % events.length
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (from + 1) % events.length
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (from - 1 + events.length) % events.length
     if (e.key === 'Home') next = 0
     if (e.key === 'End') next = events.length - 1
     if (next === null) return
@@ -99,6 +103,7 @@ export default function About() {
                 onClick={() => setSelected(i)}
               >
                 <span className="rail-dot" aria-hidden="true">{item.week}</span>
+                {i === nextIndex && <span className="rail-next mono" aria-hidden="true">next</span>}
                 <span className="rail-date mono">{item.date}</span>
                 <span className="sr-only">{item.title}</span>
               </button>
@@ -115,6 +120,7 @@ export default function About() {
             >
               <div className="week-card-head">
                 <span className="week-badge mono">Week {event.week} · {event.date}</span>
+                {selected === nextIndex && <span className="chip chip-static chip-next">Next up</span>}
                 <span className="chip chip-static">{event.format}</span>
                 {event.mandatory && <span className="chip chip-static">Required</span>}
               </div>

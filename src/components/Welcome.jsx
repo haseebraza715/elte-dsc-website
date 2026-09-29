@@ -1,79 +1,94 @@
-import { useRef } from 'react'
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { Fragment, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowDown, ArrowRight, ArrowUpRight, Clock, MapPin } from 'lucide-react'
 import content from '../content/welcome.json'
 import site from '../content/site.json'
-import projectsData from '../content/projects.json'
+import eventsData from '../content/events.json'
 import { scrollToId } from '../lib/scroll.js'
-import DataField from './DataField.jsx'
+import { nextEventIndex } from '../lib/programme.js'
 
-// Wraps the final word of a line (ignoring its punctuation) so it can carry a highlight.
-function Emphasis({ text, variant }) {
-  const match = text.match(/^(.*\s)(\S+?)([.!?]?)$/)
-  if (!match) return text
-  const [, lead, word, punct] = match
+function NextSession() {
+  const events = eventsData.events || []
+  const event = events[nextEventIndex(events, eventsData.season)]
+  if (!event) return null
   return (
-    <>
-      {lead}
-      <span className="nowrap">
-        <span className={`hl hl-${variant}`}>
+    <Link className="hero-fact hero-fact-next" to="/event">
+      <span className="pulse-dot" aria-hidden="true" />
+      <span>
+        Next session <strong>{event.date}</strong> · {event.title}
+      </span>
+      <ArrowRight className="w-4 h-4" aria-hidden="true" />
+    </Link>
+  )
+}
+
+// Each word rises out of its own mask, one after another; the last word gets a
+// hand-drawn underline once it lands.
+function AnimatedWords({ text }) {
+  const words = text.split(' ')
+  return words.map((word, i) => (
+    <Fragment key={`${word}-${i}`}>
+      <span className="w-mask" aria-hidden="true">
+        <span className="w" style={{ '--d': i + 1 }}>
           {word}
-          {variant === 'scribble' && (
-            <svg className="scribble" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true">
+          {i === words.length - 1 && (
+            <svg className="scribble hero-scribble" viewBox="0 0 200 20" preserveAspectRatio="none">
               <path d="M3 14 C 40 4, 90 4, 120 10 S 180 18, 197 6" />
             </svg>
           )}
         </span>
-        {punct}
       </span>
-    </>
-  )
-}
-
-function Tilt({ children, className }) {
-  const ref = useRef(null)
-  const onMove = (event) => {
-    const el = ref.current
-    if (!el || window.matchMedia('(hover: none), (prefers-reduced-motion: reduce)').matches) return
-    const rect = el.getBoundingClientRect()
-    const x = (event.clientX - rect.left) / rect.width - 0.5
-    const y = (event.clientY - rect.top) / rect.height - 0.5
-    el.style.setProperty('--rx', `${(-y * 6).toFixed(2)}deg`)
-    el.style.setProperty('--ry', `${(x * 8).toFixed(2)}deg`)
-  }
-  const onLeave = () => {
-    ref.current?.style.setProperty('--rx', '0deg')
-    ref.current?.style.setProperty('--ry', '0deg')
-  }
-  return (
-    <div ref={ref} className={className} onPointerMove={onMove} onPointerLeave={onLeave}>
-      {children}
-    </div>
-  )
+      {i < words.length - 1 ? ' ' : null}
+    </Fragment>
+  ))
 }
 
 export default function Welcome() {
-  const projectCount = (projectsData.projects || []).length
+  const room = site.room.replace(/^ELTE South Building /, '')
+  const visualRef = useRef(null)
+
+  // Gentle parallax: the photo and the circles behind it lean toward the pointer.
+  const onPointerMove = (event) => {
+    const el = visualRef.current
+    if (!el || event.pointerType !== 'mouse') return
+    const rect = el.getBoundingClientRect()
+    el.style.setProperty('--px', ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3))
+    el.style.setProperty('--py', ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3))
+  }
+  const onPointerLeave = () => {
+    visualRef.current?.style.setProperty('--px', 0)
+    visualRef.current?.style.setProperty('--py', 0)
+  }
+
   return (
     <section id="home" className="hero">
       <div className="wrap hero-grid">
         <div className="hero-copy">
-          <p className="eyebrow">
-            <span className="pulse-dot" aria-hidden="true" />
-            ELTE Data Science Club · since 2025
-          </p>
-          <h1 className="hero-title">
-            <Emphasis text={content.titleLead} variant="marker" />
-            <br />
-            <Emphasis text={content.titleRest} variant="scribble" />
+          <p className="eyebrow hero-in" style={{ '--d': 0 }}>{content.eyebrow}</p>
+          <h1 className="hero-title" aria-label={content.title}>
+            <AnimatedWords text={content.title} />
           </h1>
-          <p className="hero-lede">{content.subtitle}</p>
-          <div className="hero-actions">
-            <a className="btn btn-primary" href={site.applyUrl} target="_blank" rel="noopener noreferrer">
+          <p className="hero-lede hero-in" style={{ '--d': 6 }}>{content.subtitle}</p>
+
+          <ul className="hero-facts hero-in-list" style={{ '--d': 7 }}>
+            <li className="hero-fact">
+              <Clock className="w-4 h-4" aria-hidden="true" />
+              {site.meetingDay}, {site.meetingTime}
+            </li>
+            <li className="hero-fact" title={site.room}>
+              <MapPin className="w-4 h-4" aria-hidden="true" />
+              South Building, {room}
+            </li>
+            <li><NextSession /></li>
+          </ul>
+
+          <div className="hero-actions hero-in" style={{ '--d': 10 }}>
+            <a className="btn btn-primary btn-large" href={site.applyUrl} target="_blank" rel="noopener noreferrer">
               {content.primaryCta.label}
               <ArrowUpRight className="w-5 h-5" aria-hidden="true" />
             </a>
             <a
-              className="btn btn-ghost"
+              className="btn btn-ghost btn-large"
               href={content.secondaryCta.href}
               onClick={(event) => {
                 event.preventDefault()
@@ -90,30 +105,30 @@ export default function Welcome() {
           </div>
         </div>
 
-        <div className="hero-visual">
-          <Tilt className="notebook tilt">
-            <div className="notebook-bar" aria-hidden="true">
-              <span /><span /><span />
-              <em className="mono">clusters.ipynb</em>
-              <b className="notebook-hint">Move your cursor through the points</b>
-            </div>
-            <DataField />
-          </Tilt>
-          <figure className="polaroid">
-            <img
-              src="/events/display/hero-1200.jpg"
-              srcSet="/events/display/hero-800.jpg 800w, /events/display/hero-1200.jpg 1200w, /events/display/hero-1600.jpg 1600w"
-              sizes="(min-width: 960px) 30vw, 90vw"
-              width="1600"
-              height="1200"
-              alt={content.heroCaption}
-              fetchPriority="high"
-              decoding="async"
-            />
-            <figcaption>{content.heroCaption}</figcaption>
-            <span className="sticker sticker-lime" aria-hidden="true">Beginners welcome</span>
-            <span className="sticker sticker-violet" aria-hidden="true">{projectCount} team projects</span>
-          </figure>
+        <div
+          className="hero-visual"
+          ref={visualRef}
+          onPointerMove={onPointerMove}
+          onPointerLeave={onPointerLeave}
+        >
+          <div className="venn" aria-hidden="true">
+            <span /><span /><span />
+          </div>
+        <figure className="hero-photo">
+          <img
+            src="/events/display/hero-1200.jpg"
+            srcSet="/events/display/hero-800.jpg 800w, /events/display/hero-1200.jpg 1200w, /events/display/hero-1600.jpg 1600w"
+            sizes="(min-width: 960px) 46vw, 92vw"
+            width="1600"
+            height="1200"
+            alt={content.heroCaption}
+            fetchpriority="high"
+            decoding="async"
+          />
+          <figcaption>
+            <span className="hero-tagline">{content.tagline}</span>
+          </figcaption>
+        </figure>
         </div>
       </div>
     </section>

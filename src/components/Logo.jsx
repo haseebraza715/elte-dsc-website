@@ -30,7 +30,7 @@ export default function Logo({ className = '', size = 44 }) {
         <clipPath id={`${id}-c`}>{circle(c)}</clipPath>
       </defs>
       <g className="logo-spin">
-        {LOGO_CIRCLES.map((p) => circle(p, { key: p.fill, fill: p.fill }))}
+        {LOGO_CIRCLES.map((p) => <circle key={p.fill} cx={p.cx} cy={p.cy} r={LOGO_R} fill={p.fill} />)}
         <g className="logo-lens">
           <g clipPath={`url(#${id}-a)`}>{circle(b)}{circle(c)}</g>
           <g clipPath={`url(#${id}-b)`}>{circle(c)}</g>
@@ -39,7 +39,7 @@ export default function Logo({ className = '', size = 44 }) {
           <g clipPath={`url(#${id}-b)`}>{circle(c, { fill: 'currentColor' })}</g>
         </g>
         <g fill="none" stroke="currentColor" strokeWidth="2.2">
-          {LOGO_CIRCLES.map((p) => circle(p, { key: p.fill }))}
+          {LOGO_CIRCLES.map((p) => <circle key={p.fill} cx={p.cx} cy={p.cy} r={LOGO_R} />)}
         </g>
       </g>
     </svg>
