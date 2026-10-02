@@ -11,7 +11,7 @@ export default function TeamStrip() {
           <div>
             <p className="eyebrow">Who runs it</p>
             <h2 className="section-title" id="team-heading">Students, like you</h2>
-            <p className="lede">Founders, leads and a mentor who keep the sessions going.</p>
+            <p className="lede">Co-founders, leads and a mentor who keep the sessions going.</p>
             <Link className="btn btn-ghost" to="/members">
               Meet the team <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>

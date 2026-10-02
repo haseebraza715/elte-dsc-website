@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react'
+import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowDown, ArrowRight, ArrowUpRight, Clock, MapPin } from 'lucide-react'
 import content from '../content/welcome.json'
@@ -6,6 +6,7 @@ import site from '../content/site.json'
 import eventsData from '../content/events.json'
 import { scrollToId } from '../lib/scroll.js'
 import { nextEventIndex } from '../lib/programme.js'
+import HeroSlideshow from './HeroSlideshow.jsx'
 
 function NextSession() {
   const events = eventsData.events || []
@@ -45,20 +46,6 @@ function AnimatedWords({ text }) {
 
 export default function Welcome() {
   const room = site.room.replace(/^ELTE South Building /, '')
-  const visualRef = useRef(null)
-
-  // Gentle parallax: the photo and the circles behind it lean toward the pointer.
-  const onPointerMove = (event) => {
-    const el = visualRef.current
-    if (!el || event.pointerType !== 'mouse') return
-    const rect = el.getBoundingClientRect()
-    el.style.setProperty('--px', ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3))
-    el.style.setProperty('--py', ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3))
-  }
-  const onPointerLeave = () => {
-    visualRef.current?.style.setProperty('--px', 0)
-    visualRef.current?.style.setProperty('--py', 0)
-  }
 
   return (
     <section id="home" className="hero">
@@ -105,30 +92,12 @@ export default function Welcome() {
           </div>
         </div>
 
-        <div
-          className="hero-visual"
-          ref={visualRef}
-          onPointerMove={onPointerMove}
-          onPointerLeave={onPointerLeave}
-        >
-          <div className="venn" aria-hidden="true">
-            <span /><span /><span />
-          </div>
-        <figure className="hero-photo">
-          <img
-            src="/events/display/hero-1200.jpg"
-            srcSet="/events/display/hero-800.jpg 800w, /events/display/hero-1200.jpg 1200w, /events/display/hero-1600.jpg 1600w"
-            sizes="(min-width: 960px) 46vw, 92vw"
-            width="1600"
-            height="1200"
-            alt={content.heroCaption}
-            fetchpriority="high"
-            decoding="async"
-          />
-          <figcaption>
-            <span className="hero-tagline">{content.tagline}</span>
-          </figcaption>
-        </figure>
+        <div className="hero-visual">
+          <HeroSlideshow alt={content.heroCaption}>
+            <figcaption>
+              <span className="hero-tagline">{content.tagline}</span>
+            </figcaption>
+          </HeroSlideshow>
         </div>
       </div>
     </section>

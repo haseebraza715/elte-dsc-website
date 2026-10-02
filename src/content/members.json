@@ -1,7 +1,7 @@
 [
   {
     "name": "Kumar Ayush",
-    "role": "Founder",
+    "role": "Co-Founder",
     "meta": "ELTE",
     "description": "Research Assistant at ELTE",
     "link": "https://www.linkedin.com/in/ayushkumar5/",
@@ -11,7 +11,7 @@
   },
   {
     "name": "Haseeb Raza",
-    "role": "Founder",
+    "role": "Co-Founder",
     "meta": "ELTE",
     "description": "Research Assistant at ELTE",
     "link": "https://www.linkedin.com/in/haseebraza715/",
@@ -40,19 +40,19 @@
     "image": "/src/images/members/amina.jpeg"
   },
   {
-    "name": "Aibike",
+    "name": "Aibike Builasheva",
     "role": "Co-Lead",
     "meta": "ELTE",
     "image": "/src/images/members/aibike.jpeg"
   },
   {
-    "name": "Aliza",
+    "name": "Aliza Smajljaj",
     "role": "Co-Lead",
     "meta": "ELTE",
     "image": "/src/images/members/aliza.jpeg"
   },
   {
-    "name": "Nursultan",
+    "name": "Nursultan Tuleev",
     "role": "Tech Lead",
     "meta": "ELTE",
     "image": "/src/images/members/nursultan.jpeg"
@@ -66,5 +66,11 @@
     "linkLabel": "LinkedIn",
     "email": "",
     "image": "/src/images/members/nazrin.jpeg"
+  },
+  {
+    "name": "Saniya Kairbekova",
+    "role": "Outreach Team Lead",
+    "meta": "ELTE",
+    "image": "/src/images/members/saniya.jpeg"
   }
 ]
